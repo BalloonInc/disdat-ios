@@ -1,0 +1,365 @@
+Flugplatz
+Flugzeugkabine
+Flughafenterminal
+Alkoven
+Gasse
+Amphitheater
+Spielhalle
+Freizeitpark
+Wohngebäude / outdoor
+Aquarium
+Aquädukt
+Arkade
+Bogen
+Archäologische Ausgrabungen
+Archiv
+Arena / hockey
+Arena / leistung
+Arena / rodeo
+Armeestützpunkt
+Kunstgalerie
+Kunstschule
+Kunstatelier
+Künstler Loft
+Fließband
+Athletisches Feld / im Freien
+Atrium / öffentlichkeit
+Dachboden
+Auditorium
+Autofabrik
+Auto Showroom
+Ödland
+Bäckerei
+Balkon / außen
+Balkon / Interieur
+Bällebad
+Ballsaal
+Bambuswald
+Bank Tresor
+Festsaal
+Bar
+Scheune
+Scheunentor
+Baseballfeld
+Keller
+Basketballplatz / Innenraum
+Badezimmer
+Bazar / innen
+Bazar / outdoor
+Strand
+Strandhaus
+Schönheitssalon
+Schlafgemach
+Schlafzimmer
+Biergarten
+Bierhalle
+Liegeplatz
+Biologie-Labor
+Promenade
+Bootsdeck
+Bootshaus
+Buchhandlung
+Kabine / innen
+Botanischer Garten
+Bogenfenster / Innenraum
+Kegelbahn
+Boxring
+Brücke
+Gebäudefassade
+Stierkampfarena
+Grabkammer
+Businnenraum
+Busbahnhof / Innenraum
+Metzgerei
+Butte
+Kabine / Outdoor
+Cafeteria
+Campingplatz
+Campus
+Kanal / natur
+Kanal / städtisch
+Süßigkeitenladen
+Schlucht
+Auto Innenraum
+Karussell
+Schloss
+Katakombe
+Friedhof
+Chalet
+Chemielabor
+Kinderzimmer
+Kirche / Indoor
+Kirche / im Freien
+Klassenzimmer
+sauberes Zimmer
+Cliff
+Schrank
+Bekleidungsgeschäft
+Küste
+Cockpit
+Café
+Computerraum
+Konferenzzentrum
+Konferenzraum
+Baustelle
+Maisfeld
+Corral
+Gang
+Hütte
+Gerichtsgebäude
+Hof
+Bach
+Gletscherspalte
+Crosswalk
+Damm
+Delikatessen
+Kaufhaus
+Wüstensand
+Wüste / Vegetation
+Wüstenstraße
+Diner / Outdoor
+Speisesaal
+Esszimmer
+Diskothek
+Tür / außen
+Schlafsaal
+Innenstadt
+Umkleideraum
+Auffahrt
+Drogerie
+Aufzug / Tür
+Aufzugshalle
+Fahrstuhlschacht
+Botschaft
+Maschinenraum
+Eingangshalle
+Rolltreppe / Innenraum
+Ausgrabung
+Stoffladen
+Bauernhof
+Fastfood-Restaurant
+Feld / kultiviert
+Feld / wild
+Feldstraße
+Notausgang
+Feuerwehr
+Fischteich
+Flohmarkt / Indoor
+Blumengeschäft / Indoor
+Fressmeile
+Fußballfeld
+Wald / Laubholz
+Waldweg
+Forststraße
+Formaler garten
+Brunnen
+Galeere
+Garage / innen
+Garage / outdoor
+Tankstelle
+Pavillon / Äußere
+Allgemeiner speicher / innen
+Allgemeiner speicher / im freien
+Geschenkladen
+Gletscher
+Golfplatz
+Gewächshaus / Indoor
+Gewächshaus / Outdoor
+Grotte
+Gymnasium / innen
+Hangar / innen
+Hangar / Outdoor
+Hafen
+Hardware-Laden
+Hayfield
+Hubschrauberlandeplatz
+Autobahn
+Innenministerium
+Heimkino
+Krankenhaus
+Krankenhauszimmer
+Heiße Quelle
+Hotel / Outdoor
+Hotelzimmer
+Haus
+Jagdhütte / im Freien
+Eisdiele
+Eisscholle
+Eisregal
+Eislaufplatz / Indoor
+Eislaufplatz / Outdoor
+Eisberg
+Iglu
+Industriegebiet
+Inn / Outdoor
+Inselchen
+Jacuzzi / Indoor
+Gefängniszelle
+japanischer Garten
+Juwelier
+Schrottplatz
+Kasbah
+Zwinger / Outdoor
+Kindergarten Klassenzimmer
+Küche
+Lagune
+See / Natur
+Deponie
+Landung Deck
+Waschsalon
+Rasen
+Hörsaal
+Gesetzgebende Kammer
+Bibliothek / innen
+Bibliothek / im Freien
+Leuchtturm
+Wohnzimmer
+Laderampe
+Lobby
+Sperrkammer
+Umkleideraum
+Villa
+Produziert zuhause
+Markt / Indoor
+Markt / Outdoor
+Sumpf
+Kampfkunst-Turnhalle
+Mausoleum
+Medina
+Mezzanin
+Graben / wasser
+Moschee / im Freien
+Motel
+Berg
+Bergpfad
+Berg schneebedeckt
+Kino / Indoor
+Museum / innen
+Museum / im Freien
+Musik Studio
+Naturkundemuseum
+Kindergarten
+Altenheim
+Trockenschuppen
+Ozean
+Büro
+Bürogebäude
+Bürokabinen
+Ölbohrinsel
+Operationssaal
+Obstgarten
+Orchestergraben
+Pagode
+Palast
+Speisekammer
+Park
+Parkhaus / Innenraum
+Parkgarage / im Freien
+Parkplatz
+Weide
+Terrasse
+Pavillon
+Tierhandlung
+Apotheke
+Telefonzelle
+Physiklaboratorium
+Picknick Bereich
+Seebrücke
+Pizzeria
+Spielplatz
+Spielzimmer
+Plaza
+Teich
+Veranda
+Promenade
+Pub / drinnen
+Rennbahn
+Laufbahn
+Floß
+Bahngleis
+Regenwald
+Rezeption
+Erholungsraum
+Reparaturwerkstatt
+Wohnviertel
+Restaurant
+Restaurant Küche
+Restaurant Terrasse
+Reisfeld
+Fluss
+Felsenbogen
+Dachgarten
+Hängebrücke
+Ruine
+Runway
+Sandkasten
+Sauna
+Schulhaus
+Wissenschaftsmuseum
+Serverraum
+Schuppen
+Schuhladen
+Schaufenster
+Einkaufszentrum / Innenraum
+Dusche
+Skigebiet
+Skipiste
+Himmel
+Wolkenkratzer
+Slum
+Schneefeld
+Fussballplatz
+stabil
+Stadion / Baseball
+Stadium / fußball
+Stadion / Fußball
+Bühne / Indoor
+Bühne / Outdoor
+Treppe
+Lagerraum
+Straße
+U-Bahnstation / Plattform
+Supermarkt
+Sushi-Bar
+Sumpf
+Schwimmen Loch
+Schwimmbad / Indoor
+Schwimmbad / Outdoor
+Synagoge / im Freien
+Fernsehraum
+Fernsehstudio
+Tempel / Asien
+Thronsaal
+Ticketschalter
+Topiary garten
+Turm
+Spielzeugladen
+Trainieren innen
+Bahnhof / Plattform
+Baumbauernhof
+Baumhaus
+Graben
+Tundra
+Unterwasser / Ozean tief
+Hauswirtschaftsraum
+Tal
+Gemüsegarten
+Tierärzte
+Viadukt
+Dorf
+Weinberg
+Vulkan
+Volleyballplatz / im Freien
+Wartezimmer
+Wasserpark
+Wasserturm
+Wasserfall
+Wasserstelle
+Welle
+Nasse bar
+Weizenfeld
+Windpark
+Windmühle
+Garten
+Jugendherberge
+Zen Garten

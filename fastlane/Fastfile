@@ -1,0 +1,124 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+fastlane_version "2.25"
+
+default_platform :ios
+
+
+# Fastfile actions accept additional configuration, but
+# don't worry, fastlane will prompt you for required
+# info which you can add here later
+lane :beta do
+  # Generate a changelog with GIT since the last successful build in Jenkins
+  changelog = changelog_from_git_commits
+  if changelog_from_git_commits == ""
+    puts "No changes, skipping beta release"
+    next
+  end
+
+  git_diff = "Commits\n--------------------------------\n\n" + (changelog == nil ? "" : changelog)
+
+  setup_jenkins
+  
+  build_number = 1 + latest_testflight_build_number( 
+    username: "wouterdevriendt@gmail.com", 
+    app_identifier: "be.ballooninc.disdatapp"
+  )
+  increment_build_number(
+    build_number: build_number,
+  )
+
+  # build your iOS app
+  gym(
+    scheme: "DisDat",
+    export_method: "app-store",
+    xcpretty_formatter:"fastlane/nowarn-formatter.rb"
+  )
+
+  pilot(
+    username: "wouterdevriendt@gmail.com",
+    changelog: git_diff
+  )
+
+  add_git_tag
+
+  # reset build number
+  increment_build_number(
+    build_number: 1
+  )
+
+  push_to_git_remote(
+    tags: true
+  )
+
+  slack(
+    message: "A new testflight (#{build_number}) build has been uploaded and is ready to be tested.\n#{git_diff}",
+    slack_url: "$(SLACK_URL)"
+  )
+end
+
+lane :build do
+  begin
+    setup_jenkins
+    gym(
+      scheme: "DisDat",
+      configuration: "Debug",
+      xcpretty_formatter:"fastlane/nowarn-formatter.rb",
+      clean: true
+    )
+  rescue Exception => e
+    slack(
+      message: "DisDat build failed.",
+      slack_url: "$(SLACK_URL)",
+      success:false
+    )
+    throw e
+  end
+end
+
+lane :test do 
+  begin
+    scan(
+      workspace: 'DisDat.xcworkspace',
+      scheme: "DisDatTests",
+      devices: ["iPhone 6s"],
+      formatter: "echo fastlane/nowarn-formatter.rb",
+      skip_build: true,
+      output_types: "html,junit"
+    )
+  rescue Exception => e
+    slack(
+      message: "DisDat tests failed.",
+      slack_url: "$(SLACK_URL)",
+      success:false
+    )
+    throw e
+  end
+end
+
+lane :analyze do
+    scan(
+      workspace: 'DisDat.xcworkspace',
+      scheme: "DisDatTests",
+      devices: ["iPhone 6s"],
+      formatter: "echo fastlane/nowarn-formatter.rb",
+      derived_data_path: "./DerivedData", 
+      output_directory: "./reports"
+    )
+    # to be re-enabled after https://github.com/fastlane/fastlane/issues/8812 and https://github.com/fastlane/fastlane/issues/8760 are resolved
+    # slather(
+    #   cobertura_xml: true, 
+    #   jenkins: true, 
+    #   scheme: "DisDat", 
+    #   build_directory: "./DerivedData", 
+    #   output_directory: "./reports", 
+    #   proj: "./DisDat.xcodeproj"
+    # )
+    sh("cd .. && lizard ./[SOURCE_FOLDER] -l swift --xml > ./reports/lizard-report.xml")
+    swiftlint(
+      output_file: "./reports/swiftlint.txt", 
+      ignore_exit_status: true
+    )
+    sonar
+end

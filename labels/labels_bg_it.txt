@@ -1,0 +1,365 @@
+campo di aviazione
+Cabina di aeroplano
+terminal dell'aeroporto
+alcova
+vicolo
+anfiteatro
+sala giochi
+Parco divertimenti
+Appartamento / esterno
+acquario
+acquedotto
+portico
+arco
+Scavo archeologico
+archivio
+Arena / hockey
+Arena / prestazioni
+Arena / Rodeo
+base militare
+galleria d'arte
+scuola d'arte
+studio d'Arte
+Artisti loft
+catena di montaggio
+Campo atletico / esterno
+atrio / pubblico
+Attico
+auditorium
+Fabbrica auto
+Showroom automatico
+calanchi
+pasticceria
+balcone / esterno
+balcone / interni
+Pallina da sfera
+sala da ballo
+foresta di bamboo
+caveau di una banca
+sala del banchetto
+bar
+fienile
+barndoor
+campo da baseball
+seminterrato
+Campo da basket / indoor
+bagno
+bazaar / indoor
+bazaar / outdoor
+spiaggia
+casa al mare
+Salone di bellezza
+Camera da letto
+Camera da letto
+Giardino della birra
+Sala da birra
+cuccetta
+Laboratorio di biologia
+passerella
+Ponte della barca
+casa-barca
+libreria
+stand / indoor
+giardino botanico
+Finestra di prua / interno
+sala da bowling
+ring per il pugilato
+ponte
+Facciata di costruzione
+arena
+Camera mortuaria
+Interno dell'autobus
+Stazione degli autobus / coperta
+macelleria
+butte
+Cabina / outdoor
+caffetteria
+campeggio
+città universitaria
+canale / naturale
+canale / urbano
+negozio di caramelle
+canyon
+Interno dell'automobile
+giostra
+castello
+catacomba
+cimitero
+chalet
+laboratorio di chimica
+Stanza dei bambini
+Chiesa / indoor
+Chiesa / outdoor
+aula
+Camera pulita
+scogliera
+guardaroba
+negozio di vestiti
+costa
+cabina di pilotaggio
+caffetteria
+sala computer
+centro conferenze
+sala conferenze
+sito di costruzione
+campo di mais
+recinto per bestiame
+corridoio
+Cottage
+palazzo di giustizia
+cortile
+torrente
+crepaccio
+attraversamento pedonale
+diga
+gastronomia
+grande magazzino
+sabbia del deserto
+desert / vegetazione
+Strada del deserto
+Diner / outdoor
+sala da cena
+sala da pranzo
+discoteca
+porta / outdoor
+dormitorio
+centro
+Camerino
+viale
+farmacia
+ascensore / porta
+Ascensore lobby
+condotto dell'ascensore
+ambasciata
+sala macchine
+Sala d'ingresso
+scala mobile / indoor
+scavo
+Negozio di tessuti
+azienda agricola
+ristorante fast food
+campo / coltivati
+campo / selvatici
+Strada di campo
+scala di sicurezza
+caserma dei pompieri
+stagno dei pesci
+Mercato delle pulci / indoor
+Fiorista / interno
+Corte alimentare
+campo da calcio
+foresta / latifoglie
+Percorso forestale
+Strada forestale
+Giardino formale
+Fontana
+cambusa
+Garage / indoor
+garage / outdoor
+stazione di servizio
+gazebo / esterno
+Deposito generale / interno
+Deposito / esterno esterno
+negozio di regali
+ghiacciaio
+corso di golf
+serra / indoor
+serra / esterno
+grotta
+palestra / indoor
+hangar / indoor
+hangar / outdoor
+porto
+negozio hardware
+campo di fieno
+eliporto
+autostrada
+ufficio a casa
+Home theater
+ospedale
+Ospedale
+primavera calda
+hotel / outdoor
+Camera d'albergo
+casa
+Casetta da caccia / all'aperto
+gelateria
+lastrone di ghiaccio
+Ripiano di ghiaccio
+Pattinaggio su ghiaccio / indoor
+Pattinaggio su ghiaccio / outdoor
+iceberg
+iglù
+area industriale
+inn / outdoor
+isolotto
+jacuzzi / indoor
+Cella di prigione
+Giardino giapponese
+gioielleria
+discarica
+kasbah
+canile / outdoor
+Asilo nido
+cucina
+laguna
+Lago / naturale
+discarica
+Ponte di atterraggio
+lavanderia a gettoni
+prato
+sala lettura
+Camera legislativa
+biblioteca / indoor
+biblioteca / outdoor
+faro
+soggiorno
+Dock di carico
+atrio
+Camera di blocco
+spogliatoio
+dimora
+Fabbricato a casa
+mercato / indoor
+mercato / outdoor
+palude
+Palestra di arti marziali
+mausoleo
+medina
+soppalco
+fossato / acqua
+Moschea / outdoor
+motel
+montagna
+Percorso di montagna
+Montagna innevata
+Teatro / interno
+Museo / indoor
+Museo / outdoor
+Studio musicale
+Museo di Storia Naturale
+asilo nido
+casa di riposo
+Casa oast
+oceano
+ufficio
+Edificio per uffici
+Cabine per ufficio
+piattaforma petrolifera
+sala operatoria
+frutteto
+Orchestra
+pagoda
+palazzo
+dispensa
+parco
+Garage / interno
+Garage / all'aperto
+parcheggio
+pascolo
+terrazza
+padiglione
+negozio di animali
+farmacia
+cabina telefonica
+Laboratorio di fisica
+area PicNic
+molo
+pizzeria
+terreno di gioco
+stanza dei giochi
+plaza
+stagno
+veranda
+lungomare
+Pub / indoor
+ippodromo
+Raceway
+zattera
+ferrovia
+foresta pluviale
+ricezione
+Sala ricreativa
+negozio di riparazioni
+Quartiere residenziale
+ristorante
+Cucina del ristorante
+Patio ristorante
+riso alla padella
+fiume
+Arco roccioso
+giardino pensile
+ponte di corda
+rovinare
+pista di decollo
+sandbox
+sauna
+scuola
+Museo della Scienza
+stanza del server
+capannone
+negozio di scarpe
+shopfront
+Centro commerciale / interno
+doccia
+stazione sciistica
+pista da sci
+cielo
+grattacielo
+bassifondi
+nevaio
+campo da calcio
+stabile
+stadio / Baseball
+stadio / calcio
+stadio / calcetto
+fase / indoor
+stage / outdoor
+scala
+Ripostiglio
+strada
+Stazione della metropolitana / piattaforma
+supermercato
+Sushi bar
+palude
+Foro di nuoto
+Piscina / coperta
+Piscina / all'aperto
+Sinagoga / outdoor
+Sala televisione
+Studio televisivo
+Tempio / Asia
+sala del Trono
+biglietteria
+Giardino di topiary
+Torre
+negozio di giocattoli
+Allenare il treno
+Stazione ferroviaria / piattaforma
+Albero fattoria
+casa sull'albero
+trincea
+tundra
+Sott'acqua / oceano profondo
+stanza utile
+valle
+orto
+Veterinari ufficio
+viadotto
+villaggio
+vigneto
+vulcano
+Campo da pallavolo / all'aperto
+sala d'attesa
+Parco acquatico
+Torre dell'acqua
+cascata
+abbeveratoio
+onda
+Bar bagnato
+campo di grano
+Parco eolico
+mulino a vento
+cortile
+ostello della gioventù
+giardino zen
