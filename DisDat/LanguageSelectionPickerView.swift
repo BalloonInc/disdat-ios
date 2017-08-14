@@ -50,12 +50,14 @@ class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerV
     
     static func getSupportedLanguages() {
         for supportedCode in NSLocale.isoLanguageCodes {
-            if  supportedLanguageKeys.contains(supportedCode){
+            if supportedLanguageKeys.contains(supportedCode){
                 let langId = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.languageCode.rawValue:supportedCode])
                 let currentLocale = Locale.current
                 let langName = currentLocale.localizedString(forLanguageCode: langId)!
-                languageKeys.append(langId)
-                languageNames.append(langName)
+                if !languageKeys.contains(langId){
+                    languageKeys.append(langId)
+                    languageNames.append(langName)
+                }
             }
         }
     }

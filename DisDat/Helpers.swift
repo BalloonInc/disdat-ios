@@ -36,3 +36,17 @@ extension Date {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
 }
+
+extension String {
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    func substring(to: Int) -> String {
+        if self.characters.count < to {
+            return self
+        }
+         let toIndex = index(from: to)
+        return substring(to: toIndex)
+    }
+}

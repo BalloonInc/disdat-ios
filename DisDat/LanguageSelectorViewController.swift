@@ -20,6 +20,8 @@ class LanguageSelectorViewController: UIViewController {
                 destination.rootLanguage = rootLanguagePicker.selectedLanguageCode
                 destination.learningLanguage = newLanguagePicker.selectedLanguageCode
                 destination.modelName = modelSelector.titleForSegment(at: modelSelector.selectedSegmentIndex)!
+                
+                DiscoveredWordCollection.setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)
             }
         }
     }

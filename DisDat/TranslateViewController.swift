@@ -26,6 +26,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     var gradientLayer: CAGradientLayer!
     var visionRequests = [VNRequest]()
     var modelName = "DisDat-v4"
+    var paused = false
     
     var recognitionThreshold : Float = 0.25
     
@@ -94,10 +95,10 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             fatalError(error.localizedDescription)
         }
         
-        updateThreshholdLabel()
+        updateThresholdLabel()
     }
     
-    func updateThreshholdLabel () {
+    func updateThresholdLabel () {
         self.thresholdLabel.text = "Threshold: " + String(format: "%.2f", recognitionThreshold)
     }
     
@@ -111,7 +112,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        if Date().timeIntervalSince(lastForegroundCheck)>0.5 {
+        if !self.paused && Date().timeIntervalSince(lastForegroundCheck)>0.5 {
             lastForegroundCheck = Date()
             connection.videoOrientation = .portrait
             
@@ -137,7 +138,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     
     @IBAction func sliderValueChanged(slider: UISlider) {
         self.recognitionThreshold = slider.value
-        updateThreshholdLabel()
+        updateThresholdLabel()
     }
     
     func handleClassifications(request: VNRequest, error: Error?) {
@@ -154,14 +155,36 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
+//            .map({"\($0.identifier) \($0.confidence)"})
         if !classificationsList.isEmpty{
-            print("foreground: \(classificationsList[0])")
+            print("foreground: \(observations[0...10].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \($0.confidence)"}))")
         }
 
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
         let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
         
+        if classificationsList.isEmpty {
+            DispatchQueue.main.async {
+                self.resultView.text = ""
+                self.translatedResultView.text = ""
+            }
+            return
+        }
+        let discoveredIndex = englishLabelDict[classificationsList[0]]
+        if !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
+            self.paused=true
+            DiscoveredWordCollection.getInstance().discovered(index: discoveredIndex!)
+            DispatchQueue.main.async {
+                self.resultView.text = rootLanguageClassifications
+                self.translatedResultView.text = learnedLanguageClassifications
+                
+                let alert = UIAlertController(title: "You found a new word", message: "You just discovered '\(learnedLanguageClassifications.split(separator: "\n")[0])' (\(rootLanguageClassifications.split(separator: "\n")[0]))", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Great!", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: {self.paused=false})
+            }
+            return
+        }
         DispatchQueue.main.async {
             self.resultView.text = rootLanguageClassifications
             self.translatedResultView.text = learnedLanguageClassifications
