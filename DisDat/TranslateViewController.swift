@@ -15,23 +15,16 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     var learningLanguage = "fr";
     
     var lastForegroundCheck = Date()
-    var lastBackgroundCheck = Date()
 
     var englishLabelDict: [String:Int] = [:]
     var rootLanguageLabels: [String] = []
     var learningLanguageLabels: [String] = []
-    
-    var englishBackgroundLabelDict: [String:Int] = [:]
-    var rootLanguageBackgroundLabels: [String] = []
-    var learningLanguageBackgroundLabels: [String] = []
-
     
     let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer!
     let captureQueue = DispatchQueue(label: "captureQueue")
     var gradientLayer: CAGradientLayer!
     var visionRequests = [VNRequest]()
-    var backgroundVisionRequests = [VNRequest]()
     var modelName = "DisDat-v4"
     
     var recognitionThreshold : Float = 0.25
@@ -43,8 +36,6 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var translatedResultView: UILabel!
-    @IBOutlet weak var resultBackgroundView: UILabel!
-    @IBOutlet weak var translatedResultBackgroundView: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +44,6 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         rootLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage)")!
         learningLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage)")!
         
-        let englishBackgroundLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_bg_en")!.map({$0.replacingOccurrences(of: " ", with: "_")})
-        englishBackgroundLabelDict = Helpers.arrayToReverseDictionary(englishBackgroundLabels)
-        rootLanguageBackgroundLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_bg_\(rootLanguage)")!
-        learningLanguageBackgroundLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_bg_\(learningLanguage)")!
-
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             fatalError("No video camera available")
@@ -104,13 +90,6 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             classificationRequest.imageCropAndScaleOption = .centerCrop
             visionRequests = [classificationRequest]
 
-            guard let backgroundModel = try? VNCoreMLModel(for: GoogLeNetPlaces().model) else {
-                fatalError("Could not load model")
-            }
-            // set up the request using our vision model
-            let backgroundclassificationRequest = VNCoreMLRequest(model: backgroundModel, completionHandler: handleClassificationBackground)
-            backgroundclassificationRequest.imageCropAndScaleOption = .centerCrop
-            backgroundVisionRequests = [backgroundclassificationRequest]
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -149,26 +128,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             } catch {
                 print(error)
             }
-        }/*
-        else if Date().timeIntervalSince(lastBackgroundCheck)>0.5 {
-            lastBackgroundCheck = Date()
-            connection.videoOrientation = .portrait
-            
-            var requestOptions:[VNImageOption: Any] = [:]
-            
-            if let cameraIntrinsicData = CMGetAttachment(sampleBuffer, kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, nil) {
-                requestOptions = [.cameraIntrinsics: cameraIntrinsicData]
-            }
-            
-            // for orientation see kCGImagePropertyOrientation
-            let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .upMirrored, options: requestOptions)
-            do {
-                try imageRequestHandler.perform(self.backgroundVisionRequests)
-            } catch {
-                print(error)
-            }
-        }*/
-
+        }
     }
     
     @IBAction func userTapped(sender: Any) {
@@ -207,42 +167,9 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             self.translatedResultView.text = learnedLanguageClassifications
         }
     }
-    
-    func handleClassificationBackground(request: VNRequest, error: Error?) {
-        if let theError = error {
-            print("Error: \(theError.localizedDescription)")
-            return
-        }
-        guard let observations = request.results else {
-            print("No results")
-            return
-        }
-        
-        let classification = (observations[0] as? VNClassificationObservation)
-            .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
-            .map({$0.identifier})
-        print("background: \(classification ?? "")")
-        
-        var rootLanguageClassification = ""
-        var learnedLanguageClassification = ""
-        
-        if classification != nil, let backgroundIndex = englishBackgroundLabelDict[classification!] {
-            rootLanguageClassification = rootLanguageBackgroundLabels[backgroundIndex]
-            learnedLanguageClassification = learningLanguageBackgroundLabels[backgroundIndex]
-        }
 
-        DispatchQueue.main.async {
-            self.resultBackgroundView.text = rootLanguageClassification
-            self.translatedResultBackgroundView.text = learnedLanguageClassification
-        }
-    }
-    
     func getModel(name: String) -> MLModel{
         switch modelName {
-        case "VGG16-keras":
-            return vgg16keras().model
-        case "VGG16":
-            return VGG16().model
         case "DisDat-v4":
             return disdatkerasv4().model
         default:

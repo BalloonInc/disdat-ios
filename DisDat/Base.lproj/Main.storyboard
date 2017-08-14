@@ -47,13 +47,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38g-bS-WI8">
-                                <rect key="frame" x="16" y="84" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="104" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzU-Yo-aXs">
-                                <rect key="frame" x="16" y="92" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="112" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.21960784310000001" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -190,15 +190,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Go6-A4-3X4">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Go6-A4-3X4">
                                 <rect key="frame" x="0.0" y="581" width="375" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="RTM-FO-y3z"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="VGG16"/>
-                                    <segment title="VGG16-keras"/>
                                     <segment title="DisDat-v4"/>
+                                    <segment title="VGG16-keras"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
