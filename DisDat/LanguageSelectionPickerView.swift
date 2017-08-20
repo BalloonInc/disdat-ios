@@ -10,7 +10,7 @@ import UIKit
 
 class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    static let supportedLanguageKeys = ["nl","en","fr","de","it","es"]
+    static let supportedLanguageKeys = ["nl","en","fr"]
     static var languageKeys: [String] = []
     static var languageNames: [String] = []
     var selectedLanguageCode = ""
