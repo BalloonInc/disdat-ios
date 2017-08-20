@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C07E0B71F2CADAE007A646A /* LanguageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07E0B61F2CADAE007A646A /* LanguageSelectorViewController.swift */; };
 		6C07E0B91F2CB07D007A646A /* LanguageSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */; };
-		6C165C251F420D0600B54C7C /* disdatkerasv4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C241F420D0300B54C7C /* disdatkerasv4.mlmodel */; };
+		6C0816521F49894100A2686C /* disdatkerasv5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */; };
 		6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */; };
 		6C165C291F421E9200B54C7C /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C281F421E9200B54C7C /* AchievementsTableViewController.swift */; };
 		6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1709651F2CE1F300A23068 /* Helpers.swift */; };
@@ -34,7 +34,7 @@
 		6C07E0BD1F2CDF9E007A646A /* labels_fr.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels_fr.txt; sourceTree = "<group>"; };
 		6C07E0BE1F2CDF9E007A646A /* labels_it.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels_it.txt; sourceTree = "<group>"; };
 		6C07E0C01F2CDF9E007A646A /* labels_nl.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels_nl.txt; sourceTree = "<group>"; };
-		6C165C241F420D0300B54C7C /* disdatkerasv4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = disdatkerasv4.mlmodel; sourceTree = "<group>"; };
+		6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = disdatkerasv5.mlmodel; sourceTree = "<group>"; };
 		6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredWordCollection.swift; sourceTree = "<group>"; };
 		6C165C281F421E9200B54C7C /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 		6C1709651F2CE1F300A23068 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				88C6A9C91EF863CC00CC4360 /* Assets.xcassets */,
 				88C6A9CB1EF863CC00CC4360 /* LaunchScreen.storyboard */,
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
-				6C165C241F420D0300B54C7C /* disdatkerasv4.mlmodel */,
+				6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */,
 				6C07E0BA1F2CDF9E007A646A /* labels */,
 			);
 			path = DisDat;
@@ -187,12 +187,12 @@
 			files = (
 				88C6A9C51EF863CC00CC4360 /* TranslateViewController.swift in Sources */,
 				6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */,
-				6C165C251F420D0600B54C7C /* disdatkerasv4.mlmodel in Sources */,
 				6C165C291F421E9200B54C7C /* AchievementsTableViewController.swift in Sources */,
 				6C07E0B91F2CB07D007A646A /* LanguageSelectionPickerView.swift in Sources */,
 				6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */,
 				88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */,
 				6C07E0B71F2CADAE007A646A /* LanguageSelectorViewController.swift in Sources */,
+				6C0816521F49894100A2686C /* disdatkerasv5.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

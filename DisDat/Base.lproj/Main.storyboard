@@ -234,7 +234,7 @@
                                     <constraint firstAttribute="height" constant="28" id="RTM-FO-y3z"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="DisDat-v4"/>
+                                    <segment title="DisDat-v5"/>
                                     <segment title="VGG16-keras"/>
                                 </segments>
                             </segmentedControl>
