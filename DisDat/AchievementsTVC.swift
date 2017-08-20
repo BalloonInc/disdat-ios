@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievementsTableViewController: UITableViewController {
+class AchievementsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

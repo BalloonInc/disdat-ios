@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Vision
 
-class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var rootLanguage = "en";
     var learningLanguage = "fr";
     
@@ -28,18 +28,25 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     var modelName = "DisDat-v5"
     var paused = false
     
-    var recognitionThreshold : Float = 0.25
+    var recognitionThreshold : Float = 0.10
     
-    @IBOutlet weak var thresholdStackView: UIStackView!
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var translatedResultView: UILabel!
-
+    
+    @IBAction func liveTrackSwitchFlipped(_ sender: UISwitch) {
+        paused = !sender.isOn
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        resultView.text=nil
+        translatedResultView.text=nil
+        
         let englishLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_en")!
         englishLabelDict = Helpers.arrayToReverseDictionary(englishLabels)
         rootLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage)")!
@@ -112,7 +119,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        if !self.paused && Date().timeIntervalSince(lastForegroundCheck)>0.5 {
+        if Date().timeIntervalSince(lastForegroundCheck)>0.5 {
             lastForegroundCheck = Date()
             connection.videoOrientation = .portrait
             
@@ -130,10 +137,6 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
                 print(error)
             }
         }
-    }
-    
-    @IBAction func userTapped(sender: Any) {
-        self.thresholdStackView.isHidden = !self.thresholdStackView.isHidden
     }
     
     @IBAction func sliderValueChanged(slider: UISlider) {
@@ -172,7 +175,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
             return
         }
         let discoveredIndex = englishLabelDict[classificationsList[0]]
-        if !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
+        if !self.paused && !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
             self.paused=true
             DiscoveredWordCollection.getInstance().discovered(index: discoveredIndex!)
             DispatchQueue.main.async {
