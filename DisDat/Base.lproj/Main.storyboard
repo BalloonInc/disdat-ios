@@ -199,32 +199,11 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-Uh-QSY">
-                                <rect key="frame" x="16" y="503" width="339" height="31"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
-                                <state key="normal" title="Login with Google">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledBorderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z58-og-9dR">
-                                <rect key="frame" x="16" y="542" width="339" height="31"/>
+                                <rect key="frame" x="16" y="525" width="339" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ycZ-2h-TJb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                 <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,32 +256,59 @@
                                 <color key="textColor" red="0.33333333333333331" green="0.88627450980392153" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-Uh-QSY">
+                                <rect key="frame" x="16" y="469" width="339" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="hDi-Sf-XUb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <state key="normal" title="Login with Google">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="z58-og-9dR" secondAttribute="trailing" constant="20" id="3T0-Ht-rz3"/>
+                            <constraint firstItem="R3k-Uh-QSY" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="6tl-dj-n4F"/>
                             <constraint firstItem="cOw-pt-EJw" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" constant="-1.5" id="76B-fL-OT8"/>
                             <constraint firstItem="gXY-fM-fRG" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="7Ds-Yx-YCq"/>
                             <constraint firstItem="u1C-d7-ArP" firstAttribute="top" secondItem="gXY-fM-fRG" secondAttribute="bottom" constant="31" id="7Fb-2J-qKx"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jRY-MG-hwH" secondAttribute="trailing" constant="20" symbolic="YES" id="D8O-s7-AeM"/>
                             <constraint firstItem="u1C-d7-ArP" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="I5q-5Q-D1M"/>
-                            <constraint firstItem="z58-og-9dR" firstAttribute="top" secondItem="R3k-Uh-QSY" secondAttribute="bottom" constant="8" id="K0U-1d-XnP"/>
-                            <constraint firstAttribute="trailing" secondItem="z58-og-9dR" secondAttribute="trailing" constant="20" symbolic="YES" id="O9S-fp-Meh"/>
+                            <constraint firstItem="z58-og-9dR" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="Qcz-LQ-Rxf"/>
                             <constraint firstItem="jRY-MG-hwH" firstAttribute="leading" secondItem="cOw-pt-EJw" secondAttribute="trailing" constant="-1" id="R30-5j-SRR"/>
                             <constraint firstItem="gXY-fM-fRG" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="bottom" constant="53" id="RAx-3v-jIh"/>
+                            <constraint firstItem="z58-og-9dR" firstAttribute="top" secondItem="R3k-Uh-QSY" secondAttribute="bottom" constant="8" id="SC5-Sk-z08"/>
                             <constraint firstAttribute="trailing" secondItem="rys-9V-lQJ" secondAttribute="trailing" constant="16" id="TeD-BI-6mv"/>
                             <constraint firstItem="cOw-pt-EJw" firstAttribute="top" secondItem="kLG-zO-A6S" secondAttribute="bottom" constant="27" id="XSM-bO-6Kd"/>
                             <constraint firstItem="rys-9V-lQJ" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="Z5D-Ti-2Dj"/>
                             <constraint firstItem="cOw-pt-EJw" firstAttribute="leading" secondItem="fxE-9e-F6o" secondAttribute="trailing" constant="-1" id="b6I-57-icD"/>
-                            <constraint firstItem="JWa-3k-AqM" firstAttribute="top" secondItem="z58-og-9dR" secondAttribute="bottom" constant="56" id="eKH-2x-Pia"/>
                             <constraint firstItem="1Vo-Of-oWz" firstAttribute="top" secondItem="JWa-3k-AqM" secondAttribute="bottom" constant="8" id="egC-va-0I1"/>
                             <constraint firstItem="JWa-3k-AqM" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="f6x-ZA-OcF"/>
-                            <constraint firstAttribute="trailing" secondItem="R3k-Uh-QSY" secondAttribute="trailing" constant="20" symbolic="YES" id="fdf-9I-zzE"/>
                             <constraint firstItem="fxE-9e-F6o" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="top" id="flc-55-4SR"/>
                             <constraint firstItem="jRY-MG-hwH" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="top" id="hfd-af-0Qw"/>
                             <constraint firstItem="fxE-9e-F6o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="20" symbolic="YES" id="kOw-js-zB5"/>
                             <constraint firstItem="rys-9V-lQJ" firstAttribute="top" secondItem="u1C-d7-ArP" secondAttribute="bottom" constant="8" id="lF7-ZH-va5"/>
-                            <constraint firstItem="R3k-Uh-QSY" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="y6I-la-AwG"/>
-                            <constraint firstItem="z58-og-9dR" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="yV3-Zi-ajI"/>
+                            <constraint firstAttribute="trailing" secondItem="R3k-Uh-QSY" secondAttribute="trailing" constant="20" id="tfx-E2-akE"/>
+                            <constraint firstItem="JWa-3k-AqM" firstAttribute="top" secondItem="z58-og-9dR" secondAttribute="bottom" constant="56" id="yXe-nV-fuh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -312,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buB-xV-a5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2053.125" y="14.788732394366198"/>
+            <point key="canvasLocation" x="-2053.5999999999999" y="13.943028485757123"/>
         </scene>
         <!--Language SelectorVC-->
         <scene sceneID="2NB-ep-VPA">
