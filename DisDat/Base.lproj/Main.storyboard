@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yo8-ad-qTf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="Helvetica.ttc">
+            <string>Helvetica</string>
             <string>Helvetica-Bold</string>
         </array>
     </customFonts>
@@ -17,7 +18,7 @@
         <!--Discover-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Discover" id="BYZ-38-t0r" customClass="TranslateViewController" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Discover" id="BYZ-38-t0r" customClass="TranslateVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -116,7 +117,7 @@
         <!--Achievements-->
         <scene sceneID="jhR-nQ-THF">
             <objects>
-                <tableViewController title="Achievements" id="0fM-pe-nxc" customClass="AchievementsTableViewController" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Achievements" id="0fM-pe-nxc" customClass="AchievementsTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g1E-Mu-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="909" y="32"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="B8Z-PJ-Mtw">
             <objects>
-                <viewController id="Yo8-ad-qTf" sceneMemberID="viewController">
+                <viewController id="Yo8-ad-qTf" customClass="LoginVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kLG-zO-A6S"/>
                         <viewControllerLayoutGuide type="bottom" id="1Vo-Of-oWz"/>
@@ -169,38 +170,154 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6v4-Vb-CEM">
-                                <rect key="frame" x="114" y="28" width="146.5" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DIS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-9e-F6o">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="46"/>
-                                        <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
-                                        <color key="textColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-MG-hwH">
-                                        <rect key="frame" x="67" y="0.0" width="79.5" height="46"/>
-                                        <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
-                                        <color key="textColor" red="0.33333333333333331" green="0.88627450980392153" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-d7-ArP">
+                                <rect key="frame" x="100" y="237" width="175.5" height="34.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Hello friend!">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="30" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rys-9V-lQJ">
+                                <rect key="frame" x="16" y="279.5" width="343" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="zKS-i2-1Yr"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Ready to find words and learn a new language?">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-Uh-QSY">
+                                <rect key="frame" x="16" y="503" width="339" height="31"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <state key="normal" title="Login with Google">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z58-og-9dR">
+                                <rect key="frame" x="16" y="542" width="339" height="31"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-3k-AqM">
+                                <rect key="frame" x="172.5" y="629" width="30" height="30"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="quT-y4-pgi" kind="show" id="gUk-am-9rQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-9e-F6o">
+                                <rect key="frame" x="102.5" y="47" width="84" height="57.5"/>
+                                <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="50"/>
+                                <color key="textColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤓" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-fM-fRG">
+                                <rect key="frame" x="165.5" y="159" width="44" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOw-pt-EJw" userLabel="Dummy">
+                                <rect key="frame" x="185.5" y="47" width="1" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Eyg-qO-13M"/>
+                                    <constraint firstAttribute="width" constant="1" id="ucU-of-rR1"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-MG-hwH">
+                                <rect key="frame" x="185.5" y="47" width="102" height="59"/>
+                                <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="51"/>
+                                <color key="textColor" red="0.33333333333333331" green="0.88627450980392153" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="cOw-pt-EJw" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" constant="-1.5" id="76B-fL-OT8"/>
+                            <constraint firstItem="gXY-fM-fRG" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="7Ds-Yx-YCq"/>
+                            <constraint firstItem="u1C-d7-ArP" firstAttribute="top" secondItem="gXY-fM-fRG" secondAttribute="bottom" constant="31" id="7Fb-2J-qKx"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jRY-MG-hwH" secondAttribute="trailing" constant="20" symbolic="YES" id="D8O-s7-AeM"/>
+                            <constraint firstItem="u1C-d7-ArP" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="I5q-5Q-D1M"/>
+                            <constraint firstItem="z58-og-9dR" firstAttribute="top" secondItem="R3k-Uh-QSY" secondAttribute="bottom" constant="8" id="K0U-1d-XnP"/>
+                            <constraint firstAttribute="trailing" secondItem="z58-og-9dR" secondAttribute="trailing" constant="20" symbolic="YES" id="O9S-fp-Meh"/>
+                            <constraint firstItem="jRY-MG-hwH" firstAttribute="leading" secondItem="cOw-pt-EJw" secondAttribute="trailing" constant="-1" id="R30-5j-SRR"/>
+                            <constraint firstItem="gXY-fM-fRG" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="bottom" constant="53" id="RAx-3v-jIh"/>
+                            <constraint firstAttribute="trailing" secondItem="rys-9V-lQJ" secondAttribute="trailing" constant="16" id="TeD-BI-6mv"/>
+                            <constraint firstItem="cOw-pt-EJw" firstAttribute="top" secondItem="kLG-zO-A6S" secondAttribute="bottom" constant="27" id="XSM-bO-6Kd"/>
+                            <constraint firstItem="rys-9V-lQJ" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="Z5D-Ti-2Dj"/>
+                            <constraint firstItem="cOw-pt-EJw" firstAttribute="leading" secondItem="fxE-9e-F6o" secondAttribute="trailing" constant="-1" id="b6I-57-icD"/>
+                            <constraint firstItem="JWa-3k-AqM" firstAttribute="top" secondItem="z58-og-9dR" secondAttribute="bottom" constant="56" id="eKH-2x-Pia"/>
+                            <constraint firstItem="1Vo-Of-oWz" firstAttribute="top" secondItem="JWa-3k-AqM" secondAttribute="bottom" constant="8" id="egC-va-0I1"/>
+                            <constraint firstItem="JWa-3k-AqM" firstAttribute="centerX" secondItem="kXJ-BL-VjX" secondAttribute="centerX" id="f6x-ZA-OcF"/>
+                            <constraint firstAttribute="trailing" secondItem="R3k-Uh-QSY" secondAttribute="trailing" constant="20" symbolic="YES" id="fdf-9I-zzE"/>
+                            <constraint firstItem="fxE-9e-F6o" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="top" id="flc-55-4SR"/>
+                            <constraint firstItem="jRY-MG-hwH" firstAttribute="top" secondItem="cOw-pt-EJw" secondAttribute="top" id="hfd-af-0Qw"/>
+                            <constraint firstItem="fxE-9e-F6o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="20" symbolic="YES" id="kOw-js-zB5"/>
+                            <constraint firstItem="rys-9V-lQJ" firstAttribute="top" secondItem="u1C-d7-ArP" secondAttribute="bottom" constant="8" id="lF7-ZH-va5"/>
+                            <constraint firstItem="R3k-Uh-QSY" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="y6I-la-AwG"/>
+                            <constraint firstItem="z58-og-9dR" firstAttribute="leading" secondItem="kXJ-BL-VjX" secondAttribute="leading" constant="16" id="yV3-Zi-ajI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="z58-og-9dR" id="DGB-WU-URK"/>
+                        <outlet property="googleLoginButton" destination="R3k-Uh-QSY" id="7n8-E5-eTe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buB-xV-a5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2052" y="14.842578710644679"/>
+            <point key="canvasLocation" x="-2053.125" y="14.788732394366198"/>
         </scene>
-        <!--Language Selector View Controller-->
+        <!--Language SelectorVC-->
         <scene sceneID="2NB-ep-VPA">
             <objects>
-                <viewController id="quT-y4-pgi" customClass="LanguageSelectorViewController" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="quT-y4-pgi" customClass="LanguageSelectorVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Clq-1V-Bxx"/>
                         <viewControllerLayoutGuide type="bottom" id="XMP-AZ-Xxf"/>

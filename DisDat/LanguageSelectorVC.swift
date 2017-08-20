@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LanguageSelectorViewController: UIViewController {    
+class LanguageSelectorVC: UIViewController {
     
     @IBOutlet weak var rootLanguagePicker: LanguageSelectionPickerView!
     @IBOutlet weak var newLanguagePicker: LanguageSelectionPickerView!
@@ -16,7 +16,7 @@ class LanguageSelectorViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "languageSelectedSegue"){
-            if let destination = segue.destination as? TranslateViewController {
+            if let destination = segue.destination as? TranslateVC {
                 destination.rootLanguage = rootLanguagePicker.selectedLanguageCode
                 destination.learningLanguage = newLanguagePicker.selectedLanguageCode
                 destination.modelName = modelSelector.titleForSegment(at: modelSelector.selectedSegmentIndex)!

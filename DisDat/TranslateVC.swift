@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Vision
 
-class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var rootLanguage = "en";
     var learningLanguage = "fr";
     
