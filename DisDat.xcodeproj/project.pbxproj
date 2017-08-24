@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0802291F4C6C0D0066D1D1 /* disdatkerasv7.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A0802281F4C6B6A0066D1D1 /* disdatkerasv7.mlmodel */; };
 		6C07E0B71F2CADAE007A646A /* LanguageSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07E0B61F2CADAE007A646A /* LanguageSelectorVC.swift */; };
 		6C07E0B91F2CB07D007A646A /* LanguageSelectionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */; };
-		6C0816521F49894100A2686C /* disdatkerasv5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */; };
 		6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */; };
 		6C165C291F421E9200B54C7C /* AchievementsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C281F421E9200B54C7C /* AchievementsTVC.swift */; };
 		6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1709651F2CE1F300A23068 /* Helpers.swift */; };
@@ -25,10 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A0802281F4C6B6A0066D1D1 /* disdatkerasv7.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = disdatkerasv7.mlmodel; sourceTree = "<group>"; };
 		6C07E0B61F2CADAE007A646A /* LanguageSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectorVC.swift; sourceTree = "<group>"; };
 		6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionPickerView.swift; sourceTree = "<group>"; };
 		6C07E0C01F2CDF9E007A646A /* labels_nl.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels_nl.txt; sourceTree = "<group>"; };
-		6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = disdatkerasv5.mlmodel; sourceTree = "<group>"; };
 		6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredWordCollection.swift; sourceTree = "<group>"; };
 		6C165C281F421E9200B54C7C /* AchievementsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTVC.swift; sourceTree = "<group>"; };
 		6C1709651F2CE1F300A23068 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 				88C6A9C91EF863CC00CC4360 /* Assets.xcassets */,
 				88C6A9CB1EF863CC00CC4360 /* LaunchScreen.storyboard */,
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
-				6C0816511F49893F00A2686C /* disdatkerasv5.mlmodel */,
+				5A0802281F4C6B6A0066D1D1 /* disdatkerasv7.mlmodel */,
 				6C07E0BA1F2CDF9E007A646A /* labels */,
 			);
 			path = DisDat;
@@ -176,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A0802291F4C6C0D0066D1D1 /* disdatkerasv7.mlmodel in Sources */,
 				88C6A9C51EF863CC00CC4360 /* TranslateVC.swift in Sources */,
 				6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */,
 				6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */,
@@ -184,7 +185,6 @@
 				6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */,
 				88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */,
 				6C07E0B71F2CADAE007A646A /* LanguageSelectorVC.swift in Sources */,
-				6C0816521F49894100A2686C /* disdatkerasv5.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,10 +25,10 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     let captureQueue = DispatchQueue(label: "captureQueue")
     var gradientLayer: CAGradientLayer!
     var visionRequests = [VNRequest]()
-    var modelName = "DisDat-v5"
+    var modelName = "DisDat-v7"
     var paused = false
     
-    var recognitionThreshold : Float = 0.10
+    var recognitionThreshold : Float = 0.80
     
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
@@ -196,10 +196,10 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
 
     func getModel(name: String) -> MLModel{
         switch modelName {
-        case "DisDat-v5":
-            return disdatkerasv5().model
+        case "DisDat-v7":
+            return disdatkerasv7().model
         default:
-            return disdatkerasv5().model
+            return disdatkerasv7().model
         }
     }
 }
