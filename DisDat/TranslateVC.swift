@@ -41,6 +41,14 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
         paused = !sender.isOn
     }
     
+    @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
+    }
+    
+    @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
+        self.thresholdLabel.isHidden = !self.thresholdLabel.isHidden
+        self.thresholdSlider.isHidden = !self.thresholdSlider.isHidden
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         session.startRunning()
