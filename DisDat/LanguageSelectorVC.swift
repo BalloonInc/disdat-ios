@@ -53,21 +53,21 @@ class LanguageSelectorVC: UIViewController {
         tile.layer.cornerRadius = 25;
         tile.layer.masksToBounds = false;
         
-        let circleView = UIView(frame: CGRect(x: 0 + tile.frame.width/2, y: 0, width: 50, height: 50))
+        let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 
         circleView.layer.cornerRadius = 25;  // half the width/height
         circleView.backgroundColor = UIColor(red: CGFloat(254.0/255), green: CGFloat(217.0/255), blue: CGFloat(77.0/255), alpha: 1.0)
-        circleView.center = CGPoint(x: tile.frame.origin.x + tile.frame.size.width/2, y: 0)
+        circleView.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
         
         circleView.layer.borderWidth = 4;
         circleView.layer.borderColor = UIColor.white.cgColor
 
         tile.addSubview(circleView)
         
-        let label = UILabel(frame: CGRect(x: 0 + tile.frame.width/2, y: 0, width: 50, height: 50))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         label.text = "\(id)"
         label.textAlignment = .center
-        label.center = CGPoint(x: tile.frame.origin.x + tile.frame.size.width/2, y: 0)
+        label.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
 
         tile.addSubview(label)
     }

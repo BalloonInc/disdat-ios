@@ -10,8 +10,22 @@ import UIKit
 
 class AchievementsTVC: UITableViewController {
 
+    @IBOutlet weak var localNavigationBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.localNavigationBar.isHidden=true
+        self.navigationController?.isNavigationBarHidden = false
+        self.tableView.contentInset = UIEdgeInsetsMake(-self.localNavigationBar.frame.height, 0, 0, 0);
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
 
 

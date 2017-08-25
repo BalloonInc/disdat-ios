@@ -28,7 +28,7 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     var modelName = "DisDat-v7"
     var paused = false
     
-    var recognitionThreshold : Float = 0.80
+    var recognitionThreshold : Float = 0.90
     
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
@@ -39,6 +39,16 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     
     @IBAction func liveTrackSwitchFlipped(_ sender: UISwitch) {
         paused = !sender.isOn
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        session.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        session.stopRunning()
     }
     
     override func viewDidLoad() {
@@ -85,9 +95,6 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             // make sure we are in portrait mode
             let conn = videoOutput.connection(with: .video)
             conn?.videoOrientation = .portrait
-            
-            // Start the session
-            session.startRunning()
             
             // set up the vision model
             guard let model = try? VNCoreMLModel(for: getModel(name:modelName)) else {
@@ -175,16 +182,16 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             return
         }
         let discoveredIndex = englishLabelDict[classificationsList[0]]
-        if !self.paused && !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
-            self.paused=true
+        if !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
+            session.stopRunning()
             DiscoveredWordCollection.getInstance().discovered(index: discoveredIndex!)
             DispatchQueue.main.async {
                 self.resultView.text = rootLanguageClassifications
                 self.translatedResultView.text = learnedLanguageClassifications
                 
                 let alert = UIAlertController(title: "You found a new word", message: "You just discovered '\(learnedLanguageClassifications.split(separator: "\n")[0])' (\(rootLanguageClassifications.split(separator: "\n")[0]))", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Great!", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: {self.paused=false})
+                alert.addAction(UIAlertAction(title: "Great!", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction) in self.session.startRunning() }))
+                self.present(alert, animated: true, completion: nil)
             }
             return
         }
