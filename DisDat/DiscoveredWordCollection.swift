@@ -36,9 +36,14 @@ class DiscoveredWordCollection {
         if !isDiscovered(index: index){
             discoveredIndexes.append(index)
         }
+        UserDefaults.standard.set(discoveredIndexes, forKey: "\(rootLanguage)-\(learningLanguage)-discovered")
     }
     
     static func setLanguages(rootLanguage: String, learningLanguage: String){
-        instance = DiscoveredWordCollection(rootLanguage: rootLanguage, learningLanguage: learningLanguage)
+        let localInstance = DiscoveredWordCollection(rootLanguage: rootLanguage, learningLanguage: learningLanguage)
+        if let savedDiscoveries = UserDefaults.standard.value(forKey:"\(rootLanguage)-\(learningLanguage)-discovered") as? [Int] {
+            localInstance.discoveredIndexes = savedDiscoveries
+        }
+        instance = localInstance
     }
 }
