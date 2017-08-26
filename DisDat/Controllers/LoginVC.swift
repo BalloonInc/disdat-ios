@@ -7,20 +7,31 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, GIDSignInUIDelegate {
 
-    @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
+    
+    @IBAction func googleLoginPressed(_ sender: Any) {
+    }
+    
+    @IBAction func facebookLoginPressed(_ sender: Any) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setButtonUI(button: googleLoginButton)
         setButtonUI(button: facebookLoginButton)
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
 
-    func setButtonUI(button: UIButton){
+    func setButtonUI(button: UIView){
         button.layer.cornerRadius = 10;
         button.layer.borderWidth = 1;
         button.layer.borderColor = UIColor.white.cgColor

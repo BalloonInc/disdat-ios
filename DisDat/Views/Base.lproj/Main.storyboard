@@ -395,9 +395,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-d7-ArP">
-                                <rect key="frame" x="68.5" y="237" width="183.5" height="34.5"/>
+                                <rect key="frame" x="73.5" y="237" width="173.5" height="34.5"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Hello friend! ">
+                                    <fragment content="Hello there! ">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="30" name="Helvetica-Bold"/>
@@ -413,7 +413,7 @@
                                     <constraint firstAttribute="height" constant="64" id="zKS-i2-1Yr"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Ready to find words and learn a new language?">
+                                    <fragment content="Are you ready to find words and learn a new language?">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="20" name="Helvetica"/>
@@ -443,6 +443,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="facebookLoginPressed:" destination="Yo8-ad-qTf" eventType="touchUpInside" id="FIz-6z-3cb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-3k-AqM">
                                 <rect key="frame" x="145" y="530" width="30" height="30"/>
@@ -509,6 +512,9 @@
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleLoginPressed:" destination="Yo8-ad-qTf" eventType="touchUpInside" id="o5f-sh-9tx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.044297960069444448" green="0.023681640625" blue="0.018256293402777776" alpha="1" colorSpace="calibratedRGB"/>
@@ -824,6 +830,6 @@
         <image name="menu" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dvv-p4-byC"/>
+        <segue reference="gUk-am-9rQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,6 @@
 		6C5150D21F2CE57E00EE1B59 /* labels_nl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C07E0C01F2CDF9E007A646A /* labels_nl.txt */; };
 		6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30861F51A004007E8773 /* SettingsTVC.swift */; };
 		6CAB308A1F51ADA3007E8773 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30891F51ADA3007E8773 /* Authentication.swift */; };
-		6CAB30AC1F51AED5007E8773 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CAB30AB1F51AED5007E8773 /* Default-568h@2x.png */; };
 		88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */; };
 		88C6A9C51EF863CC00CC4360 /* TranslateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6A9C41EF863CC00CC4360 /* TranslateVC.swift */; };
 		88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C6A9C61EF863CC00CC4360 /* Main.storyboard */; };
@@ -41,7 +40,7 @@
 		6C4064E31F49E99800411A60 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6CAB30861F51A004007E8773 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		6CAB30891F51ADA3007E8773 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
-		6CAB30AB1F51AED5007E8773 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CE2CFE41F2CE0ED00DCECD8 /* labels_en.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels_en.txt; sourceTree = "<group>"; };
 		88C6A9BF1EF863CC00CC4360 /* DisDat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisDat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +108,6 @@
 		6CAB308D1F51ADE7007E8773 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6CAB30AB1F51AED5007E8773 /* Default-568h@2x.png */,
 				6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */,
 				88C6A9C61EF863CC00CC4360 /* Main.storyboard */,
 				88C6A9C91EF863CC00CC4360 /* Assets.xcassets */,
@@ -157,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
+				6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */,
 				6CAB30881F51AD89007E8773 /* AppState */,
 				6CAB308E1F51ADFF007E8773 /* Models */,
 				6CAB308D1F51ADE7007E8773 /* Views */,
@@ -241,7 +240,6 @@
 				6C5150D21F2CE57E00EE1B59 /* labels_nl.txt in Resources */,
 				88C6A9CA1EF863CC00CC4360 /* Assets.xcassets in Resources */,
 				6C5150CD1F2CE57E00EE1B59 /* labels_en.txt in Resources */,
-				6CAB30AC1F51AED5007E8773 /* Default-568h@2x.png in Resources */,
 				88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,9 +253,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DisDat/Pods-DisDat-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -289,11 +290,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DisDat/Pods-DisDat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
