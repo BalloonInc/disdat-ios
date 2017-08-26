@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Helpers {
     static func arrayFromContentsOfFileWithName(fileName: String) -> [String]? {

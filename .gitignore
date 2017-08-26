@@ -24,3 +24,6 @@ xcuserdata/
 
 ## Big machine learning models
 *.mlmodel
+
+# Pods
+Pods/

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Vision
+import PopupDialog
 
 class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var rootLanguage = "en";
@@ -27,6 +28,8 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     var visionRequests = [VNRequest]()
     var modelName = "DisDat-v7"
     var paused = false
+    
+    var currentPixelBuffer: CVImageBuffer?
     
     var recognitionThreshold : Float = 0.90
     
@@ -131,6 +134,7 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
@@ -148,6 +152,7 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .upMirrored, options: requestOptions)
             do {
                 try imageRequestHandler.perform(self.visionRequests)
+                self.currentPixelBuffer = pixelBuffer
             } catch {
                 print(error)
             }
@@ -197,9 +202,26 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
                 self.resultView.text = rootLanguageClassifications
                 self.translatedResultView.text = learnedLanguageClassifications
                 
-                let alert = UIAlertController(title: "You found a new word", message: "You just discovered '\(learnedLanguageClassifications.split(separator: "\n")[0])' (\(rootLanguageClassifications.split(separator: "\n")[0]))", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Great!", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction) in self.session.startRunning() }))
-                self.present(alert, animated: true, completion: nil)
+                let foundTranslatedWord = learnedLanguageClassifications.split(separator: "\n")[0]
+                let foundOriginalWord = rootLanguageClassifications.split(separator: "\n")[0]
+                
+                let origin = CGPoint(x: 0, y: 0)
+
+                let size = CGSize(width: self.view.frame.width*0.9*UIScreen.main.scale, height: self.view.frame.height*0.6*UIScreen.main.scale)
+                let rect = CGRect(origin: origin, size: size)
+                if let currentBuffer = self.currentPixelBuffer{
+                    let ciImage = CIImage(cvPixelBuffer: currentBuffer).cropped(to: rect)
+                    
+                    let image = self.convert(cmage: ciImage)
+                    self.currentPixelBuffer = nil
+                    
+                    let alert = PopupDialog(title:"You found a new word", message:"Looks like you dicovered '\(foundTranslatedWord)' (\(foundOriginalWord))", image: image,gestureDismissal: false)
+                    
+                    alert.addButton(DefaultButton(title: "Great!"){
+                        self.session.startRunning()
+                    })
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
             return
         }
@@ -217,5 +239,13 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             return disdatkerasv7().model
         }
     }
-}
+    
+    func convert(cmage:CIImage) -> UIImage
+    {
+        let context:CIContext = CIContext.init(options: nil)
+        let cgImage:CGImage = context.createCGImage(cmage, from: cmage.extent)!
+        let image:UIImage = UIImage.init(cgImage: cgImage)
+        return image
+    }
 
+}

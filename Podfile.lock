@@ -1,0 +1,22 @@
+PODS:
+  - PopupDialog (0.5.4)
+
+DEPENDENCIES:
+  - PopupDialog (from `git@github.com:ballooninc/PopupDialog.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  PopupDialog:
+    :branch: master
+    :git: git@github.com:ballooninc/PopupDialog.git
+
+CHECKOUT OPTIONS:
+  PopupDialog:
+    :commit: 56f67a20a3182d09cb8b24858a2010ef336a29b1
+    :git: git@github.com:ballooninc/PopupDialog.git
+
+SPEC CHECKSUMS:
+  PopupDialog: 2993779aa88470585f4e9c3f240382ea82f98ef0
+
+PODFILE CHECKSUM: 9cf2d1cf218c5582ec74c793ccae1a7764f039e4
+
+COCOAPODS: 1.3.1

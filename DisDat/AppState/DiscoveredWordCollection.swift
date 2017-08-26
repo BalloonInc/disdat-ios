@@ -16,12 +16,14 @@ class DiscoveredWordCollection {
     var rootLanguageWords: [String]
     var learningLanguageWords: [String]
     var discoveredIndexes: [Int] = []
+    var totalWordCount = 0
 
     private init(rootLanguage: String, learningLanguage: String){
         self.rootLanguage = rootLanguage
         self.learningLanguage = learningLanguage
         rootLanguageWords = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage)")!
         learningLanguageWords = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage)")!
+        totalWordCount = rootLanguageWords.count
     }
     
     static func getInstance() -> DiscoveredWordCollection {
@@ -35,7 +37,16 @@ class DiscoveredWordCollection {
     func discovered(index: Int){
         if !isDiscovered(index: index){
             discoveredIndexes.append(index)
+            save()
         }
+    }
+    
+    func resetProgress(){
+        discoveredIndexes = []
+        save()
+    }
+    
+    private func save(){
         UserDefaults.standard.set(discoveredIndexes, forKey: "\(rootLanguage)-\(learningLanguage)-discovered")
     }
     
