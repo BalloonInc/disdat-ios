@@ -221,6 +221,17 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
                         self.session.startRunning()
                     })
                     self.present(alert, animated: true, completion: nil)
+
+                    let speechSynthesizer = AVSpeechSynthesizer()
+                    let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
+                    let speechUtterance = AVSpeechUtterance(string: pronounceString)
+                
+//                  speechUtterance.rate = 0.25
+//                  speechUtterance.pitchMultiplier = 0.25
+//                  speechUtterance.volume = 0.75
+                
+                    speechSynthesizer.speak(speechUtterance)
+
                 }
             }
             return

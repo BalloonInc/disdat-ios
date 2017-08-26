@@ -14,6 +14,7 @@
 		6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */; };
 		6C165C291F421E9200B54C7C /* AchievementsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C281F421E9200B54C7C /* AchievementsTVC.swift */; };
 		6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1709651F2CE1F300A23068 /* Helpers.swift */; };
+		6C1BC84B1F52018600D53BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */; };
 		6C4064E21F49E85B00411A60 /* labels_fr.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C4064E11F49E85700411A60 /* labels_fr.txt */; };
 		6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4064E31F49E99800411A60 /* LoginVC.swift */; };
 		6C5150CD1F2CE57E00EE1B59 /* labels_en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6CE2CFE41F2CE0ED00DCECD8 /* labels_en.txt */; };
@@ -241,6 +242,7 @@
 				88C6A9CA1EF863CC00CC4360 /* Assets.xcassets in Resources */,
 				6C5150CD1F2CE57E00EE1B59 /* labels_en.txt in Resources */,
 				88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */,
+				6C1BC84B1F52018600D53BBB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
