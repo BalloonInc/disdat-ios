@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    static let supportedLanguageKeys = ["nl","en","fr"]
+    static let supportedLanguageKeys = ["nl-BE","en-US","fr-FR"]
     static var languageKeys: [String] = []
     static var languageNames: [String] = []
     var selectedLanguageCode = ""
@@ -49,14 +50,12 @@ class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerV
     }
     
     static func getSupportedLanguages() {
-        for supportedCode in NSLocale.isoLanguageCodes {
-            if supportedLanguageKeys.contains(supportedCode){
-                let langId = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.languageCode.rawValue:supportedCode])
-                let currentLocale = Locale.current
-                let langName = currentLocale.localizedString(forLanguageCode: langId)!
+        for supportedCode in AVSpeechSynthesisVoice.speechVoices() {
+            let langId = supportedCode.language
+            if supportedLanguageKeys.contains(langId){
                 if !languageKeys.contains(langId){
                     languageKeys.append(langId)
-                    languageNames.append(langName)
+                    languageNames.append(Locale.current.localizedString(forLanguageCode: langId)!)
                 }
             }
         }

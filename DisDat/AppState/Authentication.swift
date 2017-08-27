@@ -10,4 +10,65 @@ import Foundation
 
 class Authentication{
     
+    private static var instance: Authentication?
+    
+    var email: String?
+    var fullname: String?
+    var authenticationMethod: Method?
+    
+    var currentRootLanguage: String?
+    var currentLearningLanguage: String?
+    
+    private init(){
+    }
+    
+    static func getInstance() -> Authentication{
+        if instance == nil {
+            instance = Authentication()
+            if let authentication = UserDefaults.standard.value(forKey: "authentication") as? [String: String]{
+                instance!.email = authentication["email"]
+                instance!.fullname = authentication["fullname"]
+                if let authMethodRaw = authentication["authenticationMethod"] {
+                    instance!.authenticationMethod = Method(rawValue: authMethodRaw)
+                }
+            }
+            if let languages = UserDefaults.standard.value(forKey: "languages") as? [String: String]{
+                instance!.currentRootLanguage = languages["rootLanguage"]
+                instance!.currentLearningLanguage = languages["learningLanguage"]
+                DiscoveredWordCollection.setLanguages(rootLanguage: languages["rootLanguage"]!, learningLanguage: languages["rootLanguage"]!)
+            }
+        }
+        return instance!
+    }
+    
+    func login(fullname: String, email: String, authenticationMethod: Method){
+        self.email = email
+        self.fullname = fullname
+        self.authenticationMethod = authenticationMethod
+        let authentication = ["email":email, "fullname":fullname, "authenticationMethod":authenticationMethod.rawValue]
+        UserDefaults.standard.set(authentication, forKey: "authentication")
+    }
+    
+    func setLanguages(rootLanguage: String, learningLanguage: String){
+        self.currentRootLanguage = rootLanguage
+        self.currentLearningLanguage = learningLanguage
+        let languages = ["rootLanguage": rootLanguage, "learningLanguage": learningLanguage]
+        UserDefaults.standard.set(languages, forKey: "languages")
+    }
+    
+    func logout(){
+        self.email = nil
+        self.fullname = nil
+        self.authenticationMethod = nil
+        self.currentRootLanguage = nil
+        self.currentLearningLanguage = nil
+        UserDefaults.standard.set(nil, forKey: "authentication")
+        UserDefaults.standard.set(nil, forKey: "languages")
+    }
+    
+    enum Method: String {
+        case google = "Google"
+        case facebook = "Facebook"
+        case anonymous = "Anonymous"
+    }
 }

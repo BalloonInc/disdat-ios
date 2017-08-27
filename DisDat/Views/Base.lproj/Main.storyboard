@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E7e-oL-Vnp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,7 +18,7 @@
         <!--Discover-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Discover" id="BYZ-38-t0r" customClass="TranslateVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverVC" title="Discover" id="BYZ-38-t0r" customClass="TranslateVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -365,27 +365,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mk-cF-VTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="-761"/>
+            <point key="canvasLocation" x="844" y="-724"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4vQ-WZ-WmO">
             <objects>
-                <navigationController navigationBarHidden="YES" id="E7e-oL-Vnp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DisDatNavigationVC" navigationBarHidden="YES" id="E7e-oL-Vnp" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r0Y-4v-w5o">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Yo8-ad-qTf" kind="relationship" relationship="rootViewController" id="Kfd-fk-ArG"/>
+                        <segue destination="quT-y4-pgi" kind="relationship" relationship="rootViewController" id="lPV-gj-uPS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QX1-GF-fWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2925" y="14"/>
+            <point key="canvasLocation" x="-1526" y="32"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="B8Z-PJ-Mtw">
             <objects>
-                <viewController id="Yo8-ad-qTf" customClass="LoginVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Yo8-ad-qTf" customClass="LoginVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kLG-zO-A6S"/>
                         <viewControllerLayoutGuide type="bottom" id="1Vo-Of-oWz"/>
@@ -453,7 +453,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="quT-y4-pgi" kind="show" id="gUk-am-9rQ"/>
+                                    <action selector="skipButtonPressed:" destination="Yo8-ad-qTf" eventType="touchUpInside" id="wxJ-Ih-KNb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-9e-F6o">
@@ -552,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buB-xV-a5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2053.5999999999999" y="13.943028485757123"/>
+            <point key="canvasLocation" x="-2299" y="32"/>
         </scene>
         <!--Language SelectorVC-->
         <scene sceneID="2NB-ep-VPA">
@@ -769,7 +769,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2B-iN-bW8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1181.25" y="35.91549295774648"/>
+            <point key="canvasLocation" x="-748" y="32"/>
         </scene>
         <!--Achievements-->
         <scene sceneID="KYe-yG-IBc">
@@ -830,6 +830,6 @@
         <image name="menu" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gUk-am-9rQ"/>
+        <segue reference="lPV-gj-uPS"/>
     </inferredMetricsTieBreakers>
 </document>

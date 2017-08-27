@@ -11,8 +11,8 @@ import Foundation
 class DiscoveredWordCollection {
     private static var instance: DiscoveredWordCollection?
     
-    var rootLanguage = "en"
-    var learningLanguage = "fr"
+    var rootLanguage = ""
+    var learningLanguage = ""
     var rootLanguageWords: [String]
     var learningLanguageWords: [String]
     var discoveredIndexes: [Int] = []

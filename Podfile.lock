@@ -61,7 +61,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PopupDialog:
-    :commit: 56f67a20a3182d09cb8b24858a2010ef336a29b1
+    :commit: fcda12f8d8f2cc84de1182ed5b903888b13d6316
     :git: git@github.com:ballooninc/PopupDialog.git
 
 SPEC CHECKSUMS:
