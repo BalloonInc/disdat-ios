@@ -36,22 +36,22 @@ class SettingsTVC: UITableViewController {
     
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        let alert = PopupDialog(title:NSLocalizedString("Todo", comment: ""), message:NSLocalizedString("Later you will be able to logout here. Swipe to dismiss.", comment: ""))
+        let alert = PopupDialog(title:NSLocalizedString("Todo", comment: ""), message:NSLocalizedString("Later you will be able to logout here. Swipe down to dismiss.", comment: ""))
         self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
-        let alert = PopupDialog(title:NSLocalizedString("Todo", comment: ""), message:NSLocalizedString("Later you will be able to remove your account here. Swipe to dismiss.", comment: ""))
+        let alert = PopupDialog(title:NSLocalizedString("Todo", comment: ""), message:NSLocalizedString("Later you will be able to remove your account here. Swipe down to dismiss.", comment: ""))
         self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func changeLanguageButtonPressed(_ sender: UIButton) {
         let alert = PopupDialog(title:NSLocalizedString("Change languages", comment: ""), message:NSLocalizedString("Are you sure you want to change the current languages? Your progress for your current languages will be saved.", comment: ""))
         
-        alert.addButton(DefaultButton(title: NSLocalizedString("Yes, let me change languages", comment:"")){
+        alert.addButton(DestructiveButton(title: NSLocalizedString("Yes, let me change languages", comment:"")){
             self.performSegue(withIdentifier: "selectLanguageAgainSegue", sender: self)
         })
-        alert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
+        alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
         })
         self.present(alert, animated: true, completion: nil)
     }
@@ -59,11 +59,11 @@ class SettingsTVC: UITableViewController {
     @IBAction func resetProgressButtonPressed(_ sender: UIButton) {
         let alert = PopupDialog(title:NSLocalizedString("Reset progress", comment: ""), message:NSLocalizedString("Are you sure you want to reset all progress for the current language?", comment: ""))
         
-        alert.addButton(DefaultButton(title: NSLocalizedString("Yes, let me start over", comment:"")){
+        alert.addButton(DestructiveButton(title: NSLocalizedString("Yes, let me start over", comment:"")){
             DiscoveredWordCollection.getInstance().resetProgress()
             self.setContent()
         })
-        alert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
+        alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
         })
         self.present(alert, animated: true, completion: nil)
     }

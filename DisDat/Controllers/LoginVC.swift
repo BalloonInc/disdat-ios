@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import PopupDialog
 
 class LoginVC: UIViewController, GIDSignInUIDelegate {
 
@@ -16,6 +17,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var facebookLoginButton: UIButton!
     
     @IBAction func googleLoginPressed(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func facebookLoginPressed(_ sender: Any) {
@@ -28,7 +30,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         setButtonUI(button: facebookLoginButton)
         
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
     }
 
     func setButtonUI(button: UIView){
@@ -36,4 +37,17 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         button.layer.borderWidth = 1;
         button.layer.borderColor = UIColor.white.cgColor
     }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if let error = error {
+            
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+    }
+
 }
