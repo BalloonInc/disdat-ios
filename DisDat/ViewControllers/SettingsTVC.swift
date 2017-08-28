@@ -1,10 +1,3 @@
-    var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-    
-    if cell == self.cellYouWantToHide {
-        return 0
-    }
-    
-    return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
 //
 //  AchievementsTableViewController.swift
 //  DisDat
