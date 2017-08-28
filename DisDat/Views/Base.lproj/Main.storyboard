@@ -44,7 +44,7 @@
                                     <action selector="sliderValueChangedWithSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="IxH-n8-bKa"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="DAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-UH-w5q">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="DAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-UH-w5q">
                                 <rect key="frame" x="101" y="28" width="102" height="58"/>
                                 <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -53,6 +53,9 @@
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="51"/>
                                 <color key="textColor" red="0.33333333329999998" green="0.8862745098" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NcT-xJ-rkQ" appends="YES" id="AI4-G6-FIB"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvZ-O8-ufZ">
                                 <rect key="frame" x="16" y="28" width="84" height="58"/>
@@ -86,27 +89,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEk-j3-KU0">
+                            <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEk-j3-KU0">
                                 <rect key="frame" x="17" y="526" width="31" height="21"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="NcT-xJ-rkQ" appends="YES" id="HbX-h4-Rv2"/>
-                                </connections>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jU7-23-fer">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jU7-23-fer">
                                 <rect key="frame" x="64" y="521" width="51" height="31"/>
                                 <connections>
                                     <action selector="liveTrackSwitchFlipped:" destination="BYZ-38-t0r" eventType="valueChanged" id="3qT-sJ-6dX"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK8-Wg-WEe">
-                                <rect key="frame" x="274" y="42" width="30" height="30"/>
+                                <rect key="frame" x="244" y="27" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="64r-WB-fYs"/>
-                                    <constraint firstAttribute="height" constant="30" id="urm-Ss-1vK"/>
+                                    <constraint firstAttribute="width" constant="60" id="64r-WB-fYs"/>
+                                    <constraint firstAttribute="height" constant="60" id="urm-Ss-1vK"/>
                                 </constraints>
                                 <state key="normal" image="menu"/>
                                 <connections>
@@ -150,6 +151,7 @@
                     <connections>
                         <outlet property="previewView" destination="XOY-uT-XVO" id="Rjk-vE-Mng"/>
                         <outlet property="resultView" destination="38g-bS-WI8" id="1dM-Qa-Vow"/>
+                        <outlet property="settingsButton" destination="wK8-Wg-WEe" id="eHM-mY-4jN"/>
                         <outlet property="thresholdLabel" destination="zes-gz-1Xr" id="Zrl-tU-AIV"/>
                         <outlet property="thresholdSlider" destination="zD9-tU-9WM" id="hud-tQ-KWX"/>
                         <outlet property="translatedResultView" destination="4am-5s-VvX" id="KNc-QC-b69"/>
@@ -909,6 +911,7 @@
         <image name="menu" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="W03-oi-SmE"/>
         <segue reference="Dvv-p4-byC"/>
     </inferredMetricsTieBreakers>
 </document>

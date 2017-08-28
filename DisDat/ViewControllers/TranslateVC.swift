@@ -42,6 +42,8 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var translatedResultView: UILabel!
     
+    @IBOutlet weak var settingsButton: UIButton!
+    
     @IBAction func liveTrackSwitchFlipped(_ sender: UISwitch) {
         paused = !sender.isOn
     }
@@ -66,6 +68,9 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        settingsButton.layer.cornerRadius = 30
+        settingsButton.imageView?.contentMode = .center
         
         resultView.text=nil
         translatedResultView.text=nil
