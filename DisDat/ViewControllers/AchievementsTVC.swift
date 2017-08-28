@@ -36,16 +36,16 @@ class AchievementsTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DiscoveredWordCollection.getInstance().learningLanguageWords.count
+        return DiscoveredWordCollection.getInstance()!.learningLanguageWords.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveredCell", for: indexPath)
         
-        let rootWord = DiscoveredWordCollection.getInstance().learningLanguageWords[indexPath.row]
-        let learningWord = DiscoveredWordCollection.getInstance().rootLanguageWords[indexPath.row]
+        let rootWord = DiscoveredWordCollection.getInstance()!.learningLanguageWords[indexPath.row]
+        let learningWord = DiscoveredWordCollection.getInstance()!.rootLanguageWords[indexPath.row]
 
-        if DiscoveredWordCollection.getInstance().discoveredIndexes.contains(indexPath.row){
+        if DiscoveredWordCollection.getInstance()!.isDiscovered(index: indexPath.row){
             cell.textLabel?.text = learningWord
             cell.detailTextLabel?.text = rootWord
         }

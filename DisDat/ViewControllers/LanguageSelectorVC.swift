@@ -40,8 +40,7 @@ class LanguageSelectorVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "languageSelectedSegue"){
             if let destination = segue.destination as? TranslateVC {
-                destination.rootLanguage = rootLanguagePicker.selectedLanguageCode
-                destination.learningLanguage = newLanguagePicker.selectedLanguageCode
+                Authentication.getInstance().setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)
                 destination.modelName = modelSelector.titleForSegment(at: modelSelector.selectedSegmentIndex)!
                 
                 DiscoveredWordCollection.setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)

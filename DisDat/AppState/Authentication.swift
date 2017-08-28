@@ -12,12 +12,12 @@ class Authentication{
     
     private static var instance: Authentication?
     
-    var email: String?
-    var fullname: String?
-    var authenticationMethod: Method?
+    public private(set) var email: String?
+    public private(set) var fullname: String?
+    public private(set) var authenticationMethod: Method?
     
-    var currentRootLanguage: String?
-    var currentLearningLanguage: String?
+    public private(set) var currentRootLanguage: String?
+    public private(set) var currentLearningLanguage: String?
     
     private init(){
     }
@@ -35,7 +35,7 @@ class Authentication{
             if let languages = UserDefaults.standard.value(forKey: "languages") as? [String: String]{
                 instance!.currentRootLanguage = languages["rootLanguage"]
                 instance!.currentLearningLanguage = languages["learningLanguage"]
-                DiscoveredWordCollection.setLanguages(rootLanguage: languages["rootLanguage"]!, learningLanguage: languages["rootLanguage"]!)
+                DiscoveredWordCollection.setLanguages(rootLanguage: languages["rootLanguage"]!, learningLanguage: languages["learningLanguage"]!)
             }
         }
         return instance!
@@ -64,6 +64,7 @@ class Authentication{
         self.currentLearningLanguage = nil
         UserDefaults.standard.set(nil, forKey: "authentication")
         UserDefaults.standard.set(nil, forKey: "languages")
+        DiscoveredWordCollection.getInstance()?.resetProgressForAllLanguages()
     }
     
     enum Method: String {

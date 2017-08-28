@@ -69,19 +69,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if let authMethod = Authentication.getInstance().authenticationMethod{
             switch authMethod {
             case .google:
-                goToViewController(named: "LaunchVC", storyBoard: "LaunchScreen", animated: false)
+                goToViewController(named: "LaunchVC", inNav: nil, storyBoard: "LaunchScreen", animated: false)
                 GIDSignIn.sharedInstance().signInSilently()
+                return
             case .facebook:
                 if FBSDKAccessToken.current() != nil{
-                    goToViewController(named: "DiscoverVC", storyBoard: "Main", animated: false)
+                    loginCompleted(animated: false)
+                    return
                 }
-                
             case .anonymous:
-                goToViewController(named: "DiscoverVC", storyBoard: "Main", animated: false)
+                loginCompleted(animated: false)
+                return
             }
         }
+        goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: false)
+    }
+    
+    func loginCompleted(animated: Bool) {
+        if Authentication.getInstance().currentRootLanguage == nil {
+            goToViewController(named:"LanguageSelectorVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
+        }
         else {
-            goToViewController(named: "LoginVC", storyBoard: "Main", animated: false)
+            goToViewController(named: "DiscoverVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
         }
     }
     
@@ -99,12 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                        accessToken: authentication.accessToken)
         
         Authentication.getInstance().login(fullname: user.profile.name, email: user.profile.email, authenticationMethod: .google)
-        if DiscoveredWordCollection.getInstance().rootLanguage == "" {
-            goToViewController(named: "DisDatNavigationVC", storyBoard: "Main", animated: true)
-        }
-        else {
-            goToViewController(named: "DiscoverVC", storyBoard: "Main", animated: true)
-        }
+        loginCompleted(animated: true)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
@@ -115,17 +119,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             return
         }
-        goToViewController(named: "LoginVC", storyBoard: "Main", animated: true)
+        goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
     }
     
-    func goToViewController(named: String, storyBoard: String, animated:Bool){
+    func goToViewController(named: String, inNav: String?, storyBoard: String, animated:Bool){
         if self.window == nil {
             self.window = UIWindow(frame: UIScreen.main.bounds)
         }
         let window = self.window!
         
         let storyboard = UIStoryboard(name: storyBoard, bundle: nil)
-        let newVC = storyboard.instantiateViewController(withIdentifier: named)
+        
+        var newVC = storyboard.instantiateViewController(withIdentifier: named)
+        
+        if let navigationVCName = inNav {
+            let navigationVC = storyboard.instantiateViewController(withIdentifier: navigationVCName) as! UINavigationController
+            navigationVC.viewControllers = [storyboard.instantiateViewController(withIdentifier: named)]
+            newVC = navigationVC
+        }
         
         newVC.view.frame = window.rootViewController?.view.frame ?? UIScreen.main.bounds
         newVC.view.layoutIfNeeded()

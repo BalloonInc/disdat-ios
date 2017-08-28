@@ -1,3 +1,10 @@
+    var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+    
+    if cell == self.cellYouWantToHide {
+        return 0
+    }
+    
+    return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
 //
 //  AchievementsTableViewController.swift
 //  DisDat
@@ -22,6 +29,13 @@ class SettingsTVC: UITableViewController {
     @IBOutlet weak var toLanguage: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     
+    @IBOutlet weak var nameCell: UITableViewCell!
+    @IBOutlet weak var emailCell: UITableViewCell!
+
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var loginMethodLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setContent()
@@ -40,7 +54,8 @@ class SettingsTVC: UITableViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        let alert = PopupDialog(title:NSLocalizedString("Logout", comment: ""), message:NSLocalizedString("Are you sure you want to logout?", comment: ""))
+        let anonymousWarning = Authentication.getInstance().authenticationMethod == .anonymous ? " " + NSLocalizedString("Since you are not logged in via Facebook or Google, this means you will lose all progress.", comment: "") : ""
+        let alert = PopupDialog(title:NSLocalizedString("Logout", comment: ""), message:NSLocalizedString("Are you sure you want to logout?"+anonymousWarning, comment: ""))
         alert.addButton(DefaultButton(title: NSLocalizedString("Yes, I am done here.", comment:"")){
             self.signout()
         })
@@ -69,7 +84,7 @@ class SettingsTVC: UITableViewController {
         let alert = PopupDialog(title:NSLocalizedString("Reset progress", comment: ""), message:NSLocalizedString("Are you sure you want to reset all progress for the current language?", comment: ""))
         
         alert.addButton(DestructiveButton(title: NSLocalizedString("Yes, let me start over", comment:"")){
-            DiscoveredWordCollection.getInstance().resetProgress()
+            DiscoveredWordCollection.getInstance()!.resetProgress()
             self.setContent()
         })
         alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
@@ -77,11 +92,29 @@ class SettingsTVC: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        if cell.reuseIdentifier == "EmailCell" && Authentication.getInstance().email == nil {
+            return 0
+        }
+            
+         if cell.reuseIdentifier == "NameCell" && Authentication.getInstance().fullname == nil{
+            return 0
+        }
+        
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+
     func setContent(){
+        nameLabel.text = Authentication.getInstance().fullname
+        emailLabel.text = Authentication.getInstance().email
+        loginMethodLabel.text = Authentication.getInstance().authenticationMethod?.rawValue
+        
         let currentLocale = Locale.current
-        fromLanguage.text = currentLocale.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance().rootLanguage)
-        toLanguage.text = currentLocale.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance().learningLanguage)
-        let progress = 100*DiscoveredWordCollection.getInstance().discoveredIndexes.count / DiscoveredWordCollection.getInstance().totalWordCount
+        fromLanguage.text = currentLocale.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance()!.rootLanguage)
+        toLanguage.text = currentLocale.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance()!.learningLanguage)
+        let progress = 100*DiscoveredWordCollection.getInstance()!.getCurrentDiscoveredCount() / DiscoveredWordCollection.getInstance()!.totalWordCount
         progressLabel.text = "\(progress)%"
     }
     

@@ -15,7 +15,7 @@ class DiscoveredWordCollection {
     var learningLanguage = ""
     var rootLanguageWords: [String]
     var learningLanguageWords: [String]
-    var discoveredIndexes: [Int] = []
+    var discoveredIndexes: [String:[Int]] = [:]
     var totalWordCount = 0
 
     private init(rootLanguage: String, learningLanguage: String){
@@ -26,23 +26,39 @@ class DiscoveredWordCollection {
         totalWordCount = rootLanguageWords.count
     }
     
-    static func getInstance() -> DiscoveredWordCollection {
-        return instance!
+    static func getInstance() -> DiscoveredWordCollection? {
+        return instance
     }
     
     func isDiscovered(index: Int)-> Bool {
-        return discoveredIndexes.contains(index)
+        if let indexesForCurrentLanguageSet = discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]{
+            return indexesForCurrentLanguageSet.contains(index)
+        }
+        return false
     }
     
     func discovered(index: Int){
         if !isDiscovered(index: index){
-            discoveredIndexes.append(index)
+            if discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] == nil {
+                discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] = []
+            }
+
+            discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]!.append(index)
             save()
         }
     }
     
+    func getCurrentDiscoveredCount() -> Int{
+        return discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]?.count ?? 0
+    }
+    
     func resetProgress(){
-        discoveredIndexes = []
+        discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] = []
+        save()
+    }
+    
+    func resetProgressForAllLanguages(){
+        discoveredIndexes = [:]
         save()
     }
     
@@ -52,7 +68,7 @@ class DiscoveredWordCollection {
     
     static func setLanguages(rootLanguage: String, learningLanguage: String){
         let localInstance = DiscoveredWordCollection(rootLanguage: rootLanguage, learningLanguage: learningLanguage)
-        if let savedDiscoveries = UserDefaults.standard.value(forKey:"\(rootLanguage)-\(learningLanguage)-discovered") as? [Int] {
+        if let savedDiscoveries = UserDefaults.standard.value(forKey:"\(rootLanguage)-\(learningLanguage)-discovered") as? [String:[Int]] {
             localInstance.discoveredIndexes = savedDiscoveries
         }
         instance = localInstance

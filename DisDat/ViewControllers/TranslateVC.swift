@@ -12,8 +12,8 @@ import Vision
 import PopupDialog
 
 class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    var rootLanguage = "en";
-    var learningLanguage = "fr";
+    var rootLanguage: String!
+    var learningLanguage: String!
     
     var lastForegroundCheck = Date()
 
@@ -70,10 +70,13 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
         resultView.text=nil
         translatedResultView.text=nil
         
+        rootLanguage = Authentication.getInstance().currentRootLanguage!
+        learningLanguage = Authentication.getInstance().currentLearningLanguage!
+        
         let englishLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_en-US")!
         englishLabelDict = Helpers.arrayToReverseDictionary(englishLabels)
-        rootLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage)")!
-        learningLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage)")!
+        rootLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage!)")!
+        learningLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage!)")!
         
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
@@ -197,9 +200,9 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             return
         }
         let discoveredIndex = englishLabelDict[classificationsList[0]]
-        if !DiscoveredWordCollection.getInstance().isDiscovered(index: discoveredIndex!){
+        if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
             session.stopRunning()
-            DiscoveredWordCollection.getInstance().discovered(index: discoveredIndex!)
+            DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex!)
             DispatchQueue.main.async {
                 self.resultView.text = rootLanguageClassifications
                 self.translatedResultView.text = learnedLanguageClassifications
@@ -224,10 +227,18 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
                     })
                     
                     alert.addButton(DefaultButton(image: UIImage(named: "speaker"), dismissOnTap: false){
-                        let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
-                        let speechUtterance = AVSpeechUtterance(string: pronounceString)
-                        speechUtterance.voice  = AVSpeechSynthesisVoice(language: DiscoveredWordCollection.getInstance().learningLanguage)
-                        self.speechSynthesizer.speak(speechUtterance)
+                        do {
+                            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                            try AVAudioSession.sharedInstance().setActive(true)
+                            
+                            let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
+                            let speechUtterance = AVSpeechUtterance(string: pronounceString)
+                            speechUtterance.voice  = AVSpeechSynthesisVoice(language: DiscoveredWordCollection.getInstance()!.learningLanguage)
+                            self.speechSynthesizer.speak(speechUtterance)
+                        }
+                        catch let error as NSError {
+                            print("Error: error activating speech: \(error), \(error.userInfo)")
+                        }
                     })
                     
                     self.present(alert, animated: true, completion: nil)
