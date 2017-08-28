@@ -88,11 +88,11 @@ class SettingsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if cell.reuseIdentifier == "EmailCell" && Authentication.getInstance().email == nil {
+        if cell.tag == 1 && Authentication.getInstance().email?.isEmpty ?? true {
             return 0
         }
             
-         if cell.reuseIdentifier == "NameCell" && Authentication.getInstance().fullname == nil{
+         if cell.tag == 2 && Authentication.getInstance().fullname?.isEmpty ?? true {
             return 0
         }
         
