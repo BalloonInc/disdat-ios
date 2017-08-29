@@ -11,17 +11,24 @@ import UIKit
 private let reuseIdentifier = "AchievementCategoryCell"
 
 class AchievementsCVC: UICollectionViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCategoryDetailSegue"{
             if let destVC = segue.destination as? AchievementDetailTVC {
-                destVC.categoryIndex = (sender as! IndexPath).item
+                destVC.categoryIndex = (sender as! AchievementCategoryCell).categoryIndex
             }
         }
     }
@@ -40,6 +47,7 @@ class AchievementsCVC: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AchievementCategoryCell
     
         // Configure the cell
+        cell.categoryIndex = indexPath.item
         let categoryText = DiscoveredWordCollection.getInstance()!.learningLanguageCategories[indexPath.item]
         let categoryImage = UIImage(named:"")
         
@@ -51,11 +59,12 @@ class AchievementsCVC: UICollectionViewController {
         let progressString = "\(discoveredProgress)/\(totalProgress)"
         
         cell.setContent(categoryText:categoryText, categoryImage: categoryImage, progressString:progressString )
+        
     
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowCategoryDetailSegue", sender: indexPath)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "ShowCategoryDetailSegue", sender: indexPath)
+//    }
 }

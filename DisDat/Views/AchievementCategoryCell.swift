@@ -13,6 +13,8 @@ class AchievementCategoryCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var progressCell: UILabel!
     
+    var categoryIndex: Int?
+    
     func setContent(categoryText: String, categoryImage: UIImage?, progressString: String){
         categoryImageView.image = categoryImage
         categoryLabel.text = categoryText

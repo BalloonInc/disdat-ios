@@ -10,19 +10,20 @@ import UIKit
 
 class AchievementDetailTVC: UITableViewController {
     var categoryIndex: Int?
-    
+    var rootCategoryWords: [String]!
+    var learningCategoryWords: [String]!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        rootCategoryWords = DiscoveredWordCollection.getInstance()!.rootLanguageJson[categoryIndex!]["words"] as! [String]
+        learningCategoryWords = DiscoveredWordCollection.getInstance()!.learningLanguageJson[categoryIndex!]["words"] as! [String]
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.title = DiscoveredWordCollection.getInstance()?.learningLanguageCategories[categoryIndex!]
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
 
     // MARK: - Table view data source
 
@@ -31,14 +32,15 @@ class AchievementDetailTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DiscoveredWordCollection.getInstance()!.learningLanguageWords.count
+        return rootCategoryWords!.count
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveredCell", for: indexPath)
         
-        let rootWord = DiscoveredWordCollection.getInstance()!.learningLanguageWords[indexPath.row]
-        let learningWord = DiscoveredWordCollection.getInstance()!.rootLanguageWords[indexPath.row]
+        let rootWord = rootCategoryWords![indexPath.row]
+        let learningWord = learningCategoryWords![indexPath.row]
 
         if DiscoveredWordCollection.getInstance()!.isDiscovered(index: indexPath.row){
             cell.textLabel?.text = learningWord
