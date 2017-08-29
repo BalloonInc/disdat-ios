@@ -27,3 +27,6 @@ xcuserdata/
 
 # Pods
 Pods/
+
+#fastlane
+fastlane/report.xml
