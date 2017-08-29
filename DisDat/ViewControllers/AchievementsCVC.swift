@@ -48,8 +48,9 @@ class AchievementsCVC: UICollectionViewController {
     
         // Configure the cell
         cell.categoryIndex = indexPath.item
+        let englishCategoryText = DiscoveredWordCollection.getInstance()!.englishLanguageCategories[indexPath.item]
         let categoryText = DiscoveredWordCollection.getInstance()!.learningLanguageCategories[indexPath.item]
-        let categoryImage = UIImage(named:"")
+        let categoryImage = UIImage(named:englishCategoryText.lowercased())
         
         let jsonCategory = DiscoveredWordCollection.getInstance()!.englishLanguageJson[indexPath.item]["words"] as! [String]
         
