@@ -80,7 +80,7 @@
                                 <rect key="frame" x="207" y="521.5" width="97" height="30"/>
                                 <state key="normal" title="Achievements"/>
                                 <connections>
-                                    <segue destination="76t-CB-WGG" kind="show" id="sne-Mn-MmP"/>
+                                    <segue destination="ThC-Ex-7nq" kind="show" id="x62-eJ-fmy"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zes-gz-1Xr" userLabel="Threshhold">
@@ -852,24 +852,112 @@
             </objects>
             <point key="canvasLocation" x="-748" y="32"/>
         </scene>
+        <!--Dummy NavigationVC-->
+        <scene sceneID="FfO-a1-bhS">
+            <objects>
+                <viewController id="BgR-t3-h4j" customClass="DummyNavigationVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ztX-hI-vw0"/>
+                        <viewControllerLayoutGuide type="bottom" id="bht-nA-GLo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="poN-uD-G6H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kuI-YB-WUt"/>
+                    <connections>
+                        <segue destination="gam-gY-CEf" kind="show" identifier="GoToAchievementsSegue" id="w5F-iw-0X9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nen-qC-wJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="32"/>
+        </scene>
+        <!--Achievements-->
+        <scene sceneID="i2d-2B-Gsm">
+            <objects>
+                <collectionViewController title="Achievements" id="gam-gY-CEf" customClass="AchievementsCVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="261-3x-FnH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w9x-dA-Uex">
+                            <size key="itemSize" width="155" height="155"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AchievementCategoryCell" id="fjY-DU-Coz" customClass="AchievementCategoryCell" customModule="DisDat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hY-R4-855">
+                                            <rect key="frame" x="27" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="O7f-MG-Tz2"/>
+                                                <constraint firstAttribute="width" constant="100" id="cv2-wz-7FK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXt-MD-TAC">
+                                            <rect key="frame" x="42.5" y="107" width="70.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCq-c7-ehY">
+                                            <rect key="frame" x="130" y="133.5" width="19" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pCq-c7-ehY" secondAttribute="bottom" constant="7" id="3h3-ji-H1A"/>
+                                    <constraint firstItem="MXt-MD-TAC" firstAttribute="top" secondItem="6hY-R4-855" secondAttribute="bottom" constant="7" id="9q7-sb-fcF"/>
+                                    <constraint firstItem="6hY-R4-855" firstAttribute="centerX" secondItem="fjY-DU-Coz" secondAttribute="centerX" id="LTB-6s-roM"/>
+                                    <constraint firstItem="6hY-R4-855" firstAttribute="top" secondItem="fjY-DU-Coz" secondAttribute="top" id="SGV-tt-S7e"/>
+                                    <constraint firstItem="MXt-MD-TAC" firstAttribute="centerX" secondItem="fjY-DU-Coz" secondAttribute="centerX" id="Upn-tg-5U0"/>
+                                    <constraint firstAttribute="trailing" secondItem="pCq-c7-ehY" secondAttribute="trailing" constant="6" id="a0g-2n-f4p"/>
+                                    <constraint firstItem="pCq-c7-ehY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fjY-DU-Coz" secondAttribute="leading" symbolic="YES" id="pjz-Ov-H4I"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="categoryImageView" destination="6hY-R4-855" id="ooS-fa-8IY"/>
+                                    <outlet property="categoryLabel" destination="MXt-MD-TAC" id="fMn-GV-qNz"/>
+                                    <outlet property="progressCell" destination="pCq-c7-ehY" id="U5a-Dl-K2F"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="gam-gY-CEf" id="fA3-67-39q"/>
+                            <outlet property="delegate" destination="gam-gY-CEf" id="xGR-n2-UPZ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Achievements" id="lg1-ow-UGG"/>
+                    <connections>
+                        <segue destination="76t-CB-WGG" kind="show" identifier="ShowCategoryDetailSegue" action="showDetailViewController:sender:" id="cap-Ok-U0o"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KV3-FX-Dgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2274" y="24"/>
+        </scene>
         <!--Achievements-->
         <scene sceneID="KYe-yG-IBc">
             <objects>
-                <tableViewController title="Achievements" id="76t-CB-WGG" customClass="AchievementsTVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Achievements" id="76t-CB-WGG" customClass="AchievementDetailTVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Irv-ng-O5d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" translucent="NO" id="OKA-Te-TEk">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Achievements" id="nxP-21-UEZ"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoveredCell" textLabel="zxs-oK-klM" detailTextLabel="CS0-QY-zcy" style="IBUITableViewCellStyleSubtitle" id="FZp-9s-A30">
-                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FZp-9s-A30" id="N0f-vI-h06">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -898,20 +986,32 @@
                             <outlet property="delegate" destination="76t-CB-WGG" id="l4Z-ro-gh0"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="localNavigationBar" destination="OKA-Te-TEk" id="ODo-Bo-TKa"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koF-Qn-iK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="58"/>
+            <point key="canvasLocation" x="3069" y="23"/>
+        </scene>
+        <!--Achievements-->
+        <scene sceneID="vGr-w7-lQg">
+            <objects>
+                <navigationController title="Achievements" id="ThC-Ex-7nq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O76-tH-jC0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BgR-t3-h4j" kind="relationship" relationship="rootViewController" id="QeD-8z-5lC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTD-sf-pjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795" y="32"/>
         </scene>
     </scenes>
     <resources>
         <image name="menu" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W03-oi-SmE"/>
         <segue reference="Dvv-p4-byC"/>
     </inferredMetricsTieBreakers>
 </document>

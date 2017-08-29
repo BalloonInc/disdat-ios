@@ -3,7 +3,7 @@
 //  DisDat
 //
 //  Created by Wouter Devriendt on 26/08/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
 import Foundation

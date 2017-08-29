@@ -3,14 +3,13 @@
 //  DisDat
 //
 //  Created by Wouter Devriendt on 14/08/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
 import UIKit
 
-class AchievementsTVC: UITableViewController {
-
-    @IBOutlet weak var localNavigationBar: UINavigationBar!
+class AchievementDetailTVC: UITableViewController {
+    var categoryIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +17,10 @@ class AchievementsTVC: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.localNavigationBar.isHidden=true
-        self.navigationController?.isNavigationBarHidden = false
-        self.tableView.contentInset = UIEdgeInsetsMake(-self.localNavigationBar.frame.height, 0, 0, 0);
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
     }
 
 

@@ -3,7 +3,7 @@
 //  VisionSample
 //
 //  Created by chris on 19/06/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,7 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     var lastForegroundCheck = Date()
 
     var englishLabelDict: [String:Int] = [:]
+    
     var rootLanguageLabels: [String] = []
     var learningLanguageLabels: [String] = []
     
@@ -78,11 +79,11 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
         rootLanguage = Authentication.getInstance().currentRootLanguage!
         learningLanguage = Authentication.getInstance().currentLearningLanguage!
         
-        let englishLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_en-US")!
-        englishLabelDict = Helpers.arrayToReverseDictionary(englishLabels)
-        rootLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage!)")!
-        learningLanguageLabels = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage!)")!
+        englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
         
+        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
+        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
+
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             fatalError("No video camera available")
@@ -212,8 +213,8 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
                 self.resultView.text = rootLanguageClassifications
                 self.translatedResultView.text = learnedLanguageClassifications
                 
-                let foundTranslatedWord = learnedLanguageClassifications.split(separator: "\n")[0]
-                let foundOriginalWord = rootLanguageClassifications.split(separator: "\n")[0]
+                let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
+                let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
                 
                 let origin = CGPoint(x: 0, y: 0)
 
@@ -225,8 +226,16 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
                     let image = self.convert(cmage: ciImage)
                     self.currentPixelBuffer = nil
                     
-                    let alert = PopupDialog(title:NSLocalizedString("You found a new word",comment:""), message:NSLocalizedString("Looks like you dicovered '\(foundTranslatedWord)' (\(foundOriginalWord))",comment:""), image: image, buttonAlignment: .horizontal , gestureDismissal: false)
-                    
+                    let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
+                    let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
+
+                    let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, buttonAlignment: .horizontal , gestureDismissal: false)
+
+                    if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
+                        alertVC.messageFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+                        alertVC.messageColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+                    }
+
                     alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
                         self.session.startRunning()
                     })

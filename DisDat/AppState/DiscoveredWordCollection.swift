@@ -3,7 +3,7 @@
 //  DisDat
 //
 //  Created by Wouter Devriendt on 14/08/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
 import Foundation
@@ -13,21 +13,54 @@ class DiscoveredWordCollection {
     
     var rootLanguage = ""
     var learningLanguage = ""
+    
+    var englishLanguageJson: [[String:Any]]
+    var englishLanguageWords: [String]
+    var englishLanguageCategories: [String]
+    
+    var englishLabelDict: [String:Int] = [:]
+    
+    var rootLanguageJson: [[String:Any]]
     var rootLanguageWords: [String]
+    var rootLanguageCategories: [String]
+
+    var learningLanguageJson: [[String:Any]]
     var learningLanguageWords: [String]
+    var learningLanguageCategories: [String]
+    
     var discoveredIndexes: [String:[Int]] = [:]
     var totalWordCount = 0
 
     private init(rootLanguage: String, learningLanguage: String){
         self.rootLanguage = rootLanguage
         self.learningLanguage = learningLanguage
-        rootLanguageWords = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(rootLanguage)")!
-        learningLanguageWords = Helpers.arrayFromContentsOfFileWithName(fileName: "labels_\(learningLanguage)")!
+        
+        englishLanguageJson = Helpers.readJson(fileName: "labels_en-US") as! [[String:Any]]
+        englishLanguageCategories = englishLanguageJson.map({$0["category"] as! String})
+        englishLanguageWords = englishLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
+
+        englishLabelDict = Helpers.arrayToReverseDictionary(englishLanguageWords)
+
+        rootLanguageJson = Helpers.readJson(fileName: "labels_\(rootLanguage)") as! [[String:Any]]
+        rootLanguageCategories = rootLanguageJson.map({$0["category"] as! String})
+        rootLanguageWords = rootLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
+
+        learningLanguageJson = Helpers.readJson(fileName: "labels_\(learningLanguage)") as! [[String:Any]]
+        learningLanguageCategories = learningLanguageJson.map({$0["category"] as! String})
+        learningLanguageWords = learningLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
+
         totalWordCount = rootLanguageWords.count
     }
     
     static func getInstance() -> DiscoveredWordCollection? {
         return instance
+    }
+    
+    func isDiscovered(englishWord: String)-> Bool {
+        if let indexesForCurrentLanguageSet = discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]{
+            return indexesForCurrentLanguageSet.contains(englishLabelDict[englishWord]!)
+        }
+        return false
     }
     
     func isDiscovered(index: Int)-> Bool {
@@ -46,6 +79,18 @@ class DiscoveredWordCollection {
             discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]!.append(index)
             save()
         }
+    }
+    
+    func getEnglishCategory(word: String) -> String{
+        return englishLanguageJson.first(where: {($0["words"] as! [String]).contains(word)})!["category"] as! String
+    }
+    
+    func getRootCategory(word: String) -> String{
+        return rootLanguageJson.first(where: {($0["words"] as! [String]).contains(word)})!["category"] as! String
+    }
+    
+    func getLearningCategory(word: String) -> String{
+        return learningLanguageJson.first(where: {($0["words"] as! [String]).contains(word)})!["category"] as! String
     }
     
     func getCurrentDiscoveredCount() -> Int{

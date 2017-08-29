@@ -1,0 +1,10 @@
+From excel / G sheet two columns to json. Replace every first line by the second
+
+^([\w ]+)\t(.*)\n
+"\1": ["\2",
+
+\t(.*)\n(?!")
+"\1",
+
+\t(.*)
+"\1"],

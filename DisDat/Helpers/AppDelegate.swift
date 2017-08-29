@@ -3,7 +3,7 @@
 //  VisionSample
 //
 //  Created by chris on 19/06/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
 import UIKit

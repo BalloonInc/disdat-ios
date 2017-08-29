@@ -1,0 +1,211 @@
+[
+    {
+        "category": "Kantoor",
+        "words": [
+            "toetsenbord",
+            "pen",
+            "beeldscherm",
+            "computer muis"
+        ]
+    },
+    {
+        "category": "Keuken",
+        "words": [
+            "mes",
+            "lepel",
+            "pan",
+            "kom"
+        ]
+    },
+    {
+        "category": "Fruit",
+        "words": [
+            "appel",
+            "peer",
+            "banaan",
+            "aardbei",
+            "ananas"
+        ]
+    },
+    {
+        "category": "Groenten",
+        "words": [
+            "wortel",
+            "aardappel",
+            "sla",
+            "paddenstoel",
+            "ui",
+            "bloemkool",
+            "pompoen"
+        ]
+    },
+    {
+        "category": "Dieren",
+        "words": [
+            "hond",
+            "kat",
+            "vogel",
+            "giraf",
+            "mug",
+            "vis"
+        ]
+    },
+    {
+        "category": "Straat",
+        "words": [
+            "auto",
+            "fiets",
+            "bus",
+            "skateboard",
+            "tank"
+        ]
+    },
+    {
+        "category": "Badkamer",
+        "words": [
+            "douche",
+            "bad",
+            "handdoek",
+            "zeep",
+            "haarborstel",
+            "tandenborstel"
+        ]
+    },
+    {
+        "category": "Kledij",
+        "words": [
+            "kleedje",
+            "broek",
+            "hoed",
+            "sok",
+            "schoen",
+            "ruimtepak"
+        ]
+    },
+    {
+        "category": "Gereedschap",
+        "words": [
+            "hamer",
+            "boormachine",
+            "doos",
+            "schroevendraaier"
+        ]
+    },
+    {
+        "category": "Natuur",
+        "words": [
+            "boom",
+            "bloem",
+            "gras",
+            "wolk",
+            "strand"
+        ]
+    },
+    {
+        "category": "Lichaam",
+        "words": [
+            "lip",
+            "face",
+            "haar",
+            "hart"
+        ]
+    },
+    {
+        "category": "Thuis",
+        "words": [
+            "huis",
+            "sleutel",
+            "zetel",
+            "radiator",
+            "gordijn"
+        ]
+    },
+    {
+        "category": "Muziek",
+        "words": [
+            "gitaar",
+            "piano",
+            "drumstel",
+            "microfoon",
+            "radio"
+        ]
+    },
+    {
+        "category": "Slaap",
+        "words": [
+            "bed",
+            "hoofdkussen",
+            "klok",
+            "kast",
+            "ster"
+        ]
+    },
+    {
+        "category": "Entertainment",
+        "words": [
+            "televisie",
+            "boek",
+            "bal",
+            "puzzel"
+        ]
+    },
+    {
+        "category": "In de klas",
+        "words": [
+            "potlood",
+            "meetlat",
+            "rekentoestel",
+            "plakband",
+            "schoolbord"
+        ]
+    },
+    {
+        "category": "Accessories",
+        "words": [
+            "bril",
+            "ring",
+            "halsketting",
+            "handtas",
+            "haarspeld"
+        ]
+    },
+    {
+        "category": "Maaltijden",
+        "words": [
+            "pizza",
+            "brood",
+            "spaghetti",
+            "hamburger"
+        ]
+    },
+    {
+        "category": "Museum",
+        "words": [
+            "juwelen",
+            "vaas",
+            "munt",
+            "standbeeld",
+            "dinosaurus"
+        ]
+    },
+    {
+        "category": "Sport",
+        "words": [
+            "voetbal",
+            "tennis",
+            "bowling",
+            "basketbal",
+            "skiën"
+        ]
+    },
+    {
+        "category": "Bonus",
+        "words": [
+            "ballon",
+            "paraplu",
+            "kerk",
+            "camera",
+            "brug"
+        ]
+    }
+]

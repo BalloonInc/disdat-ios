@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class Helpers {    
-    static func arrayToReverseDictionary<T>(_ array: [T]) -> [T: Int] {
+    public static func arrayToReverseDictionary<T>(_ array: [T]) -> [T: Int] {
         var dict: [T: Int] = [:]
         for index in 0...array.count-1 {
             dict[array[index]] = index
@@ -18,7 +18,7 @@ public class Helpers {
         return dict
     }
     
-    static func readJson(fileName: String) -> [Any]   {
+    public static func readJson(fileName: String) -> [Any]   {
         do {
             guard let file = Bundle.main.url(forResource: fileName, withExtension: "json") else{
                 fatalError("No file")

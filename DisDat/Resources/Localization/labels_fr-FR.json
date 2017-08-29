@@ -1,0 +1,211 @@
+[
+    {
+        "category": "Bureau",
+        "words": [
+            "clavier",
+            "stylo",
+            "moniteur",
+            "souris d'ordinateur"
+        ]
+    },
+    {
+        "category": "Cuisine",
+        "words": [
+            "couteau",
+            "cuillère",
+            "casserole",
+            "bol"
+        ]
+    },
+    {
+        "category": "Fruit",
+        "words": [
+            "pomme",
+            "poire",
+            "banane",
+            "fraise",
+            "ananas"
+        ]
+    },
+    {
+        "category": "Légumes",
+        "words": [
+            "carotte",
+            "pomme de terre",
+            "salade",
+            "champignon",
+            "oignon",
+            "choufleur",
+            "citrouille"
+        ]
+    },
+    {
+        "category": "Animaux",
+        "words": [
+            "chien",
+            "chat",
+            "oiseau",
+            "girafe",
+            "moustique",
+            "poisson"
+        ]
+    },
+    {
+        "category": "Rue",
+        "words": [
+            "voiture",
+            "vélo",
+            "bus",
+            "skateboard",
+            "réservoir"
+        ]
+    },
+    {
+        "category": "Salle de bains",
+        "words": [
+            "douche",
+            "baignoire",
+            "serviette",
+            "savon",
+            "brosse à cheveux",
+            "brosse à dents"
+        ]
+    },
+    {
+        "category": "Habits",
+        "words": [
+            "robe",
+            "pantalon",
+            "chapeau",
+            "chaussette",
+            "chaussure",
+            "combinaison spatiale"
+        ]
+    },
+    {
+        "category": "Outil",
+        "words": [
+            "marteau",
+            "perceuse",
+            "boîte",
+            "tournevis"
+        ]
+    },
+    {
+        "category": "Nature",
+        "words": [
+            "arbre",
+            "fleur",
+            "herbe",
+            "nuage",
+            "plage"
+        ]
+    },
+    {
+        "category": "Corps",
+        "words": [
+            "lèvre",
+            "visage",
+            "cheveux",
+            "cœur"
+        ]
+    },
+    {
+        "category": "Maison",
+        "words": [
+            "maison",
+            "clé",
+            "canapé",
+            "radiateur",
+            "rideau"
+        ]
+    },
+    {
+        "category": "Musique",
+        "words": [
+            "guitare",
+            "piano",
+            "tambours",
+            "microphone",
+            "radio"
+        ]
+    },
+    {
+        "category": "Sommeil",
+        "words": [
+            "lit",
+            "oreiller",
+            "l'horloge",
+            "placard",
+            "étoile"
+        ]
+    },
+    {
+        "category": "Divertissement",
+        "words": [
+            "télévision",
+            "livre",
+            "ballon",
+            "puzzle"
+        ]
+    },
+    {
+        "category": "Salle de classe",
+        "words": [
+            "crayon",
+            "règle",
+            "calculatrice",
+            "ruban adhésif",
+            "tableau noir"
+        ]
+    },
+    {
+        "category": "Accessoires",
+        "words": [
+            "lunettes",
+            "bague",
+            "collier",
+            "sac à main",
+            "épingle à cheveux"
+        ]
+    },
+    {
+        "category": "Repas",
+        "words": [
+            "pizza",
+            "pain",
+            "spaghetti",
+            "amburger"
+        ]
+    },
+    {
+        "category": "Musée",
+        "words": [
+            "bijoux",
+            "vase",
+            "pièce de monnaie",
+            "sculpture",
+            "dinosaure"
+        ]
+    },
+    {
+        "category": "Sport",
+        "words": [
+            "football",
+            "tennis",
+            "bowling",
+            "basketball",
+            "ski"
+        ]
+    },
+    {
+        "category": "Prime",
+        "words": [
+            "ballon",
+            "parapluie",
+            "église",
+            "caméra",
+            "pont"
+        ]
+    }
+]
