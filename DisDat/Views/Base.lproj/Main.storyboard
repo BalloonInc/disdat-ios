@@ -29,25 +29,8 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOY-uT-XVO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="397-ar-js3">
-                                        <rect key="frame" x="311" y="603" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="J5X-gq-rwA"/>
-                                            <constraint firstAttribute="height" constant="40" id="enM-vT-s5h"/>
-                                        </constraints>
-                                        <state key="normal" image="trophy"/>
-                                        <connections>
-                                            <segue destination="gam-gY-CEf" kind="show" id="LWj-Y6-LOy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.43237138605442177" blue="0.60357487949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="397-ar-js3" secondAttribute="trailing" constant="24" id="6II-IG-Ar2"/>
-                                    <constraint firstAttribute="bottom" secondItem="397-ar-js3" secondAttribute="bottom" constant="24" id="Z9L-K2-NLe"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Q8N-z1-Isv" appends="YES" id="HjO-gv-viv"/>
                                 </connections>
@@ -111,11 +94,23 @@
                                     <segue destination="0fM-pe-nxc" kind="show" id="jRA-Cu-HZx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="397-ar-js3">
+                                <rect key="frame" x="319" y="619" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="J5X-gq-rwA"/>
+                                    <constraint firstAttribute="height" constant="40" id="enM-vT-s5h"/>
+                                </constraints>
+                                <state key="normal" image="trophy"/>
+                                <connections>
+                                    <segue destination="gam-gY-CEf" kind="show" id="LWj-Y6-LOy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32156862749999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3eW-Uu-0eT"/>
                             <constraint firstItem="wK8-Wg-WEe" firstAttribute="centerY" secondItem="WAG-UH-w5q" secondAttribute="centerY" id="5F7-F9-qda"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="397-ar-js3" secondAttribute="bottom" constant="8" id="5YX-k5-lEF"/>
                             <constraint firstItem="zes-gz-1Xr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="7pz-Yc-ab2"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="38g-bS-WI8" secondAttribute="trailingMargin" id="8BO-1I-T6b"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4am-5s-VvX" secondAttribute="trailing" constant="20" symbolic="YES" id="AeQ-1h-xsY"/>
@@ -132,6 +127,7 @@
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kyg-JG-hbM"/>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-97.5" id="n8Q-Ji-M8v"/>
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="szf-zd-anm"/>
+                            <constraint firstAttribute="trailing" secondItem="397-ar-js3" secondAttribute="trailing" constant="16" id="wDI-9P-AxJ"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="leading" secondItem="zes-gz-1Xr" secondAttribute="trailing" constant="8" symbolic="YES" id="xgZ-yq-GOq"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xyj-pe-f54"/>
                             <constraint firstAttribute="trailing" secondItem="wK8-Wg-WEe" secondAttribute="trailing" constant="16" id="ypJ-TB-4o5"/>
