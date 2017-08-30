@@ -32,6 +32,8 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
     var modelName = "DisDat-v7"
     var paused = false
     
+    var popupRect: CGRect?
+    
     var currentPixelBuffer: CVImageBuffer?
     
     var recognitionThreshold : Float = 0.90
@@ -142,6 +144,10 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
         super.viewDidLayoutSubviews()
         previewLayer.frame = self.previewView.bounds;
         gradientLayer.frame = self.previewView.bounds;
+        
+        let origin = CGPoint(x: 0, y: 0)
+        let size = CGSize(width: self.view.frame.width*0.9*UIScreen.main.scale, height: self.view.frame.height*0.6*UIScreen.main.scale)
+        popupRect = CGRect(origin: origin, size: size)
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -175,6 +181,43 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
         updateThresholdLabel()
     }
     
+    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ image: UIImage) {
+        
+        let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
+        let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
+
+        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, buttonAlignment: .horizontal , gestureDismissal: false)
+        
+        if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
+            alertVC.messageFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+            alertVC.messageColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        }
+        
+        alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
+            self.session.startRunning()
+        })
+        
+        alert.addButton(DefaultButton(image: UIImage(named: "speaker"), dismissOnTap: false){
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setActive(true)
+                
+                let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
+                let speechUtterance = AVSpeechUtterance(string: pronounceString)
+                speechUtterance.voice  = AVSpeechSynthesisVoice(language: DiscoveredWordCollection.getInstance()!.learningLanguage)
+                self.speechSynthesizer.speak(speechUtterance)
+            }
+            catch let error as NSError {
+                print("Error: error activating speech: \(error), \(error.userInfo)")
+            }
+        })
+        
+        DispatchQueue.main.async {
+
+        self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func handleClassifications(request: VNRequest, error: Error?) {
         if let theError = error {
             print("Error: \(theError.localizedDescription)")
@@ -205,64 +248,34 @@ class TranslateVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegat
             }
             return
         }
+        
+        DispatchQueue.main.async {
+            self.resultView.text = rootLanguageClassifications
+            self.translatedResultView.text = learnedLanguageClassifications
+        }
+        
         let discoveredIndex = englishLabelDict[classificationsList[0]]
         if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
             session.stopRunning()
             DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex!)
-            DispatchQueue.main.async {
-                self.resultView.text = rootLanguageClassifications
-                self.translatedResultView.text = learnedLanguageClassifications
+
+            let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
+            let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
+            
+            if let currentBuffer = self.currentPixelBuffer{
+                let ciImage = CIImage(cvPixelBuffer: currentBuffer).cropped(to: popupRect!)
+                self.currentPixelBuffer = nil
+                let image = self.convert(cmage: ciImage)
                 
-                let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
-                let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                let filePath = "\(paths[0])/\(classificationsList[0]).png"
                 
-                let origin = CGPoint(x: 0, y: 0)
-
-                let size = CGSize(width: self.view.frame.width*0.9*UIScreen.main.scale, height: self.view.frame.height*0.6*UIScreen.main.scale)
-                let rect = CGRect(origin: origin, size: size)
-                if let currentBuffer = self.currentPixelBuffer{
-                    let ciImage = CIImage(cvPixelBuffer: currentBuffer).cropped(to: rect)
-                    
-                    let image = self.convert(cmage: ciImage)
-                    self.currentPixelBuffer = nil
-                    
-                    let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
-                    let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
-
-                    let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, buttonAlignment: .horizontal , gestureDismissal: false)
-
-                    if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
-                        alertVC.messageFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
-                        alertVC.messageColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
-                    }
-
-                    alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
-                        self.session.startRunning()
-                    })
-                    
-                    alert.addButton(DefaultButton(image: UIImage(named: "speaker"), dismissOnTap: false){
-                        do {
-                            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                            try AVAudioSession.sharedInstance().setActive(true)
-                            
-                            let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
-                            let speechUtterance = AVSpeechUtterance(string: pronounceString)
-                            speechUtterance.voice  = AVSpeechSynthesisVoice(language: DiscoveredWordCollection.getInstance()!.learningLanguage)
-                            self.speechSynthesizer.speak(speechUtterance)
-                        }
-                        catch let error as NSError {
-                            print("Error: error activating speech: \(error), \(error.userInfo)")
-                        }
-                    })
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
+                // Save image.
+                try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
+                
+                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, image)
             }
             return
-        }
-        DispatchQueue.main.async {
-            self.resultView.text = rootLanguageClassifications
-            self.translatedResultView.text = learnedLanguageClassifications
         }
     }
 

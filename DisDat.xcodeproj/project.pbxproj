@@ -26,6 +26,7 @@
 		6C87A2FD1F55B4B00096FC30 /* DummyNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87A2FC1F55B4B00096FC30 /* DummyNavigationVC.swift */; };
 		6C943D281F5563DC001DADF7 /* labels_fr-FR.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D251F5563D6001DADF7 /* labels_fr-FR.json */; };
 		6C943D2A1F5563E2001DADF7 /* labels_nl-BE.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D261F5563D6001DADF7 /* labels_nl-BE.json */; };
+		6C94BBAF1F56C59900E12DDB /* AchievementDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */; };
 		6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30861F51A004007E8773 /* SettingsTVC.swift */; };
 		6CAB308A1F51ADA3007E8773 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30891F51ADA3007E8773 /* Authentication.swift */; };
 		6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE44791F5589DE00A40256 /* AchievementsCVC.swift */; };
@@ -56,6 +57,7 @@
 		6C87A2FC1F55B4B00096FC30 /* DummyNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNavigationVC.swift; sourceTree = "<group>"; };
 		6C943D251F5563D6001DADF7 /* labels_fr-FR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_fr-FR.json"; sourceTree = "<group>"; };
 		6C943D261F5563D6001DADF7 /* labels_nl-BE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_nl-BE.json"; sourceTree = "<group>"; };
+		6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDetailCell.swift; sourceTree = "<group>"; };
 		6CAB30861F51A004007E8773 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		6CAB30891F51ADA3007E8773 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				88C6A9CB1EF863CC00CC4360 /* LaunchScreen.storyboard */,
 				88C6A9C61EF863CC00CC4360 /* Main.storyboard */,
+				6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */,
 				6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */,
 				6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */,
 			);
@@ -371,6 +374,7 @@
 				6C165C291F421E9200B54C7C /* AchievementDetailTVC.swift in Sources */,
 				6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */,
 				6C07E0B91F2CB07D007A646A /* LanguageSelectionPickerView.swift in Sources */,
+				6C94BBAF1F56C59900E12DDB /* AchievementDetailCell.swift in Sources */,
 				6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */,
 				88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */,
 				6CDE447C1F558C0D00A40256 /* AchievementCategoryCell.swift in Sources */,

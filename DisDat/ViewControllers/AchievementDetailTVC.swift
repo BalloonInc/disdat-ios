@@ -10,11 +10,14 @@ import UIKit
 
 class AchievementDetailTVC: UITableViewController {
     var categoryIndex: Int?
+    
+    var englishCategoryWords: [String]!
     var rootCategoryWords: [String]!
     var learningCategoryWords: [String]!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        englishCategoryWords = DiscoveredWordCollection.getInstance()!.englishLanguageJson[categoryIndex!]["words"] as! [String]
         rootCategoryWords = DiscoveredWordCollection.getInstance()!.rootLanguageJson[categoryIndex!]["words"] as! [String]
         learningCategoryWords = DiscoveredWordCollection.getInstance()!.learningLanguageJson[categoryIndex!]["words"] as! [String]
     }
@@ -37,20 +40,16 @@ class AchievementDetailTVC: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveredCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveredCell", for: indexPath) as! AchievementDetailCell
         
+        let englishWord = englishCategoryWords![indexPath.row]
         let rootWord = rootCategoryWords![indexPath.row]
         let learningWord = learningCategoryWords![indexPath.row]
 
-        if DiscoveredWordCollection.getInstance()!.isDiscovered(index: indexPath.row){
-            cell.textLabel?.text = learningWord
-            cell.detailTextLabel?.text = rootWord
-        }
-        else {
-            
-            cell.textLabel?.text = learningWord.substring(to: 2)+"..."
-            cell.detailTextLabel?.text = rootWord.substring(to: 2)+"..."
-        }
+        let discovered = DiscoveredWordCollection.getInstance()!.isDiscovered(englishWord: englishWord)
+        
+        cell.setContent(englishWord: englishWord, rootWord: rootWord, learningWord: learningWord, discovered:discovered)
+    
         return cell
     }
 }
