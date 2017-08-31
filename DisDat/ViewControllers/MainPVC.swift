@@ -8,23 +8,19 @@
 
 import UIKit
 
-class MainPVC: UIPageViewController, UIPageViewControllerDataSource {
+class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVC("QuizVC"),
-                self.newVC("DiscoverVC"),
-                self.newVC("AchievementsNavigationVC")]
-    }()
-    
+    var orderedViewControllers: [UIViewController]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.dataSource = self
         
+        self.delegate = self
+        self.orderedViewControllers = [newVC("QuizVC"), newVC("DiscoverVC"), newVC("AchievementsNavigationVC")]
         setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true, completion: nil)
     }
-
     
     private func newVC(_ viewcontrollerID: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewcontrollerID)
@@ -47,6 +43,19 @@ class MainPVC: UIPageViewController, UIPageViewControllerDataSource {
         }
         
         return orderedViewControllers[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            MainPVCContainer.instance?.toggle(toIndex: orderedViewControllers.index(of: viewControllers!.last!)!)
+        }
+        else {
+            MainPVCContainer.instance?.toggle(toIndex: orderedViewControllers.index(of: previousViewControllers.last!)!)
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        MainPVCContainer.instance?.toggleTransparentBar(on: false, changeHeight: false)
     }
     
     public func pageViewController(_ pageViewController: UIPageViewController,
