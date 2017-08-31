@@ -45,13 +45,13 @@ class AchievementDetailCell: UITableViewCell {
             if let dirPath = paths.first
             {
                 let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(englishWord).png")
-                self.imageView?.image = UIImage(contentsOfFile: imageURL.path)
+                self.discoveredWordImageView?.image = UIImage(contentsOfFile: imageURL.path)
             }
         }
         else {
             self.originalWordLabel.text = nil
             self.translatedWordLabel.text = NSLocalizedString("Unknown", comment: "word still to discover")
-            self.imageView?.image = UIImage(named: "box")
+            self.discoveredWordImageView?.image = UIImage(named: "box")
         }
     }
     

@@ -12,11 +12,14 @@ import Vision
 import PopupDialog
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    var noCameraPermissions = false
+    
     var rootLanguage: String!
     var learningLanguage: String!
     
     var lastForegroundCheck = Date()
-
+    
     var englishLabelDict: [String:Int] = [:]
     
     var rootLanguageLabels: [String] = []
@@ -25,9 +28,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     let speechSynthesizer = AVSpeechSynthesizer()
     
     let session = AVCaptureSession()
-    var previewLayer: AVCaptureVideoPreviewLayer!
+    var previewLayer: AVCaptureVideoPreviewLayer?
     let captureQueue = DispatchQueue(label: "captureQueue")
-    var gradientLayer: CAGradientLayer!
+    var gradientLayer: CAGradientLayer?
     var visionRequests = [VNRequest]()
     var modelName = "DisDat-v7"
     var paused = false
@@ -44,7 +47,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var translatedResultView: UILabel!
-        
+    
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
     }
     
@@ -53,8 +56,34 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         self.thresholdSlider.isHidden = !self.thresholdSlider.isHidden
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.barStyle = .black
+        DispatchQueue.global(qos: .userInitiated).async {
+            if !self.session.isRunning{
+                self.session.startRunning()
+            }
+        }
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch cameraAuthorizationStatus {
+        case .denied, .notDetermined, .restricted: do {
+            showCameraPermissionsError()
+            return
+            }
+        case .authorized: do {
+            if noCameraPermissions {
+                loadCameraAndRequests()
+                noCameraPermissions = false
+            }
+            }
+        }
+        
         DispatchQueue.global(qos: .userInitiated).async {
             self.session.startRunning()
         }
@@ -67,39 +96,44 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        resultView.text=nil
-        translatedResultView.text=nil
-        
-        rootLanguage = Authentication.getInstance().currentRootLanguage!
-        learningLanguage = Authentication.getInstance().currentLearningLanguage!
-        
-        englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
-        
-        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
-        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
-
-        // get hold of the default video camera
-        guard let camera = AVCaptureDevice.default(for: .video) else {
-            fatalError("No video camera available")
+    fileprivate func showCameraPermissionsError() {
+        noCameraPermissions = true
+        DispatchQueue.main.async {
+            let alert = PopupDialog(title:NSLocalizedString("Camera permissions", comment: ""), message:NSLocalizedString("Please go to the iOS preferences for this app and allow camera access in order to be able to use the app.", comment: ""))
+            
+            alert.addButton(DefaultButton(title: NSLocalizedString("Go to settings", comment: "")){
+                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+            })
+            alert.addButton(CancelButton(title:NSLocalizedString("Cancel", comment: "")){})
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    fileprivate func loadCameraAndRequests() {
+        // get hold of the default video camera
+        let camera = AVCaptureDevice.default(for: .video)
+        
+        if camera == nil {
+            showCameraPermissionsError()
+            print("error - no camera 1")
+            return
+        }
+        
         do {
             // add the preview layer
             previewLayer = AVCaptureVideoPreviewLayer(session: session)
-            previewView.layer.addSublayer(previewLayer)
+            previewView.layer.addSublayer(previewLayer!)
             // add a slight gradient overlay so we can read the results easily
             gradientLayer = CAGradientLayer()
-            gradientLayer.colors = [
+            gradientLayer!.colors = [
                 UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor,
                 UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.0).cgColor,
             ]
-            gradientLayer.locations = [0.0, 0.3]
-            self.previewView.layer.addSublayer(gradientLayer)
+            gradientLayer!.locations = [0.0, 0.3]
+            self.previewView.layer.addSublayer(gradientLayer!)
             
             // create the capture input and the video output
-            let cameraInput = try AVCaptureDeviceInput(device: camera)
+            let cameraInput = try AVCaptureDeviceInput(device: camera!)
             
             let videoOutput = AVCaptureVideoDataOutput()
             videoOutput.setSampleBufferDelegate(self, queue: captureQueue)
@@ -123,12 +157,31 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             let classificationRequest = VNCoreMLRequest(model: model, completionHandler: handleClassifications)
             classificationRequest.imageCropAndScaleOption = .centerCrop
             visionRequests = [classificationRequest]
-
+            
         } catch {
-            fatalError(error.localizedDescription)
+            showCameraPermissionsError()
+            print("error - no camera 2")
+            return
         }
         
         updateThresholdLabel()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        resultView.text=nil
+        translatedResultView.text=nil
+        
+        rootLanguage = Authentication.getInstance().currentRootLanguage!
+        learningLanguage = Authentication.getInstance().currentLearningLanguage!
+        
+        englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
+        
+        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
+        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
+        
+        loadCameraAndRequests()
     }
     
     func updateThresholdLabel () {
@@ -137,8 +190,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        previewLayer.frame = self.previewView.bounds;
-        gradientLayer.frame = self.previewView.bounds;
+        if self.previewView != nil {
+            previewLayer?.frame = self.previewView.bounds;
+            gradientLayer?.frame = self.previewView.bounds;
+        }
         
         let origin = CGPoint(x: 0, y: 0)
         let size = CGSize(width: self.view.frame.width*0.9*UIScreen.main.scale, height: self.view.frame.height*0.6*UIScreen.main.scale)
@@ -180,7 +235,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
-
+        
         let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, buttonAlignment: .horizontal , gestureDismissal: false)
         
         if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
@@ -208,8 +263,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         })
         
         DispatchQueue.main.async {
-
-        self.present(alert, animated: true, completion: nil)
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -227,11 +282,11 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
-//            .map({"\($0.identifier) \($0.confidence)"})
+        //            .map({"\($0.identifier) \($0.confidence)"})
         if !classificationsList.isEmpty{
             print("foreground: \(observations[0...10].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \($0.confidence)"}))")
         }
-
+        
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
         let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
@@ -253,7 +308,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
             session.stopRunning()
             DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex!)
-
+            
             let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
             let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
             
@@ -273,7 +328,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
     }
-
+    
     func getModel(name: String) -> MLModel{
         switch modelName {
         case "DisDat-v7":
@@ -290,5 +345,5 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let image:UIImage = UIImage.init(cgImage: cgImage)
         return image
     }
-
+    
 }

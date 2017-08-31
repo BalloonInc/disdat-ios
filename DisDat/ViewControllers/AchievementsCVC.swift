@@ -64,8 +64,4 @@ class AchievementsCVC: UICollectionViewController {
     
         return cell
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "ShowCategoryDetailSegue", sender: indexPath)
-//    }
 }
