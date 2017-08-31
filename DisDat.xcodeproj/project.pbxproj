@@ -22,8 +22,8 @@
 		6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4064E31F49E99800411A60 /* LoginVC.swift */; };
 		6C5150CD1F2CE57E00EE1B59 /* labels_en-US.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6CE2CFE41F2CE0ED00DCECD8 /* labels_en-US.txt */; };
 		6C5150D21F2CE57E00EE1B59 /* labels_nl-BE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C07E0C01F2CDF9E007A646A /* labels_nl-BE.txt */; };
+		6C6815981F58173100FD9448 /* MainPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6815971F58173100FD9448 /* MainPVC.swift */; };
 		6C87A2FB1F55A82E0096FC30 /* labels_en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */; };
-		6C87A2FD1F55B4B00096FC30 /* DummyNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87A2FC1F55B4B00096FC30 /* DummyNavigationVC.swift */; };
 		6C943D281F5563DC001DADF7 /* labels_fr-FR.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D251F5563D6001DADF7 /* labels_fr-FR.json */; };
 		6C943D2A1F5563E2001DADF7 /* labels_nl-BE.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D261F5563D6001DADF7 /* labels_nl-BE.json */; };
 		6C94BBAF1F56C59900E12DDB /* AchievementDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */; };
@@ -52,9 +52,9 @@
 		6C1BC8521F5342EE00D53BBB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		6C4064E11F49E85700411A60 /* labels_fr-FR.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "labels_fr-FR.txt"; sourceTree = "<group>"; };
 		6C4064E31F49E99800411A60 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6C6815971F58173100FD9448 /* MainPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVC.swift; sourceTree = "<group>"; };
 		6C87A2F91F55A3E50096FC30 /* DisDat.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = DisDat.playground; path = DisDat/DisDat.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_en-US.json"; sourceTree = "<group>"; };
-		6C87A2FC1F55B4B00096FC30 /* DummyNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNavigationVC.swift; sourceTree = "<group>"; };
 		6C943D251F5563D6001DADF7 /* labels_fr-FR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_fr-FR.json"; sourceTree = "<group>"; };
 		6C943D261F5563D6001DADF7 /* labels_nl-BE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_nl-BE.json"; sourceTree = "<group>"; };
 		6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDetailCell.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		6CAB308C1F51ADD2007E8773 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6C87A2FC1F55B4B00096FC30 /* DummyNavigationVC.swift */,
+				6C6815971F58173100FD9448 /* MainPVC.swift */,
 				88C6A9C41EF863CC00CC4360 /* TranslateVC.swift */,
 				6C07E0B61F2CADAE007A646A /* LanguageSelectorVC.swift */,
 				6C165C281F421E9200B54C7C /* AchievementDetailTVC.swift */,
@@ -368,9 +368,9 @@
 				5A0802291F4C6C0D0066D1D1 /* disdatkerasv7.mlmodel in Sources */,
 				88C6A9C51EF863CC00CC4360 /* TranslateVC.swift in Sources */,
 				6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */,
-				6C87A2FD1F55B4B00096FC30 /* DummyNavigationVC.swift in Sources */,
 				6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */,
 				6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */,
+				6C6815981F58173100FD9448 /* MainPVC.swift in Sources */,
 				6C165C291F421E9200B54C7C /* AchievementDetailTVC.swift in Sources */,
 				6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */,
 				6C07E0B91F2CB07D007A646A /* LanguageSelectionPickerView.swift in Sources */,

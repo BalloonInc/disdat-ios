@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             goToViewController(named:"LanguageSelectorVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
         }
         else {
-            goToViewController(named: "DiscoverVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
+            goToViewController(named: "MainPVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
         }
     }
     

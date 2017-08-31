@@ -64,7 +64,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         guard let rootViewController = window.rootViewController else { return }
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationVC = storyboard.instantiateViewController(withIdentifier: "DisDatNavigationVC")
+        let navigationVC = storyboard.instantiateViewController(withIdentifier: "LanguageSelectorVC")
         
         navigationVC.view.frame = rootViewController.view.frame
         navigationVC.view.layoutIfNeeded()
