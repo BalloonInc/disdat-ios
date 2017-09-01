@@ -4,7 +4,7 @@ import UIKit
 
 let englishLanguageJson =  Helpers.readJson(fileName: "labels_en-US") as! [[String:Any]]
 
-let englishLanguageCategories = englishLanguageJson.map({$0["category"]})
+let englishLanguageCategories = englishLanguageJson.map({$0["category"] as! String})
 let englishLanguageWords = englishLanguageJson.map({Array($0["words"] as! [String])}).flatMap({$0})
 
 print(englishLanguageCategories)

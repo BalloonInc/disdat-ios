@@ -12,13 +12,13 @@ import Vision
 import PopupDialog
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
     var noCameraPermissions = false
     
     var rootLanguage: String!
     var learningLanguage: String!
     
-    var lastForegroundCheck = Date()
+    var lastClassificationRequestSent = Date()
+    var lastClassificationPerformed = Date()
     
     var englishLabelDict: [String:Int] = [:]
     
@@ -41,6 +41,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     var recognitionThreshold : Float = 0.90
     
+    var debug = false
+    var superDebug = false
+
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
     
@@ -48,12 +51,22 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var translatedResultView: UILabel!
     
+    @IBOutlet weak var debugResultView: UITextView!
+    @IBOutlet weak var debugFpsView: UILabel!
+    
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
+        debugFpsView.text = nil
+        debugResultView.text = nil
+        
+        debug = !debug
+        debugFpsView.isHidden = !debug
+        debugResultView.isHidden = !debug
     }
     
     @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
-        self.thresholdLabel.isHidden = !self.thresholdLabel.isHidden
-        self.thresholdSlider.isHidden = !self.thresholdSlider.isHidden
+        superDebug = !superDebug
+        thresholdLabel.isHidden = !superDebug
+        thresholdSlider.isHidden = !superDebug
     }
     
     @IBAction func sliderValueChanged(slider: UISlider) {
@@ -204,8 +217,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        if Date().timeIntervalSince(lastForegroundCheck)>0.5 {
-            lastForegroundCheck = Date()
+        if Date().timeIntervalSince(lastClassificationRequestSent)>0.5 {
+            lastClassificationRequestSent = Date()
             connection.videoOrientation = .portrait
             
             var requestOptions:[VNImageOption: Any] = [:]
@@ -276,10 +289,17 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
-        //            .map({"\($0.identifier) \($0.confidence)"})
-        if !classificationsList.isEmpty{
-            print("foreground: \(observations[0...10].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \($0.confidence)"}))")
+        if debug {
+            DispatchQueue.main.async {
+
+            let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)
+            self.debugResultView.text = observations[0...5].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"}).joined(separator:"\n")
+            self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
+            }
         }
+        lastClassificationPerformed = Date()
+        
+        print("foreground: \(observations[0...5].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \($0.confidence)"}))")
         
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
@@ -320,6 +340,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, image)
             }
             return
+        }
+        else {
+            self.currentPixelBuffer = nil
         }
     }
     
