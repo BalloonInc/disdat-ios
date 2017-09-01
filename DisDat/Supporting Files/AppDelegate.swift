@@ -13,6 +13,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
 import PopupDialog
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         reloginIfPossible()
+        
+        configureOneSignal(launchOptions: launchOptions)
         
         return true
     }
@@ -63,6 +66,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: [:])
+    }
+    
+    func configureOneSignal(launchOptions: [UIApplicationLaunchOptionsKey: Any]?){
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "__ONESIGNAL_APP_ID__",
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
     }
     
     func reloginIfPossible(){

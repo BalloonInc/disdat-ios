@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import UserNotifications
 import PopupDialog
+import OneSignal
 
 class LanguageSelectorVC: UIViewController {
     
@@ -53,21 +54,17 @@ class LanguageSelectorVC: UIViewController {
     }
     
     @IBAction func notificationsAgreeButtonPressed(_ sender: UIButton) {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            DispatchQueue.main.async {
-                self.notifcationsAgreeButton.isHidden = true
-                self.notificationsDeclineButton.isHidden = true
-                
-                if granted {
-                    self.notificationsCheckBoxButton.isHidden = false
-                }
-                else {
-                    self.pushPermissionsLabel.text = self.pushDeclined
-                }
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            self.notifcationsAgreeButton.isHidden = true
+            self.notificationsDeclineButton.isHidden = true
+
+            if accepted {
+                self.notificationsCheckBoxButton.isHidden = false
             }
-        }
-        UIApplication.shared.registerForRemoteNotifications()
+            else {
+                self.pushPermissionsLabel.text = self.pushDeclined
+            }
+        })
     }
     
     @IBAction func notificationsDeclineButtonPressed(_ sender: UIButton) {

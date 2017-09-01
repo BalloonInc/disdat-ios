@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OneSignal
 
 class Authentication{
     
@@ -42,10 +43,13 @@ class Authentication{
     }
     
     func login(fullname: String, email: String, authenticationMethod: Method){
+        OneSignal.syncHashedEmail(email)
+
         self.email = email
         self.fullname = fullname
         self.authenticationMethod = authenticationMethod
         let authentication = ["email":email, "fullname":fullname, "authenticationMethod":authenticationMethod.rawValue]
+        
         UserDefaults.standard.set(authentication, forKey: "authentication")
     }
     
