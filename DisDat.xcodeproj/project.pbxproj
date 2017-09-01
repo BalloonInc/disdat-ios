@@ -706,7 +706,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0A677F94A1B73C0D526DF2F /* Pods-DisDat.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DisDat/DisDat.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -732,7 +731,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A89BB83B3B693F9D39DCA376 /* Pods-DisDat.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DisDat/DisDat.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
