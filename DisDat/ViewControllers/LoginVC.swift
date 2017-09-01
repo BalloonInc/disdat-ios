@@ -15,7 +15,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LoginVC: UIViewController, GIDSignInUIDelegate {
-    
     @IBOutlet weak var googleLoginButton: GIDSignInButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
     
@@ -27,8 +26,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: ["email"], from: self, handler: { (result, error) -> Void in
             if error != nil {
-                let alert = PopupDialog(title:NSLocalizedString("An error occurred during login:", comment:""), message:error?.localizedDescription)
-                alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
+                let alert = PopupDialog(title:Constants.error.login, message:error?.localizedDescription)
+                alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
                 self.present(alert, animated: true, completion: nil)
             }
             else if let fbloginresult = result {
@@ -41,6 +40,16 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
+        Auth.auth().signInAnonymously() { (user, error) in
+            if let error = error {
+                let alert = PopupDialog(title:NSLocalizedString("Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.",comment:""), message:error.localizedDescription)
+                alert.addButton(DefaultButton(title: NSLocalizedString("Ok then...",comment:"")){})
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            print("Logged in to Firebase anonymously. User id: \(user!.uid)")
+        }
+
         Authentication.getInstance().login(fullname: "", email: "", authenticationMethod: .anonymous)
         loginCompleted()
     }
@@ -78,14 +87,27 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         if((FBSDKAccessToken.current()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error != nil){
-                    let alert = PopupDialog(title:NSLocalizedString("An error occurred during login:", comment:""), message:error?.localizedDescription)
-                    alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
+                    let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error?.localizedDescription)
+                    alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
                     self.present(alert, animated: true, completion: nil)
                 }
                 else if let res = result as? [String:AnyObject]  {
-                    Authentication.getInstance().login(fullname: res["name"] as! String, email: res["email"] as! String, authenticationMethod: .facebook)
-                    self.loginCompleted()
+                    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+
+                    Auth.auth().signIn(with: credential) { (user, error) in
+                        if let error = error {
+                            let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error.localizedDescription)
+                            alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
+                            self.present(alert, animated: true, completion: nil)
+                            return
+                        }
+                        Authentication.getInstance().login(fullname: res["name"] as! String, email: res["email"] as! String, authenticationMethod: .facebook)
+                        self.loginCompleted()
+
+                    }
                 }
+
+                
             })
         }
     }

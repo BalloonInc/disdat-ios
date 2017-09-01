@@ -5,6 +5,8 @@ target 'DisDat' do
   pod 'PopupDialog', :git=> 'git@github.com:ballooninc/PopupDialog.git', :branch => 'master'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
 end

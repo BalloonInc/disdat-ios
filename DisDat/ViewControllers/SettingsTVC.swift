@@ -15,7 +15,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SettingsTVC: UITableViewController {
-    
     @IBOutlet weak var localNavigationBar: UINavigationBar!
     
     @IBOutlet weak var fromLanguage: UILabel!
@@ -121,6 +120,15 @@ class SettingsTVC: UITableViewController {
             signoutCompleted()
         }
         
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            let alert = PopupDialog(title:Constants.error.logout, message:signOutError.localizedDescription)
+            alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         Authentication.getInstance().logout()
     }
     
@@ -131,8 +139,8 @@ class SettingsTVC: UITableViewController {
             GIDSignIn.sharedInstance().signOut()
             GIDSignIn.sharedInstance().disconnect()
         } catch let signOutError as NSError {
-            let alert = PopupDialog(title:NSLocalizedString("An error occurred during logout:", comment:""), message:signOutError.localizedDescription)
-            alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
+            let alert = PopupDialog(title:Constants.error.logout, message:signOutError.localizedDescription)
+            alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
             self.present(alert, animated: true, completion: nil)
         }
     }
