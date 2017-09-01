@@ -15,6 +15,7 @@ class AchievementsCVC: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        self.collectionView?.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,8 +44,6 @@ class AchievementsCVC: UICollectionViewController {
         return DiscoveredWordCollection.getInstance()!.learningLanguageCategories.count
     }
     
-    override 
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AchievementCategoryCell
     

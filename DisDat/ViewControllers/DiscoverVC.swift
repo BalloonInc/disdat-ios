@@ -56,19 +56,31 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         self.thresholdSlider.isHidden = !self.thresholdSlider.isHidden
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.barStyle = .black
-        DispatchQueue.global(qos: .userInitiated).async {
-            if !self.session.isRunning{
-                self.session.startRunning()
-            }
-        }
+    @IBAction func sliderValueChanged(slider: UISlider) {
+        self.recognitionThreshold = slider.value
+        updateThresholdLabel()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        rootLanguage = Authentication.getInstance().currentRootLanguage!
+        learningLanguage = Authentication.getInstance().currentLearningLanguage!
+        
+        englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
+        
+        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
+        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
+        
+        loadCameraAndRequests()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        resultView.text=nil
+        translatedResultView.text=nil
+
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         switch cameraAuthorizationStatus {
@@ -86,6 +98,15 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.session.startRunning()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if !self.session.isRunning{
+                self.session.startRunning()
+            }
         }
     }
     
@@ -132,7 +153,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             gradientLayer!.locations = [0.0, 0.3]
             self.previewView.layer.addSublayer(gradientLayer!)
             
-            // create the capture input and the video output
             let cameraInput = try AVCaptureDeviceInput(device: camera!)
             
             let videoOutput = AVCaptureVideoDataOutput()
@@ -141,19 +161,15 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
             session.sessionPreset = .high
             
-            // wire up the session
             session.addInput(cameraInput)
             session.addOutput(videoOutput)
             
-            // make sure we are in portrait mode
             let conn = videoOutput.connection(with: .video)
             conn?.videoOrientation = .portrait
             
-            // set up the vision model
             guard let model = try? VNCoreMLModel(for: getModel(name:modelName)) else {
                 fatalError("Could not load model")
             }
-            // set up the request using our vision model
             let classificationRequest = VNCoreMLRequest(model: model, completionHandler: handleClassifications)
             classificationRequest.imageCropAndScaleOption = .centerCrop
             visionRequests = [classificationRequest]
@@ -165,23 +181,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         
         updateThresholdLabel()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        resultView.text=nil
-        translatedResultView.text=nil
-        
-        rootLanguage = Authentication.getInstance().currentRootLanguage!
-        learningLanguage = Authentication.getInstance().currentLearningLanguage!
-        
-        englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
-        
-        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
-        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
-        
-        loadCameraAndRequests()
     }
     
     func updateThresholdLabel () {
@@ -218,17 +217,12 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             // for orientation see kCGImagePropertyOrientation
             let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .upMirrored, options: requestOptions)
             do {
-                try imageRequestHandler.perform(self.visionRequests)
                 self.currentPixelBuffer = pixelBuffer
+                try imageRequestHandler.perform(self.visionRequests)
             } catch {
                 print(error)
             }
         }
-    }
-    
-    @IBAction func sliderValueChanged(slider: UISlider) {
-        self.recognitionThreshold = slider.value
-        updateThresholdLabel()
     }
     
     fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ image: UIImage) {
@@ -345,5 +339,4 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let image:UIImage = UIImage.init(cgImage: cgImage)
         return image
     }
-    
 }

@@ -12,7 +12,6 @@ class MainPVCContainer: UIViewController {
     
     static var instance: MainPVCContainer?
     
-    
     var activeButtonTag = -1
     
     @IBOutlet weak var barView: UIView!

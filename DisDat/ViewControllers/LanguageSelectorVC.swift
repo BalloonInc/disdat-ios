@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import UserNotifications
+import PopupDialog
 
 class LanguageSelectorVC: UIViewController {
     
@@ -16,7 +17,6 @@ class LanguageSelectorVC: UIViewController {
     
     @IBOutlet weak var rootLanguagePicker: LanguageSelectionPickerView!
     @IBOutlet weak var newLanguagePicker: LanguageSelectionPickerView!
-    @IBOutlet weak var modelSelector: UISegmentedControl!
     
     @IBOutlet weak var nativeLanguageTile: UIView!
     @IBOutlet weak var learningLanguageTile: UIView!
@@ -42,8 +42,7 @@ class LanguageSelectorVC: UIViewController {
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
             if response {
                 DispatchQueue.main.async {
-                    self.cameraAgreeButton.imageView?.image = UIImage(named:"ok")
-                    self.cameraAgreeButton.isUserInteractionEnabled = false
+                    self.cameraPermissionValidated()
                 }
             } else {
                 DispatchQueue.main.async {
@@ -56,14 +55,16 @@ class LanguageSelectorVC: UIViewController {
     @IBAction func notificationsAgreeButtonPressed(_ sender: UIButton) {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            self.notifcationsAgreeButton.isHidden = true
-            self.notificationsDeclineButton.isHidden = true
-
-            if granted {
-                self.notificationsCheckBoxButton.isHidden = false
-            }
-            else {
-                self.pushPermissionsLabel.text = self.pushDeclined
+            DispatchQueue.main.async {
+                self.notifcationsAgreeButton.isHidden = true
+                self.notificationsDeclineButton.isHidden = true
+                
+                if granted {
+                    self.notificationsCheckBoxButton.isHidden = false
+                }
+                else {
+                    self.pushPermissionsLabel.text = self.pushDeclined
+                }
             }
         }
         UIApplication.shared.registerForRemoteNotifications()
@@ -78,6 +79,9 @@ class LanguageSelectorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        precheckCameraPermissions()
+        
         var tiles = [nativeLanguageTile, learningLanguageTile, readyTile]
         
         if !changeLanguageOnly {
@@ -100,6 +104,47 @@ class LanguageSelectorVC: UIViewController {
         self.newLanguagePicker.selectedLanguageCode = LanguageSelectionPickerView.languageKeys[1]
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch cameraAuthorizationStatus {
+        case .denied, .notDetermined, .restricted: do {
+            showCameraPermissionsError()
+            return false
+            }
+        case .authorized: return true
+        }
+    }
+    
+    fileprivate func cameraPermissionValidated() {
+        self.cameraAgreementLabel.text = NSLocalizedString("All set on camera permissions!", comment: "")
+        self.cameraAgreeButton.setImage(UIImage(named:"ok"), for: .normal)
+        self.cameraAgreeButton.isUserInteractionEnabled = false
+    }
+    
+    func precheckCameraPermissions(){
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch cameraAuthorizationStatus {
+        case .denied, .notDetermined, .restricted: return
+        case .authorized: do {
+            cameraPermissionValidated()
+            }
+        }
+    }
+    
+    fileprivate func showCameraPermissionsError() {
+        DispatchQueue.main.async {
+            let alert = PopupDialog(title:NSLocalizedString("Camera permissions", comment: ""), message:NSLocalizedString("Please go to the iOS preferences for this app and allow camera access in order to be able to use the app.", comment: ""))
+            
+            alert.addButton(DefaultButton(title: NSLocalizedString("Go to settings", comment: "")){
+                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+            })
+            alert.addButton(CancelButton(title:NSLocalizedString("Cancel", comment: "")){})
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "languageSelectedSegue"){
             Authentication.getInstance().setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)
@@ -112,21 +157,21 @@ class LanguageSelectorVC: UIViewController {
         tile.layer.masksToBounds = false;
         
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-
+        
         circleView.layer.cornerRadius = 25;  // half the width/height
         circleView.backgroundColor = UIColor(red: CGFloat(254.0/255), green: CGFloat(217.0/255), blue: CGFloat(77.0/255), alpha: 1.0)
         circleView.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
         
         circleView.layer.borderWidth = 4;
         circleView.layer.borderColor = UIColor.white.cgColor
-
+        
         tile.addSubview(circleView)
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         label.text = "\(id)"
         label.textAlignment = .center
         label.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
-
+        
         tile.addSubview(label)
     }
 }

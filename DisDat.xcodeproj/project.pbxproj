@@ -51,6 +51,7 @@
 		6C1BC84E1F533D5300D53BBB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6C1BC84F1F533D5300D53BBB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6C1BC8521F5342EE00D53BBB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		6C2C0F311F58CE7D00C958DF /* DisDat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DisDat.entitlements; sourceTree = "<group>"; };
 		6C4064E11F49E85700411A60 /* labels_fr-FR.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "labels_fr-FR.txt"; sourceTree = "<group>"; };
 		6C4064E31F49E99800411A60 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6C6815971F58173100FD9448 /* MainPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVC.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		88C6A9C11EF863CC00CC4360 /* DisDat */ = {
 			isa = PBXGroup;
 			children = (
+				6C2C0F311F58CE7D00C958DF /* DisDat.entitlements */,
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
 				6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */,
 				6CAB30881F51AD89007E8773 /* AppState */,
@@ -257,6 +259,11 @@
 				TargetAttributes = {
 					88C6A9BE1EF863CC00CC4360 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -521,6 +528,7 @@
 			baseConfigurationReference = D0A677F94A1B73C0D526DF2F /* Pods-DisDat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DisDat/DisDat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JRS568U6JT;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -542,6 +550,7 @@
 			baseConfigurationReference = A89BB83B3B693F9D39DCA376 /* Pods-DisDat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DisDat/DisDat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JRS568U6JT;
 				FRAMEWORK_SEARCH_PATHS = (
