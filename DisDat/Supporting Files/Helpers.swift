@@ -35,6 +35,25 @@ public class Helpers {
             fatalError(error.localizedDescription)
         }
     }
+    
+    static func getOrientationString() -> String{
+        switch UIDevice.current.orientation {
+        case .faceDown:
+            return "faceDown"
+        case .unknown:
+            return "unknown"
+        case .portrait:
+            return "portrait"
+        case .portraitUpsideDown:
+            return "portraitUpsideDown"
+        case .landscapeLeft:
+            return "landscapeLeft"
+        case .landscapeRight:
+            return "landscapeRight"
+        case .faceUp:
+            return "faceUp"
+        }
+    }
 }
 
 extension Date {
@@ -53,5 +72,19 @@ extension String {
             return self
         }
         return String(self[..<index(from: to)])
+    }
+}
+
+extension UIImage {
+    func resize(toWidth: CGFloat) -> UIImage? {
+        
+        let scale = toWidth / self.size.width
+        let newHeight = self.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: toWidth, height:newHeight))
+        self.draw(in: CGRect(x: 0, y: 0, width: toWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }

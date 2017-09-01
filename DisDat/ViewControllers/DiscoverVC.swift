@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 import Vision
 import PopupDialog
+import Firebase
+import FirebaseStorage
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
@@ -238,12 +240,12 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ image: UIImage) {
+    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String:Float]) {
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, buttonAlignment: .horizontal , gestureDismissal: false)
+        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, gestureDismissal: false)
         
         if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
             alertVC.messageFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -252,6 +254,62 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
             self.session.startRunning()
+        })
+        
+        alert.addButton(CancelButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
+            if let currentUser = Auth.auth().currentUser {
+                let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and try to tweak me to improve.", comment:""), image: image, gestureDismissal: false)
+                uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
+                    
+                    let userID = currentUser.isAnonymous ? currentUser.uid : currentUser.email ?? "unknown"
+                    let filename = "\(userID))-\(Date.timeIntervalSinceReferenceDate)"
+                    
+                    let storage = Storage.storage()
+                    let storageRef = storage.reference()
+                    let imageRef = storageRef.child("false_positives").child(foundEngishWord).child(filename+".png")
+                    let txtRef = storageRef.child("false_positives").child(foundEngishWord).child(filename+".json")
+                    
+                    let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
+                    
+                    let metaData: [String:Any] = ["predictions":fullPredictions,
+                                    "device":UIDevice.current.model,
+                                    "orientation":Helpers.getOrientationString(),
+                                    "OS version":UIDevice.current.systemVersion,
+                                    "Battery level":UIDevice.current.batteryLevel]
+                    
+                    let fileURL = self.getTempURL(fileName: "metadata_temp.json")
+
+                    imageRef.putData(data, metadata:nil) { (metadata, error) in
+                        guard let metadata = metadata else {
+                            print("Could not upload image: \(error?.localizedDescription ?? "")")
+                            return
+                        }
+                        print("uploaded image to path: \(metadata.downloadURL()?.absoluteString ?? "")")
+                        
+                        do {
+                            let data = try JSONSerialization.data(withJSONObject: metaData, options: [])
+                            try data.write(to: fileURL!, options: [])
+                            txtRef.putFile(from: fileURL!, metadata: nil, completion: { (metadata, error) in
+                                if let error = error {
+                                    print("Could not upload text json: \(error.localizedDescription)")
+                                    return
+                                }
+                                else {
+                                    print("File succesfully uploaded at path: \(metadata?.downloadURL()?.absoluteString ?? "")")
+                                }
+                                try? FileManager.default.removeItem(atPath: fileURL!.path)
+                            })
+
+                        } catch {
+                            print(error)
+                        }
+
+                    }
+                })
+                uploadAlert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
+                })
+                self.present(uploadAlert, animated: true, completion: nil)
+            }
         })
         
         alert.addButton(DefaultButton(image: UIImage(named: "speaker"), dismissOnTap: false){
@@ -272,6 +330,16 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         DispatchQueue.main.async {
             
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func getTempURL(fileName: String) -> URL? {
+        do {
+            let dirURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            return dirURL.appendingPathComponent(fileName)
+        }
+        catch {
+            return nil
         }
     }
     
@@ -299,7 +367,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         lastClassificationPerformed = Date()
         
-        print("foreground: \(observations[0...5].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \($0.confidence)"}))")
+        let fullPredictions = observations.flatMap({ $0 as? VNClassificationObservation }).reduce([String: Float]()) { (dict, observation) -> [String: Float] in
+            var dict = dict
+            dict[observation.identifier] = observation.confidence
+            return dict
+        }
+
+        print("foreground: \(fullPredictions.map({"\($0.key) \($0.value)"})[0...5])")
         
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
@@ -325,6 +399,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             
             let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
             let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
+            let foundEnglishWord = classificationsList[0]
             
             if let currentBuffer = self.currentPixelBuffer{
                 let ciImage = CIImage(cvPixelBuffer: currentBuffer).cropped(to: popupRect!)
@@ -337,7 +412,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 // Save image.
                 try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
                 
-                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, image)
+                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullPredictions)
             }
             return
         }
