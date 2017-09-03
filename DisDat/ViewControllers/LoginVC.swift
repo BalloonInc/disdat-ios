@@ -23,35 +23,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func facebookLoginPressed(_ sender: Any) {
-        let fbLoginManager = FBSDKLoginManager()
-        fbLoginManager.logIn(withReadPermissions: ["email"], from: self, handler: { (result, error) -> Void in
-            if error != nil {
-                let alert = PopupDialog(title:Constants.error.login, message:error?.localizedDescription)
-                alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
-                self.present(alert, animated: true, completion: nil)
-            }
-            else if let fbloginresult = result {
-                if(fbloginresult.grantedPermissions.contains("email"))
-                {
-                    self.getFBUserData()
-                }
-            }
-        })
+        Authentication.getInstance().signInFacebook(caller: self, onFinished: {self.loginCompleted()})
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
-        Auth.auth().signInAnonymously() { (user, error) in
-            if let error = error {
-                let alert = PopupDialog(title:NSLocalizedString("Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.",comment:""), message:error.localizedDescription)
-                alert.addButton(DefaultButton(title: NSLocalizedString("Ok then...",comment:"")){})
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            print("Logged in to Firebase anonymously. User id: \(user!.uid)")
-        }
-
-        Authentication.getInstance().login(fullname: "", email: "", authenticationMethod: .anonymous)
-        loginCompleted()
+        Authentication.getInstance().signInAnonymously(caller:self, onFinished:{self.loginCompleted()})
     }
     
     override func viewDidLoad() {
@@ -81,34 +57,5 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromLeft, animations: {
             window.rootViewController = navigationVC
         })
-    }
-    
-    func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error != nil){
-                    let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error?.localizedDescription)
-                    alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
-                    self.present(alert, animated: true, completion: nil)
-                }
-                else if let res = result as? [String:AnyObject]  {
-                    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-
-                    Auth.auth().signIn(with: credential) { (user, error) in
-                        if let error = error {
-                            let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error.localizedDescription)
-                            alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
-                            self.present(alert, animated: true, completion: nil)
-                            return
-                        }
-                        Authentication.getInstance().login(fullname: res["name"] as! String, email: res["email"] as! String, authenticationMethod: .facebook)
-                        self.loginCompleted()
-
-                    }
-                }
-
-                
-            })
-        }
     }
 }

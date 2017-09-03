@@ -9,6 +9,13 @@
 import Foundation
 import OneSignal
 
+import Firebase
+import GoogleSignIn
+import PopupDialog
+
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 class Authentication{
     
     private static var instance: Authentication?
@@ -41,6 +48,65 @@ class Authentication{
         }
         return instance!
     }
+    
+    func signInAnonymously(caller: UIViewController, onFinished: ()->()) {
+        Auth.auth().signInAnonymously() { (user, error) in
+            if let error = error {
+                let alert = PopupDialog(title:NSLocalizedString("Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.",comment:""), message:error.localizedDescription)
+                alert.addButton(DefaultButton(title: NSLocalizedString("Ok then...",comment:"")){})
+                caller.present(alert, animated: true, completion: nil)
+                return
+            }
+            print("Logged in to Firebase anonymously. User id: \(user!.uid)")
+        }
+        
+        Authentication.getInstance().login(fullname: "", email: "", authenticationMethod: .anonymous)
+        onFinished()
+    }
+    
+    func signInFacebook(caller: UIViewController, onFinished: @escaping ()->()) {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["email"], from: caller, handler: { (result, error) -> Void in
+            if error != nil {
+                let alert = PopupDialog(title:Constants.error.login, message:error?.localizedDescription)
+                alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
+                caller.present(alert, animated: true, completion: nil)
+            }
+            else if let fbloginresult = result {
+                if(fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData(caller: caller, onFinished: onFinished)
+                }
+            }
+        })
+    }
+    
+    func getFBUserData(caller: UIViewController, onFinished: @escaping ()->()){
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error != nil){
+                    let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error?.localizedDescription)
+                    alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
+                    caller.present(alert, animated: true, completion: nil)
+                }
+                else if let res = result as? [String:AnyObject]  {
+                    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                    
+                    Auth.auth().signIn(with: credential) { (user, error) in
+                        if let error = error {
+                            let alert = PopupDialog(title:NSLocalizedString(Constants.error.login, comment:""), message:error.localizedDescription)
+                            alert.addButton(DefaultButton(title: Constants.error.tryAgain){})
+                            caller.present(alert, animated: true, completion: nil)
+                            return
+                        }
+                        self.login(fullname: res["name"] as! String, email: res["email"] as! String, authenticationMethod: .facebook)
+                        onFinished()
+                    }
+                }
+            })
+        }
+    }
+
     
     func login(fullname: String, email: String, authenticationMethod: Method){
         OneSignal.syncHashedEmail(email)

@@ -16,6 +16,8 @@ import FirebaseStorage
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
     
+    var screenHeight: CGFloat?
+    
     var rootLanguage: String!
     var learningLanguage: String!
     
@@ -37,15 +39,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var modelName = "DisDat-v7"
     var paused = false
     
-    var popupRect: CGRect?
-    
     var currentPixelBuffer: CVImageBuffer?
     
     var recognitionThreshold : Float = 0.90
     
     var debug = false
     var superDebug = false
-
+    
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
     
@@ -55,6 +55,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     @IBOutlet weak var debugResultView: UITextView!
     @IBOutlet weak var debugFpsView: UILabel!
+    @IBOutlet weak var debugImageView: UIImageView!
     
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
         debugFpsView.text = nil
@@ -63,6 +64,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         debug = !debug
         debugFpsView.isHidden = !debug
         debugResultView.isHidden = !debug
+        debugImageView.isHidden = !debug
     }
     
     @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
@@ -88,6 +90,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
         
         loadCameraAndRequests()
+        
+        screenHeight = self.view.frame.height
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +99,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         resultView.text=nil
         translatedResultView.text=nil
-
+        
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         switch cameraAuthorizationStatus {
@@ -158,6 +162,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         do {
             // add the preview layer
             previewLayer = AVCaptureVideoPreviewLayer(session: session)
+            previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            
             previewView.layer.addSublayer(previewLayer!)
             // add a slight gradient overlay so we can read the results easily
             gradientLayer = CAGradientLayer()
@@ -208,10 +214,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             previewLayer?.frame = self.previewView.bounds;
             gradientLayer?.frame = self.previewView.bounds;
         }
-        
-        let origin = CGPoint(x: 0, y: 0)
-        let size = CGSize(width: self.view.frame.width*0.9*UIScreen.main.scale, height: self.view.frame.height*0.6*UIScreen.main.scale)
-        popupRect = CGRect(origin: origin, size: size)
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -240,29 +242,108 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String:Float]) {
+    func handleClassifications(request: VNRequest, error: Error?) {
+        if let theError = error {
+            print("Error: \(theError.localizedDescription)")
+            return
+        }
+        guard let observations = request.results else {
+            print("No results")
+            return
+        }
+        
+        let classificationsList = observations[0...4] // top 4 results
+            .flatMap({ $0 as? VNClassificationObservation })
+            .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
+            .map({$0.identifier})
+        
+        let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
+        
+        if debug {
+            DispatchQueue.main.async {
+                let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
+                self.debugResultView.text = fullClassificationList[0...5].joined(separator:"\n")
+                self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
+                
+                if let currentBuffer = self.currentPixelBuffer{
+                    self.debugImageView.image = self.convert(cmage: CIImage(cvPixelBuffer: currentBuffer), crop: true)
+                }
+                self.lastClassificationPerformed = Date()
+            }
+        }
+        
+        print("foreground: \(fullClassificationList[0...5])")
+        
+        let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
+        let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
+        
+        if classificationsList.isEmpty {
+            DispatchQueue.main.async {
+                self.resultView.text = ""
+                self.translatedResultView.text = ""
+            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.resultView.text = rootLanguageClassifications
+            self.translatedResultView.text = learnedLanguageClassifications
+        }
+        
+        let discoveredIndex = englishLabelDict[classificationsList[0]]
+        if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
+            session.stopRunning()
+            
+            let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
+            let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
+            let foundEnglishWord = classificationsList[0]
+            
+            if let currentBuffer = self.currentPixelBuffer{
+                let ciImage = CIImage(cvPixelBuffer: currentBuffer)
+                self.currentPixelBuffer = nil
+                let image = self.convert(cmage: ciImage, crop: true)
+                
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                let filePath = "\(paths[0])/\(classificationsList[0]).png"
+                
+                // Save image.
+                try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
+                
+                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList, discoveredIndex!)
+            }
+            return
+        }
+        else {
+            self.currentPixelBuffer = nil
+        }
+    }
+    
+    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String], _ discoveredIndex: Int) {
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\n (\(foundOriginalWord))", image: image, gestureDismissal: false)
+        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\(screenHeight! > 568 ? "\n" : " ")(\(foundOriginalWord))", image: image, gestureDismissal: false)
+        
         
         if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
-            alertVC.messageFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+
+            alertVC.messageFont = UIFont.systemFont(ofSize: screenHeight! > 568 ? 18 : 16, weight: .semibold)
             alertVC.messageColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         }
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
+            DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex)
             self.session.startRunning()
         })
         
-        alert.addButton(CancelButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
+        alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
             if let currentUser = Auth.auth().currentUser {
-                let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and try to tweak me to improve.", comment:""), image: image, gestureDismissal: false)
+                let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
                     
                     let userID = currentUser.isAnonymous ? currentUser.uid : currentUser.email ?? "unknown"
-                    let filename = "\(userID))-\(Date.timeIntervalSinceReferenceDate)"
+                    let filename = "\(userID)-\(Date.timeIntervalSinceReferenceDate)"
                     
                     let storage = Storage.storage()
                     let storageRef = storage.reference()
@@ -271,14 +352,15 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     
                     let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
                     
-                    let metaData: [String:Any] = ["predictions":fullPredictions,
-                                    "device":UIDevice.current.model,
-                                    "orientation":Helpers.getOrientationString(),
-                                    "OS version":UIDevice.current.systemVersion,
-                                    "Battery level":UIDevice.current.batteryLevel]
+                    let metaData: [String:Any] = ["predictions":Array(fullPredictions[0...10]),
+                                                  "device":UIDevice.current.model,
+                                                  "orientation":Helpers.getOrientationString(),
+                                                  "OS version":UIDevice.current.systemVersion,
+                                                  "Battery level":UIDevice.current.batteryLevel]
                     
                     let fileURL = self.getTempURL(fileName: "metadata_temp.json")
-
+                    self.session.startRunning()
+                    
                     imageRef.putData(data, metadata:nil) { (metadata, error) in
                         guard let metadata = metadata else {
                             print("Could not upload image: \(error?.localizedDescription ?? "")")
@@ -299,14 +381,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                                 }
                                 try? FileManager.default.removeItem(atPath: fileURL!.path)
                             })
-
                         } catch {
                             print(error)
                         }
-
                     }
                 })
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
+                    self.session.startRunning()
                 })
                 self.present(uploadAlert, animated: true, completion: nil)
             }
@@ -343,84 +424,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    func handleClassifications(request: VNRequest, error: Error?) {
-        if let theError = error {
-            print("Error: \(theError.localizedDescription)")
-            return
-        }
-        guard let observations = request.results else {
-            print("No results")
-            return
-        }
-        
-        let classificationsList = observations[0...4] // top 4 results
-            .flatMap({ $0 as? VNClassificationObservation })
-            .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
-            .map({$0.identifier})
-        if debug {
-            DispatchQueue.main.async {
-
-            let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)
-            self.debugResultView.text = observations[0...5].flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"}).joined(separator:"\n")
-            self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
-            }
-        }
-        lastClassificationPerformed = Date()
-        
-        let fullPredictions = observations.flatMap({ $0 as? VNClassificationObservation }).reduce([String: Float]()) { (dict, observation) -> [String: Float] in
-            var dict = dict
-            dict[observation.identifier] = observation.confidence
-            return dict
-        }
-
-        print("foreground: \(fullPredictions.map({"\($0.key) \($0.value)"})[0...5])")
-        
-        
-        let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
-        let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
-        
-        if classificationsList.isEmpty {
-            DispatchQueue.main.async {
-                self.resultView.text = ""
-                self.translatedResultView.text = ""
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            self.resultView.text = rootLanguageClassifications
-            self.translatedResultView.text = learnedLanguageClassifications
-        }
-        
-        let discoveredIndex = englishLabelDict[classificationsList[0]]
-        if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
-            session.stopRunning()
-            DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex!)
-            
-            let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
-            let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
-            let foundEnglishWord = classificationsList[0]
-            
-            if let currentBuffer = self.currentPixelBuffer{
-                let ciImage = CIImage(cvPixelBuffer: currentBuffer).cropped(to: popupRect!)
-                self.currentPixelBuffer = nil
-                let image = self.convert(cmage: ciImage)
-                
-                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-                let filePath = "\(paths[0])/\(classificationsList[0]).png"
-                
-                // Save image.
-                try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
-                
-                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullPredictions)
-            }
-            return
-        }
-        else {
-            self.currentPixelBuffer = nil
-        }
-    }
-    
     func getModel(name: String) -> MLModel{
         switch modelName {
         case "DisDat-v7":
@@ -430,10 +433,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    func convert(cmage:CIImage) -> UIImage
+    func convert(cmage:CIImage, crop: Bool) -> UIImage
     {
-        let context:CIContext = CIContext.init(options: nil)
-        let cgImage:CGImage = context.createCGImage(cmage, from: cmage.extent)!
+        let context = CIContext.init(options: nil)
+        var  cgImage = context.createCGImage(cmage, from: cmage.extent)!
+        if crop {
+            cgImage = cgImage.cropToSquare()!
+        }
         let image:UIImage = UIImage.init(cgImage: cgImage)
         return image
     }

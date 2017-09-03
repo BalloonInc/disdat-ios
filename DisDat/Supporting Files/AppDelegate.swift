@@ -28,9 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        reloginIfPossible()
-        
+     
         configureOneSignal(launchOptions: launchOptions)
         
         return true
@@ -58,39 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
     }
     
-    func reloginIfPossible(){
-        if let authMethod = Authentication.getInstance().authenticationMethod{
-            switch authMethod {
-            case .google:
-                goToViewController(named: "LaunchVC", inNav: nil, storyBoard: "LaunchScreen", animated: false)
-                GIDSignIn.sharedInstance().signInSilently()
-                return
-            case .facebook:
-                if FBSDKAccessToken.current() != nil{
-                    loginCompleted(animated: false)
-                    return
-                }
-            case .anonymous:
-                loginCompleted(animated: false)
-                return
-            }
-        }
-        goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: false)
-    }
-    
-    func loginCompleted(animated: Bool) {
-        if Authentication.getInstance().currentRootLanguage == nil {
-            goToViewController(named:"LanguageSelectorVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
-        }
-        else {
-            goToViewController(named: "MainPVCContainer", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
-        }
-    }
-    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
             let alert = PopupDialog(title:errorLoginMessage, message:error.localizedDescription)
-            alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
+            alert.addButton(DefaultButton(title: Constants.error.tryAgain){
+               LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+            })
             getCurrentVC().present(alert, animated: true, completion: nil)
             
             return
@@ -103,17 +74,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (firebaseUser, error) in
             if let error = error {
                 let alert = PopupDialog(title:self.errorLoginMessage, message:error.localizedDescription)
-                alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
+                alert.addButton(DefaultButton(title: Constants.error.tryAgain){
+                    LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+                })
                 self.getCurrentVC().present(alert, animated: true, completion: nil)
                 return
             }
-            print("firebase user: \(firebaseUser!.displayName ?? "")")
-            print("Google user: \(user.profile.name)")
-            print("firebase email: \(firebaseUser!.email ?? "")")
-            print("Google email: \(user.profile.email)")
 
             Authentication.getInstance().login(fullname: user.profile.name, email: user.profile.email, authenticationMethod: .google)
-            self.loginCompleted(animated: true)
+            LaunchScreenVC.loginCompleted(animated: true)
         }
     }
     
@@ -125,32 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             return
         }
-        goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
-    }
-    
-    func goToViewController(named: String, inNav: String?, storyBoard: String, animated:Bool){
-        if self.window == nil {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-        }
-        let window = self.window!
-        
-        let storyboard = UIStoryboard(name: storyBoard, bundle: nil)
-        
-        var newVC = storyboard.instantiateViewController(withIdentifier: named)
-        
-        if let navigationVCName = inNav {
-            let navigationVC = storyboard.instantiateViewController(withIdentifier: navigationVCName) as! UINavigationController
-            navigationVC.viewControllers = [storyboard.instantiateViewController(withIdentifier: named)]
-            newVC = navigationVC
-        }
-        
-        newVC.view.frame = window.rootViewController?.view.frame ?? UIScreen.main.bounds
-        newVC.view.layoutIfNeeded()
-
-        UIView.transition(with: window, duration: animated ? 0.3 : 0, options: .transitionFlipFromLeft, animations: {
-            window.rootViewController = newVC
-            window.makeKeyAndVisible()
-        })
+        LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
     }
     
     func getCurrentVC() -> UIViewController{

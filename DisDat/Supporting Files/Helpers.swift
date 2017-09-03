@@ -88,3 +88,12 @@ extension UIImage {
         return newImage
     }
 }
+
+extension CGImage {
+    func cropToSquare() -> CGImage?{
+        let newDimension = min(self.height, self.width)
+        
+        let cropRect = CGRect(x: (self.width - newDimension) / 2, y: (self.height - newDimension) / 2, width: newDimension, height: newDimension)
+        return self.cropping(to: cropRect)
+    }
+}
