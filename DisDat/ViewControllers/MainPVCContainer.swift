@@ -29,7 +29,7 @@ class MainPVCContainer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         buttons = [quizButton, discoverButton, achievementButton]
         resize(button: achievementButton, size: .small, withDuration: 0.0)
         resize(button: quizButton, size: .small, withDuration: 0.0)
@@ -37,6 +37,12 @@ class MainPVCContainer: UIViewController {
         
         MainPVCContainer.instance = self
         toggle(toIndex: 1)
+    }
+    
+    // TODO: remove
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        discoverButton.imageView?.alpha = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,6 +83,13 @@ class MainPVCContainer: UIViewController {
     }
     
     func toggle(toIndex: Int){
+        if toIndex == 1 {
+            discoverButton.imageView?.alpha = 0
+        }
+        else {
+            discoverButton.imageView?.alpha = 1
+        }
+
         let button = buttons[toIndex]
         
         let transparent = toIndex == 1

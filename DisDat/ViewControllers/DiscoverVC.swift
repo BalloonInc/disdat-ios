@@ -12,6 +12,7 @@ import Vision
 import PopupDialog
 import Firebase
 import FirebaseStorage
+import KDCircularProgress
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
@@ -20,6 +21,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     var rootLanguage: String!
     var learningLanguage: String!
+    
     
     var lastClassificationRequestSent = Date()
     var lastClassificationPerformed = Date()
@@ -46,6 +48,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var debug = false
     var superDebug = false
     
+    @IBOutlet weak var progressCircle: KDCircularProgress!
+
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
     
@@ -129,11 +133,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         DispatchQueue.global(qos: .userInitiated).async {
             self.session.stopRunning()
         }
+
     }
     
     fileprivate func showCameraPermissionsError() {
@@ -252,13 +258,19 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         
+        DispatchQueue.main.async {
+            let confidence = (observations[0] as! VNClassificationObservation).confidence
+            self.progressCircle.animate(toAngle: min(Double(360.0*confidence/0.9),360), duration: 0.1, completion: nil)
+        }
+        
         let classificationsList = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
         
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
-        
+        print("foreground: \(fullClassificationList[0...5])")
+
         if debug {
             DispatchQueue.main.async {
                 let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
@@ -271,8 +283,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 self.lastClassificationPerformed = Date()
             }
         }
-        
-        print("foreground: \(fullClassificationList[0...5])")
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
         let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")

@@ -118,6 +118,34 @@ Mouse: 0.01</string>
                                     <constraint firstAttribute="height" constant="111" id="xc6-3M-3Kv"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utV-W4-fIT" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                                <rect key="frame" x="122.5" y="493" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="24E-l3-E8z"/>
+                                    <constraint firstAttribute="height" constant="75" id="9k6-Vq-N1H"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                        <real key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="-90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                        <real key="value" value="0.75"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                        <color key="value" red="1" green="0.43237138609999998" blue="0.60357487949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32156862749999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -134,6 +162,7 @@ Mouse: 0.01</string>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WAG-UH-w5q" secondAttribute="trailing" constant="20" symbolic="YES" id="KcY-mv-gS6"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="top" secondItem="WAG-UH-w5q" secondAttribute="top" id="MmR-x0-igF"/>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="RRd-6z-fjX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="utV-W4-fIT" secondAttribute="bottom" id="YaC-Vf-WdW"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YeL-OK-xxP"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-100" id="dsy-Fo-e1Z"/>
                             <constraint firstAttribute="trailing" secondItem="sIQ-ID-W5c" secondAttribute="trailing" constant="16" id="fJI-Yh-cPd"/>
@@ -146,6 +175,7 @@ Mouse: 0.01</string>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-97.5" id="n8Q-Ji-M8v"/>
                             <constraint firstItem="XeJ-LA-gv1" firstAttribute="centerX" secondItem="wK8-Wg-WEe" secondAttribute="centerX" id="p4S-SC-4Oy"/>
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="szf-zd-anm"/>
+                            <constraint firstItem="utV-W4-fIT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wWi-25-oNR"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="leading" secondItem="zes-gz-1Xr" secondAttribute="trailing" constant="8" symbolic="YES" id="xgZ-yq-GOq"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xyj-pe-f54"/>
                             <constraint firstAttribute="trailing" secondItem="wK8-Wg-WEe" secondAttribute="trailing" constant="16" id="ypJ-TB-4o5"/>
@@ -157,6 +187,7 @@ Mouse: 0.01</string>
                         <outlet property="debugImageView" destination="sIQ-ID-W5c" id="Og6-d5-tmY"/>
                         <outlet property="debugResultView" destination="z8P-2p-WdH" id="AWH-gp-ssZ"/>
                         <outlet property="previewView" destination="XOY-uT-XVO" id="Rjk-vE-Mng"/>
+                        <outlet property="progressCircle" destination="utV-W4-fIT" id="Pcj-nZ-bpc"/>
                         <outlet property="resultView" destination="38g-bS-WI8" id="1dM-Qa-Vow"/>
                         <outlet property="thresholdLabel" destination="zes-gz-1Xr" id="Zrl-tU-AIV"/>
                         <outlet property="thresholdSlider" destination="zD9-tU-9WM" id="hud-tQ-KWX"/>
