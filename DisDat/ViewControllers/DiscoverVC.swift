@@ -22,6 +22,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var rootLanguage: String!
     var learningLanguage: String!
     
+    var viewDidClear = true
     
     var lastClassificationRequestSent = Date()
     var lastClassificationPerformed = Date()
@@ -48,7 +49,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var debug = false
     var superDebug = false
     
-    @IBOutlet weak var progressCircle: KDCircularProgress!
+    var progressCircle: KDCircularProgress?
 
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
@@ -126,20 +127,27 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.progressCircle = MainPVCContainer.instance?.discoverButton
         DispatchQueue.global(qos: .userInitiated).async {
             if !self.session.isRunning{
                 self.session.startRunning()
             }
         }
+        self.viewDidClear=false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.progressCircle?.animate(toAngle: 0, duration: 0.3, completion: { success in
+            self.progressCircle = nil})
+        self.viewDidClear = true
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         DispatchQueue.global(qos: .userInitiated).async {
             self.session.stopRunning()
         }
-
     }
     
     fileprivate func showCameraPermissionsError() {
@@ -258,10 +266,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         
-        DispatchQueue.main.async {
-            let confidence = (observations[0] as! VNClassificationObservation).confidence
-            self.progressCircle.animate(toAngle: min(Double(360.0*confidence/0.9),360), duration: 0.1, completion: nil)
-        }
         
         let classificationsList = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })
@@ -271,18 +275,27 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
 
-        if debug {
             DispatchQueue.main.async {
                 let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
-                self.debugResultView.text = fullClassificationList[0...5].joined(separator:"\n")
-                self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
                 
-                if let currentBuffer = self.currentPixelBuffer{
-                    self.debugImageView.image = self.convert(cmage: CIImage(cvPixelBuffer: currentBuffer), crop: true)
+                if self.debug {
+                    self.debugResultView.text = fullClassificationList[0...5].joined(separator:"\n")
+                    self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
+                    if let currentBuffer = self.currentPixelBuffer{
+                        self.debugImageView.image = self.convert(cmage: CIImage(cvPixelBuffer: currentBuffer), crop: true)
+                    }
                 }
+                
+                let confidence = (observations[0] as! VNClassificationObservation).confidence
+                self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/0.9),360), duration: min(lastClassificationTime/1000,1), completion: { success in
+                    if self.viewDidClear {
+                        self.progressCircle?.animate(toAngle: 0, duration: 0.5, completion:nil)
+                    }
+                }
+                )
+                
                 self.lastClassificationPerformed = Date()
             }
-        }
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
         let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")

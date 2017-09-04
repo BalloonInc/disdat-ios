@@ -118,34 +118,6 @@ Mouse: 0.01</string>
                                     <constraint firstAttribute="height" constant="111" id="xc6-3M-3Kv"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utV-W4-fIT" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                <rect key="frame" x="122.5" y="493" width="75" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="24E-l3-E8z"/>
-                                    <constraint firstAttribute="height" constant="75" id="9k6-Vq-N1H"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="90"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                        <real key="value" value="-90"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                        <real key="value" value="0.40000000000000002"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                        <real key="value" value="0.75"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                        <color key="value" red="1" green="0.43237138609999998" blue="0.60357487949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32156862749999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -162,7 +134,6 @@ Mouse: 0.01</string>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WAG-UH-w5q" secondAttribute="trailing" constant="20" symbolic="YES" id="KcY-mv-gS6"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="top" secondItem="WAG-UH-w5q" secondAttribute="top" id="MmR-x0-igF"/>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="RRd-6z-fjX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="utV-W4-fIT" secondAttribute="bottom" id="YaC-Vf-WdW"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YeL-OK-xxP"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-100" id="dsy-Fo-e1Z"/>
                             <constraint firstAttribute="trailing" secondItem="sIQ-ID-W5c" secondAttribute="trailing" constant="16" id="fJI-Yh-cPd"/>
@@ -175,7 +146,6 @@ Mouse: 0.01</string>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-97.5" id="n8Q-Ji-M8v"/>
                             <constraint firstItem="XeJ-LA-gv1" firstAttribute="centerX" secondItem="wK8-Wg-WEe" secondAttribute="centerX" id="p4S-SC-4Oy"/>
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="szf-zd-anm"/>
-                            <constraint firstItem="utV-W4-fIT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wWi-25-oNR"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="leading" secondItem="zes-gz-1Xr" secondAttribute="trailing" constant="8" symbolic="YES" id="xgZ-yq-GOq"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xyj-pe-f54"/>
                             <constraint firstAttribute="trailing" secondItem="wK8-Wg-WEe" secondAttribute="trailing" constant="16" id="ypJ-TB-4o5"/>
@@ -187,7 +157,6 @@ Mouse: 0.01</string>
                         <outlet property="debugImageView" destination="sIQ-ID-W5c" id="Og6-d5-tmY"/>
                         <outlet property="debugResultView" destination="z8P-2p-WdH" id="AWH-gp-ssZ"/>
                         <outlet property="previewView" destination="XOY-uT-XVO" id="Rjk-vE-Mng"/>
-                        <outlet property="progressCircle" destination="utV-W4-fIT" id="Pcj-nZ-bpc"/>
                         <outlet property="resultView" destination="38g-bS-WI8" id="1dM-Qa-Vow"/>
                         <outlet property="thresholdLabel" destination="zes-gz-1Xr" id="Zrl-tU-AIV"/>
                         <outlet property="thresholdSlider" destination="zD9-tU-9WM" id="hud-tQ-KWX"/>
@@ -590,17 +559,45 @@ Mouse: 0.01</string>
                                     <action selector="activateQuiz:" destination="car-Cx-kWj" eventType="touchUpInside" id="gxJ-Gg-GNh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-d1-rhQ">
-                                <rect key="frame" x="130" y="500" width="60" height="60"/>
-                                <state key="normal" image="smartphone-big-filled"/>
+                            <view tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-Nb-Ef2" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                                <rect key="frame" x="123" y="493" width="75" height="75"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="dV9-dS-aP2"/>
+                                    <constraint firstAttribute="height" constant="75" id="oya-KO-Hnx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <integer key="value" value="-90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                        <real key="value" value="0.75"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                        <color key="value" red="1" green="0.43237138609999998" blue="0.60357487949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sy-BZ-CaP">
+                                <rect key="frame" x="122.5" y="493" width="75" height="75"/>
                                 <connections>
-                                    <action selector="activateDiscover:" destination="car-Cx-kWj" eventType="touchUpInside" id="EMm-k7-Qa1"/>
+                                    <action selector="activateDiscover:" destination="car-Cx-kWj" eventType="touchUpInside" id="kQY-wB-mte"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.75294117650000003" green="0.0" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="A3h-d1-rhQ" firstAttribute="centerX" secondItem="Kwy-5h-SWW" secondAttribute="centerX" id="3JB-Kq-6gf"/>
+                            <constraint firstItem="qfw-3K-VPc" firstAttribute="top" secondItem="d2U-Nb-Ef2" secondAttribute="bottom" id="5cZ-4B-kyf"/>
                             <constraint firstAttribute="bottom" secondItem="1F6-gK-waF" secondAttribute="bottom" id="5ps-XN-yB4"/>
                             <constraint firstItem="qfw-3K-VPc" firstAttribute="top" secondItem="dpD-b5-hgw" secondAttribute="bottom" constant="8" id="8z7-T1-4Ed"/>
                             <constraint firstItem="QD6-6c-xei" firstAttribute="leading" secondItem="Kwy-5h-SWW" secondAttribute="leading" id="Cyd-gc-xMO"/>
@@ -608,10 +605,14 @@ Mouse: 0.01</string>
                             <constraint firstAttribute="trailing" secondItem="dpD-b5-hgw" secondAttribute="trailing" constant="16" id="Ic3-uQ-5BG"/>
                             <constraint firstAttribute="trailing" secondItem="1F6-gK-waF" secondAttribute="trailing" id="PGS-9b-i1b"/>
                             <constraint firstItem="1F6-gK-waF" firstAttribute="leading" secondItem="Kwy-5h-SWW" secondAttribute="leading" id="XXZ-mN-0Ks"/>
-                            <constraint firstItem="qfw-3K-VPc" firstAttribute="top" secondItem="A3h-d1-rhQ" secondAttribute="bottom" constant="8" id="dMy-V0-wzk"/>
                             <constraint firstItem="qfw-3K-VPc" firstAttribute="top" secondItem="QD6-6c-xei" secondAttribute="bottom" id="fh7-CU-uSa"/>
+                            <constraint firstItem="d2U-Nb-Ef2" firstAttribute="centerX" secondItem="Kwy-5h-SWW" secondAttribute="centerX" id="gNZ-Yh-IPu"/>
                             <constraint firstItem="1F6-gK-waF" firstAttribute="top" secondItem="Kwy-5h-SWW" secondAttribute="top" id="gzl-O8-Wz3"/>
                             <constraint firstItem="qfw-3K-VPc" firstAttribute="top" secondItem="TTN-s3-xn3" secondAttribute="bottom" constant="8" id="mME-Bd-IZs"/>
+                            <constraint firstItem="8Sy-BZ-CaP" firstAttribute="width" secondItem="d2U-Nb-Ef2" secondAttribute="width" id="nc1-gI-nlT"/>
+                            <constraint firstItem="8Sy-BZ-CaP" firstAttribute="centerX" secondItem="d2U-Nb-Ef2" secondAttribute="centerX" id="o70-DS-GJw"/>
+                            <constraint firstItem="8Sy-BZ-CaP" firstAttribute="height" secondItem="d2U-Nb-Ef2" secondAttribute="height" id="oHg-LX-jwa"/>
+                            <constraint firstItem="8Sy-BZ-CaP" firstAttribute="centerY" secondItem="d2U-Nb-Ef2" secondAttribute="centerY" id="qhD-HE-5bL"/>
                             <constraint firstAttribute="trailing" secondItem="QD6-6c-xei" secondAttribute="trailing" id="xxj-Gm-fwO"/>
                         </constraints>
                     </view>
@@ -620,7 +621,7 @@ Mouse: 0.01</string>
                         <outlet property="barView" destination="QD6-6c-xei" id="SYo-mQ-kId"/>
                         <outlet property="containerToBottomConstraint" destination="5ps-XN-yB4" id="OMU-Te-rHb"/>
                         <outlet property="containerView" destination="1F6-gK-waF" id="Uf6-XN-ZpT"/>
-                        <outlet property="discoverButton" destination="A3h-d1-rhQ" id="kiL-RO-JGr"/>
+                        <outlet property="discoverButton" destination="d2U-Nb-Ef2" id="k9Y-2v-1Ug"/>
                         <outlet property="quizButton" destination="TTN-s3-xn3" id="9kL-6C-kKE"/>
                         <outlet property="t1" destination="PGS-9b-i1b" id="WHq-s5-YtW"/>
                         <outlet property="t2" destination="XXZ-mN-0Ks" id="Clf-vT-xf4"/>
@@ -1438,7 +1439,6 @@ Press the button below to agree.</string>
         <image name="ok" width="60" height="60"/>
         <image name="ok-gray" width="60" height="60"/>
         <image name="settings" width="40" height="40"/>
-        <image name="smartphone-big-filled" width="60" height="60"/>
         <image name="speaker" width="30" height="30"/>
         <image name="test-big-filled" width="60" height="60"/>
         <image name="trophy-big-filled" width="60" height="60"/>

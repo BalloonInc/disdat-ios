@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KDCircularProgress
 
 class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
@@ -20,6 +21,13 @@ class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewC
         self.delegate = self
         self.orderedViewControllers = [newVC("QuizVC"), newVC("DiscoverVC"), newVC("AchievementsNavigationVC")]
         setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let discoverVC = orderedViewControllers[1] as? DiscoverVC {
+            discoverVC.progressCircle = MainPVCContainer.instance?.discoverButton
+        }
     }
     
     private func newVC(_ viewcontrollerID: String) -> UIViewController {
@@ -56,6 +64,9 @@ class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewC
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         MainPVCContainer.instance?.toggleTransparentBar(on: false, changeHeight: false)
+        if let discoverVC = pendingViewControllers[0] as? DiscoverVC {
+            discoverVC.progressCircle = MainPVCContainer.instance?.discoverButton
+        }
     }
     
     public func pageViewController(_ pageViewController: UIPageViewController,

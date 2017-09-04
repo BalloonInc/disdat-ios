@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KDCircularProgress
 
 class MainPVCContainer: UIViewController {
     
@@ -18,9 +19,9 @@ class MainPVCContainer: UIViewController {
     @IBOutlet weak var achievementButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var quizButton: UIButton!
-    @IBOutlet weak var discoverButton: UIButton!
+    @IBOutlet weak var discoverButton: KDCircularProgress!
     
-    var buttons: [UIButton]!
+    var buttons: [UIView]!
     var containerVC: MainPVC?
     
     @IBOutlet weak var containerToBottomConstraint: NSLayoutConstraint!
@@ -39,18 +40,11 @@ class MainPVCContainer: UIViewController {
         toggle(toIndex: 1)
     }
     
-    // TODO: remove
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        discoverButton.imageView?.alpha = 0
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainPVCContentSegue" {
             containerVC = segue.destination as? MainPVC
         }
     }
-    
     
     @IBAction func activateAchievements(_ sender: Any) {
         switchPage(toIndex: 2)
@@ -83,13 +77,6 @@ class MainPVCContainer: UIViewController {
     }
     
     func toggle(toIndex: Int){
-        if toIndex == 1 {
-            discoverButton.imageView?.alpha = 0
-        }
-        else {
-            discoverButton.imageView?.alpha = 1
-        }
-
         let button = buttons[toIndex]
         
         let transparent = toIndex == 1
@@ -106,7 +93,7 @@ class MainPVCContainer: UIViewController {
         activeButtonTag = button.tag
     }
     
-    func resize(button: UIButton?, size: Size, withDuration: Float){
+    func resize(button: UIView?, size: Size, withDuration: Float){
         if button == nil { return }
         
         UIView.animate(withDuration: TimeInterval(withDuration), animations: {
@@ -117,13 +104,13 @@ class MainPVCContainer: UIViewController {
         })
     }
     
-    func findButton(withTag: Int) -> UIButton? {
+    func findButton(withTag: Int) -> UIView? {
         return buttons.first(where: {$0.tag == withTag})
     }
 }
 
 
 enum Size: CGFloat {
-    case big = 60.0
-    case small = 40.0
+    case big = 45.0
+    case small = 30.0
 }
