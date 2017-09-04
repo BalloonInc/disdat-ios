@@ -115,7 +115,7 @@ class Authentication{
         self.fullname = fullname
         self.authenticationMethod = authenticationMethod
         let authentication = ["email":email, "fullname":fullname, "authenticationMethod":authenticationMethod.rawValue]
-        
+        logUser()
         UserDefaults.standard.set(authentication, forKey: "authentication")
     }
     
@@ -132,10 +132,17 @@ class Authentication{
         self.authenticationMethod = nil
         self.currentRootLanguage = nil
         self.currentLearningLanguage = nil
+        logUser()
         UserDefaults.standard.set(nil, forKey: "authentication")
         UserDefaults.standard.set(nil, forKey: "languages")
         DiscoveredWordCollection.getInstance()?.resetProgressForAllLanguages()
     }
+    
+    func logUser() {
+        Crashlytics.sharedInstance().setUserEmail(self.email)
+        Crashlytics.sharedInstance().setUserName(self.fullname)
+    }
+
     
     enum Method: String {
         case google = "Google"

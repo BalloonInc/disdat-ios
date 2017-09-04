@@ -1,35 +1,35 @@
-[
-    {
-        "category": "Office",
-        "words": [
+ [
+  {
+  "category": "Office",
+  "words": [
             "keyboard",
             "pen",
             "monitor",
             "computer mouse"
-        ]
-    },
-    {
-        "category": "Kitchen",
-        "words": [
+            ]
+  },
+  {
+  "category": "Kitchen",
+  "words": [
             "knife",
             "spoon",
             "pan",
             "bowl"
-        ]
-    },
-    {
-        "category": "Fruits",
-        "words": [
+            ]
+  },
+  {
+  "category": "Fruits",
+  "words": [
             "apple",
             "pear",
             "banana",
             "strawberry",
             "pineapple"
-        ]
-    },
-    {
-        "category": "Vegetables",
-        "words": [
+            ]
+  },
+  {
+  "category": "Vegetables",
+  "words": [
             "carrot",
             "potato",
             "lettuce",
@@ -37,175 +37,195 @@
             "onion",
             "cauliflower",
             "pumpkin"
-        ]
-    },
-    {
-        "category": "Animals",
-        "words": [
+            ]
+  },
+  {
+  "category": "Animals",
+  "words": [
             "dog",
             "cat",
             "bird",
             "giraffe",
             "mosquito",
             "fish"
-        ]
-    },
-    {
-        "category": "Street",
-        "words": [
+            ]
+  },
+  {
+  "category": "Street",
+  "words": [
             "car",
             "bicycle",
             "bus",
             "skateboard",
             "tank"
-        ]
-    },
-    {
-        "category": "Bathroom",
-        "words": [
+            ]
+  },
+  {
+  "category": "Bathroom",
+  "words": [
             "shower",
             "bath",
             "towel",
             "soap",
             "hairbrush",
             "toothbrush"
-        ]
-    },
-    {
-        "category": "Clothes",
-        "words": [
+            ]
+  },
+  {
+  "category": "Clothes",
+  "words": [
             "dress",
             "trousers",
             "hat",
             "sock",
             "shoe",
             "spacesuit"
-        ]
-    },
-    {
-        "category": "Tools",
-        "words": [
+            ]
+  },
+  {
+  "category": "Tools",
+  "words": [
             "hammer",
             "drill",
             "box",
             "screwdriver"
-        ]
-    },
-    {
-        "category": "Nature",
-        "words": [
+            ]
+  },
+  {
+  "category": "Nature",
+  "words": [
             "tree",
             "flower",
             "grass",
             "cloud",
-            "beach"
-        ]
-    },
-    {
-        "category": "Body",
-        "words": [
+            "beach",
+            "plant"
+            ]
+  },
+  {
+  "category": "Body",
+  "words": [
             "lip",
             "face",
             "hair",
             "heart"
-        ]
-    },
-    {
-        "category": "Home",
-        "words": [
+            ]
+  },
+  {
+  "category": "Home",
+  "words": [
             "house",
             "key",
             "sofa",
             "radiator",
-            "curtain"
-        ]
-    },
-    {
-        "category": "Music",
-        "words": [
+            "curtain",
+            "chair"
+            ]
+  },
+  {
+  "category": "Music",
+  "words": [
             "guitar",
             "piano",
             "drums",
             "microphone",
             "radio"
-        ]
-    },
-    {
-        "category": "Sleep",
-        "words": [
+            ]
+  },
+  {
+  "category": "Sleep",
+  "words": [
             "bed",
             "pillow",
             "clock",
             "closet",
             "star"
-        ]
-    },
-    {
-        "category": "Entertainment",
-        "words": [
+            ]
+  },
+  {
+  "category": "Entertainment",
+  "words": [
             "television",
             "book",
             "ball",
-            "puzzle"
-        ]
-    },
-    {
-        "category": "Classroom",
-        "words": [
+            "puzzle",
+            "cell phone"
+            ]
+  },
+  {
+  "category": "Classroom",
+  "words": [
             "pencil",
             "ruler",
             "calculator",
             "adhesive tape",
             "blackboard"
-        ]
-    },
-    {
-        "category": "Accessories",
-        "words": [
+            ]
+  },
+  {
+  "category": "Accessories",
+  "words": [
             "glasses",
             "ring",
             "necklace",
             "handbag",
-            "hairpin"
-        ]
-    },
-    {
-        "category": "Meals",
-        "words": [
+            "hairpin",
+            "backpack"
+            ]
+  },
+  {
+  "category": "Meals",
+  "words": [
             "pizza",
             "bread",
             "spaghetti",
-            "hamburger"
-        ]
-    },
-    {
-        "category": "Museum",
-        "words": [
+            "hamburger",
+            "ice cream",
+            "egg"
+            ]
+  },
+  {
+  "category": "Museum",
+  "words": [
             "juwels",
             "vase",
             "coin",
             "sculpture",
             "dinosaur"
-        ]
-    },
-    {
-        "category": "Sport",
-        "words": [
+            ]
+  },
+  {
+  "category": "Sport",
+  "words": [
             "soccer",
             "tennis",
             "bowling",
             "basketball",
             "skiing"
-        ]
-    },
-    {
-        "category": "Bonus",
-        "words": [
+            ]
+  },
+  {
+  "category": "Drinks",
+  "words":[
+           "soda can",
+           "water bottle",
+           "wine bottle",
+           "wine glass",
+           "champagne glass",
+           "beer glass",
+           "water glass",
+           "orange juice",
+           "coffee cup ",
+           ]
+  },
+  {
+  "category": "Bonus",
+  "words": [
             "balloon",
             "umbrella",
             "church",
             "camera",
             "bridge"
-        ]
-    }
-]
+            ]
+  }
+  ]

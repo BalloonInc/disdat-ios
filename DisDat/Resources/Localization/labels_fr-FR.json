@@ -1,35 +1,35 @@
-[
-    {
-        "category": "Bureau",
-        "words": [
+ [
+  {
+  "category": "Bureau",
+  "words": [
             "clavier",
             "stylo",
             "moniteur",
             "souris d'ordinateur"
-        ]
-    },
-    {
-        "category": "Cuisine",
-        "words": [
+            ]
+  },
+  {
+  "category": "Cuisine",
+  "words": [
             "couteau",
             "cuillère",
             "casserole",
             "bol"
-        ]
-    },
-    {
-        "category": "Fruit",
-        "words": [
+            ]
+  },
+  {
+  "category": "Fruit",
+  "words": [
             "pomme",
             "poire",
             "banane",
             "fraise",
             "ananas"
-        ]
-    },
-    {
-        "category": "Légumes",
-        "words": [
+            ]
+  },
+  {
+  "category": "Légumes",
+  "words": [
             "carotte",
             "pomme de terre",
             "salade",
@@ -37,175 +37,195 @@
             "oignon",
             "choufleur",
             "citrouille"
-        ]
-    },
-    {
-        "category": "Animaux",
-        "words": [
+            ]
+  },
+  {
+  "category": "Animaux",
+  "words": [
             "chien",
             "chat",
             "oiseau",
             "girafe",
             "moustique",
             "poisson"
-        ]
-    },
-    {
-        "category": "Rue",
-        "words": [
+            ]
+  },
+  {
+  "category": "Rue",
+  "words": [
             "voiture",
             "vélo",
             "bus",
             "skateboard",
-            "réservoir"
-        ]
-    },
-    {
-        "category": "Salle de bains",
-        "words": [
+            "char de combat"
+            ]
+  },
+  {
+  "category": "Salle de bains",
+  "words": [
             "douche",
             "baignoire",
             "serviette",
             "savon",
             "brosse à cheveux",
             "brosse à dents"
-        ]
-    },
-    {
-        "category": "Habits",
-        "words": [
+            ]
+  },
+  {
+  "category": "Habits",
+  "words": [
             "robe",
             "pantalon",
             "chapeau",
             "chaussette",
             "chaussure",
             "combinaison spatiale"
-        ]
-    },
-    {
-        "category": "Outil",
-        "words": [
+            ]
+  },
+  {
+  "category": "Outil",
+  "words": [
             "marteau",
             "perceuse",
             "boîte",
             "tournevis"
-        ]
-    },
-    {
-        "category": "Nature",
-        "words": [
+            ]
+  },
+  {
+  "category": "Nature",
+  "words": [
             "arbre",
             "fleur",
             "herbe",
             "nuage",
-            "plage"
-        ]
-    },
-    {
-        "category": "Corps",
-        "words": [
+            "plage",
+            "plante"
+            ]
+  },
+  {
+  "category": "Corps",
+  "words": [
             "lèvre",
             "visage",
             "cheveux",
             "cœur"
-        ]
-    },
-    {
-        "category": "Maison",
-        "words": [
+            ]
+  },
+  {
+  "category": "Maison",
+  "words": [
             "maison",
             "clé",
             "canapé",
             "radiateur",
-            "rideau"
-        ]
-    },
-    {
-        "category": "Musique",
-        "words": [
+            "rideau",
+            "chaise"
+            ]
+  },
+  {
+  "category": "Musique",
+  "words": [
             "guitare",
             "piano",
             "tambours",
             "microphone",
             "radio"
-        ]
-    },
-    {
-        "category": "Sommeil",
-        "words": [
+            ]
+  },
+  {
+  "category": "Sommeil",
+  "words": [
             "lit",
             "oreiller",
             "l'horloge",
             "placard",
             "étoile"
-        ]
-    },
-    {
-        "category": "Divertissement",
-        "words": [
+            ]
+  },
+  {
+  "category": "Divertissement",
+  "words": [
             "télévision",
             "livre",
             "ballon",
-            "puzzle"
-        ]
-    },
-    {
-        "category": "Salle de classe",
-        "words": [
+            "puzzle",
+            "téléphone portable"
+            ]
+  },
+  {
+  "category": "Salle de classe",
+  "words": [
             "crayon",
             "règle",
             "calculatrice",
             "ruban adhésif",
             "tableau noir"
-        ]
-    },
-    {
-        "category": "Accessoires",
-        "words": [
+            ]
+  },
+  {
+  "category": "Accessoires",
+  "words": [
             "lunettes",
             "bague",
             "collier",
             "sac à main",
-            "épingle à cheveux"
-        ]
-    },
-    {
-        "category": "Repas",
-        "words": [
+            "épingle à cheveux",
+            "sac à dos"
+            ]
+  },
+  {
+  "category": "Repas",
+  "words": [
             "pizza",
             "pain",
             "spaghetti",
-            "amburger"
-        ]
-    },
-    {
-        "category": "Musée",
-        "words": [
+            "hamburger",
+            "glace",
+            "œuf"
+            ]
+  },
+  {
+  "category": "Musée",
+  "words": [
             "bijoux",
             "vase",
             "pièce de monnaie",
             "sculpture",
             "dinosaure"
-        ]
-    },
-    {
-        "category": "Sport",
-        "words": [
+            ]
+  },
+  {
+  "category": "Sport",
+  "words": [
             "football",
             "tennis",
             "bowling",
             "basketball",
             "ski"
-        ]
-    },
-    {
-        "category": "Prime",
-        "words": [
+            ]
+  },
+  {
+  "category": "Boissons",
+  "words":[
+           "canette à soda",
+           "bouteille d'eau",
+           "bouteille de vin",
+           "verre à vin",
+           "verre de champagne",
+           "verre de bière",
+           "verre à eau",
+           "jus d'orange",
+           "tasse à café"
+           ]
+  },
+  {
+  "category": "Prime",
+  "words": [
             "ballon",
             "parapluie",
             "église",
             "caméra",
             "pont"
-        ]
-    }
-]
+            ]
+  }
+  ]

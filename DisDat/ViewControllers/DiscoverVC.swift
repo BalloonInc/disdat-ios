@@ -39,7 +39,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     let captureQueue = DispatchQueue(label: "captureQueue")
     var gradientLayer: CAGradientLayer?
     var visionRequests = [VNRequest]()
-    var modelName = "DisDat-v7"
+    var modelName = "DisDat-v8"
     var paused = false
     
     var currentPixelBuffer: CVImageBuffer?
@@ -61,6 +61,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var debugResultView: UITextView!
     @IBOutlet weak var debugFpsView: UILabel!
     @IBOutlet weak var debugImageView: UIImageView!
+    @IBOutlet weak var crashButton: UIButton!
     
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
         debugFpsView.text = nil
@@ -70,12 +71,17 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         debugFpsView.isHidden = !debug
         debugResultView.isHidden = !debug
         debugImageView.isHidden = !debug
+        crashButton.isHidden = !debug
     }
     
     @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
         superDebug = !superDebug
         thresholdLabel.isHidden = !superDebug
         thresholdSlider.isHidden = !superDebug
+    }
+
+    @IBAction func crash(_ sender: Any) {
+        Crashlytics.sharedInstance().crash()
     }
     
     @IBAction func sliderValueChanged(slider: UISlider) {
@@ -376,10 +382,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
                     
                     let metaData: [String:Any] = ["predictions":Array(fullPredictions[0...10]),
-                                                  "device":UIDevice.current.model,
+                                                  "device":UIDevice.current.modelName,
                                                   "orientation":Helpers.getOrientationString(),
                                                   "OS version":UIDevice.current.systemVersion,
-                                                  "Battery level":UIDevice.current.batteryLevel]
+                                                  "Battery level":UIDevice.current.batteryLevel,
+                                                  "App version":Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
+                                                  "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+                                                  ]
                     
                     let fileURL = self.getTempURL(fileName: "metadata_temp.json")
                     self.session.startRunning()
@@ -449,10 +458,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     func getModel(name: String) -> MLModel{
         switch modelName {
-        case "DisDat-v7":
-            return disdatkerasv7().model
+        case "DisDat-v8":
+            return disdatkerasv8().model
         default:
-            return disdatkerasv7().model
+            return disdatkerasv8().model
         }
     }
     
