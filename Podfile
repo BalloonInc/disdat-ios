@@ -9,7 +9,7 @@ target 'DisDat' do
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
     pod 'Fabric'
-    pod 'Crashlytics'  
+    pod 'Crashlytics'
     pod 'GoogleSignIn'
     pod 'OneSignal', '>= 2.5.2', '< 3.0'
 end

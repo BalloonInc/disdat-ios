@@ -77,36 +77,41 @@ class LaunchScreenVC: UIViewController {
                 return
             case .facebook:
                 if FBSDKAccessToken.current() != nil{
-                    Authentication.getInstance().getFBUserData(caller:self, onFinished:{LaunchScreenVC.loginCompleted(animated: true)})
+                    Authentication.getInstance().getFBUserData(caller:self, onFinished:{success in
+                            LaunchScreenVC.loginCompleted(success: success, animated: true)
+                        })
                     return
                 }
             case .anonymous:
-                Authentication.getInstance().signInAnonymously(caller:self, onFinished:{LaunchScreenVC.loginCompleted(animated: true)})
+                Authentication.getInstance().signInAnonymously(caller:self, onFinished:{success in LaunchScreenVC.loginCompleted(success: success, animated: true)})
                 return
             }
         }
-        LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+        LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
     }
     
-    static func loginCompleted(animated: Bool) {
+    static func loginCompleted(success: Bool, animated: Bool) {
+        if !success {
+            goToViewController(named:"LoginVC", inNav: nil, animated: animated)
+        }
         if Authentication.getInstance().currentRootLanguage == nil {
-            goToViewController(named:"LanguageSelectorVC", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
+            goToViewController(named:"LanguageSelectorVC", inNav: "DisDatNavigationVC", animated: animated)
         }
         else {
-            goToViewController(named: "MainPVCContainer", inNav: "DisDatNavigationVC", storyBoard: "Main", animated: animated)
+            goToViewController(named: "MainPVCContainer", inNav: "DisDatNavigationVC", animated: animated)
         }
     }
     
-    static func goToViewController(named: String, inNav: String?, storyBoard: String, animated:Bool){
+    static func goToViewController(named: String, inNav: String?, animated:Bool){
         if LaunchScreenVC.animator?.isRunning ?? false{
             DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(100) , execute: {
-                goToViewController(named: named, inNav: inNav, storyBoard: storyBoard, animated:animated)
+                goToViewController(named: named, inNav: inNav, animated:animated)
                 })
             return
         }
             
         DispatchQueue.global().async {
-            let storyboard = UIStoryboard(name: storyBoard, bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             var newVC = storyboard.instantiateViewController(withIdentifier: named)
             
@@ -115,7 +120,6 @@ class LaunchScreenVC: UIViewController {
                 navigationVC.viewControllers = [storyboard.instantiateViewController(withIdentifier: named)]
                 newVC = navigationVC
             }
-            
             
             DispatchQueue.main.async {
                 guard let window = UIApplication.shared.keyWindow else { return }

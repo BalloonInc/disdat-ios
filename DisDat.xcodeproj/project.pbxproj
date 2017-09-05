@@ -31,6 +31,7 @@
 		6CA05F811F5B2DFA00038B28 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA05F801F5B2DFA00038B28 /* LaunchScreenVC.swift */; };
 		6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30861F51A004007E8773 /* SettingsTVC.swift */; };
 		6CAB308A1F51ADA3007E8773 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAB30891F51ADA3007E8773 /* Authentication.swift */; };
+		6CB5E57B1F5EB04C00743B7F /* SpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5E57A1F5EB04C00743B7F /* SpeechBubble.swift */; };
 		6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE44791F5589DE00A40256 /* AchievementsCVC.swift */; };
 		6CDE447C1F558C0D00A40256 /* AchievementCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */; };
 		88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */; };
@@ -93,8 +94,10 @@
 		6CAB30861F51A004007E8773 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		6CAB30891F51ADA3007E8773 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6CB5E57A1F5EB04C00743B7F /* SpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubble.swift; sourceTree = "<group>"; };
 		6CDE44791F5589DE00A40256 /* AchievementsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCVC.swift; sourceTree = "<group>"; };
 		6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCategoryCell.swift; sourceTree = "<group>"; };
+		6CF478ED1F5F1F640088BE31 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		88C6A9BF1EF863CC00CC4360 /* DisDat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisDat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C6A9C41EF863CC00CC4360 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 				6C2C0F421F595BB600C958DF /* Constants.swift */,
 				88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */,
 				6C1709651F2CE1F300A23068 /* Helpers.swift */,
+				6CF478ED1F5F1F640088BE31 /* BridgingHeader.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,6 +197,7 @@
 				88C6A9CB1EF863CC00CC4360 /* LaunchScreen.storyboard */,
 				88C6A9C61EF863CC00CC4360 /* Main.storyboard */,
 				6C94BBAE1F56C59900E12DDB /* AchievementDetailCell.swift */,
+				6CB5E57A1F5EB04C00743B7F /* SpeechBubble.swift */,
 				6C07E0B81F2CB07D007A646A /* LanguageSelectionPickerView.swift */,
 				6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */,
 			);
@@ -531,6 +536,7 @@
 				6CA05F811F5B2DFA00038B28 /* LaunchScreenVC.swift in Sources */,
 				6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */,
 				6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */,
+				6CB5E57B1F5EB04C00743B7F /* SpeechBubble.swift in Sources */,
 				6C6815981F58173100FD9448 /* MainPVC.swift in Sources */,
 				6C165C291F421E9200B54C7C /* AchievementDetailTVC.swift in Sources */,
 				6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */,
@@ -738,6 +744,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b2e5a5db-2c9f-468c-b2bd-4188419442ae";
 				PROVISIONING_PROFILE_SPECIFIER = "DisDat development profile";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DisDat/Supporting Files/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -763,6 +770,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b2e5a5db-2c9f-468c-b2bd-4188419442ae";
 				PROVISIONING_PROFILE_SPECIFIER = "DisDat development profile";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DisDat/Supporting Files/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

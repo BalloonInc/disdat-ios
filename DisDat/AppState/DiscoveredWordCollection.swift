@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class DiscoveredWordCollection {
     private static var instance: DiscoveredWordCollection?
@@ -23,14 +24,16 @@ class DiscoveredWordCollection {
     var rootLanguageJson: [[String:Any]]
     var rootLanguageWords: [String]
     var rootLanguageCategories: [String]
-
+    
     var learningLanguageJson: [[String:Any]]
     var learningLanguageWords: [String]
     var learningLanguageCategories: [String]
     
-    var discoveredIndexes: [String:[Int]] = [:]
+    var discoveredWords: [String:[String]] = [:]
     var totalWordCount = 0
-
+    
+    var ref = Database.database().reference()
+    
     private init(rootLanguage: String, learningLanguage: String){
         self.rootLanguage = rootLanguage
         self.learningLanguage = learningLanguage
@@ -38,17 +41,17 @@ class DiscoveredWordCollection {
         englishLanguageJson = Helpers.readJson(fileName: "labels_en-US") as! [[String:Any]]
         englishLanguageCategories = englishLanguageJson.map({$0["category"] as! String})
         englishLanguageWords = englishLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
-
+        
         englishLabelDict = Helpers.arrayToReverseDictionary(englishLanguageWords)
-
+        
         rootLanguageJson = Helpers.readJson(fileName: "labels_\(rootLanguage)") as! [[String:Any]]
         rootLanguageCategories = rootLanguageJson.map({$0["category"] as! String})
         rootLanguageWords = rootLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
-
+        
         learningLanguageJson = Helpers.readJson(fileName: "labels_\(learningLanguage)") as! [[String:Any]]
         learningLanguageCategories = learningLanguageJson.map({$0["category"] as! String})
         learningLanguageWords = learningLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
-
+        
         totalWordCount = rootLanguageWords.count
     }
     
@@ -57,26 +60,19 @@ class DiscoveredWordCollection {
     }
     
     func isDiscovered(englishWord: String)-> Bool {
-        if let indexesForCurrentLanguageSet = discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]{
-            return indexesForCurrentLanguageSet.contains(englishLabelDict[englishWord]!)
+        if let discoveredWordsForCurrentLanguageSet = discoveredWords["\(rootLanguage)-\(learningLanguage)"]{
+            return discoveredWordsForCurrentLanguageSet.contains(englishWord)
         }
         return false
     }
     
-    func isDiscovered(index: Int)-> Bool {
-        if let indexesForCurrentLanguageSet = discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]{
-            return indexesForCurrentLanguageSet.contains(index)
-        }
-        return false
-    }
-    
-    func discovered(index: Int){
-        if !isDiscovered(index: index){
-            if discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] == nil {
-                discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] = []
+    func discovered(englishWord: String){
+        if !isDiscovered(englishWord: englishWord){
+            if discoveredWords["\(rootLanguage)-\(learningLanguage)"] == nil {
+                discoveredWords["\(rootLanguage)-\(learningLanguage)"] = []
             }
-
-            discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]!.append(index)
+            
+            discoveredWords["\(rootLanguage)-\(learningLanguage)"]!.append(englishWord)
             save()
         }
     }
@@ -94,28 +90,42 @@ class DiscoveredWordCollection {
     }
     
     func getCurrentDiscoveredCount() -> Int{
-        return discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"]?.count ?? 0
+        return discoveredWords["\(rootLanguage)-\(learningLanguage)"]?.count ?? 0
     }
     
     func resetProgress(){
-        discoveredIndexes["\(rootLanguage)-\(learningLanguage)-discovered"] = []
+        discoveredWords["\(rootLanguage)-\(learningLanguage)"] = []
         save()
     }
     
     func resetProgressForAllLanguages(){
-        discoveredIndexes = [:]
+        discoveredWords = [:]
         save()
     }
     
     private func save(){
-        UserDefaults.standard.set(discoveredIndexes, forKey: "\(rootLanguage)-\(learningLanguage)-discovered")
+        if let email = Authentication.getInstance().email{
+            self.ref.child("discoveredIndexes").child(email.sha256()).child("discoveries").updateChildValues(discoveredWords)
+        }
+        else {
+            UserDefaults.standard.set(discoveredWords, forKey: "discoveries")
+        }
     }
     
     static func setLanguages(rootLanguage: String, learningLanguage: String){
         let localInstance = DiscoveredWordCollection(rootLanguage: rootLanguage, learningLanguage: learningLanguage)
-        if let savedDiscoveries = UserDefaults.standard.value(forKey:"\(rootLanguage)-\(learningLanguage)-discovered") as? [String:[Int]] {
-            localInstance.discoveredIndexes = savedDiscoveries
+        
+        if let email = Authentication.getInstance().email{
+            localInstance.ref.child("discoveredIndexes").child(email.sha256()).child("discoveries").observe(.value, with: { (snapshot) in
+                localInstance.discoveredWords = snapshot.value as? [String : [String]] ?? [:]
+            })
         }
+        else {
+            if let savedDiscoveries = UserDefaults.standard.value(forKey:"discoveries") as? [String:[String]] {
+                localInstance.discoveredWords = savedDiscoveries
+            }
+        }
+
         instance = localInstance
     }
 }

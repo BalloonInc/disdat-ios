@@ -42,6 +42,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var modelName = "DisDat-v8"
     var paused = false
     
+    var lastSuspicion: String = ""
+    var lastSuspicionTime = Date()
+    var lastGuess: String = ""
+    
     var currentPixelBuffer: CVImageBuffer?
     
     var recognitionThreshold : Float = 0.90
@@ -62,6 +66,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var debugFpsView: UILabel!
     @IBOutlet weak var debugImageView: UIImageView!
     @IBOutlet weak var crashButton: UIButton!
+    @IBOutlet weak var speechBubbleContainer: UIView!
+    @IBOutlet weak var speechBubbleShelf: UIView!
+    
+    var speechBubble: UIView?
     
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
         debugFpsView.text = nil
@@ -125,7 +133,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             }
             }
         }
-        
         DispatchQueue.global(qos: .userInitiated).async {
             self.session.startRunning()
         }
@@ -241,7 +248,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        if Date().timeIntervalSince(lastClassificationRequestSent)>0.5 {
+        if Date().timeIntervalSince(lastClassificationRequestSent)>1.0 {
             lastClassificationRequestSent = Date()
             connection.videoOrientation = .portrait
             
@@ -272,7 +279,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         
-        
         let classificationsList = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
@@ -293,7 +299,37 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 }
                 
                 let confidence = (observations[0] as! VNClassificationObservation).confidence
-                self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/0.9),360), duration: min(lastClassificationTime/1000,1), completion: { success in
+                let suspicion = (observations[0] as! VNClassificationObservation).identifier
+                let duration = confidence > self.recognitionThreshold ? 0.25 : min(lastClassificationTime/1000,1)
+                
+                if confidence > 0.8 * self.recognitionThreshold && confidence < self.recognitionThreshold {
+                    if self.lastSuspicion != suspicion {
+                        self.lastSuspicionTime = Date()
+                        self.lastSuspicion = suspicion
+                        self.speechBubble?.removeFromSuperview()
+                        let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
+                        
+                        let bubbleText = NSLocalizedString("I think I see something in the category \(category). Try a different angle.", comment: "")
+                        
+                        let range = (bubbleText as NSString).range(of: category)
+                        
+                        let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
+                        
+                        let paragraph = NSMutableParagraphStyle()
+                        paragraph.alignment = .center
+                        let col = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
+                        attributedBubbleText.addAttribute(.foregroundColor, value: col , range: range)
+                        attributedBubbleText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: bubbleText.count))
+
+                        self.speechBubble = SpeechBubble(baseView: self.speechBubbleShelf, containingView: self.speechBubbleContainer, attributedText: attributedBubbleText)
+                        self.speechBubbleContainer.addSubview(self.speechBubble!)
+                    }
+                }
+                else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > self.recognitionThreshold {
+                        self.speechBubble?.removeFromSuperview()
+                }
+                
+                self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/self.recognitionThreshold),360), duration: duration , completion: { success in
                     if self.viewDidClear {
                         self.progressCircle?.animate(toAngle: 0, duration: 0.5, completion:nil)
                     }
@@ -319,8 +355,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             self.translatedResultView.text = learnedLanguageClassifications
         }
         
-        let discoveredIndex = englishLabelDict[classificationsList[0]]
-        if !DiscoveredWordCollection.getInstance()!.isDiscovered(index: discoveredIndex!){
+        if !DiscoveredWordCollection.getInstance()!.isDiscovered(englishWord: classificationsList[0]){
             session.stopRunning()
             
             let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
@@ -338,7 +373,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 // Save image.
                 try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
                 
-                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList, discoveredIndex!)
+                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList)
             }
             return
         }
@@ -347,7 +382,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String], _ discoveredIndex: Int) {
+    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String]) {
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
@@ -362,7 +397,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
-            DiscoveredWordCollection.getInstance()!.discovered(index: discoveredIndex)
+            DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEngishWord)
             self.session.startRunning()
         })
         

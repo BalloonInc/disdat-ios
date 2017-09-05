@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           if let error = error {
                let alert = PopupDialog(title:errorLoginMessage, message:error.localizedDescription)
                alert.addButton(DefaultButton(title: Constants.error.tryAgain){
-                    LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+                    LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
                })
                getCurrentVC().present(alert, animated: true, completion: nil)
                
@@ -79,14 +79,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                if let error = error {
                     let alert = PopupDialog(title:self.errorLoginMessage, message:error.localizedDescription)
                     alert.addButton(DefaultButton(title: Constants.error.tryAgain){
-                         LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+                         LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
                     })
                     self.getCurrentVC().present(alert, animated: true, completion: nil)
+                    LaunchScreenVC.loginCompleted(success: false, animated: true)
                     return
                }
-               
-               Authentication.getInstance().login(fullname: user.profile.name, email: user.profile.email, authenticationMethod: .google)
-               LaunchScreenVC.loginCompleted(animated: true)
+               Authentication.getInstance().login(userId: firebaseUser!.uid, fullname: user.profile.name, email: user.profile.email, authenticationMethod: .google)
+               LaunchScreenVC.loginCompleted(success: true, animated: true)
           }
      }
      
@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                
                return
           }
-          LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, storyBoard: "Main", animated: true)
+          LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
      }
      
      func getCurrentVC() -> UIViewController{
@@ -108,7 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           var vc = wd!.rootViewController
           if(vc is UINavigationController){
                vc = (vc as! UINavigationController).visibleViewController
-               
           }
           guard let resultingVC = vc else {
                fatalError("No viewcontroller shown. Oops.")
