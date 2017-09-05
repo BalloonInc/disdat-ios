@@ -311,14 +311,12 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                         
                         let bubbleText = NSLocalizedString("I think I see something in the category \(category). Try a different angle.", comment: "")
                         
-                        let range = (bubbleText as NSString).range(of: category)
-                        
                         let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
                         
                         let paragraph = NSMutableParagraphStyle()
                         paragraph.alignment = .center
-                        let col = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
-                        attributedBubbleText.addAttribute(.foregroundColor, value: col , range: range)
+
+                        attributedBubbleText.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (bubbleText as NSString).range(of: category))
                         attributedBubbleText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: bubbleText.count))
 
                         self.speechBubble = SpeechBubble(baseView: self.speechBubbleShelf, containingView: self.speechBubbleContainer, attributedText: attributedBubbleText)
@@ -370,7 +368,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
                 let filePath = "\(paths[0])/\(classificationsList[0]).png"
                 
-                // Save image.
                 try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
                 
                 displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList)
@@ -387,13 +384,22 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let alert = PopupDialog(title:NSLocalizedString("You found a new word in the category\n\(translatedCategory) (\(rootCategory))",comment:""), message:"\(foundTranslatedWord)\(screenHeight! > 568 ? "\n" : " ")(\(foundOriginalWord))", image: image, gestureDismissal: false)
+        let title = NSLocalizedString("You found a new word in the category \(translatedCategory) (\(rootCategory)):",comment:"")
+        let message = "\(foundTranslatedWord) (\(foundOriginalWord))"
+        let attributedTitle = NSMutableAttributedString.init(string: title)
+        let attributedMessage = NSMutableAttributedString.init(string: message)
+        
+        attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (title as NSString).range(of: translatedCategory))
+        attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (title as NSString).range(of: rootCategory))
+
+        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (message as NSString).range(of: foundTranslatedWord))
+        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (message as NSString).range(of: foundOriginalWord))
+
+        let alert = PopupDialog(title:nil, message: nil, attributedTitle:attributedTitle, attributedMessage:attributedMessage, image: image, gestureDismissal: false)
         
         
         if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
-
-            alertVC.messageFont = UIFont.systemFont(ofSize: screenHeight! > 568 ? 18 : 16, weight: .semibold)
-            alertVC.messageColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+            alertVC.messageFont = UIFont.systemFont(ofSize: screenHeight! > 568 ? 20 : 18, weight: .semibold)
         }
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
