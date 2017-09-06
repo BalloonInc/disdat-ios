@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="DisDat/Info.plist" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M214v"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription">
+        <source>We need the camera in order to translate objects around you. No data is sent to our servers without your explicit consent.</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="DisDat/Localizable.strings" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M214v"/>
+    </header>
+    <body>
+      <trans-unit id="All set on camera permissions!">
+        <source>All set on camera permissions!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="An error occurred during login">
+        <source>An error occurred during login</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="An error occurred during login:">
+        <source>An error occurred during login:</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="An error occurred during logout">
+        <source>An error occurred during logout</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="An error occurred during logout:">
+        <source>An error occurred during logout:</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to change the current languages? Your progress for your current languages will be saved.">
+        <source>Are you sure you want to change the current languages? Your progress for your current languages will be saved.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to logout?">
+        <source>Are you sure you want to logout?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to reset all progress for the current language?">
+        <source>Are you sure you want to reset all progress for the current language?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Camera permissions">
+        <source>Camera permissions</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cancel">
+        <source>Cancel</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Change languages">
+        <source>Change languages</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Do you want to report this to my creators? This means a human might look at your image and investigate.">
+        <source>Do you want to report this to my creators? This means a human might look at your image and investigate.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Go to settings">
+        <source>Go to settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Great!">
+        <source>Great!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="I really need permissions to use the camera. Please go to the settings to give them and return here afterwards.">
+        <source>I really need permissions to use the camera. Please go to the settings to give them and return here afterwards.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="I think I see something in the category (category). Try a different angle.">
+        <source>I think I see something in the category (category). Try a different angle.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="I was wrong... 🤓">
+        <source>I was wrong... 🤓</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Later you will be able to remove your account here. Swipe down to dismiss.">
+        <source>Later you will be able to remove your account here. Swipe down to dismiss.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Logout">
+        <source>Logout</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No">
+        <source>No</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No push notifications - no problem! If you change your mind, you can enable this in the iOS preferences for this app.">
+        <source>No push notifications - no problem! If you change your mind, you can enable this in the iOS preferences for this app.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ok then...">
+        <source>Ok then...</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Oops, let me try again!">
+        <source>Oops, let me try again!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please go to the iOS preferences for this app and allow camera access in order to be able to use the app.">
+        <source>Please go to the iOS preferences for this app and allow camera access in order to be able to use the app.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reset progress">
+        <source>Reset progress</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Since you are not logged in via Facebook or Google, this means you will lose all progress.">
+        <source>Since you are not logged in via Facebook or Google, this means you will lose all progress.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.">
+        <source>Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This is wrong.">
+        <source>This is wrong.</source>
+        <note>Wrong detection</note>
+      </trans-unit>
+      <trans-unit id="Todo">
+        <source>Todo</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unknown">
+        <source>Unknown</source>
+        <note>word still to discover</note>
+      </trans-unit>
+      <trans-unit id="Yes">
+        <source>Yes</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Yes, I am done here.">
+        <source>Yes, I am done here.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Yes, let me change languages">
+        <source>Yes, let me change languages</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Yes, let me start over">
+        <source>Yes, let me start over</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You found a new word in the category (translatedCategory) - (rootCategory):">
+        <source>You found a new word in the category (translatedCategory) - (rootCategory):</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="DisDat/Views/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M214v"/>
+    </header>
+    <body>
+      <trans-unit id="99O-AA-I2h.text">
+        <source>🤖</source>
+        <note>Class = "UILabel"; text = "🤖"; ObjectID = "99O-AA-I2h";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="DisDat/Views/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M214v"/>
+    </header>
+    <body>
+      <trans-unit id="0fM-pe-nxc.title">
+        <source>Settings</source>
+        <note>Class = "UITableViewController"; title = "Settings"; ObjectID = "0fM-pe-nxc";</note>
+      </trans-unit>
+      <trans-unit id="1H3-fh-sFn.text">
+        <source>Login method</source>
+        <note>Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn";</note>
+      </trans-unit>
+      <trans-unit id="3o9-wJ-ax2.text">
+        <source>French</source>
+        <note>Class = "UILabel"; text = "French"; ObjectID = "3o9-wJ-ax2";</note>
+      </trans-unit>
+      <trans-unit id="4am-5s-VvX.text">
+        <source>Translated</source>
+        <note>Class = "UILabel"; text = "Translated"; ObjectID = "4am-5s-VvX";</note>
+      </trans-unit>
+      <trans-unit id="5Wy-a4-2mQ.text">
+        <source>DIS</source>
+        <note>Class = "UILabel"; text = "DIS"; ObjectID = "5Wy-a4-2mQ";</note>
+      </trans-unit>
+      <trans-unit id="6Be-lG-2ty.text">
+        <source>-</source>
+        <note>Class = "UILabel"; text = "-"; ObjectID = "6Be-lG-2ty";</note>
+      </trans-unit>
+      <trans-unit id="6H1-cw-E2z.text">
+        <source>→</source>
+        <note>Class = "UILabel"; text = "→"; ObjectID = "6H1-cw-E2z";</note>
+      </trans-unit>
+      <trans-unit id="6On-gE-IGF.text">
+        <source>Coming soon</source>
+        <note>Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF";</note>
+      </trans-unit>
+      <trans-unit id="8PQ-xc-O3w.text">
+        <source>0%</source>
+        <note>Class = "UILabel"; text = "0%"; ObjectID = "8PQ-xc-O3w";</note>
+      </trans-unit>
+      <trans-unit id="8gv-Jd-WtB.normalTitle">
+        <source>Remove account</source>
+        <note>Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB";</note>
+      </trans-unit>
+      <trans-unit id="38g-bS-WI8.text">
+        <source>Original</source>
+        <note>Class = "UILabel"; text = "Original"; ObjectID = "38g-bS-WI8";</note>
+      </trans-unit>
+      <trans-unit id="42j-vD-LQG.text">
+        <source>If you want, I can send you push notifications with tips and more.</source>
+        <note>Class = "UILabel"; text = "If you want, I can send you push notifications with tips and more."; ObjectID = "42j-vD-LQG";</note>
+      </trans-unit>
+      <trans-unit id="72d-ZN-xKP.text">
+        <source>-</source>
+        <note>Class = "UILabel"; text = "-"; ObjectID = "72d-ZN-xKP";</note>
+      </trans-unit>
+      <trans-unit id="76t-CB-WGG.title">
+        <source>Achievements</source>
+        <note>Class = "UITableViewController"; title = "Achievements"; ObjectID = "76t-CB-WGG";</note>
+      </trans-unit>
+      <trans-unit id="ATt-9p-yRl.text">
+        <source>DAT</source>
+        <note>Class = "UILabel"; text = "DAT"; ObjectID = "ATt-9p-yRl";</note>
+      </trans-unit>
+      <trans-unit id="Aeb-ys-vxY.normalTitle">
+        <source>Crash</source>
+        <note>Class = "UIButton"; normalTitle = "Crash"; ObjectID = "Aeb-ys-vxY";</note>
+      </trans-unit>
+      <trans-unit id="B1K-Da-31u.text">
+        <source>Email</source>
+        <note>Class = "UILabel"; text = "Email"; ObjectID = "B1K-Da-31u";</note>
+      </trans-unit>
+      <trans-unit id="BYZ-38-t0r.title">
+        <source>Discover</source>
+        <note>Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r";</note>
+      </trans-unit>
+      <trans-unit id="Cto-gV-1cX.text">
+        <source>Translated word</source>
+        <note>Class = "UILabel"; text = "Translated word"; ObjectID = "Cto-gV-1cX";</note>
+      </trans-unit>
+      <trans-unit id="EOA-wg-WfF.text">
+        <source>🤖</source>
+        <note>Class = "UILabel"; text = "🤖"; ObjectID = "EOA-wg-WfF";</note>
+      </trans-unit>
+      <trans-unit id="JGB-lz-1nz.normalTitle">
+        <source>Reset progress</source>
+        <note>Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz";</note>
+      </trans-unit>
+      <trans-unit id="JWa-3k-AqM.normalTitle">
+        <source>Skip</source>
+        <note>Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM";</note>
+      </trans-unit>
+      <trans-unit id="KEM-9P-bS9.text">
+        <source>I need your permission to use the camera. Without it I am of no use.
+Press the button below to agree.</source>
+        <note>Class = "UILabel"; text = "I need your permission to use the camera. Without it I am of no use.\nPress the button below to agree."; ObjectID = "KEM-9P-bS9";</note>
+      </trans-unit>
+      <trans-unit id="Lxw-ml-afy.text">
+        <source>swipe right to go back</source>
+        <note>Class = "UILabel"; text = "swipe right to go back"; ObjectID = "Lxw-ml-afy";</note>
+      </trans-unit>
+      <trans-unit id="MIR-nr-5Tj.normalTitle">
+        <source>I am ready to learn!</source>
+        <note>Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj";</note>
+      </trans-unit>
+      <trans-unit id="MXt-MD-TAC.text">
+        <source>Divertissement</source>
+        <note>Class = "UILabel"; text = "Divertissement"; ObjectID = "MXt-MD-TAC";</note>
+      </trans-unit>
+      <trans-unit id="QrO-wX-w1N.headerTitle">
+        <source>Languages</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Languages"; ObjectID = "QrO-wX-w1N";</note>
+      </trans-unit>
+      <trans-unit id="R3k-Uh-QSY.normalTitle">
+        <source>Login with Google</source>
+        <note>Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "R3k-Uh-QSY";</note>
+      </trans-unit>
+      <trans-unit id="Rbw-0a-u2D.text">
+        <source>DAT</source>
+        <note>Class = "UILabel"; text = "DAT"; ObjectID = "Rbw-0a-u2D";</note>
+      </trans-unit>
+      <trans-unit id="Sqd-em-gKp.text">
+        <source>To:</source>
+        <note>Class = "UILabel"; text = "To:"; ObjectID = "Sqd-em-gKp";</note>
+      </trans-unit>
+      <trans-unit id="T25-Fl-ea1.normalTitle">
+        <source>Logout</source>
+        <note>Class = "UIButton"; normalTitle = "Logout"; ObjectID = "T25-Fl-ea1";</note>
+      </trans-unit>
+      <trans-unit id="WAG-UH-w5q.text">
+        <source>DAT</source>
+        <note>Class = "UILabel"; text = "DAT"; ObjectID = "WAG-UH-w5q";</note>
+      </trans-unit>
+      <trans-unit id="Wzu-Qt-4jI.text">
+        <source>Quiz</source>
+        <note>Class = "UILabel"; text = "Quiz"; ObjectID = "Wzu-Qt-4jI";</note>
+      </trans-unit>
+      <trans-unit id="XeJ-LA-gv1.text">
+        <source>0 FPS</source>
+        <note>Class = "UILabel"; text = "0 FPS"; ObjectID = "XeJ-LA-gv1";</note>
+      </trans-unit>
+      <trans-unit id="Y7Y-ds-efY.headerTitle">
+        <source>Account</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "Y7Y-ds-efY";</note>
+      </trans-unit>
+      <trans-unit id="ZrB-4x-rzB.normalTitle">
+        <source>Prefer not</source>
+        <note>Class = "UIButton"; normalTitle = "Prefer not"; ObjectID = "ZrB-4x-rzB";</note>
+      </trans-unit>
+      <trans-unit id="Zto-b0-CwL.text">
+        <source>From:</source>
+        <note>Class = "UILabel"; text = "From:"; ObjectID = "Zto-b0-CwL";</note>
+      </trans-unit>
+      <trans-unit id="bGs-XI-PrK.normalTitle">
+        <source>Change languages</source>
+        <note>Class = "UIButton"; normalTitle = "Change languages"; ObjectID = "bGs-XI-PrK";</note>
+      </trans-unit>
+      <trans-unit id="bXA-Kh-7Tu.title">
+        <source>Settings</source>
+        <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bXA-Kh-7Tu";</note>
+      </trans-unit>
+      <trans-unit id="bse-4x-ZcM.text">
+        <source>-</source>
+        <note>Class = "UILabel"; text = "-"; ObjectID = "bse-4x-ZcM";</note>
+      </trans-unit>
+      <trans-unit id="eg6-Qw-BVa.normalTitle">
+        <source>Agree</source>
+        <note>Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa";</note>
+      </trans-unit>
+      <trans-unit id="fxE-9e-F6o.text">
+        <source>DIS</source>
+        <note>Class = "UILabel"; text = "DIS"; ObjectID = "fxE-9e-F6o";</note>
+      </trans-unit>
+      <trans-unit id="gCp-Ib-mgt.text">
+        <source>Original word</source>
+        <note>Class = "UILabel"; text = "Original word"; ObjectID = "gCp-Ib-mgt";</note>
+      </trans-unit>
+      <trans-unit id="gJC-yk-AUL.text">
+        <source>Your native language</source>
+        <note>Class = "UILabel"; text = "Your native language"; ObjectID = "gJC-yk-AUL";</note>
+      </trans-unit>
+      <trans-unit id="gXY-fM-fRG.text">
+        <source>🤓</source>
+        <note>Class = "UILabel"; text = "🤓"; ObjectID = "gXY-fM-fRG";</note>
+      </trans-unit>
+      <trans-unit id="gam-gY-CEf.title">
+        <source>Achievements</source>
+        <note>Class = "UICollectionViewController"; title = "Achievements"; ObjectID = "gam-gY-CEf";</note>
+      </trans-unit>
+      <trans-unit id="h6G-4J-zTt.text">
+        <source>DIS</source>
+        <note>Class = "UILabel"; text = "DIS"; ObjectID = "h6G-4J-zTt";</note>
+      </trans-unit>
+      <trans-unit id="hL1-lx-q0H.text">
+        <source>Name</source>
+        <note>Class = "UILabel"; text = "Name"; ObjectID = "hL1-lx-q0H";</note>
+      </trans-unit>
+      <trans-unit id="jRY-MG-hwH.text">
+        <source>DAT</source>
+        <note>Class = "UILabel"; text = "DAT"; ObjectID = "jRY-MG-hwH";</note>
+      </trans-unit>
+      <trans-unit id="lg1-ow-UGG.title">
+        <source>Achievements</source>
+        <note>Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG";</note>
+      </trans-unit>
+      <trans-unit id="mm5-oM-GtX.text">
+        <source>🤖</source>
+        <note>Class = "UILabel"; text = "🤖"; ObjectID = "mm5-oM-GtX";</note>
+      </trans-unit>
+      <trans-unit id="mvZ-O8-ufZ.text">
+        <source>DIS</source>
+        <note>Class = "UILabel"; text = "DIS"; ObjectID = "mvZ-O8-ufZ";</note>
+      </trans-unit>
+      <trans-unit id="oYy-Ht-Ea8.text">
+        <source>The language you are learning</source>
+        <note>Class = "UILabel"; text = "The language you are learning"; ObjectID = "oYy-Ht-Ea8";</note>
+      </trans-unit>
+      <trans-unit id="pCq-c7-ehY.text">
+        <source>0/5</source>
+        <note>Class = "UILabel"; text = "0/5"; ObjectID = "pCq-c7-ehY";</note>
+      </trans-unit>
+      <trans-unit id="xkM-az-YTj.text">
+        <source>Progress</source>
+        <note>Class = "UILabel"; text = "Progress"; ObjectID = "xkM-az-YTj";</note>
+      </trans-unit>
+      <trans-unit id="z8P-2p-WdH.text">
+        <source>Cat: 0.85
+Dog: 0.05
+Mouse: 0.01</source>
+        <note>Class = "UITextView"; text = "Cat: 0.85\nDog: 0.05\nMouse: 0.01"; ObjectID = "z8P-2p-WdH";</note>
+      </trans-unit>
+      <trans-unit id="z58-og-9dR.normalTitle">
+        <source>Login with Facebook</source>
+        <note>Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "z58-og-9dR";</note>
+      </trans-unit>
+      <trans-unit id="ze3-od-ruI.text">
+        <source>English</source>
+        <note>Class = "UILabel"; text = "English"; ObjectID = "ze3-od-ruI";</note>
+      </trans-unit>
+      <trans-unit id="zes-gz-1Xr.text">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "zes-gz-1Xr";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="OneSignalNotificationServiceExtension/Info.plist" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M214v"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>OneSignalNotificationServiceExtension</source>
+      </trans-unit>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
