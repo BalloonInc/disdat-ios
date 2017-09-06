@@ -310,7 +310,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     self.speechBubble?.removeFromSuperview()
                     let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
                     
-                    let bubbleText = NSLocalizedString("I think I see something in the category \(category). Try a different angle.", comment: "")
+                    let bubbleText = String(format: NSLocalizedString("I think I see something in the category %s. Try a different angle.", comment: ""), category)
                     
                     let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
                     
@@ -438,7 +438,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let title = NSLocalizedString("You found a new word in the category \(translatedCategory) - \(rootCategory):",comment:"")
+        let title = String(format: NSLocalizedString("You found a new word in the category %s - %s:",comment:""),translatedCategory, rootCategory)
         let message = "\(foundTranslatedWord)\n\(foundOriginalWord)"
         let translatedWordRange = (message as NSString).range(of: foundTranslatedWord)
         let originalWordRange = (message as NSString).range(of: foundOriginalWord)

@@ -20,9 +20,6 @@ import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-     
-     let errorLoginMessage: String = NSLocalizedString("An error occurred during login:", comment:"")
-     
      var window: UIWindow?
      
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -108,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
      
      func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
           if let error = error {
-               let alert = PopupDialog(title:errorLoginMessage, message:error.localizedDescription)
+               let alert = PopupDialog(title:Constants.error.login, message:error.localizedDescription)
                alert.addButton(DefaultButton(title: Constants.error.tryAgain){
                     LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
                })
@@ -123,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           
           Auth.auth().signIn(with: credential) { (firebaseUser, error) in
                if let error = error {
-                    let alert = PopupDialog(title:self.errorLoginMessage, message:error.localizedDescription)
+                    let alert = PopupDialog(title:Constants.error.login, message:error.localizedDescription)
                     alert.addButton(DefaultButton(title: Constants.error.tryAgain){
                          LaunchScreenVC.goToViewController(named: "LoginVC", inNav: nil, animated: true)
                     })
@@ -138,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
      
      func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
           if let error = error {
-               let alert = PopupDialog(title:NSLocalizedString("An error occurred during logout:", comment:""), message:error.localizedDescription)
+               let alert = PopupDialog(title:Constants.error.logout, message:error.localizedDescription)
                alert.addButton(DefaultButton(title: "Oops, let me try again!"){})
                getCurrentVC().present(alert, animated: true, completion: nil)
                

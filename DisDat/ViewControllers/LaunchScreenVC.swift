@@ -17,8 +17,6 @@ import FBSDKLoginKit
 import PopupDialog
 
 class LaunchScreenVC: UIViewController {
-    let errorLoginMessage: String = NSLocalizedString("An error occurred during login:", comment:"")
-
     @IBOutlet weak var robotContainer: UIView!
     @IBOutlet var disView: UILabel!
     @IBOutlet var datView: UILabel!

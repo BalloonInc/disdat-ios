@@ -26,16 +26,8 @@
         <source>An error occurred during login</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="An error occurred during login:">
-        <source>An error occurred during login:</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="An error occurred during logout">
         <source>An error occurred during logout</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="An error occurred during logout:">
-        <source>An error occurred during logout:</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to change the current languages? Your progress for your current languages will be saved.">
@@ -62,6 +54,10 @@
         <source>Change languages</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Coming soon...">
+        <source>Coming soon...</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Do you want to report this to my creators? This means a human might look at your image and investigate.">
         <source>Do you want to report this to my creators? This means a human might look at your image and investigate.</source>
         <note>No comment provided by engineer.</note>
@@ -78,16 +74,12 @@
         <source>I really need permissions to use the camera. Please go to the settings to give them and return here afterwards.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="I think I see something in the category (category). Try a different angle.">
-        <source>I think I see something in the category (category). Try a different angle.</source>
+      <trans-unit id="I think I see something in the category %s. Try a different angle.">
+        <source>I think I see something in the category %s. Try a different angle.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="I was wrong... 🤓">
         <source>I was wrong... 🤓</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Later you will be able to remove your account here. Swipe down to dismiss.">
-        <source>Later you will be able to remove your account here. Swipe down to dismiss.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logout">
@@ -126,13 +118,13 @@
         <source>Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Soon you will be able to remove your account here. Swipe down to dismiss.">
+        <source>Soon you will be able to remove your account here. Swipe down to dismiss.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This is wrong.">
         <source>This is wrong.</source>
         <note>Wrong detection</note>
-      </trans-unit>
-      <trans-unit id="Todo">
-        <source>Todo</source>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown">
         <source>Unknown</source>
@@ -154,8 +146,8 @@
         <source>Yes, let me start over</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="You found a new word in the category (translatedCategory) - (rootCategory):">
-        <source>You found a new word in the category (translatedCategory) - (rootCategory):</source>
+      <trans-unit id="You found a new word in the category %s - %s:">
+        <source>You found a new word in the category %1$s - %2$s:</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>

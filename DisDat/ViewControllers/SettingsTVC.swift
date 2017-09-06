@@ -57,7 +57,7 @@ class SettingsTVC: UITableViewController {
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
-        let alert = PopupDialog(title:NSLocalizedString("Todo", comment: ""), message:NSLocalizedString("Later you will be able to remove your account here. Swipe down to dismiss.", comment: ""))
+        let alert = PopupDialog(title:NSLocalizedString("Coming soon...", comment: ""), message:NSLocalizedString("Soon you will be able to remove your account here. Swipe down to dismiss.", comment: ""))
         self.present(alert, animated: true, completion: nil)
     }
     
