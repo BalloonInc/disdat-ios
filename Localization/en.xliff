@@ -262,7 +262,7 @@ Press the button below to agree.</source>
         <note>Class = "UILabel"; text = "I need your permission to use the camera. Without it I am of no use.\nPress the button below to agree."; ObjectID = "KEM-9P-bS9";</note>
       </trans-unit>
       <trans-unit id="Lxw-ml-afy.text">
-        <source>swipe right to go back</source>
+        <source>Swipe right to go back</source>
         <note>Class = "UILabel"; text = "swipe right to go back"; ObjectID = "Lxw-ml-afy";</note>
       </trans-unit>
       <trans-unit id="MIR-nr-5Tj.normalTitle">

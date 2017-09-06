@@ -1,0 +1,141 @@
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "0fM-pe-nxc"; */
+"0fM-pe-nxc.title" = "Instellingen";
+
+/* Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn"; */
+"1H3-fh-sFn.text" = "Login methode";
+
+/* Class = "UILabel"; text = "DIS"; ObjectID = "5Wy-a4-2mQ"; */
+"5Wy-a4-2mQ.text" = "DIS";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "6Be-lG-2ty"; */
+"6Be-lG-2ty.text" = "-";
+
+/* Class = "UILabel"; text = "→"; ObjectID = "6H1-cw-E2z"; */
+"6H1-cw-E2z.text" = "→";
+
+/* Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF"; */
+"6On-gE-IGF.text" = "Coming soon";
+
+/* Class = "UILabel"; text = "0%"; ObjectID = "8PQ-xc-O3w"; */
+"8PQ-xc-O3w.text" = "0 %";
+
+/* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB"; */
+"8gv-Jd-WtB.normalTitle" = "Verwijder account";
+
+/* Class = "UILabel"; text = "If you want, I can send you push notifications with tips and more."; ObjectID = "42j-vD-LQG"; */
+"42j-vD-LQG.text" = "Als je wilt, kan ik je push berichten sturen met tips en meer.";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "72d-ZN-xKP"; */
+"72d-ZN-xKP.text" = "-";
+
+/* Class = "UITableViewController"; title = "Achievements"; ObjectID = "76t-CB-WGG"; */
+"76t-CB-WGG.title" = "Trofeeënkast";
+
+/* Class = "UILabel"; text = "DAT"; ObjectID = "ATt-9p-yRl"; */
+"ATt-9p-yRl.text" = "DAT";
+
+/* Class = "UIButton"; normalTitle = "Crash"; ObjectID = "Aeb-ys-vxY"; */
+"Aeb-ys-vxY.normalTitle" = "Crash";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "B1K-Da-31u"; */
+"B1K-Da-31u.text" = "Email";
+
+/* Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Ontdek";
+
+/* Class = "UILabel"; text = "🤖"; ObjectID = "EOA-wg-WfF"; */
+"EOA-wg-WfF.text" = "🤖";
+
+/* Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz"; */
+"JGB-lz-1nz.normalTitle" = "Reset voortgang";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM"; */
+"JWa-3k-AqM.normalTitle" = "Later";
+
+/* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy"; */
+"Lxw-ml-afy.text" = "Swipe rechts om terug te keren";
+
+/* Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj"; */
+"MIR-nr-5Tj.normalTitle" = "Klaar om te leren!";
+
+/* Class = "UITableViewSection"; headerTitle = "Languages"; ObjectID = "QrO-wX-w1N"; */
+"QrO-wX-w1N.headerTitle" = "Talen";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "R3k-Uh-QSY"; */
+"R3k-Uh-QSY.normalTitle" = "Login via Google";
+
+/* Class = "UILabel"; text = "DAT"; ObjectID = "Rbw-0a-u2D"; */
+"Rbw-0a-u2D.text" = "DAT";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "Sqd-em-gKp"; */
+"Sqd-em-gKp.text" = "Naar:";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "T25-Fl-ea1"; */
+"T25-Fl-ea1.normalTitle" = "Logout";
+
+/* Class = "UILabel"; text = "DAT"; ObjectID = "WAG-UH-w5q"; */
+"WAG-UH-w5q.text" = "DAT";
+
+/* Class = "UILabel"; text = "Quiz"; ObjectID = "Wzu-Qt-4jI"; */
+"Wzu-Qt-4jI.text" = "Quiz";
+
+/* Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "Y7Y-ds-efY"; */
+"Y7Y-ds-efY.headerTitle" = "Account";
+
+/* Class = "UIButton"; normalTitle = "Prefer not"; ObjectID = "ZrB-4x-rzB"; */
+"ZrB-4x-rzB.normalTitle" = "Liever niet";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "Zto-b0-CwL"; */
+"Zto-b0-CwL.text" = "Van:";
+
+/* Class = "UIButton"; normalTitle = "Change languages"; ObjectID = "bGs-XI-PrK"; */
+"bGs-XI-PrK.normalTitle" = "Verander talen";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "bXA-Kh-7Tu"; */
+"bXA-Kh-7Tu.title" = "Instellingen";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "bse-4x-ZcM"; */
+"bse-4x-ZcM.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa"; */
+"eg6-Qw-BVa.normalTitle" = "Akkoord";
+
+/* Class = "UILabel"; text = "DIS"; ObjectID = "fxE-9e-F6o"; */
+"fxE-9e-F6o.text" = "DIS";
+
+/* Class = "UILabel"; text = "Your native language"; ObjectID = "gJC-yk-AUL"; */
+"gJC-yk-AUL.text" = "Je moedertaal";
+
+/* Class = "UILabel"; text = "🤓"; ObjectID = "gXY-fM-fRG"; */
+"gXY-fM-fRG.text" = "🤓";
+
+/* Class = "UICollectionViewController"; title = "Achievements"; ObjectID = "gam-gY-CEf"; */
+"gam-gY-CEf.title" = "Trofeeënkast";
+
+/* Class = "UILabel"; text = "DIS"; ObjectID = "h6G-4J-zTt"; */
+"h6G-4J-zTt.text" = "DIS";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "hL1-lx-q0H"; */
+"hL1-lx-q0H.text" = "Naam";
+
+/* Class = "UILabel"; text = "DAT"; ObjectID = "jRY-MG-hwH"; */
+"jRY-MG-hwH.text" = "DAT";
+
+/* Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG"; */
+"lg1-ow-UGG.title" = "Trofeeënkast";
+
+/* Class = "UILabel"; text = "🤖"; ObjectID = "mm5-oM-GtX"; */
+"mm5-oM-GtX.text" = "🤖";
+
+/* Class = "UILabel"; text = "DIS"; ObjectID = "mvZ-O8-ufZ"; */
+"mvZ-O8-ufZ.text" = "DIS";
+
+/* Class = "UILabel"; text = "The language you are learning"; ObjectID = "oYy-Ht-Ea8"; */
+"oYy-Ht-Ea8.text" = "De taal die je wilt leren";
+
+/* Class = "UILabel"; text = "Progress"; ObjectID = "xkM-az-YTj"; */
+"xkM-az-YTj.text" = "Voortgang";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "z58-og-9dR"; */
+"z58-og-9dR.normalTitle" = "Login via Facebook";
+

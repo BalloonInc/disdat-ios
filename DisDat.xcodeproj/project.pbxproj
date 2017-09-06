@@ -22,6 +22,9 @@
 		6C2C0F3D1F59517000C958DF /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6C2C0F361F59517000C958DF /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6C2C0F431F595BB600C958DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2C0F421F595BB600C958DF /* Constants.swift */; };
 		6C4064E41F49E99800411A60 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4064E31F49E99800411A60 /* LoginVC.swift */; };
+		6C4922B61F6093030094CD18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6C4922B81F6093030094CD18 /* InfoPlist.strings */; };
+		6C4922BB1F6093030094CD18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6C4922BD1F6093030094CD18 /* InfoPlist.strings */; };
+		6C4922C01F6093030094CD18 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6C4922C21F6093030094CD18 /* Localizable.strings */; };
 		6C6815981F58173100FD9448 /* MainPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6815971F58173100FD9448 /* MainPVC.swift */; };
 		6C68159A1F582F0500FD9448 /* MainPVCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6815991F582F0500FD9448 /* MainPVCContainer.swift */; };
 		6C87A2FB1F55A82E0096FC30 /* labels_en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */; };
@@ -83,6 +86,11 @@
 		6C2C0F3A1F59517000C958DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C2C0F421F595BB600C958DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6C4064E31F49E99800411A60 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6C4922B71F6093030094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6C4922BC1F6093030094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6C4922C11F6093030094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6C4922C31F6093040094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6C4922C41F6093040094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		6C6815971F58173100FD9448 /* MainPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVC.swift; sourceTree = "<group>"; };
 		6C6815991F582F0500FD9448 /* MainPVCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVCContainer.swift; sourceTree = "<group>"; };
 		6C87A2F91F55A3E50096FC30 /* DisDat.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = DisDat.playground; path = DisDat/DisDat.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -149,6 +157,7 @@
 		6C2C0F371F59517000C958DF /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
+				6C4922BD1F6093030094CD18 /* InfoPlist.strings */,
 				6C2C0F381F59517000C958DF /* NotificationService.swift */,
 				6C2C0F3A1F59517000C958DF /* Info.plist */,
 			);
@@ -256,6 +265,8 @@
 		88C6A9C11EF863CC00CC4360 /* DisDat */ = {
 			isa = PBXGroup;
 			children = (
+				6C4922C21F6093030094CD18 /* Localizable.strings */,
+				6C4922B81F6093030094CD18 /* InfoPlist.strings */,
 				6C2C0F311F58CE7D00C958DF /* DisDat.entitlements */,
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
 				6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */,
@@ -381,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4922BB1F6093030094CD18 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,8 +401,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C943D281F5563DC001DADF7 /* labels_fr-FR.json in Resources */,
+				6C4922B61F6093030094CD18 /* InfoPlist.strings in Resources */,
 				88C6A9CD1EF863CC00CC4360 /* LaunchScreen.storyboard in Resources */,
 				6C87A2FB1F55A82E0096FC30 /* labels_en-US.json in Resources */,
+				6C4922C01F6093030094CD18 /* Localizable.strings in Resources */,
 				88C6A9CA1EF863CC00CC4360 /* Assets.xcassets in Resources */,
 				6C943D2A1F5563E2001DADF7 /* labels_nl-BE.json in Resources */,
 				88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */,
@@ -563,10 +577,35 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6C4922B81F6093030094CD18 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C4922B71F6093030094CD18 /* nl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6C4922BD1F6093030094CD18 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C4922BC1F6093030094CD18 /* nl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6C4922C21F6093030094CD18 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C4922C11F6093030094CD18 /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		88C6A9C61EF863CC00CC4360 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				88C6A9C71EF863CC00CC4360 /* Base */,
+				6C4922C41F6093040094CD18 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -575,6 +614,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88C6A9CC1EF863CC00CC4360 /* Base */,
+				6C4922C31F6093040094CD18 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
