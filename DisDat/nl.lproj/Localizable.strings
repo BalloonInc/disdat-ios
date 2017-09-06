@@ -41,7 +41,7 @@
 "I really need permissions to use the camera. Please go to the settings to give them and return here afterwards." = "Ik heb de camera toegang echt nodig. Gelieve naar de iOS instellingen te gaan om de toegang te geven, en kom daarna terug naar deze app.";
 
 /* No comment provided by engineer. */
-"I think I see something in the category %s. Try a different angle." = "Ik zie iets in de categorie %s. Probeer een andere kant van het object.";
+"I think I see something in the category %@. Try a different angle." = "Ik zie iets in de categorie %@. Probeer een andere kant van het object.";
 
 /* No comment provided by engineer. */
 "I was wrong... 🤓" = "Ik was fout... 🤓";
@@ -87,6 +87,9 @@
 
 /* No comment provided by engineer. */
 "Yes, I am done here." = "Ja, ik ben er klaar mee.";
+
+/* No comment provided by engineer. */
+"You found a new word in the category %@ - %@:" = "Je vond een nieuw woord in de categorie %@ - %@";
 
 /* No comment provided by engineer. */
 "Yes, let me change languages" = "Ja, laat me de talen veranderen";

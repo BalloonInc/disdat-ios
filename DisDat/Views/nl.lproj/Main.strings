@@ -2,7 +2,7 @@
 "0fM-pe-nxc.title" = "Instellingen";
 
 /* Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn"; */
-"1H3-fh-sFn.text" = "Login methode";
+"1H3-fh-sFn.text" = "Login via";
 
 /* Class = "UILabel"; text = "DIS"; ObjectID = "5Wy-a4-2mQ"; */
 "5Wy-a4-2mQ.text" = "DIS";
@@ -17,7 +17,7 @@
 "6On-gE-IGF.text" = "Coming soon";
 
 /* Class = "UILabel"; text = "0%"; ObjectID = "8PQ-xc-O3w"; */
-"8PQ-xc-O3w.text" = "0 %";
+"8PQ-xc-O3w.text" = "0%";
 
 /* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB"; */
 "8gv-Jd-WtB.normalTitle" = "Verwijder account";

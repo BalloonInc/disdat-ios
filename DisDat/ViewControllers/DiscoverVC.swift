@@ -34,6 +34,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     let speechSynthesizer = AVSpeechSynthesizer()
     
+    var camera: AVCaptureDevice?
     let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
     let captureQueue = DispatchQueue(label: "captureQueue")
@@ -53,6 +54,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var debug = false
     var superDebug = false
     
+    let minimumZoom: CGFloat = 1.0
+    let maximumZoom: CGFloat = 3.0
+    var lastZoomFactor: CGFloat = 1.0
+    
     var progressCircle: KDCircularProgress?
     
     @IBOutlet weak var thresholdLabel: UILabel!
@@ -68,6 +73,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var crashButton: UIButton!
     @IBOutlet weak var speechBubbleContainer: UIView!
     @IBOutlet weak var speechBubbleShelf: UIView!
+    @IBOutlet weak var zoomButton: UIButton!
     
     var speechBubble: UIView?
     
@@ -95,6 +101,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBAction func sliderValueChanged(slider: UISlider) {
         self.recognitionThreshold = slider.value
         updateThresholdLabel()
+    }
+    @IBAction func zoomButtonPressed(_ sender: UIButton) {
+        
     }
     
     override func viewDidLoad() {
@@ -177,8 +186,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     }
     
     fileprivate func loadCameraAndRequests() {
-        // get hold of the default video camera
-        let camera = AVCaptureDevice.default(for: .video)
+       camera = AVCaptureDevice.default(for: .video)
         
         if camera == nil {
             showCameraPermissionsError()
@@ -230,6 +238,49 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         updateThresholdLabel()
     }
+    
+    
+    @IBAction func pinch(_ sender: UIPinchGestureRecognizer) {
+        guard let device = camera else { return }
+        
+        // Return zoom value between the minimum and maximum zoom values
+        func minMaxZoom(_ factor: CGFloat) -> CGFloat {
+            return min(min(max(factor, minimumZoom), maximumZoom), device.activeFormat.videoMaxZoomFactor)
+        }
+        
+        func update(scale factor: CGFloat) {
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+                device.videoZoomFactor = factor
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+        
+        let newScaleFactor = minMaxZoom(sender.scale * lastZoomFactor)
+        
+        if newScaleFactor < 1.01{
+            zoomButton.isHidden = true
+        }
+        else {
+            UIView.performWithoutAnimation {
+                zoomButton.setTitle(String(format: "%.1fx", newScaleFactor), for: .normal)
+                zoomButton.isHidden = false
+                zoomButton.layoutIfNeeded()
+            }
+        }
+        
+        switch sender.state {
+        case .began: fallthrough
+        case .changed: update(scale: newScaleFactor)
+        case .ended:
+            lastZoomFactor = minMaxZoom(newScaleFactor)
+            update(scale: lastZoomFactor)
+        default: break
+        }
+    }
+
     
     func updateThresholdLabel () {
         self.thresholdLabel.text = "Threshold: " + String(format: "%.2f", recognitionThreshold)
@@ -310,7 +361,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     self.speechBubble?.removeFromSuperview()
                     let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
                     
-                    let bubbleText = String(format: NSLocalizedString("I think I see something in the category %s. Try a different angle.", comment: ""), category)
+                    let bubbleText = String(format: NSLocalizedString("I think I see something in the category %@. Try a different angle.", comment: ""), category)
                     
                     let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
                     
@@ -438,7 +489,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let title = String(format: NSLocalizedString("You found a new word in the category %s - %s:",comment:""),translatedCategory, rootCategory)
+        let title = String(format: NSLocalizedString("You found a new word in the category %@ - %@:",comment:""),translatedCategory, rootCategory)
         let message = "\(foundTranslatedWord)\n\(foundOriginalWord)"
         let translatedWordRange = (message as NSString).range(of: foundTranslatedWord)
         let originalWordRange = (message as NSString).range(of: foundOriginalWord)

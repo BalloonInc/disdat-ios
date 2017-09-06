@@ -30,6 +30,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOY-uT-XVO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QyA-AE-861" appends="YES" id="t5p-yS-qhV"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-QG-P17">
                                 <rect key="frame" x="35" y="373" width="250" height="120"/>
@@ -142,6 +145,15 @@ Mouse: 0.01</string>
                                     <action selector="crash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cTJ-xy-pxN"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoZ-Oj-2nm">
+                                <rect key="frame" x="145" y="83" width="30" height="30"/>
+                                <state key="normal" title="1.2x">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="zoomButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OH8-xJ-my9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.72941176470000002" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -158,9 +170,11 @@ Mouse: 0.01</string>
                             <constraint firstItem="XeJ-LA-gv1" firstAttribute="top" secondItem="wK8-Wg-WEe" secondAttribute="bottom" constant="-4" id="KWb-cQ-6wm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WAG-UH-w5q" secondAttribute="trailing" constant="20" symbolic="YES" id="KcY-mv-gS6"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="top" secondItem="WAG-UH-w5q" secondAttribute="top" id="MmR-x0-igF"/>
+                            <constraint firstItem="LoZ-Oj-2nm" firstAttribute="centerX" secondItem="XOY-uT-XVO" secondAttribute="centerX" id="PEH-yU-1JE"/>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="RRd-6z-fjX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dYv-QG-P17" secondAttribute="bottom" constant="75" id="Xts-eS-FOR"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="YeL-OK-xxP"/>
+                            <constraint firstItem="LoZ-Oj-2nm" firstAttribute="top" secondItem="WAG-UH-w5q" secondAttribute="bottom" constant="-3" id="cIR-FD-faA"/>
                             <constraint firstItem="zD9-tU-9WM" firstAttribute="top" secondItem="XOY-uT-XVO" secondAttribute="bottom" constant="-100" id="dsy-Fo-e1Z"/>
                             <constraint firstAttribute="trailing" secondItem="sIQ-ID-W5c" secondAttribute="trailing" constant="16" id="fJI-Yh-cPd"/>
                             <constraint firstItem="z8P-2p-WdH" firstAttribute="top" secondItem="mvZ-O8-ufZ" secondAttribute="bottom" constant="-3" id="g3V-3q-LQ6"/>
@@ -192,6 +206,7 @@ Mouse: 0.01</string>
                         <outlet property="thresholdLabel" destination="zes-gz-1Xr" id="Zrl-tU-AIV"/>
                         <outlet property="thresholdSlider" destination="zD9-tU-9WM" id="hud-tQ-KWX"/>
                         <outlet property="translatedResultView" destination="4am-5s-VvX" id="KNc-QC-b69"/>
+                        <outlet property="zoomButton" destination="LoZ-Oj-2nm" id="kzP-G2-e3l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,6 +220,11 @@ Mouse: 0.01</string>
                         <action selector="enableSuperDebug:" destination="BYZ-38-t0r" id="UfX-5L-FNS"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pinchGestureRecognizer id="QyA-AE-861">
+                    <connections>
+                        <action selector="pinch:" destination="BYZ-38-t0r" id="Llr-ia-e2j"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="575.625" y="31.690140845070424"/>
         </scene>
