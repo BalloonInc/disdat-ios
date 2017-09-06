@@ -172,6 +172,23 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureZoomButton()
+        if self.previewView != nil {
+            previewLayer?.frame = self.previewView.bounds;
+            gradientLayer?.frame = self.previewView.bounds;
+        }
+    }
+    
+    func configureZoomButton()
+    {
+        zoomButton.layer.cornerRadius = 0.5 * zoomButton.bounds.size.width
+        zoomButton.layer.borderColor = UIColor.white.cgColor
+        zoomButton.layer.borderWidth = 1.0
+        zoomButton.clipsToBounds = true
+    }
+    
     fileprivate func showCameraPermissionsError() {
         noCameraPermissions = true
         DispatchQueue.main.async {
@@ -284,14 +301,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     func updateThresholdLabel () {
         self.thresholdLabel.text = "Threshold: " + String(format: "%.2f", recognitionThreshold)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if self.previewView != nil {
-            previewLayer?.frame = self.previewView.bounds;
-            gradientLayer?.frame = self.previewView.bounds;
-        }
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
