@@ -1351,8 +1351,12 @@ Press the button below to agree.</string>
                                                 <constraint firstAttribute="width" constant="120" id="HcS-Ha-FiY"/>
                                             </constraints>
                                         </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-cd-lYo">
+                                            <rect key="frame" x="196" y="50" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="gNR-cd-lYo" firstAttribute="centerX" secondItem="PmQ-2y-48V" secondAttribute="centerX" id="5E7-XB-C2b"/>
                                         <constraint firstAttribute="bottom" secondItem="gCp-Ib-mgt" secondAttribute="bottom" constant="7.5" id="AIs-iV-YUl"/>
                                         <constraint firstItem="PmQ-2y-48V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cto-gV-1cX" secondAttribute="trailing" id="Abk-Mh-JpB"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="0Vh-fH-uxi" secondAttribute="trailing" constant="8" id="Cqy-0n-m32"/>
@@ -1363,10 +1367,12 @@ Press the button below to agree.</string>
                                         <constraint firstItem="0Vh-fH-uxi" firstAttribute="leading" secondItem="PmQ-2y-48V" secondAttribute="trailing" constant="8" id="e7y-ck-g1G"/>
                                         <constraint firstItem="Cto-gV-1cX" firstAttribute="leading" secondItem="rww-aS-LtT" secondAttribute="leadingMargin" constant="6" id="eph-TE-Jyt"/>
                                         <constraint firstItem="PmQ-2y-48V" firstAttribute="top" secondItem="rww-aS-LtT" secondAttribute="top" id="hcC-0j-fbt"/>
+                                        <constraint firstItem="gNR-cd-lYo" firstAttribute="centerY" secondItem="PmQ-2y-48V" secondAttribute="centerY" id="sPf-Us-zf9"/>
                                         <constraint firstItem="PmQ-2y-48V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gCp-Ib-mgt" secondAttribute="trailing" id="sa0-2h-fZ8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="gNR-cd-lYo" id="mPt-34-usF"/>
                                     <outlet property="discoveredWordImageView" destination="PmQ-2y-48V" id="TnH-wN-Mm9"/>
                                     <outlet property="originalWordLabel" destination="gCp-Ib-mgt" id="p0R-2U-m6G"/>
                                     <outlet property="speakerButton" destination="0Vh-fH-uxi" id="mYJ-vN-rbU"/>

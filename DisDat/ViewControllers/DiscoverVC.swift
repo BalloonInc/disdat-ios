@@ -12,7 +12,6 @@ import Vision
 import PopupDialog
 import Firebase
 import FirebaseStorage
-import KDCircularProgress
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
@@ -54,7 +53,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var superDebug = false
     
     var progressCircle: KDCircularProgress?
-
+    
     @IBOutlet weak var thresholdLabel: UILabel!
     @IBOutlet weak var thresholdSlider: UISlider!
     
@@ -87,7 +86,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         thresholdLabel.isHidden = !superDebug
         thresholdSlider.isHidden = !superDebug
     }
-
+    
     @IBAction func crash(_ sender: Any) {
         Crashlytics.sharedInstance().crash()
     }
@@ -284,58 +283,59 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
         
+
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
-
-            DispatchQueue.main.async {
-                let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
-                
-                if self.debug {
-                    self.debugResultView.text = fullClassificationList[0...5].joined(separator:"\n")
-                    self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
-                    if let currentBuffer = self.currentPixelBuffer{
-                        self.debugImageView.image = self.convert(cmage: CIImage(cvPixelBuffer: currentBuffer), crop: true)
-                    }
+        
+        DispatchQueue.main.async {
+            let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
+            
+            if self.debug {
+                self.debugResultView.text = fullClassificationList[0...5].joined(separator:"\n")
+                self.debugFpsView.text = String(format: "%.2f ms", lastClassificationTime)
+                if let currentBuffer = self.currentPixelBuffer{
+                    self.debugImageView.image = self.convert(cmage: CIImage(cvPixelBuffer: currentBuffer), crop: true)
                 }
-                
-                let confidence = (observations[0] as! VNClassificationObservation).confidence
-                let suspicion = (observations[0] as! VNClassificationObservation).identifier
-                let duration = confidence > self.recognitionThreshold ? 0.25 : min(lastClassificationTime/1000,1)
-                
-                if confidence > 0.8 * self.recognitionThreshold && confidence < self.recognitionThreshold {
-                    if self.lastSuspicion != suspicion {
-                        self.lastSuspicionTime = Date()
-                        self.lastSuspicion = suspicion
-                        self.speechBubble?.removeFromSuperview()
-                        let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
-                        
-                        let bubbleText = NSLocalizedString("I think I see something in the category \(category). Try a different angle.", comment: "")
-                        
-                        let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
-                        
-                        let paragraph = NSMutableParagraphStyle()
-                        paragraph.alignment = .center
-
-                        attributedBubbleText.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (bubbleText as NSString).range(of: category))
-                        attributedBubbleText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: bubbleText.count))
-
-                        self.speechBubble = SpeechBubble(baseView: self.speechBubbleShelf, containingView: self.speechBubbleContainer, attributedText: attributedBubbleText)
-                        self.speechBubbleContainer.addSubview(self.speechBubble!)
-                    }
-                }
-                else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > self.recognitionThreshold {
-                        self.speechBubble?.removeFromSuperview()
-                }
-                
-                self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/self.recognitionThreshold),360), duration: duration , completion: { success in
-                    if self.viewDidClear {
-                        self.progressCircle?.animate(toAngle: 0, duration: 0.5, completion:nil)
-                    }
-                }
-                )
-                
-                self.lastClassificationPerformed = Date()
             }
+            
+            let confidence = (observations[0] as! VNClassificationObservation).confidence
+            let suspicion = (observations[0] as! VNClassificationObservation).identifier
+            let duration = confidence > self.recognitionThreshold ? 0.25 : min(lastClassificationTime/1000,1)
+            
+            if confidence > 0.8 * self.recognitionThreshold && confidence < self.recognitionThreshold {
+                if self.lastSuspicion != suspicion {
+                    self.lastSuspicionTime = Date()
+                    self.lastSuspicion = suspicion
+                    self.speechBubble?.removeFromSuperview()
+                    let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
+                    
+                    let bubbleText = NSLocalizedString("I think I see something in the category \(category). Try a different angle.", comment: "")
+                    
+                    let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
+                    
+                    let paragraph = NSMutableParagraphStyle()
+                    paragraph.alignment = .center
+                    
+                    attributedBubbleText.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (bubbleText as NSString).range(of: category))
+                    attributedBubbleText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: bubbleText.count))
+                    
+                    self.speechBubble = SpeechBubble(baseView: self.speechBubbleShelf, containingView: self.speechBubbleContainer, attributedText: attributedBubbleText)
+                    self.speechBubbleContainer.addSubview(self.speechBubble!)
+                }
+            }
+            else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > self.recognitionThreshold {
+                self.speechBubble?.removeFromSuperview()
+            }
+            
+            self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/self.recognitionThreshold),360), duration: duration , completion: { success in
+                if self.viewDidClear {
+                    self.progressCircle?.animate(toAngle: 0, duration: 0.5, completion:nil)
+                }
+            }
+            )
+            
+            self.lastClassificationPerformed = Date()
+        }
         
         let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
         let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
@@ -365,11 +365,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 self.currentPixelBuffer = nil
                 let image = self.convert(cmage: ciImage, crop: true)
                 
-                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-                let filePath = "\(paths[0])/\(classificationsList[0]).png"
-                
-                try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath))
-                
                 displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList)
             }
             return
@@ -379,85 +374,94 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEngishWord: String,  _ image: UIImage, _ fullPredictions: [String]) {
+    fileprivate func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {
+        guard let currentUser = Auth.auth().currentUser else {return}
+        
+        let storageRef = Storage.storage().reference()
+        
+        var rootFolder = storageRef.child(correct ? "correct_images" : "false_positives").child(currentUser.uid)
+
+        if correct {
+            rootFolder = rootFolder.child("\(rootLanguage!)-\(learningLanguage!)")
+        }
+        
+        let imageRef = rootFolder.child(englishWord+".png")
+        let txtRef = rootFolder.child(englishWord+".json")
+        
+        let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
+        
+        let metaData: [String:Any] = ["predictions":Array(fullPredictions[0...10]),
+                                      "device":UIDevice.current.modelName,
+                                      "orientation":Helpers.getOrientationString(),
+                                      "OS version":UIDevice.current.systemVersion,
+                                      "Battery level":UIDevice.current.batteryLevel,
+                                      "App version":Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
+                                      "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        ]
+        
+        let fileURL = self.getTempURL(fileName: "metadata_temp.json")
+        
+        imageRef.putData(data, metadata:nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                print("Could not upload image: \(error?.localizedDescription ?? "")")
+                return
+            }
+            print("uploaded image to path: \(metadata.downloadURL()?.absoluteString ?? "")")
+            
+            do {
+                let data = try JSONSerialization.data(withJSONObject: metaData, options: [])
+                try data.write(to: fileURL!, options: [])
+                txtRef.putFile(from: fileURL!, metadata: nil, completion: { (metadata, error) in
+                    if let error = error {
+                        print("Could not upload text json: \(error.localizedDescription)")
+                        return
+                    }
+                    else {
+                        print("File succesfully uploaded at path: \(metadata?.downloadURL()?.absoluteString ?? "")")
+                    }
+                    try? FileManager.default.removeItem(atPath: fileURL!.path)
+                })
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEnglishWord: String,  _ image: UIImage, _ fullPredictions: [String]) {
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let title = NSLocalizedString("You found a new word in the category \(translatedCategory) (\(rootCategory)):",comment:"")
-        let message = "\(foundTranslatedWord) (\(foundOriginalWord))"
+        let title = NSLocalizedString("You found a new word in the category \(translatedCategory) - \(rootCategory):",comment:"")
+        let message = "\(foundTranslatedWord)\n\(foundOriginalWord)"
+        let translatedWordRange = (message as NSString).range(of: foundTranslatedWord)
+        let originalWordRange = (message as NSString).range(of: foundOriginalWord)
         let attributedTitle = NSMutableAttributedString.init(string: title)
         let attributedMessage = NSMutableAttributedString.init(string: message)
         
         attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (title as NSString).range(of: translatedCategory))
         attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (title as NSString).range(of: rootCategory))
-
-        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (message as NSString).range(of: foundTranslatedWord))
-        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (message as NSString).range(of: foundOriginalWord))
-
+        
+        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: translatedWordRange)
+        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: originalWordRange)
+        attributedMessage.addAttribute(.font, value: UIFont.systemFont(ofSize: 38, weight: .regular), range: translatedWordRange)
+        attributedMessage.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .regular), range: originalWordRange)
+        
         let alert = PopupDialog(title:nil, message: nil, attributedTitle:attributedTitle, attributedMessage:attributedMessage, image: image, gestureDismissal: false)
         
-        
-        if let alertVC = alert.viewController as? PopupDialogDefaultViewController{
-            alertVC.messageFont = UIFont.systemFont(ofSize: screenHeight! > 568 ? 20 : 18, weight: .semibold)
-        }
-        
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
-            DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEngishWord)
-            self.session.startRunning()
+            DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEnglishWord)
+            self.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
+                self.session.startRunning()
         })
         
         alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
-            if let currentUser = Auth.auth().currentUser {
+            if Auth.auth().currentUser != nil {
                 let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
                     
-                    let userID = currentUser.isAnonymous ? currentUser.uid : currentUser.email ?? "unknown"
-                    let filename = "\(userID)-\(Date.timeIntervalSinceReferenceDate)"
-                    
-                    let storage = Storage.storage()
-                    let storageRef = storage.reference()
-                    let imageRef = storageRef.child("false_positives").child(foundEngishWord).child(filename+".png")
-                    let txtRef = storageRef.child("false_positives").child(foundEngishWord).child(filename+".json")
-                    
-                    let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
-                    
-                    let metaData: [String:Any] = ["predictions":Array(fullPredictions[0...10]),
-                                                  "device":UIDevice.current.modelName,
-                                                  "orientation":Helpers.getOrientationString(),
-                                                  "OS version":UIDevice.current.systemVersion,
-                                                  "Battery level":UIDevice.current.batteryLevel,
-                                                  "App version":Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
-                                                  "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-                                                  ]
-                    
-                    let fileURL = self.getTempURL(fileName: "metadata_temp.json")
+                    self.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: false)
                     self.session.startRunning()
-                    
-                    imageRef.putData(data, metadata:nil) { (metadata, error) in
-                        guard let metadata = metadata else {
-                            print("Could not upload image: \(error?.localizedDescription ?? "")")
-                            return
-                        }
-                        print("uploaded image to path: \(metadata.downloadURL()?.absoluteString ?? "")")
-                        
-                        do {
-                            let data = try JSONSerialization.data(withJSONObject: metaData, options: [])
-                            try data.write(to: fileURL!, options: [])
-                            txtRef.putFile(from: fileURL!, metadata: nil, completion: { (metadata, error) in
-                                if let error = error {
-                                    print("Could not upload text json: \(error.localizedDescription)")
-                                    return
-                                }
-                                else {
-                                    print("File succesfully uploaded at path: \(metadata?.downloadURL()?.absoluteString ?? "")")
-                                }
-                                try? FileManager.default.removeItem(atPath: fileURL!.path)
-                            })
-                        } catch {
-                            print(error)
-                        }
-                    }
                 })
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
                     self.session.startRunning()

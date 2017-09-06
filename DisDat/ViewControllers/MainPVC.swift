@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KDCircularProgress
 
 class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 

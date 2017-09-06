@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
      var window: UIWindow?
      
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+          configurePopup()
           FirebaseApp.configure()
           GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
           GIDSignIn.sharedInstance().delegate = self
@@ -47,6 +48,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           return GIDSignIn.sharedInstance().handle(url,
                                                    sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                    annotation: [:])
+     }
+     
+     func configurePopup(){
+          // Customize dialog appearance
+//          let pv = PopupDialogDefaultView.appearance()
+//          pv.titleFont    = UIFont(name: "HelveticaNeue-Light", size: 16)!
+//          pv.titleColor   = UIColor.white
+//          pv.messageFont  = UIFont(name: "HelveticaNeue", size: 14)!
+//          pv.messageColor = UIColor(white: 0.8, alpha: 1)
+          
+          // Customize the container view appearance
+          let pcv = PopupDialogContainerView.appearance()
+//          pcv.backgroundColor = UIColor(red:0.23, green:0.23, blue:0.27, alpha:1.00)
+          pcv.cornerRadius    = 10
+//          pcv.shadowEnabled   = true
+//          pcv.shadowColor     = UIColor.black
+          
+          // Customize overlay appearance
+//          let ov = PopupDialogOverlayView.appearance()
+//          ov.blurEnabled = true
+//          ov.blurRadius  = 30
+//          ov.liveBlur    = true
+//          ov.opacity     = 0.7
+//          ov.color       = UIColor.black
+          
+          // Customize default button appearance
+//          let db = DefaultButton.appearance()
+//          db.titleFont      = UIFont(name: "HelveticaNeue-Medium", size: 14)!
+//          db.titleColor     = UIColor.white
+//          db.buttonColor    = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
+//          db.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
+          
+          // Customize cancel button appearance
+//          let cb = CancelButton.appearance()
+//          cb.titleFont      = UIFont(name: "HelveticaNeue-Medium", size: 14)!
+//          cb.titleColor     = UIColor(white: 0.6, alpha: 1)
+//          cb.buttonColor    = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
+//          cb.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
+          
+          // Customize cancel button appearance
+//          let desb = DestructiveButton.appearance()
+//          desb.titleFont      = UIFont(name: "HelveticaNeue-Medium", size: 14)!
+//          desb.titleColor     = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+//          desb.buttonColor    = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
+//          desb.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
      }
      
      func configureOneSignal(launchOptions: [UIApplicationLaunchOptionsKey: Any]?){
