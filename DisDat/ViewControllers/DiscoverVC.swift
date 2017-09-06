@@ -327,8 +327,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > self.recognitionThreshold {
                 self.speechBubble?.removeFromSuperview()
             }
+            var progressAngle = min(Double(360.0*confidence/self.recognitionThreshold),360)
+            // this is to avoid
+            if progressAngle > 345 && progressAngle < 360.0{
+                progressAngle = 345
+            }
             
-            self.progressCircle?.animate(toAngle: min(Double(360.0*confidence/self.recognitionThreshold),360), duration: duration , completion: { success in
+            self.progressCircle?.animate(toAngle: progressAngle, duration: duration , completion: { success in
                 if self.viewDidClear {
                     self.progressCircle?.animate(toAngle: 0, duration: 0.5, completion:nil)
                 }
