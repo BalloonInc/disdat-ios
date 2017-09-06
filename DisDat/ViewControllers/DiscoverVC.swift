@@ -12,6 +12,7 @@ import Vision
 import PopupDialog
 import Firebase
 import FirebaseStorage
+import KDCircularProgress
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false

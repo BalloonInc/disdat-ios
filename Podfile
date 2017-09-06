@@ -3,7 +3,7 @@ platform :ios, '11.0'
 
 target 'DisDat' do
     pod 'PopupDialog', :git=> 'git@github.com:ballooninc/PopupDialog.git', :branch => 'master'
-#    pod 'KDCircularProgress', :git=> 'git@github.com:BalloonInc/KDCircularProgress.git', :branch => 'swift4'
+    pod 'KDCircularProgress', :git=> 'git@github.com:BalloonInc/KDCircularProgress.git', :branch => 'swift4'
     pod 'Kingfisher', :git=> 'git@github.com:onevcat/Kingfisher.git', :branch => 'swift4'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
