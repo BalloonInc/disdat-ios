@@ -145,9 +145,16 @@ Mouse: 0.01</string>
                                     <action selector="crash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cTJ-xy-pxN"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqZ-TK-jNi">
+                                <rect key="frame" x="142" y="80" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4gQ-sI-Vzp"/>
+                                    <constraint firstAttribute="width" constant="35" id="Pk5-2Q-Ydi"/>
+                                </constraints>
+                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoZ-Oj-2nm">
-                                <rect key="frame" x="145" y="83" width="30" height="30"/>
-                                <state key="normal" title="1.2x">
+                                <rect key="frame" x="142.5" y="83" width="35" height="30"/>
+                                <state key="normal" title=" 1.2x ">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -170,6 +177,7 @@ Mouse: 0.01</string>
                             <constraint firstItem="XeJ-LA-gv1" firstAttribute="top" secondItem="wK8-Wg-WEe" secondAttribute="bottom" constant="-4" id="KWb-cQ-6wm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WAG-UH-w5q" secondAttribute="trailing" constant="20" symbolic="YES" id="KcY-mv-gS6"/>
                             <constraint firstItem="mvZ-O8-ufZ" firstAttribute="top" secondItem="WAG-UH-w5q" secondAttribute="top" id="MmR-x0-igF"/>
+                            <constraint firstItem="HqZ-TK-jNi" firstAttribute="centerY" secondItem="LoZ-Oj-2nm" secondAttribute="centerY" id="NoR-Xd-btA"/>
                             <constraint firstItem="LoZ-Oj-2nm" firstAttribute="centerX" secondItem="XOY-uT-XVO" secondAttribute="centerX" id="PEH-yU-1JE"/>
                             <constraint firstItem="38g-bS-WI8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="RRd-6z-fjX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dYv-QG-P17" secondAttribute="bottom" constant="75" id="Xts-eS-FOR"/>
@@ -180,6 +188,7 @@ Mouse: 0.01</string>
                             <constraint firstItem="z8P-2p-WdH" firstAttribute="top" secondItem="mvZ-O8-ufZ" secondAttribute="bottom" constant="-3" id="g3V-3q-LQ6"/>
                             <constraint firstItem="XeJ-LA-gv1" firstAttribute="leading" secondItem="z8P-2p-WdH" secondAttribute="trailing" constant="15.5" id="gBu-c9-tVc"/>
                             <constraint firstItem="zes-gz-1Xr" firstAttribute="centerY" secondItem="zD9-tU-9WM" secondAttribute="centerY" id="iRO-mT-7Ak"/>
+                            <constraint firstItem="HqZ-TK-jNi" firstAttribute="centerX" secondItem="LoZ-Oj-2nm" secondAttribute="centerX" id="ib5-dy-y2x"/>
                             <constraint firstItem="4am-5s-VvX" firstAttribute="top" secondItem="sIQ-ID-W5c" secondAttribute="bottom" constant="8.5" id="jFL-ed-Yil"/>
                             <constraint firstItem="WAG-UH-w5q" firstAttribute="leading" secondItem="mvZ-O8-ufZ" secondAttribute="trailing" constant="1" id="jaL-d4-vRT"/>
                             <constraint firstItem="XOY-uT-XVO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kyg-JG-hbM"/>
@@ -207,6 +216,7 @@ Mouse: 0.01</string>
                         <outlet property="thresholdSlider" destination="zD9-tU-9WM" id="hud-tQ-KWX"/>
                         <outlet property="translatedResultView" destination="4am-5s-VvX" id="KNc-QC-b69"/>
                         <outlet property="zoomButton" destination="LoZ-Oj-2nm" id="kzP-G2-e3l"/>
+                        <outlet property="zoomCirleView" destination="HqZ-TK-jNi" id="4UN-Nm-3Bf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

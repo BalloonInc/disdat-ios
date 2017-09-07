@@ -75,6 +75,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var speechBubbleShelf: UIView!
     @IBOutlet weak var zoomButton: UIButton!
     
+    @IBOutlet weak var zoomCirleView: UIView!
     var speechBubble: UIView?
     
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
@@ -103,7 +104,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         updateThresholdLabel()
     }
     @IBAction func zoomButtonPressed(_ sender: UIButton) {
-        
+        pinch(scale: 0, state: .ended)
     }
     
     override func viewDidLoad() {
@@ -183,10 +184,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     func configureZoomButton()
     {
-        zoomButton.layer.cornerRadius = 0.5 * zoomButton.bounds.size.width
-        zoomButton.layer.borderColor = UIColor.white.cgColor
-        zoomButton.layer.borderWidth = 1.0
-        zoomButton.clipsToBounds = true
+        zoomCirleView.layer.cornerRadius = 0.5 * zoomCirleView.bounds.size.width
+        zoomCirleView.layer.borderColor = UIColor.white.cgColor
+        zoomCirleView.layer.borderWidth = 1.0
+        zoomCirleView.clipsToBounds = true
     }
     
     fileprivate func showCameraPermissionsError() {
@@ -258,6 +259,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     
     @IBAction func pinch(_ sender: UIPinchGestureRecognizer) {
+        pinch(scale: sender.scale, state: sender.state )
+    }
+
+    func pinch(scale: CGFloat, state: UIGestureRecognizerState){
         guard let device = camera else { return }
         
         // Return zoom value between the minimum and maximum zoom values
@@ -275,20 +280,23 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             }
         }
         
-        let newScaleFactor = minMaxZoom(sender.scale * lastZoomFactor)
+        var newScaleFactor = minMaxZoom(scale * lastZoomFactor)
         
         if newScaleFactor < 1.01{
+            newScaleFactor = 1.0
             zoomButton.isHidden = true
+            zoomCirleView.isHidden = true
         }
         else {
             UIView.performWithoutAnimation {
-                zoomButton.setTitle(String(format: "%.1fx", newScaleFactor), for: .normal)
+                zoomButton.setTitle(String(format: " %.1fx ", newScaleFactor), for: .normal)
                 zoomButton.isHidden = false
+                zoomCirleView.isHidden = false
                 zoomButton.layoutIfNeeded()
             }
         }
         
-        switch sender.state {
+        switch state {
         case .began: fallthrough
         case .changed: update(scale: newScaleFactor)
         case .ended:
@@ -297,7 +305,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         default: break
         }
     }
-
     
     func updateThresholdLabel () {
         self.thresholdLabel.text = "Threshold: " + String(format: "%.2f", recognitionThreshold)
