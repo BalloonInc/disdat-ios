@@ -51,7 +51,6 @@ class AchievementsCVC: UICollectionViewController {
         cell.categoryIndex = indexPath.item
         let englishCategoryText = DiscoveredWordCollection.getInstance()!.englishLanguageCategories[indexPath.item]
         let categoryText = DiscoveredWordCollection.getInstance()!.learningLanguageCategories[indexPath.item]
-        let categoryImage = UIImage(named:englishCategoryText.lowercased())
         
         let jsonCategory = DiscoveredWordCollection.getInstance()!.englishLanguageJson[indexPath.item]["words"] as! [String]
         
@@ -59,6 +58,11 @@ class AchievementsCVC: UICollectionViewController {
             
         let totalProgress =  jsonCategory.count
         let progressString = "\(discoveredProgress)/\(totalProgress)"
+        var imagename = englishCategoryText.lowercased()
+        if discoveredProgress == 0 {
+            imagename += "-grey"
+        }
+        let categoryImage = UIImage(named:imagename)
         
         cell.setContent(categoryText:categoryText, categoryImage: categoryImage, progressString:progressString )
         

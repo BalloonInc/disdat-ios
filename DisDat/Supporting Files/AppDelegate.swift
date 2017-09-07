@@ -71,9 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //          ov.color       = UIColor.black
           
           // Customize default button appearance
-//          let db = DefaultButton.appearance()
+          let db = DefaultButton.appearance()
 //          db.titleFont      = UIFont(name: "HelveticaNeue-Medium", size: 14)!
-//          db.titleColor     = UIColor.white
+          db.titleColor     = #colorLiteral(red: 0.1490027606, green: 0.1490303874, blue: 0.1489966214, alpha: 1)
 //          db.buttonColor    = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
 //          db.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
           
