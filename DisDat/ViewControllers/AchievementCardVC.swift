@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AVKit
+import Kingfisher
 
 class AchievementCardVC: UIViewController {
     var englishWord: String?

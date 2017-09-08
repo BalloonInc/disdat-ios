@@ -23,10 +23,15 @@ class LaunchScreenVC: UIViewController {
     
     static var animator: UIDynamicAnimator?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         disView.isHidden = true
-        datView.isHidden = true        
+        datView.isHidden = true
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {

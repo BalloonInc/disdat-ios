@@ -34,8 +34,13 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         Authentication.getInstance().signInAnonymously(caller:self, onFinished:{success in self.loginCompleted(success)})
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
         GIDSignIn.sharedInstance().uiDelegate = self
         
         setButtonUI(button: googleLoginButton)

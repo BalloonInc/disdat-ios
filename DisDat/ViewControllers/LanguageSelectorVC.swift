@@ -74,9 +74,13 @@ class LanguageSelectorVC: UIViewController {
         self.pushPermissionsLabel.text = pushDeclined
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setNeedsStatusBarAppearanceUpdate()
         precheckCameraPermissions()
         
         var tiles = [nativeLanguageTile, learningLanguageTile, readyTile]

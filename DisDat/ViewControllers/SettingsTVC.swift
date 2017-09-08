@@ -28,8 +28,14 @@ class SettingsTVC: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var loginMethodLabel: UILabel!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
+
         if let navigationBar = self.navigationController?.navigationBar{
             navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
             

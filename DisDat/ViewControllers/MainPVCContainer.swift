@@ -28,8 +28,13 @@ class MainPVCContainer: UIViewController {
     @IBOutlet weak var t1: NSLayoutConstraint!
     @IBOutlet weak var t2: NSLayoutConstraint!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
 
         buttons = [quizButton, discoverButton, achievementButton]
         resize(button: achievementButton, size: .small, withDuration: 0.0)
