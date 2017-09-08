@@ -16,8 +16,8 @@ class LanguageSelectorVC: UIViewController {
     
     var changeLanguageOnly = false
     
-    @IBOutlet weak var rootLanguagePicker: LanguageSelectionPickerView!
-    @IBOutlet weak var newLanguagePicker: LanguageSelectionPickerView!
+    @IBOutlet weak var rootLanguagePicker: LanguagePickerView!
+    @IBOutlet weak var newLanguagePicker: LanguagePickerView!
     
     @IBOutlet weak var nativeLanguageTile: UIView!
     @IBOutlet weak var learningLanguageTile: UIView!
@@ -98,7 +98,7 @@ class LanguageSelectorVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.newLanguagePicker.selectRow(1, inComponent: 0, animated: false)
-        self.newLanguagePicker.selectedLanguageCode = LanguageSelectionPickerView.languageKeys[1]
+        self.newLanguagePicker.selectedLanguageCode = LanguagePickerView.languageKeys[1]
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+class LanguagePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     static let supportedLanguageKeys = ["nl-BE","en-US","fr-FR"]
     static var languageKeys: [String] = []
@@ -29,8 +29,8 @@ class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerV
     func initClass(){
         self.dataSource = self
         self.delegate = self
-        LanguageSelectionPickerView.getSupportedLanguages()
-        self.selectedLanguageCode = LanguageSelectionPickerView.languageKeys[0]
+        LanguagePickerView.getSupportedLanguages()
+        self.selectedLanguageCode = LanguagePickerView.languageKeys[0]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -38,15 +38,15 @@ class LanguageSelectionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LanguageSelectionPickerView.languageKeys.count
+        return LanguagePickerView.languageKeys.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return LanguageSelectionPickerView.languageNames[row]
+        return LanguagePickerView.languageNames[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedLanguageCode = LanguageSelectionPickerView.languageKeys[row]
+        selectedLanguageCode = LanguagePickerView.languageKeys[row]
     }
     
     static func getSupportedLanguages() {

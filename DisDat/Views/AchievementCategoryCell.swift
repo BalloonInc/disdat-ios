@@ -14,14 +14,17 @@ class AchievementCategoryCell: UICollectionViewCell {
     @IBOutlet weak var progressCell: UILabel!
     
     var categoryIndex: Int?
+    var englishCategoryText: String?
     
-    func setContent(categoryText: String, categoryImage: UIImage?, progressString: String){
-        categoryImageView.image = categoryImage
-        categoryLabel.text = categoryText
-        progressCell.text = progressString
+    func setContent(englishCategoryText: String, categoryText: String, categoryImage: UIImage?, progressString: String){
+        self.englishCategoryText = englishCategoryText
+        self.categoryImageView.image = categoryImage
+        self.categoryLabel.text = categoryText
+        self.progressCell.text = progressString
     }
     
     func clear(){
+        englishCategoryText = nil
         categoryImageView.image = nil
         categoryLabel.text = nil
         progressCell.text = nil

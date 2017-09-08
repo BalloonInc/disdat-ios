@@ -14,22 +14,18 @@ class AchievementsCVC: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
         self.collectionView?.reloadData()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-    }
 
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCategoryDetailSegue"{
-            if let destVC = segue.destination as? AchievementDetailTVC {
-                destVC.categoryIndex = (sender as! AchievementCategoryCell).categoryIndex
+            if let destVC = segue.destination as? AchievementDetailContainer {
+                if let cell = sender as? AchievementCategoryCell{
+                    destVC.englishCategoryText = cell.englishCategoryText
+                    destVC.categoryIndex = cell.categoryIndex
+                }
             }
         }
     }
@@ -64,7 +60,7 @@ class AchievementsCVC: UICollectionViewController {
         }
         let categoryImage = UIImage(named:imagename)
         
-        cell.setContent(categoryText:categoryText, categoryImage: categoryImage, progressString:progressString )
+        cell.setContent(englishCategoryText: englishCategoryText, categoryText:categoryText, categoryImage: categoryImage, progressString:progressString )
         
     
         return cell

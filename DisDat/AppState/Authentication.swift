@@ -103,7 +103,7 @@ class Authentication{
                             onFinished(false)
                             return
                         }
-                        self.login(userId: user!.uid, fullname: res["name"] as! String, email: res["email"] as! String, authenticationMethod: .facebook)
+                        self.login(userId: user!.uid, fullname: (res["name"] as! String), email: (res["email"] as! String), authenticationMethod: .facebook)
                         onFinished(true)
                     }
                 }

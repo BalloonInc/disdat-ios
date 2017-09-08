@@ -89,6 +89,10 @@ class DiscoveredWordCollection {
         return learningLanguageJson.first(where: {($0["words"] as! [String]).contains(word)})!["category"] as! String
     }
     
+    func getLearningCategory(index: Int) -> String{
+        return learningLanguageJson[index]["category"] as! String
+    }
+    
     func getCurrentDiscoveredCount() -> Int{
         return discoveredWords["\(rootLanguage)-\(learningLanguage)"]?.count ?? 0
     }
