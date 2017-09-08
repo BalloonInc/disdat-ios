@@ -204,7 +204,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     }
     
     fileprivate func loadCameraAndRequests() {
-       camera = AVCaptureDevice.default(for: .video)
+        camera = AVCaptureDevice.default(for: .video)
         
         if camera == nil {
             showCameraPermissionsError()
@@ -261,7 +261,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBAction func pinch(_ sender: UIPinchGestureRecognizer) {
         pinch(scale: sender.scale, state: sender.state )
     }
-
+    
     func pinch(scale: CGFloat, state: UIGestureRecognizerState){
         guard let device = camera else { return }
         
@@ -351,7 +351,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({$0.identifier})
         
-
+        
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
         
@@ -453,7 +453,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let storageRef = Storage.storage().reference()
         
         var rootFolder = storageRef.child(correct ? "correct_images" : "false_positives").child(currentUser.uid)
-
+        
         if correct {
             rootFolder = rootFolder.child("\(rootLanguage!)-\(learningLanguage!)")
         }
@@ -505,27 +505,16 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
         
-        let title = String(format: NSLocalizedString("You found a new word in the category %@ - %@:",comment:""),translatedCategory, rootCategory)
-        let message = "\(foundTranslatedWord)\n\(foundOriginalWord)"
-        let translatedWordRange = (message as NSString).range(of: foundTranslatedWord)
-        let originalWordRange = (message as NSString).range(of: foundOriginalWord)
-        let attributedTitle = NSMutableAttributedString.init(string: title)
-        let attributedMessage = NSMutableAttributedString.init(string: message)
+        let attributedTitle = getAttributedTitle(rootCategory: rootCategory, translatedCategory: translatedCategory)
         
-        attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (title as NSString).range(of: translatedCategory))
-        attributedTitle.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (title as NSString).range(of: rootCategory))
+        let attributedMessage = getAttributedMessage(foundTranslatedWord: foundTranslatedWord, foundOriginalWord: foundOriginalWord)
         
-        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: translatedWordRange)
-        attributedMessage.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: originalWordRange)
-        attributedMessage.addAttribute(.font, value: UIFont.systemFont(ofSize: 38, weight: .regular), range: translatedWordRange)
-        attributedMessage.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .regular), range: originalWordRange)
-        
-        let alert = PopupDialog(title:nil, message: nil, attributedTitle:attributedTitle, attributedMessage:attributedMessage, image: image, gestureDismissal: false)
+        let alert = PopupDialog(title:nil, message: nil, attributedTitle:attributedTitle, attributedMessage:attributedMessage, textMargin: 10, image: image, gestureDismissal: false)
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
             DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEnglishWord)
             self.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
-                self.session.startRunning()
+            self.session.startRunning()
         })
         
         alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
@@ -562,6 +551,39 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func getAttributedTitle(rootCategory: String, translatedCategory: String) -> NSMutableAttributedString{
+        let title = String(format: NSLocalizedString("You found a new word in the category %@ - %@:",comment:""), "{1}", "{2}")
+        let attributedTitle = NSMutableAttributedString.init(string: title)
+        
+        let translatedAttString = NSMutableAttributedString(string: translatedCategory)
+        let originalAttString = NSMutableAttributedString(string: rootCategory)
+        
+        translatedAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: (translatedCategory as NSString).range(of: translatedCategory))
+        originalAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: (rootCategory as NSString).range(of: rootCategory))
+        
+        attributedTitle.replaceCharacters(in: (title as NSString).range(of: "{2}"), with: originalAttString)
+        attributedTitle.replaceCharacters(in: (title as NSString).range(of: "{1}"), with: translatedAttString)
+
+        return attributedTitle
+    }
+    
+    func getAttributedMessage(foundTranslatedWord: String, foundOriginalWord: String) -> NSAttributedString{
+        
+        let translatedAttString = NSMutableAttributedString(string: foundTranslatedWord)
+        let originalAttString = NSMutableAttributedString(string: foundOriginalWord)
+        
+        let translatedWordRange = (foundTranslatedWord as NSString).range(of: foundTranslatedWord)
+        let originalWordRange = (foundOriginalWord as NSString).range(of: foundOriginalWord)
+
+        translatedAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: translatedWordRange)
+        translatedAttString.addAttribute(.font, value: UIFont.systemFont(ofSize: 38, weight: .regular),range: translatedWordRange)
+
+        originalAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: originalWordRange)
+        originalAttString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .regular), range: originalWordRange)
+
+        return translatedAttString + NSAttributedString(string:"\n") + originalAttString
     }
     
     func getTempURL(fileName: String) -> URL? {

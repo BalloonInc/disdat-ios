@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.8.5):
+  - Crashlytics (3.8.6):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.12)
+  - Fabric (1.6.13)
   - Firebase/Auth (4.1.1):
     - Firebase/Core
     - FirebaseAuth (= 4.1.1)
@@ -36,7 +36,7 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleSignIn (4.0.2):
+  - GoogleSignIn (4.1.0):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
     - GTMOAuth2 (~> 1.0)
@@ -101,12 +101,12 @@ CHECKOUT OPTIONS:
     :commit: 8adf42e4ab95741238b6d42c1ce0b682555afab5
     :git: git@github.com:onevcat/Kingfisher.git
   PopupDialog:
-    :commit: fcda12f8d8f2cc84de1182ed5b903888b13d6316
+    :commit: 436e795376fa087e33b452920ac5baa00d141f70
     :git: git@github.com:ballooninc/PopupDialog.git
 
 SPEC CHECKSUMS:
-  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
-  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
+  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
   Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
   FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
   FirebaseAuth: f8b07aa83de60d606b4eadd81484b3ac2097ea3e
@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 4d1a10639a42cae26e094296951b53c689e5e191
   FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
   FirebaseStorage: 661fc1f8d4131891d256b62e82a45ace8b3f0c3b
-  GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
+  GoogleSignIn: 8c599fc10d25b2af86a3f82fd9631e863f2b1400
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
