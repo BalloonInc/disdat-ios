@@ -45,7 +45,8 @@ class AchievementCardVC: UIViewController {
     }
 
     @IBAction func shareImageButton(_ sender: UIButton) {
-        let objectsToShare = [ cardImageView.image!, String(format:NSLocalizedString("Looks like I just discovered %s in %s. Try it yourself? Check disdat.ai!", comment: ""), learningLanguageWord!, DiscoveredWordCollection.getInstance()!.learningLanguage) ] as [Any]
+        let language = Locale.current.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance()!.learningLanguage)!
+        let objectsToShare = [ cardImageView.image!, String(format:NSLocalizedString("Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai!", comment: ""), learningLanguageWord!, language) ] as [Any]
         let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         
@@ -59,9 +60,9 @@ class AchievementCardVC: UIViewController {
         
         cardView.layer.shadowColor = #colorLiteral(red: 0.1490027606, green: 0.1490303874, blue: 0.1489966214, alpha: 1)
 
-        cardView.layer.shadowOpacity = 0.3;
-        cardView.layer.shadowRadius = 1.0;
-        cardView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        cardView.layer.shadowOpacity = 0.4;
+        cardView.layer.shadowRadius = 3.0;
+        cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         
         let index = DiscoveredWordCollection.getInstance()!.englishLabelDict[englishWord!]!
         rootLanguageWord = DiscoveredWordCollection.getInstance()!.rootLanguageWords[index]

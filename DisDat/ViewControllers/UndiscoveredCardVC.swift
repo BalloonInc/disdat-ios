@@ -19,8 +19,8 @@ class UndiscoveredCardVC: UIViewController {
         
         cardView?.layer.shadowColor = #colorLiteral(red: 0.1490027606, green: 0.1490303874, blue: 0.1489966214, alpha: 1)
         
-        cardView?.layer.shadowOpacity = 0.3;
-        cardView?.layer.shadowRadius = 1.0;
+        cardView?.layer.shadowOpacity = 0.4;
+        cardView?.layer.shadowRadius = 2.0;
         cardView?.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         
         if unknownCount > 0 {

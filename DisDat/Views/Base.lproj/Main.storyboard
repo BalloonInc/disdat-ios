@@ -1356,21 +1356,21 @@ Press the button below to agree.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jly-3z-rWW">
-                                <rect key="frame" x="0.0" y="139" width="320" height="351"/>
+                                <rect key="frame" x="0.0" y="144" width="320" height="346"/>
                                 <connections>
                                     <segue destination="SBk-Qx-fnc" kind="embed" identifier="AchievementCardSegue" id="9Fe-3s-8GU"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aG8-ou-vph">
-                                <rect key="frame" x="0.0" y="64" width="320" height="35"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drinks" translatesAutoresizingMaskIntoConstraints="NO" id="1Ni-i4-5MR">
-                                        <rect key="frame" x="126.5" y="4" width="67" height="67"/>
+                                        <rect key="frame" x="126.5" y="9" width="67" height="67"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1647058824" green="0.72941176470000002" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="FWp-re-1Pr"/>
+                                    <constraint firstAttribute="height" constant="40" id="FWp-re-1Pr"/>
                                     <constraint firstItem="1Ni-i4-5MR" firstAttribute="centerX" secondItem="aG8-ou-vph" secondAttribute="centerX" id="Pdz-RA-BIE"/>
                                     <constraint firstAttribute="bottom" secondItem="1Ni-i4-5MR" secondAttribute="bottom" constant="-36" id="fs5-PM-qqE"/>
                                 </constraints>
@@ -1523,17 +1523,17 @@ Press the button below to agree.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muN-M4-tUH">
-                                <rect key="frame" x="20" y="20" width="280" height="309"/>
+                                <rect key="frame" x="20" y="20" width="280" height="269"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-aM-1fa">
-                                        <rect key="frame" x="16" y="197" width="248" height="14"/>
+                                        <rect key="frame" x="16" y="157" width="248" height="14"/>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="Uea-rE-xGf"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgK-DU-BLG">
-                                        <rect key="frame" x="16" y="219" width="218" height="14"/>
+                                        <rect key="frame" x="16" y="179" width="218" height="14"/>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="50U-N2-ACa"/>
@@ -1541,7 +1541,7 @@ Press the button below to agree.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGL-6a-ugX">
-                                        <rect key="frame" x="16" y="241" width="135" height="14"/>
+                                        <rect key="frame" x="16" y="201" width="135" height="14"/>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="OiH-jL-du6"/>
@@ -1549,36 +1549,36 @@ Press the button below to agree.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zk-Ik-bX7">
-                                        <rect key="frame" x="16" y="38" width="248" height="151"/>
+                                        <rect key="frame" x="16" y="38" width="248" height="111"/>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pomme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDS-uY-XT9">
-                                        <rect key="frame" x="95" y="205" width="91.5" height="33.5"/>
+                                        <rect key="frame" x="95" y="165" width="91.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qes-Vb-Z5P">
-                                        <rect key="frame" x="119" y="246.5" width="42" height="19.5"/>
+                                        <rect key="frame" x="119" y="206.5" width="42" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-zz-ejj">
-                                        <rect key="frame" x="64.5" y="38" width="151" height="151"/>
+                                        <rect key="frame" x="84.5" y="38" width="111" height="111"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZLq-zz-ejj" secondAttribute="height" multiplier="1:1" id="RA2-FS-gNY"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cx-Eg-0QD">
-                                        <rect key="frame" x="16" y="263" width="30" height="30"/>
+                                        <rect key="frame" x="16" y="223" width="30" height="30"/>
                                         <state key="normal" image="speaker"/>
                                         <connections>
                                             <action selector="speakerButtonPressed:" destination="rrg-iu-NmH" eventType="touchUpInside" id="FCj-GC-YaT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2v-WV-up2">
-                                        <rect key="frame" x="234" y="263" width="30" height="30"/>
+                                        <rect key="frame" x="234" y="223" width="30" height="30"/>
                                         <state key="normal" image="share"/>
                                         <connections>
                                             <action selector="shareImageButton:" destination="rrg-iu-NmH" eventType="touchUpInside" id="9eq-S9-8YK"/>
@@ -1596,7 +1596,6 @@ Press the button below to agree.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="7Cx-Eg-0QD" secondAttribute="bottom" constant="16" id="63F-Hy-BMF"/>
-                                    <constraint firstItem="ZLq-zz-ejj" firstAttribute="top" secondItem="muN-M4-tUH" secondAttribute="top" constant="20" symbolic="YES" id="8zt-MP-kHJ"/>
                                     <constraint firstItem="eGL-6a-ugX" firstAttribute="top" secondItem="JgK-DU-BLG" secondAttribute="bottom" constant="8" id="Exg-PP-Ifn"/>
                                     <constraint firstItem="AKJ-aM-1fa" firstAttribute="width" secondItem="2zk-Ik-bX7" secondAttribute="width" id="LQh-8I-zmY"/>
                                     <constraint firstItem="ZLq-zz-ejj" firstAttribute="top" secondItem="o2F-I4-dfY" secondAttribute="bottom" constant="8" id="LVg-dq-ehI"/>
@@ -1628,7 +1627,7 @@ Press the button below to agree.</string>
                             <constraint firstAttribute="trailing" secondItem="muN-M4-tUH" secondAttribute="trailing" constant="20" id="CCC-TR-vC8"/>
                             <constraint firstItem="muN-M4-tUH" firstAttribute="leading" secondItem="gTy-RB-Sci" secondAttribute="leading" constant="20" id="LMY-TT-j1l"/>
                             <constraint firstItem="muN-M4-tUH" firstAttribute="top" secondItem="3aN-by-3Mw" secondAttribute="bottom" constant="20" id="gQQ-2g-gnQ"/>
-                            <constraint firstItem="n7M-vu-ytR" firstAttribute="top" secondItem="muN-M4-tUH" secondAttribute="bottom" constant="20" id="iLO-M9-q4n"/>
+                            <constraint firstItem="n7M-vu-ytR" firstAttribute="top" secondItem="muN-M4-tUH" secondAttribute="bottom" constant="60" id="iLO-M9-q4n"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="320" height="349"/>
@@ -1661,10 +1660,10 @@ Press the button below to agree.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ime-Ws-sAV">
-                                <rect key="frame" x="33" y="20" width="263" height="309"/>
+                                <rect key="frame" x="33" y="20" width="263" height="269"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Still 2 unfound words in this category. Go out and scan some! NO_TRANSLATE NO_TRANSLATE NO_TRANSLATE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-uF-CFf">
-                                        <rect key="frame" x="20" y="189" width="223" height="100"/>
+                                        <rect key="frame" x="20" y="149" width="223" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Eoc-IM-HJc"/>
                                         </constraints>
@@ -1673,7 +1672,7 @@ Press the button below to agree.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark" translatesAutoresizingMaskIntoConstraints="NO" id="FxL-bl-kHW">
-                                        <rect key="frame" x="55.5" y="20" width="153" height="153"/>
+                                        <rect key="frame" x="75.5" y="20" width="113" height="113"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FxL-bl-kHW" secondAttribute="height" multiplier="1:1" id="H67-DK-HGY"/>
                                         </constraints>
@@ -1693,7 +1692,7 @@ Press the button below to agree.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ime-Ws-sAV" firstAttribute="leading" secondItem="YW9-2U-PrC" secondAttribute="leading" constant="33" id="CKs-pf-0PR"/>
-                            <constraint firstItem="Jce-4U-VOd" firstAttribute="top" secondItem="Ime-Ws-sAV" secondAttribute="bottom" constant="20" id="PdH-W9-f0V"/>
+                            <constraint firstItem="Jce-4U-VOd" firstAttribute="top" secondItem="Ime-Ws-sAV" secondAttribute="bottom" constant="60" id="PdH-W9-f0V"/>
                             <constraint firstAttribute="trailing" secondItem="Ime-Ws-sAV" secondAttribute="trailing" constant="24" id="U5z-4s-sdR"/>
                             <constraint firstItem="Ime-Ws-sAV" firstAttribute="top" secondItem="S48-U3-O1j" secondAttribute="bottom" constant="20" id="rsC-OT-Fw1"/>
                         </constraints>

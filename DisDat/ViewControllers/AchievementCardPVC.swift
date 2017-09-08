@@ -13,14 +13,11 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
     var categoryIndex: Int?
     var orderedViewControllers: [UIViewController] = []
     
-    var pageControl:UIPageControl?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dataSource = self
         self.delegate = self
-        configurePageControl()
         
         let englishCategoryWords = DiscoveredWordCollection.getInstance()!.englishLanguageJson[categoryIndex!]["words"] as! [String]
         
@@ -41,25 +38,15 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
             orderedViewControllers.append(undiscoveredVC)
         }
         
-        
         setViewControllers([orderedViewControllers[0]], direction: .forward, animated: true, completion: nil)
-        
+
+        let pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [AchievementCardPVC.self])
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .black
     }
     
     private func newVC(_ viewcontrollerID: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewcontrollerID)
-    }
-    
-    
-    
-    func configurePageControl() {
-        pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50))
-        pageControl!.numberOfPages = orderedViewControllers.count
-        pageControl!.currentPage = 0
-        pageControl!.tintColor = UIColor.black
-        pageControl!.pageIndicatorTintColor = UIColor.white
-        pageControl!.currentPageIndicatorTintColor = UIColor.black
-        view.addSubview(pageControl!)
     }
     
     public func pageViewController(_ pageViewController: UIPageViewController,
@@ -101,9 +88,11 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
         return orderedViewControllers[nextIndex]
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let pageContentViewController = pageViewController.viewControllers![0]
-        pageControl?.currentPage = orderedViewControllers.index(of: pageContentViewController)!
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
     }
     
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return orderedViewControllers.count
+    }
 }
