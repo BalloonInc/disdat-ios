@@ -15,8 +15,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SettingsTVC: UITableViewController {
-    @IBOutlet weak var localNavigationBar: UINavigationBar!
-    
     @IBOutlet weak var fromLanguage: UILabel!
     @IBOutlet weak var toLanguage: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
@@ -34,33 +32,51 @@ class SettingsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNeedsStatusBarAppearanceUpdate()
-
-        if let navigationBar = self.navigationController?.navigationBar{
-            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
-            
-            navigationBar.isTranslucent = false
-            navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationBar.shadowImage = UIImage()
-            
-            
-            navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-            UIBarButtonItem.appearance().tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
 
         setContent()
+        UIBarButtonItem.appearance().tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+
+        UIView.animate(withDuration: 0.15, delay: 0.05, options: [], animations: {
+            self.navigationController?.isNavigationBarHidden = false
+        }, completion: { _ in       self.setNeedsStatusBarAppearanceUpdate()
+            self.setNavigationBar()
+        }
+        )
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.localNavigationBar.isHidden=true
-        self.navigationController?.isNavigationBarHidden = false
-        self.tableView.contentInset = UIEdgeInsetsMake(-self.localNavigationBar.frame.height, 0, 0, 0);
+        setNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.15, delay: 0.05, options: [], animations: {
         self.navigationController?.isNavigationBarHidden = true
+        }, completion: nil)
+    }
+    
+    func setNavigationBar(){
+        if let navigationBar = self.navigationController?.navigationBar{
+            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
+            
+            navigationBar.barStyle = .black
+            navigationBar.isTranslucent = false
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationBar.shadowImage = UIImage()
+            
+            navigationBar.backItem?.backBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
+            navigationBar.setNeedsDisplay()
+
+            navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+        }
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {

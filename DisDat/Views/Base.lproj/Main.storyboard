@@ -323,22 +323,11 @@ Mouse: 0.01</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="yed-Mz-aRs">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.1647058824" green="0.72941176470000002" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <textAttributes key="titleTextAttributes">
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </textAttributes>
-                            <items>
-                                <navigationItem title="Settings" id="bXA-Kh-7Tu"/>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection headerTitle="Account" id="Y7Y-ds-efY">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NameCell" textLabel="hL1-lx-q0H" detailTextLabel="bse-4x-ZcM" style="IBUITableViewCellStyleValue1" id="KXw-ht-Yfm">
-                                        <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KXw-ht-Yfm" id="CNr-Jb-eBu">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -362,7 +351,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmailCell" textLabel="B1K-Da-31u" detailTextLabel="6Be-lG-2ty" style="IBUITableViewCellStyleValue1" id="rgT-C6-0td">
-                                        <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rgT-C6-0td" id="nwI-z7-9L7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -386,7 +375,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="1H3-fh-sFn" detailTextLabel="72d-ZN-xKP" style="IBUITableViewCellStyleValue1" id="G4X-uC-VbI">
-                                        <rect key="frame" x="0.0" y="187.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G4X-uC-VbI" id="5IY-dD-TWJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -410,7 +399,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Unh-fQ-G9r">
-                                        <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Unh-fQ-G9r" id="kwJ-ud-ySL">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -431,7 +420,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="lGa-L4-lnh">
-                                        <rect key="frame" x="0.0" y="275.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lGa-L4-lnh" id="O5u-mT-pyp">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -456,7 +445,7 @@ Mouse: 0.01</string>
                             <tableViewSection headerTitle="Languages" id="QrO-wX-w1N">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Zto-b0-CwL" detailTextLabel="ze3-od-ruI" style="IBUITableViewCellStyleValue1" id="Ian-jW-R0l">
-                                        <rect key="frame" x="0.0" y="375.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="331.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ian-jW-R0l" id="4bK-E5-wpH">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -480,7 +469,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Sqd-em-gKp" detailTextLabel="3o9-wJ-ax2" style="IBUITableViewCellStyleValue1" id="wR8-9f-Ika">
-                                        <rect key="frame" x="0.0" y="419.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="375.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wR8-9f-Ika" id="I7Z-oc-FNs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -504,7 +493,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="xkM-az-YTj" detailTextLabel="8PQ-xc-O3w" style="IBUITableViewCellStyleValue1" id="S67-Rt-m3V">
-                                        <rect key="frame" x="0.0" y="463.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="419.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S67-Rt-m3V" id="jaC-AW-MlS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -528,7 +517,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="aho-hd-d2T">
-                                        <rect key="frame" x="0.0" y="507.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="463.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aho-hd-d2T" id="CIe-iF-IWt">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -549,7 +538,7 @@ Mouse: 0.01</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="M1r-c4-Jl1">
-                                        <rect key="frame" x="0.0" y="551.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="507.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1r-c4-Jl1" id="i00-1z-pbg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -577,13 +566,12 @@ Mouse: 0.01</string>
                             <outlet property="delegate" destination="0fM-pe-nxc" id="qS8-V9-t1x"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailCell" destination="rgT-C6-0td" id="eIQ-Rw-cEo"/>
                         <outlet property="emailLabel" destination="6Be-lG-2ty" id="xMg-iz-civ"/>
                         <outlet property="fromLanguage" destination="ze3-od-ruI" id="QMe-s3-tng"/>
-                        <outlet property="localNavigationBar" destination="yed-Mz-aRs" id="osp-Ba-2U1"/>
                         <outlet property="loginMethodLabel" destination="72d-ZN-xKP" id="d28-GF-H05"/>
                         <outlet property="nameCell" destination="KXw-ht-Yfm" id="4Qa-i4-Nyl"/>
                         <outlet property="nameLabel" destination="bse-4x-ZcM" id="c75-Kk-lTC"/>
