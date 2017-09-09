@@ -35,6 +35,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>

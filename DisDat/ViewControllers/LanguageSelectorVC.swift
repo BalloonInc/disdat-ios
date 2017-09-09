@@ -15,7 +15,9 @@ import OneSignal
 class LanguageSelectorVC: UIViewController {
     
     var changeLanguageOnly = false
-    
+    var circleViews: [UIView] = []
+    var tiles: [UIView] = []
+
     @IBOutlet weak var rootLanguagePicker: LanguagePickerView!
     @IBOutlet weak var newLanguagePicker: LanguagePickerView!
     
@@ -83,15 +85,13 @@ class LanguageSelectorVC: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         precheckCameraPermissions()
         
-        var tiles = [nativeLanguageTile, learningLanguageTile, readyTile]
-        
+        tiles = [nativeLanguageTile, learningLanguageTile, readyTile]
         if !changeLanguageOnly {
             tiles.insert(cameraPermissionsTile, at: 2)
             tiles.insert(pushNotificationsPermissionsTile, at: 3)
         }
-        
         for (index, tile) in tiles.enumerated() {
-            setTileUI(tile: tile!, id: index+1)
+            setTileUI(tile: tile, id: index+1)
         }
         
         if let patternImage = UIImage(named: "settings_bg_\(Int(arc4random_uniform(2)+1))"){
@@ -103,6 +103,11 @@ class LanguageSelectorVC: UIViewController {
         super.viewWillAppear(animated)
         self.newLanguagePicker.selectRow(1, inComponent: 0, animated: false)
         self.newLanguagePicker.selectedLanguageCode = LanguagePickerView.languageKeys[1]
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        layoutTiles()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -159,20 +164,30 @@ class LanguageSelectorVC: UIViewController {
         
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
-        circleView.layer.cornerRadius = 25;  // half the width/height
+        circleView.layer.cornerRadius = 25;
         circleView.backgroundColor = UIColor(red: CGFloat(254.0/255), green: CGFloat(217.0/255), blue: CGFloat(77.0/255), alpha: 1.0)
-        circleView.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
+        circleView.center = CGPoint(x: tile.frame.width / 2, y: 0)
         
         circleView.layer.borderWidth = 4;
         circleView.layer.borderColor = UIColor.white.cgColor
-        
+        circleView.tag = id
         tile.addSubview(circleView)
-        
+        circleViews.append(circleView)
+
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         label.text = "\(id)"
         label.textAlignment = .center
-        label.center = CGPoint(x: self.view.frame.width/2-tile.frame.origin.x, y: 0)
-        
+        label.center = CGPoint(x: tile.frame.width / 2, y: 0)
+        label.tag = id
         tile.addSubview(label)
+        circleViews.append(label)
+    }
+    
+    func layoutTiles(){
+        for (i, tile) in tiles.enumerated(){
+            circleViews.filter({$0.tag == i+1}).forEach({ (view) in
+                view.center = CGPoint(x: tile.frame.width / 2, y: 0)
+            })
+        }
     }
 }

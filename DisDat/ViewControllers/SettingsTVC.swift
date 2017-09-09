@@ -98,7 +98,7 @@ class SettingsTVC: UITableViewController {
     @IBAction func changeLanguageButtonPressed(_ sender: UIButton) {
         let alert = PopupDialog(title:NSLocalizedString("Change languages", comment: ""), message:NSLocalizedString("Are you sure you want to change the current languages? Your progress for your current languages will be saved.", comment: ""))
         
-        alert.addButton(DestructiveButton(title: NSLocalizedString("Yes, let me change languages", comment:"")){
+        alert.addButton(DefaultButton(title: NSLocalizedString("Yes, let me change languages", comment:"")){
             self.performSegue(withIdentifier: "selectLanguageAgainSegue", sender: self)
         })
         alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
