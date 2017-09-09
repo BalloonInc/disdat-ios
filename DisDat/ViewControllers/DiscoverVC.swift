@@ -16,7 +16,6 @@ import KDCircularProgress
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
-    
     var screenHeight: CGFloat?
     
     var rootLanguage: String!
@@ -360,15 +359,22 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
+    func isExcluded(_ observation: VNClassificationObservation) -> Bool
+    {
+        return DiscoveredWordCollection.getInstance()!.englishWordsToExclude.contains(observation.identifier)
+    }
+    
     func handleClassifications(request: VNRequest, error: Error?) {
         if let theError = error {
             print("Error: \(theError.localizedDescription)")
             return
         }
-        guard let observations = request.results else {
+        guard var observations = request.results else {
             print("No results")
             return
         }
+        
+        observations = observations.filter({ !isExcluded($0 as! VNClassificationObservation)})
         
         let classificationsList = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })

@@ -98,6 +98,11 @@
 		6C4922C31F6093040094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6C4922C41F6093040094CD18 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		6C4922C61F61A6350094CD18 /* AchievementNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementNavigationVC.swift; sourceTree = "<group>"; };
+		6C4BC9101F6470E400579502 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6C4BC9111F6470E400579502 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6C4BC9121F6470E400579502 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6C4BC9131F6470E400579502 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6C4BC9141F6470E400579502 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		6C6815971F58173100FD9448 /* MainPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVC.swift; sourceTree = "<group>"; };
 		6C6815991F582F0500FD9448 /* MainPVCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVCContainer.swift; sourceTree = "<group>"; };
 		6C87A2F91F55A3E50096FC30 /* DisDat.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = DisDat.playground; path = DisDat/DisDat.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -593,6 +598,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6C4922B71F6093030094CD18 /* nl */,
+				6C4BC9101F6470E400579502 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6C4922BC1F6093030094CD18 /* nl */,
+				6C4BC9111F6470E400579502 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -609,6 +616,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6C4922C11F6093030094CD18 /* nl */,
+				6C4BC9121F6470E400579502 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 			children = (
 				88C6A9C71EF863CC00CC4360 /* Base */,
 				6C4922C41F6093040094CD18 /* nl */,
+				6C4BC9141F6470E400579502 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 			children = (
 				88C6A9CC1EF863CC00CC4360 /* Base */,
 				6C4922C31F6093040094CD18 /* nl */,
+				6C4BC9131F6470E400579502 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

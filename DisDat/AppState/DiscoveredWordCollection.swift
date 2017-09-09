@@ -21,6 +21,8 @@ class DiscoveredWordCollection {
     
     var englishLabelDict: [String:Int] = [:]
     
+    let englishWordsToExclude = ["ruler"]
+    
     var rootLanguageJson: [[String:Any]]
     var rootLanguageWords: [String]
     var rootLanguageCategories: [String]
