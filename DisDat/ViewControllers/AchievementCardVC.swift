@@ -46,7 +46,7 @@ class AchievementCardVC: UIViewController {
 
     @IBAction func shareImageButton(_ sender: UIButton) {
         let language = Locale.current.localizedString(forLanguageCode: DiscoveredWordCollection.getInstance()!.learningLanguage)!
-        let objectsToShare = [ cardImageView.image!, String(format:NSLocalizedString("Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai!", comment: ""), learningLanguageWord!, language) ] as [Any]
+        let objectsToShare = [ cardImageView.image!, String(format:NSLocalizedString("Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai! #disdat", comment: ""), learningLanguageWord!, language) ] as [Any]
         let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         

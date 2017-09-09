@@ -173,15 +173,39 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
+    private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation) {
+        layer.videoOrientation = orientation
+        previewLayer?.frame = self.view.bounds
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         configureZoomButton()
         if self.previewView != nil {
             previewLayer?.frame = self.previewView.bounds;
             gradientLayer?.frame = self.previewView.bounds;
         }
+
+        if let connection =  self.previewLayer?.connection  {
+            let orientation: UIDeviceOrientation = UIDevice.current.orientation
+            
+            if connection.isVideoOrientationSupported {
+                switch (orientation) {
+                case .portrait:
+                    updatePreviewLayer(layer: connection, orientation: .portrait)
+                case .landscapeRight:
+                    updatePreviewLayer(layer: connection, orientation: .landscapeLeft)
+                case .landscapeLeft:
+                    updatePreviewLayer(layer: connection, orientation: .landscapeRight)
+                case .portraitUpsideDown:
+                    updatePreviewLayer(layer: connection, orientation: .portraitUpsideDown)
+                default: updatePreviewLayer(layer: connection, orientation: .portrait)
+                }
+            }
+        }
     }
-    
+
     func configureZoomButton()
     {
         zoomCirleView.layer.cornerRadius = 0.5 * zoomCirleView.bounds.size.width

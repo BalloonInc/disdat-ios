@@ -14,16 +14,16 @@ class AchievementDetailContainer: UIViewController {
     
     @IBOutlet weak var cardContainerView: UIView!
     @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var categoryBorder: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let categoryImage = UIImage(named:englishCategoryText!.lowercased())
         categoryImageView.image = categoryImage
-        categoryImageView.layer.cornerRadius = categoryImageView.frame.width/2;  // half the width/height
-        categoryImageView.layer.borderWidth = 8;
-        categoryImageView.layer.borderColor = UIColor.white.cgColor
-
+        categoryImageView.layer.cornerRadius = categoryImageView.frame.width/2;
+        categoryBorder.layer.cornerRadius = categoryBorder.frame.width/2;
+        
         title = DiscoveredWordCollection.getInstance()!.getLearningCategory(index: categoryIndex!)
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .bold), NSAttributedStringKey.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
     }
