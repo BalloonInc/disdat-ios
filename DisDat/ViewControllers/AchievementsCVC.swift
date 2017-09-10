@@ -11,10 +11,22 @@ import UIKit
 private let reuseIdentifier = "AchievementCategoryCell"
 
 class AchievementsCVC: UICollectionViewController {
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView?.reloadData()
+
+        let cellWidth = 125
+        let numberOfCells = Int(self.view.frame.width) / cellWidth
+        let spacing = self.view.frame.width - CGFloat(numberOfCells * cellWidth)
+        let margin = spacing / CGFloat(numberOfCells)
+        
+        let collectionViewLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+        
+        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(0, margin/2, 0, margin/2)
+            
+        collectionViewLayout?.invalidateLayout()
+        
+        self.navigationItem.largeTitleDisplayMode = .automatic
     }
 
     // MARK: - Navigation
@@ -64,5 +76,22 @@ class AchievementsCVC: UICollectionViewController {
         
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewHeader", for: indexPath as IndexPath)
+            return headerView
+            
+        case UICollectionElementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewFooter", for: indexPath as IndexPath)
+            return footerView
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
 }

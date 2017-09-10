@@ -76,20 +76,17 @@
 /* No comment provided by engineer. */
 "Soon you will be able to remove your account here. Swipe down to dismiss." = "Binnenkort kan je hier je account verwijderen. Swipe naar beneden om terug te keren.";
 
+/* No comment provided by engineer. */
+"Still %d undiscovered words in this category. Go out and scan some!" = "Nog %d woorden te vinden in deze categorie. Ga op stap en zoek!";
+
 /* Wrong detection */
 "This is wrong." = "Dit is fout";
-
-/* word still to discover */
-"Unknown" = "Onbekend";
 
 /* No comment provided by engineer. */
 "Yes" = "Ja";
 
 /* No comment provided by engineer. */
 "Yes, I am done here." = "Ja, ik ben er klaar mee.";
-
-/* No comment provided by engineer. */
-"You found a new word in the category %@ - %@:" = "Je vond een nieuw woord in de categorie %@ - %@";
 
 /* No comment provided by engineer. */
 "Yes, let me change languages" = "Ja, laat me de talen veranderen";

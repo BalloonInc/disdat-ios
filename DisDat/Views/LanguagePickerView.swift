@@ -9,55 +9,69 @@
 import UIKit
 import AVFoundation
 
-class LanguagePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    static let supportedLanguageKeys = ["nl-BE","en-US","fr-FR"]
-    static var languageKeys: [String] = []
-    static var languageNames: [String] = []
+class LanguagePickerView: UIStackView {
+    var languageKeys: [String] = []
+    var languageNames: [String] = []
+    var elements: [UIButton] = []
     var selectedLanguageCode = ""
+    
+    fileprivate func setUI() {
+        self.axis = .vertical
+        self.distribution = .fillEqually
+        self.alignment = .center
+        self.spacing = 0
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initClass()
+        setUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.initClass()
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        setUI()
     }
     
-    func initClass(){
-        self.dataSource = self
-        self.delegate = self
-        LanguagePickerView.getSupportedLanguages()
-        self.selectedLanguageCode = LanguagePickerView.languageKeys[0]
+    @objc func buttonPressed(_ sender: UIButton){
+        selectRow(elements.index(of: sender)!, animated: true)
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func selectRow(_ row: Int, animated: Bool){
+        selectedLanguageCode = languageKeys[row]
+        UIView.animate(withDuration: animated ? 0.2 : 0) {
+            self.elements[row].isSelected = true
+            self.elements.filter({$0 != self.elements[row]}).forEach({$0.isSelected = false})
+        }
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LanguagePickerView.languageKeys.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return LanguagePickerView.languageNames[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedLanguageCode = LanguagePickerView.languageKeys[row]
-    }
-    
-    static func getSupportedLanguages() {
+    func setSupportedLanguages(_ languages: [String]) {
+        elements.removeAll()
+        subviews.forEach({ $0.removeFromSuperview() })
         for supportedCode in AVSpeechSynthesisVoice.speechVoices() {
             let langId = supportedCode.language
-            if supportedLanguageKeys.contains(langId){
+            if languages.contains(langId){
                 if !languageKeys.contains(langId){
                     languageKeys.append(langId)
-                    languageNames.append(Locale.current.localizedString(forLanguageCode: langId)!)
+                    let languageName = Locale.current.localizedString(forLanguageCode: langId)!
+                    languageNames.append(languageName)
+                    let button = UIButton()
+                    let selectedTitle = NSAttributedString(string: languageName, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20, weight: .bold),NSAttributedStringKey.foregroundColor:#colorLiteral(red: 0.1919409633, green: 0.4961107969, blue: 0.745100379, alpha: 1)])
+                    let unselectedTitle = NSAttributedString(string: languageName, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 18, weight: .regular), NSAttributedStringKey.foregroundColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)])
+                    button.setAttributedTitle(selectedTitle, for: .selected )
+                    button.setAttributedTitle(unselectedTitle, for: .normal )
+                    button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+                    
+                    elements.append(button)
+                    self.addArrangedSubview(button)
+
+                    let widthConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant:0)
+                    
+                    NSLayoutConstraint.activate([widthConstraint])
                 }
             }
         }
+        selectedLanguageCode = languageKeys[0]
+        setNeedsLayout()
+        setNeedsDisplay()
     }
 }

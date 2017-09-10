@@ -13,7 +13,9 @@ import PopupDialog
 import OneSignal
 
 class LanguageSelectorVC: UIViewController {
-    
+    static let supportedFromLanguageKeys = ["nl-BE","en-US","fr-FR", "ru-RU", "es-ES"]
+    static let supportedToLanguageKeys = ["nl-BE","en-US","fr-FR", "es-ES"]
+
     var changeLanguageOnly = false
     var circleViews: [UIView] = []
     var tiles: [UIView] = []
@@ -31,12 +33,13 @@ class LanguageSelectorVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var cameraAgreeImage: UIImageView!
     @IBOutlet weak var cameraAgreeButton: UIButton!
     @IBOutlet weak var cameraAgreementLabel: UILabel!
     
     @IBOutlet weak var notifcationsAgreeButton: UIButton!
     @IBOutlet weak var notificationsDeclineButton: UIButton!
-    @IBOutlet weak var notificationsCheckBoxButton: UIButton!
+    @IBOutlet weak var notificationsAgreeImage: UIImageView!
     @IBOutlet weak var pushPermissionsLabel: UILabel!
     
     let pushDeclined = NSLocalizedString("No push notifications - no problem! If you change your mind, you can enable this in the iOS preferences for this app.", comment: "")
@@ -45,10 +48,17 @@ class LanguageSelectorVC: UIViewController {
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
             if response {
                 DispatchQueue.main.async {
+                    self.cameraAgreeButton.isHidden = true
+                    self.cameraAgreeImage.isHidden = false
                     self.cameraPermissionValidated()
+                    self.cameraAgreeImage.image = UIImage(named: "ok")
                 }
             } else {
                 DispatchQueue.main.async {
+                    self.cameraAgreeButton.isHidden = true
+                    self.cameraAgreeImage.isHidden = false
+
+                    self.cameraAgreeImage.image = UIImage(named: "ok-gray")
                     self.cameraAgreementLabel.text = NSLocalizedString("I really need permissions to use the camera. Please go to the settings to give them and return here afterwards.", comment: "")
                 }
             }
@@ -59,12 +69,14 @@ class LanguageSelectorVC: UIViewController {
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             self.notifcationsAgreeButton.isHidden = true
             self.notificationsDeclineButton.isHidden = true
+            self.notificationsAgreeImage.isHidden = false
 
             if accepted {
-                self.notificationsCheckBoxButton.isHidden = false
+                self.notificationsAgreeImage.image = UIImage(named: "ok")
             }
             else {
                 self.pushPermissionsLabel.text = self.pushDeclined
+                self.notificationsAgreeImage.image = UIImage(named: "ok-gray")
             }
         })
     }
@@ -72,7 +84,8 @@ class LanguageSelectorVC: UIViewController {
     @IBAction func notificationsDeclineButtonPressed(_ sender: UIButton) {
         self.notifcationsAgreeButton.isHidden = true
         self.notificationsDeclineButton.isHidden = true
-        self.notificationsCheckBoxButton.isHidden = true
+        self.notificationsAgreeImage.isHidden = false
+        self.notificationsAgreeImage.image = UIImage(named: "ok-gray")
         self.pushPermissionsLabel.text = pushDeclined
     }
     
@@ -83,8 +96,9 @@ class LanguageSelectorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
-        precheckCameraPermissions()
-        
+        rootLanguagePicker.setSupportedLanguages(LanguageSelectorVC.supportedFromLanguageKeys)
+        newLanguagePicker.setSupportedLanguages(LanguageSelectorVC.supportedToLanguageKeys)
+
         tiles = [nativeLanguageTile, learningLanguageTile, readyTile]
         if !changeLanguageOnly {
             tiles.insert(cameraPermissionsTile, at: 2)
@@ -101,8 +115,12 @@ class LanguageSelectorVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.newLanguagePicker.selectRow(1, inComponent: 0, animated: false)
-        self.newLanguagePicker.selectedLanguageCode = LanguagePickerView.languageKeys[1]
+        
+        self.rootLanguagePicker.selectRow(0, animated:false)
+        self.newLanguagePicker.selectRow(1, animated:false)
+        precheckCameraPermissions()
+        precheckNotificationPermissions()
+
     }
     
     override func viewWillLayoutSubviews() {
@@ -124,8 +142,24 @@ class LanguageSelectorVC: UIViewController {
     
     fileprivate func cameraPermissionValidated() {
         self.cameraAgreementLabel.text = NSLocalizedString("All set on camera permissions!", comment: "")
-        self.cameraAgreeButton.setImage(UIImage(named:"ok"), for: .normal)
-        self.cameraAgreeButton.isUserInteractionEnabled = false
+        self.cameraAgreeButton.isHidden = true
+        self.cameraAgreeImage.isHidden = false
+    }
+    
+    func precheckNotificationPermissions(){
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                let status = settings.authorizationStatus
+                self.notifcationsAgreeButton.isHidden = status != .notDetermined
+                self.notificationsDeclineButton.isHidden = status != .notDetermined
+                self.notificationsAgreeImage.isHidden = status == .notDetermined
+                self.notificationsAgreeImage.image = UIImage(named: status == .authorized ? "ok" : "ok-gray")
+                if status == .denied {
+                    self.pushPermissionsLabel.text = self.pushDeclined
+                }
+                
+            }
+        }
     }
     
     func precheckCameraPermissions(){

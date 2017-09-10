@@ -21,7 +21,8 @@ class SettingsTVC: UITableViewController {
     
     @IBOutlet weak var nameCell: UITableViewCell!
     @IBOutlet weak var emailCell: UITableViewCell!
-
+    @IBOutlet weak var removeAccountCell: UITableViewCell!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var loginMethodLabel: UILabel!
@@ -32,50 +33,44 @@ class SettingsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setNavigationBar()
         setContent()
-        UIBarButtonItem.appearance().tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBar()
-
-        UIView.animate(withDuration: 0.15, delay: 0.05, options: [], animations: {
-            self.navigationController?.isNavigationBarHidden = false
-        }, completion: { _ in       self.setNeedsStatusBarAppearanceUpdate()
-            self.setNavigationBar()
-        }
-        )
-
+        toggleNavigationBar(hidden: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setNavigationBar()
+        toggleNavigationBar(hidden: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        toggleNavigationBar(hidden: true)
+    }
+    
+    fileprivate func toggleNavigationBar(hidden: Bool) {
         UIView.animate(withDuration: 0.15, delay: 0.05, options: [], animations: {
-        self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = hidden
         }, completion: nil)
     }
     
     func setNavigationBar(){
         if let navigationBar = self.navigationController?.navigationBar{
-            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
-            
+            navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .automatic
             navigationBar.barStyle = .black
-            navigationBar.isTranslucent = false
-            navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationBar.shadowImage = UIImage()
-            
-            navigationBar.backItem?.backBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            
-            navigationBar.setNeedsDisplay()
+
+            navigationBar.isOpaque = true
+            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
 
             navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+            navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+            navigationBar.isHidden = false
+            navigationBar.setNeedsDisplay()
         }
     }
     
@@ -91,7 +86,19 @@ class SettingsTVC: UITableViewController {
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
-        let alert = PopupDialog(title:NSLocalizedString("Coming soon...", comment: ""), message:NSLocalizedString("Soon you will be able to remove your account here. Swipe down to dismiss.", comment: ""))
+        let alert = PopupDialog(title:NSLocalizedString("Remove account", comment: ""), message:NSLocalizedString("We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer.", comment: ""))
+        
+        alert.addButton(DestructiveButton(title:NSLocalizedString("Yes", comment: "")){
+            let email = "disdat@ballooninc.be"
+            let subject = "Account deletion"
+            let body = "Hi,\n\nI would like request an account removal for \(Authentication.getInstance().email!) (user id: \(Authentication.getInstance().userId!))."
+            let encodedParams = "subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            if let url = URL(string: "mailto:\(email)?\(encodedParams!)") {
+                UIApplication.shared.open(url)
+            }
+            })
+        alert.addButton(CancelButton(title: NSLocalizedString("No", comment: "")){})
+        
         self.present(alert, animated: true, completion: nil)
     }
     

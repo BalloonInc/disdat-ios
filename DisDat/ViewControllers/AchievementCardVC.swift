@@ -79,13 +79,14 @@ class AchievementCardVC: UIViewController {
         let rootLanguage = DiscoveredWordCollection.getInstance()!.rootLanguage
         let learningLanguage = DiscoveredWordCollection.getInstance()!.learningLanguage
         
-        guard let currentUser = Auth.auth().currentUser else {return}
+        let auth = Authentication.getInstance()
+        let userFolder = auth.isAnonymous ? auth.userId! : auth.email!.sha256()
         
         let storageRef = Storage.storage().reference()
         
-        let rootFolder = storageRef.child("correct_images").child(currentUser.uid).child("\(rootLanguage)-\(learningLanguage)")
+        let rootFolder = storageRef.child("correct_images").child(userFolder).child("\(rootLanguage)-\(learningLanguage)")
         
-        let imageRef = rootFolder.child(englishWord!+".png")
+        let imageRef = rootFolder.child(englishWord!+".jpg")
         imageRef.downloadURL(completion: { (url, error) in
             if let err = error {
                 print(err)

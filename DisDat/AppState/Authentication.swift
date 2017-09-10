@@ -50,6 +50,10 @@ class Authentication{
         return instance!
     }
     
+    var isAnonymous: Bool {
+        return authenticationMethod! == .anonymous
+    }
+    
     func signInAnonymously(caller: UIViewController, onFinished: @escaping (Bool)->()) {
         Auth.auth().signInAnonymously() { (user, error) in
             if let error = error {

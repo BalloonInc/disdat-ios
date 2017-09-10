@@ -25,7 +25,12 @@ class AchievementDetailContainer: UIViewController {
         categoryBorder.layer.cornerRadius = categoryBorder.frame.width/2;
         
         title = DiscoveredWordCollection.getInstance()!.getLearningCategory(index: categoryIndex!)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .bold), NSAttributedStringKey.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+        
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedStringKey.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+            self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
+
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

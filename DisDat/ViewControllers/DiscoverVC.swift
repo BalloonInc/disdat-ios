@@ -69,10 +69,12 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     @IBOutlet weak var debugResultView: UITextView!
     @IBOutlet weak var debugFpsView: UILabel!
     @IBOutlet weak var debugImageView: UIImageView!
-    @IBOutlet weak var crashButton: UIButton!
     @IBOutlet weak var speechBubbleContainer: UIView!
     @IBOutlet weak var speechBubbleShelf: UIView!
     @IBOutlet weak var zoomButton: UIButton!
+    @IBOutlet weak var disLabel: UILabel!
+    @IBOutlet weak var datLabel: UILabel!
+    @IBOutlet weak var optionsButton: UIButton!
     
     @IBOutlet weak var zoomCirleView: UIView!
     var speechBubble: UIView?
@@ -85,17 +87,12 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         debugFpsView.isHidden = !debug
         debugResultView.isHidden = !debug
         debugImageView.isHidden = !debug
-        crashButton.isHidden = !debug
     }
     
     @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
         superDebug = !superDebug
         thresholdLabel.isHidden = !superDebug
         thresholdSlider.isHidden = !superDebug
-    }
-    
-    @IBAction func crash(_ sender: Any) {
-        Crashlytics.sharedInstance().crash()
     }
     
     @IBAction func sliderValueChanged(slider: UISlider) {
@@ -155,11 +152,22 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 self.session.startRunning()
             }
         }
+        UIView.animate(withDuration: 0.5) {
+            self.disLabel.alpha = 1
+            self.datLabel.alpha = 1
+            self.optionsButton.alpha = 1
+        }
         self.viewDidClear=false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.2) {
+            self.disLabel.alpha = 0
+            self.datLabel.alpha = 0
+            self.optionsButton.alpha = 0
+        }
+
         self.progressCircle?.animate(toAngle: 0, duration: 0.3, completion: { success in
             self.progressCircle = nil})
         self.viewDidClear = true
@@ -264,7 +272,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             let conn = videoOutput.connection(with: .video)
             conn?.videoOrientation = .portrait
             
-            guard let model = try? VNCoreMLModel(for: getModel(name:modelName)) else {
+            guard let model = try? VNCoreMLModel(for: disdatkerasv8().model) else {
                 fatalError("Could not load model")
             }
             let classificationRequest = VNCoreMLRequest(model: model, completionHandler: handleClassifications)
@@ -364,6 +372,17 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         return DiscoveredWordCollection.getInstance()!.englishWordsToExclude.contains(observation.identifier)
     }
     
+    func getConfidence(for observation: VNClassificationObservation) -> Float{
+        if observation.identifier == "keyboard"{
+            return min(1.0, observation.confidence/0.97)
+        }
+        return min(1.0, observation.confidence/self.recognitionThreshold)
+    }
+    
+    func isConfidentEnough(for observation: VNClassificationObservation) -> Bool {
+        return getConfidence(for: observation) > 1 - 1E-5
+    }
+    
     func handleClassifications(request: VNRequest, error: Error?) {
         if let theError = error {
             print("Error: \(theError.localizedDescription)")
@@ -378,9 +397,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         let classificationsList = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })
-            .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
+            .filter({isConfidentEnough(for: $0)})
             .map({$0.identifier})
-        
         
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
@@ -396,11 +414,11 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 }
             }
             
-            let confidence = (observations[0] as! VNClassificationObservation).confidence
+            let confidence = self.getConfidence(for:(observations[0] as! VNClassificationObservation))
             let suspicion = (observations[0] as! VNClassificationObservation).identifier
-            let duration = confidence > self.recognitionThreshold ? 0.25 : min(lastClassificationTime/1000,1)
+            let duration = self.isConfidentEnough(for: observations[0] as! VNClassificationObservation) ? 0.25 : min(lastClassificationTime/1000,1)
             
-            if confidence > 0.8 * self.recognitionThreshold && confidence < self.recognitionThreshold {
+            if confidence > 0.8 && confidence < 1.0 - 1E-5 {
                 if self.lastSuspicion != suspicion {
                     self.lastSuspicionTime = Date()
                     self.lastSuspicion = suspicion
@@ -421,11 +439,11 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     self.speechBubbleContainer.addSubview(self.speechBubble!)
                 }
             }
-            else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > self.recognitionThreshold {
+            else if Date().timeIntervalSince(self.lastSuspicionTime) > 3 || confidence > 0.8 {
                 self.speechBubble?.removeFromSuperview()
             }
-            var progressAngle = min(Double(360.0*confidence/self.recognitionThreshold),360)
-            // this is to avoid
+            var progressAngle = min(Double(360.0*confidence),360)
+            // this is to avoid an almost full circle without recognition
             if progressAngle > 345 && progressAngle < 360.0{
                 progressAngle = 345
             }
@@ -477,29 +495,36 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {
-        guard let currentUser = Auth.auth().currentUser else {return}
+    fileprivate func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {        
+        let auth = Authentication.getInstance()
+        let userFolder = auth.isAnonymous ? auth.userId! : auth.email!.sha256()
         
         let storageRef = Storage.storage().reference()
         
-        var rootFolder = storageRef.child(correct ? "correct_images" : "false_positives").child(currentUser.uid)
+        var rootFolder = storageRef.child(correct ? "correct_images" : "false_positives").child(userFolder)
         
         if correct {
             rootFolder = rootFolder.child("\(rootLanguage!)-\(learningLanguage!)")
         }
+        var fileName = englishWord
+        if !correct {
+            fileName += "-\(Date().timeIntervalSinceReferenceDate)"
+        }
         
-        let imageRef = rootFolder.child(englishWord+".png")
-        let txtRef = rootFolder.child(englishWord+".json")
+        let imageRef = rootFolder.child(fileName + ".jpg")
+        let txtRef = rootFolder.child(fileName + ".json")
         
-        let data = UIImageJPEGRepresentation(image.resize(toWidth: 300)!, 0.8)!
+        let data = UIImageJPEGRepresentation(image.resize(toWidth: 600)!, 0.8)!
         
-        let metaData: [String:Any] = ["predictions":Array(fullPredictions[0...10]),
-                                      "device":UIDevice.current.modelName,
-                                      "orientation":Helpers.getOrientationString(),
+        let metaData: [String:Any] = ["Predictions":Array(fullPredictions[0...10]),
+                                      "Device":UIDevice.current.modelName,
+                                      "Orientation":Helpers.getOrientationString(),
                                       "OS version":UIDevice.current.systemVersion,
                                       "Battery level":UIDevice.current.batteryLevel,
                                       "App version":Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
-                                      "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+                                      "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String,
+                                      "Login Type": Authentication.getInstance().authenticationMethod!.rawValue,
+                                      "Email": Authentication.getInstance().email ?? ""
         ]
         
         let fileURL = self.getTempURL(fileName: "metadata_temp.json")
@@ -623,15 +648,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         catch {
             return nil
-        }
-    }
-    
-    func getModel(name: String) -> MLModel{
-        switch modelName {
-        case "DisDat-v8":
-            return disdatkerasv8().model
-        default:
-            return disdatkerasv8().model
         }
     }
     
