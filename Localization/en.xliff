@@ -38,6 +38,10 @@
         <source>Are you sure you want to logout?</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Are you sure you want to remove the current word and it's linked image?">
+        <source>Are you sure you want to remove the current word and it's linked image?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Are you sure you want to reset all progress for the current language?">
         <source>Are you sure you want to reset all progress for the current language?</source>
         <note>No comment provided by engineer.</note>
@@ -52,10 +56,6 @@
       </trans-unit>
       <trans-unit id="Change languages">
         <source>Change languages</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Coming soon...">
-        <source>Coming soon...</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Do you want to report this to my creators? This means a human might look at your image and investigate.">
@@ -110,6 +110,14 @@
         <source>Please go to the iOS preferences for this app and allow camera access in order to be able to use the app.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Remove account">
+        <source>Remove account</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove discovery">
+        <source>Remove discovery</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Reset progress">
         <source>Reset progress</source>
         <note>No comment provided by engineer.</note>
@@ -122,10 +130,6 @@
         <source>Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Soon you will be able to remove your account here. Swipe down to dismiss.">
-        <source>Soon you will be able to remove your account here. Swipe down to dismiss.</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Still %d undiscovered words in this category. Go out and scan some!">
         <source>Still %d undiscovered words in this category. Go out and scan some!</source>
         <note>No comment provided by engineer.</note>
@@ -133,6 +137,10 @@
       <trans-unit id="This is wrong.">
         <source>This is wrong.</source>
         <note>Wrong detection</note>
+      </trans-unit>
+      <trans-unit id="We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer.">
+        <source>We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yes">
         <source>Yes</source>
@@ -152,6 +160,10 @@
       </trans-unit>
       <trans-unit id="You found a new word in the category %@ - %@:">
         <source>You found a new word in the category %1$@ - %2$@:</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="🤖 You found %d/%d words.">
+        <source>🤖 You found %1$d/%2$d words.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
@@ -175,6 +187,14 @@
         <source>Login method</source>
         <note>Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn";</note>
       </trans-unit>
+      <trans-unit id="2oQ-WP-E5O.normalTitle">
+        <source>Dutch</source>
+        <note>Class = "UIButton"; normalTitle = "Dutch"; ObjectID = "2oQ-WP-E5O";</note>
+      </trans-unit>
+      <trans-unit id="6Nz-h5-SXe.normalTitle">
+        <source>English</source>
+        <note>Class = "UIButton"; normalTitle = "English"; ObjectID = "6Nz-h5-SXe";</note>
+      </trans-unit>
       <trans-unit id="6On-gE-IGF.text">
         <source>Coming soon</source>
         <note>Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF";</note>
@@ -195,13 +215,25 @@
         <source>Discover</source>
         <note>Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r";</note>
       </trans-unit>
+      <trans-unit id="D9j-Ae-Kay.normalTitle">
+        <source>Dutch</source>
+        <note>Class = "UIButton"; normalTitle = "Dutch"; ObjectID = "D9j-Ae-Kay";</note>
+      </trans-unit>
       <trans-unit id="JGB-lz-1nz.normalTitle">
         <source>Reset progress</source>
         <note>Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz";</note>
       </trans-unit>
+      <trans-unit id="JRJ-Nj-GAH.normalTitle">
+        <source>Agree</source>
+        <note>Class = "UIButton"; normalTitle = "Agree"; ObjectID = "JRJ-Nj-GAH";</note>
+      </trans-unit>
       <trans-unit id="JWa-3k-AqM.normalTitle">
         <source>Skip</source>
         <note>Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM";</note>
+      </trans-unit>
+      <trans-unit id="JeS-w0-Oge.normalTitle">
+        <source>English</source>
+        <note>Class = "UIButton"; normalTitle = "English"; ObjectID = "JeS-w0-Oge";</note>
       </trans-unit>
       <trans-unit id="KEM-9P-bS9.text">
         <source>I need your permission to use the camera. Without it I am of no use.
@@ -252,6 +284,14 @@ Press the button below to agree.</source>
         <source>From:</source>
         <note>Class = "UILabel"; text = "From:"; ObjectID = "Zto-b0-CwL";</note>
       </trans-unit>
+      <trans-unit id="aL6-Ra-Y8U.normalTitle">
+        <source>French</source>
+        <note>Class = "UIButton"; normalTitle = "French"; ObjectID = "aL6-Ra-Y8U";</note>
+      </trans-unit>
+      <trans-unit id="bFy-0H-qPr.normalTitle">
+        <source>French</source>
+        <note>Class = "UIButton"; normalTitle = "French"; ObjectID = "bFy-0H-qPr";</note>
+      </trans-unit>
       <trans-unit id="bGs-XI-PrK.normalTitle">
         <source>Change languages</source>
         <note>Class = "UIButton"; normalTitle = "Change languages"; ObjectID = "bGs-XI-PrK";</note>
@@ -261,8 +301,8 @@ Press the button below to agree.</source>
         <note>Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa";</note>
       </trans-unit>
       <trans-unit id="gJC-yk-AUL.text">
-        <source>Your native language</source>
-        <note>Class = "UILabel"; text = "Your native language"; ObjectID = "gJC-yk-AUL";</note>
+        <source>Which language do you speak?</source>
+        <note>Class = "UILabel"; text = "Which language do you speak?"; ObjectID = "gJC-yk-AUL";</note>
       </trans-unit>
       <trans-unit id="gam-gY-CEf.title">
         <source>Achievements</source>
@@ -273,16 +313,16 @@ Press the button below to agree.</source>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "hL1-lx-q0H";</note>
       </trans-unit>
       <trans-unit id="iHF-FS-mdk.text">
-        <source>I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is,I will translate it for you. Simple, no?</source>
-        <note>Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is,I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk";</note>
+        <source>I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?</source>
+        <note>Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk";</note>
       </trans-unit>
       <trans-unit id="lg1-ow-UGG.title">
         <source>Achievements</source>
         <note>Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG";</note>
       </trans-unit>
       <trans-unit id="oYy-Ht-Ea8.text">
-        <source>The language you are learning</source>
-        <note>Class = "UILabel"; text = "The language you are learning"; ObjectID = "oYy-Ht-Ea8";</note>
+        <source>Which language do you want me to teach you?</source>
+        <note>Class = "UILabel"; text = "Which language do you want me to teach you?"; ObjectID = "oYy-Ht-Ea8";</note>
       </trans-unit>
       <trans-unit id="xkM-az-YTj.text">
         <source>Progress</source>

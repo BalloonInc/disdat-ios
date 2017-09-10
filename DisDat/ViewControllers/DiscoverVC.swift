@@ -11,7 +11,6 @@ import AVFoundation
 import Vision
 import PopupDialog
 import Firebase
-import FirebaseStorage
 import KDCircularProgress
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -495,66 +494,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {        
-        let auth = Authentication.getInstance()
-        let userFolder = auth.isAnonymous ? auth.userId! : auth.email!.sha256()
-        
-        let storageRef = Storage.storage().reference()
-        
-        var rootFolder = storageRef.child(correct ? "correct_images" : "false_positives").child(userFolder)
-        
-        if correct {
-            rootFolder = rootFolder.child("\(rootLanguage!)-\(learningLanguage!)")
-        }
-        var fileName = englishWord
-        if !correct {
-            fileName += "-\(Date().timeIntervalSinceReferenceDate)"
-        }
-        
-        let imageRef = rootFolder.child(fileName + ".jpg")
-        let txtRef = rootFolder.child(fileName + ".json")
-        
-        let data = UIImageJPEGRepresentation(image.resize(toWidth: 600)!, 0.8)!
-        
-        let metaData: [String:Any] = ["Predictions":Array(fullPredictions[0...10]),
-                                      "Device":UIDevice.current.modelName,
-                                      "Orientation":Helpers.getOrientationString(),
-                                      "OS version":UIDevice.current.systemVersion,
-                                      "Battery level":UIDevice.current.batteryLevel,
-                                      "App version":Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
-                                      "App build number": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String,
-                                      "Login Type": Authentication.getInstance().authenticationMethod!.rawValue,
-                                      "Email": Authentication.getInstance().email ?? ""
-        ]
-        
-        let fileURL = self.getTempURL(fileName: "metadata_temp.json")
-        
-        imageRef.putData(data, metadata:nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                print("Could not upload image: \(error?.localizedDescription ?? "")")
-                return
-            }
-            print("uploaded image to path: \(metadata.downloadURL()?.absoluteString ?? "")")
-            
-            do {
-                let data = try JSONSerialization.data(withJSONObject: metaData, options: [])
-                try data.write(to: fileURL!, options: [])
-                txtRef.putFile(from: fileURL!, metadata: nil, completion: { (metadata, error) in
-                    if let error = error {
-                        print("Could not upload text json: \(error.localizedDescription)")
-                        return
-                    }
-                    else {
-                        print("File succesfully uploaded at path: \(metadata?.downloadURL()?.absoluteString ?? "")")
-                    }
-                    try? FileManager.default.removeItem(atPath: fileURL!.path)
-                })
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
     fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEnglishWord: String,  _ image: UIImage, _ fullPredictions: [String]) {
         
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
@@ -568,7 +507,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
             DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEnglishWord)
-            self.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
+            FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
             self.session.startRunning()
         })
         
@@ -577,7 +516,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
                     
-                    self.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: false)
+                FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: false)
                     self.session.startRunning()
                 })
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
@@ -639,16 +578,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         originalAttString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .regular), range: originalWordRange)
 
         return translatedAttString + NSAttributedString(string:"\n") + originalAttString
-    }
-    
-    func getTempURL(fileName: String) -> URL? {
-        do {
-            let dirURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            return dirURL.appendingPathComponent(fileName)
-        }
-        catch {
-            return nil
-        }
     }
     
     func convert(cmage:CIImage, crop: Bool) -> UIImage

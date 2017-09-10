@@ -68,6 +68,15 @@ class DiscoveredWordCollection {
         return false
     }
     
+    func undiscover(englishWord: String){
+        if let index = discoveredWords["\(rootLanguage)-\(learningLanguage)"]!.index(of: englishWord){
+            discoveredWords["\(rootLanguage)-\(learningLanguage)"]!.remove(at: index)
+            save()
+        }
+        
+    }
+
+    
     func discovered(englishWord: String){
         if !isDiscovered(englishWord: englishWord){
             if discoveredWords["\(rootLanguage)-\(learningLanguage)"] == nil {

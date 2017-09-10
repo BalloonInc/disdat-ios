@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import AVKit
 import Kingfisher
+import PopupDialog
 
 class AchievementCardVC: UIViewController {
     var englishWord: String?
@@ -53,6 +54,19 @@ class AchievementCardVC: UIViewController {
         activityViewController.excludedActivityTypes = [ UIActivityType.airDrop ]
         
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func removeButtonPressed(_ sender: Any) {
+        let alert = PopupDialog(title:NSLocalizedString("Remove discovery", comment: ""), message:NSLocalizedString("Are you sure you want to remove the current word and it's linked image?", comment: ""))
+        
+        alert.addButton(DestructiveButton(title: NSLocalizedString("Yes", comment:"")){
+            DiscoveredWordCollection.getInstance()!.undiscover(englishWord: self.englishWord!)
+            FirebaseConnection.removeImageFromFirebase(englishWord: self.englishWord!, correct: true)
+        })
+        alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

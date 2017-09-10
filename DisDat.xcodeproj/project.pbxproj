@@ -34,6 +34,7 @@
 		6C4BC91A1F6553FA00579502 /* AchievementsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4BC9191F6553FA00579502 /* AchievementsHeader.swift */; };
 		6C6815981F58173100FD9448 /* MainPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6815971F58173100FD9448 /* MainPVC.swift */; };
 		6C68159A1F582F0500FD9448 /* MainPVCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6815991F582F0500FD9448 /* MainPVCContainer.swift */; };
+		6C757F7C1F657F6800F4168A /* FirebaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C757F7B1F657F6800F4168A /* FirebaseConnection.swift */; };
 		6C87A2FB1F55A82E0096FC30 /* labels_en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */; };
 		6C943D281F5563DC001DADF7 /* labels_fr-FR.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D251F5563D6001DADF7 /* labels_fr-FR.json */; };
 		6C943D2A1F5563E2001DADF7 /* labels_nl-BE.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D261F5563D6001DADF7 /* labels_nl-BE.json */; };
@@ -111,6 +112,7 @@
 		6C4BC9191F6553FA00579502 /* AchievementsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsHeader.swift; sourceTree = "<group>"; };
 		6C6815971F58173100FD9448 /* MainPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVC.swift; sourceTree = "<group>"; };
 		6C6815991F582F0500FD9448 /* MainPVCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPVCContainer.swift; sourceTree = "<group>"; };
+		6C757F7B1F657F6800F4168A /* FirebaseConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConnection.swift; sourceTree = "<group>"; };
 		6C87A2F91F55A3E50096FC30 /* DisDat.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = DisDat.playground; path = DisDat/DisDat.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_en-US.json"; sourceTree = "<group>"; };
 		6C943D251F5563D6001DADF7 /* labels_fr-FR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_fr-FR.json"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		6CAB308B1F51ADB6007E8773 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6C757F7B1F657F6800F4168A /* FirebaseConnection.swift */,
 				6C2C0F421F595BB600C958DF /* Constants.swift */,
 				88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */,
 				6C1709651F2CE1F300A23068 /* Helpers.swift */,
@@ -581,6 +584,7 @@
 				6CAB30871F51A005007E8773 /* SettingsTVC.swift in Sources */,
 				6C4BC91A1F6553FA00579502 /* AchievementsHeader.swift in Sources */,
 				6CB5E57B1F5EB04C00743B7F /* SpeechBubble.swift in Sources */,
+				6C757F7C1F657F6800F4168A /* FirebaseConnection.swift in Sources */,
 				6C6815981F58173100FD9448 /* MainPVC.swift in Sources */,
 				6C3242031F61E441005AA3C3 /* AchievementCardPVC.swift in Sources */,
 				6C4922C71F61A6350094CD18 /* AchievementNavigationVC.swift in Sources */,

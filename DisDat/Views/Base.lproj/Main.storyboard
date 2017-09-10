@@ -2014,6 +2014,13 @@ Press the button below to agree.</string>
                                             <constraint firstAttribute="width" constant="172" id="zWn-lY-zDi"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnR-xs-P03">
+                                        <rect key="frame" x="192" y="0.0" width="30" height="30"/>
+                                        <state key="normal" image="trash"/>
+                                        <connections>
+                                            <action selector="removeButtonPressed:" destination="rrg-iu-NmH" eventType="touchUpInside" id="AT9-lc-vVA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2033,8 +2040,10 @@ Press the button below to agree.</string>
                                     <constraint firstItem="AKJ-aM-1fa" firstAttribute="leading" secondItem="muN-M4-tUH" secondAttribute="leading" constant="16" id="fVM-xd-dg8"/>
                                     <constraint firstItem="o2F-I4-dfY" firstAttribute="top" secondItem="muN-M4-tUH" secondAttribute="top" constant="16" id="gOe-PO-K6v"/>
                                     <constraint firstItem="ZLq-zz-ejj" firstAttribute="centerX" secondItem="muN-M4-tUH" secondAttribute="centerX" id="hJx-Im-L3F"/>
+                                    <constraint firstItem="wnR-xs-P03" firstAttribute="centerX" secondItem="o2v-WV-up2" secondAttribute="centerX" id="kIZ-4p-TiO"/>
                                     <constraint firstItem="2zk-Ik-bX7" firstAttribute="top" secondItem="o2F-I4-dfY" secondAttribute="bottom" constant="8" id="mK1-vy-bG4"/>
                                     <constraint firstAttribute="bottom" secondItem="o2v-WV-up2" secondAttribute="bottom" constant="16" id="nMq-mz-lJW"/>
+                                    <constraint firstItem="wnR-xs-P03" firstAttribute="top" secondItem="muN-M4-tUH" secondAttribute="top" id="nS3-IA-exG"/>
                                     <constraint firstItem="o2F-I4-dfY" firstAttribute="leading" secondItem="muN-M4-tUH" secondAttribute="leading" constant="16" id="otc-LP-yr2"/>
                                     <constraint firstItem="2zk-Ik-bX7" firstAttribute="leading" secondItem="muN-M4-tUH" secondAttribute="leading" constant="16" id="ozM-gY-7PC"/>
                                     <constraint firstItem="eGL-6a-ugX" firstAttribute="leading" secondItem="muN-M4-tUH" secondAttribute="leading" constant="16" id="pbj-xX-2oh"/>
@@ -2156,6 +2165,7 @@ Press the button below to agree.</string>
         <image name="share" width="30" height="30"/>
         <image name="speaker" width="30" height="30"/>
         <image name="test-big-filled" width="60" height="60"/>
+        <image name="trash" width="30" height="30"/>
         <image name="trophy-big-filled" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
