@@ -14,7 +14,7 @@
 "Are you sure you want to logout?" = "Ben je zeker dat je wilt uitloggen?";
 
 /* No comment provided by engineer. */
-"Are you sure you want to remove the current word and it's linked image?" = "Are you sure you want to remove the current word and it's linked image?";
+"Are you sure you want to remove the current word and it's linked image?" = "Ben je zeker dat je het huidige woord en de gelinkte foto wilt verwijderen?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to reset all progress for the current language?" = "Ben je zeker dat je alle voortgang van de huidige talen wilt resetten?";
@@ -65,10 +65,10 @@
 "Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Gelieve naar de iOS instellingen voor deze app te gaan en camera toegang aan te zetten.";
 
 /* No comment provided by engineer. */
-"Remove account" = "Remove account";
+"Remove account" = "Verwijder account";
 
 /* No comment provided by engineer. */
-"Remove discovery" = "Remove discovery";
+"Remove discovery" = "Verwijder ontdekking";
 
 /* No comment provided by engineer. */
 "Reset progress" = "Reset voortgang";
@@ -86,7 +86,7 @@
 "This is wrong." = "Dit is fout";
 
 /* No comment provided by engineer. */
-"We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer." = "We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer.";
+"We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer." = "Ben je zeker dat je je account met alle gelinkte data en foto's wilt verwijderen? Dit brengt je naar de e-mail composer.";
 
 /* No comment provided by engineer. */
 "Yes" = "Ja";

@@ -129,6 +129,7 @@ class AchievementCardVC: UIViewController {
                         self.deleteButton.isHidden = false
                         self.speakerButton.isHidden = false
                         self.shareButton.isHidden = false
+                        self.cardImageView.isUserInteractionEnabled = true
 
                         self.translatedLabel.attributedText = attributedTranslatedWord
                         self.rootLabel.attributedText = attributedRootWord
@@ -152,7 +153,12 @@ class AchievementCardVC: UIViewController {
         }
         parentPVC!.orderedViewControllers.remove(at: currentIndex)
         parentPVC!.setViewControllers([parentPVC!.orderedViewControllers[newIndex]], direction: direction, animated: true, completion: nil)
-
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFullSizeImageSegue" {
+            if let destVC = segue.destination as? ImageFullScreenViewController{
+                destVC.image = cardImageView.image!
+            }
+        }
+    }
 }

@@ -1594,7 +1594,7 @@ Press the button below to agree.</string>
             <objects>
                 <navigationController storyboardIdentifier="AchievementsNavigationVC" id="ESY-5C-lAl" customClass="AchievementNavigationVC" customModule="DisDat" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cie-rQ-PTw">
-                        <rect key="frame" x="0.0" y="20" width="320" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="93"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2049,9 +2049,13 @@ Press the button below to agree.</string>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-zz-ejj">
                                         <rect key="frame" x="68" y="16" width="144" height="144"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZLq-zz-ejj" secondAttribute="height" multiplier="1:1" id="RA2-FS-gNY"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="agA-nU-2hw" appends="YES" id="TN8-gE-NYe"/>
+                                        </connections>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cx-Eg-0QD">
                                         <rect key="frame" x="16" y="234" width="30" height="30"/>
@@ -2137,6 +2141,11 @@ Press the button below to agree.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIC-g4-aGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="agA-nU-2hw">
+                    <connections>
+                        <segue destination="VLp-XJ-MDr" kind="show" identifier="showFullSizeImageSegue" id="nHY-Tt-gb5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3452" y="751"/>
         </scene>
@@ -2211,6 +2220,64 @@ Press the button below to agree.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCA-0P-Yfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3452" y="1223"/>
+        </scene>
+        <!--Image Full Screen View Controller-->
+        <scene sceneID="tv9-Nc-Gop">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" automaticallyAdjustsScrollViewInsets="NO" id="VLp-XJ-MDr" customClass="ImageFullScreenViewController" customModule="Winkln_be" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XT3-xJ-5K1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tvp-s5-St8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EMu-Ah-wXc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="VJm-0A-VbV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="emE-Sn-JyW">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="emE-Sn-JyW" firstAttribute="centerY" secondItem="VJm-0A-VbV" secondAttribute="centerY" id="3F2-8e-rmy"/>
+                                    <constraint firstItem="emE-Sn-JyW" firstAttribute="leading" secondItem="VJm-0A-VbV" secondAttribute="leading" id="5z9-7t-3Hf"/>
+                                    <constraint firstItem="emE-Sn-JyW" firstAttribute="centerX" secondItem="VJm-0A-VbV" secondAttribute="centerX" id="NcM-oH-fbn"/>
+                                    <constraint firstAttribute="trailing" secondItem="emE-Sn-JyW" secondAttribute="trailing" id="QJz-4N-lla"/>
+                                    <constraint firstAttribute="bottom" secondItem="emE-Sn-JyW" secondAttribute="bottom" id="m8H-vo-Mtt"/>
+                                    <constraint firstItem="emE-Sn-JyW" firstAttribute="top" secondItem="VJm-0A-VbV" secondAttribute="top" id="q88-O3-bkC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="34G-7C-OHf" appends="YES" id="nk6-dH-ODm"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VJm-0A-VbV" secondAttribute="trailing" id="G10-Qh-8YM"/>
+                            <constraint firstItem="VJm-0A-VbV" firstAttribute="top" secondItem="EMu-Ah-wXc" secondAttribute="top" id="Wxf-zk-oYq"/>
+                            <constraint firstItem="VJm-0A-VbV" firstAttribute="bottom" secondItem="Tvp-s5-St8" secondAttribute="top" id="Y0C-cp-4f2"/>
+                            <constraint firstItem="VJm-0A-VbV" firstAttribute="leading" secondItem="EMu-Ah-wXc" secondAttribute="leading" id="yBF-KG-hbS"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="imageView" destination="emE-Sn-JyW" id="4wl-80-kaq"/>
+                        <outlet property="scrollView" destination="VJm-0A-VbV" id="SsQ-v7-oph"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ts-fE-dym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="34G-7C-OHf">
+                    <connections>
+                        <action selector="doubleTappedToZoom:" destination="VLp-XJ-MDr" id="9DH-Or-ehD"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4228" y="839"/>
         </scene>
     </scenes>
     <resources>
