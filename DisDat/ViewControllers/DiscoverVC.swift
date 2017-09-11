@@ -76,6 +76,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var speechBubble: UIView?
     
     @IBAction func enableDebug(_ sender: UITapGestureRecognizer) {
+        if !FirebaseConnection.getBoolParam(Constants.config.debug_enabled){
+            return
+        }
         debugFpsView.text = nil
         debugResultView.text = nil
         
@@ -86,6 +89,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     }
     
     @IBAction func enableSuperDebug(_ sender: UITapGestureRecognizer) {
+        if !FirebaseConnection.getBoolParam(Constants.config.super_debug_enabled){
+            return
+        }
+
         superDebug = !superDebug
         thresholdLabel.isHidden = !superDebug
         thresholdSlider.isHidden = !superDebug

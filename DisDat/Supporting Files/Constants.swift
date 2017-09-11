@@ -17,5 +17,7 @@ struct Constants {
     
     struct config {
         static let image_resize_width = "image_resize_width"
+        static let debug_enabled = "debug_enabled"
+        static let super_debug_enabled = "super_debug_enabled"
     }
 }

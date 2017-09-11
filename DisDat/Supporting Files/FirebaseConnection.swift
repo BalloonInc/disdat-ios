@@ -16,6 +16,10 @@ class FirebaseConnection {
         return remoteConfig[param].numberValue!.intValue
     }
     
+    static func getBoolParam(_ param: String) -> Bool{
+        return remoteConfig[param].boolValue
+    }
+    
     static func fetchConfig(){
         remoteConfig.fetch(withExpirationDuration: 3600, completionHandler: { (status, error) in
             if status == .success {
@@ -30,7 +34,6 @@ class FirebaseConnection {
     private static var remoteConfig: RemoteConfig{
         if _remoteConfig == nil {
             _remoteConfig = RemoteConfig.remoteConfig()
-            _remoteConfig!.configSettings = RemoteConfigSettings(developerModeEnabled: true)!
             _remoteConfig!.setDefaults(fromPlist: "RemoteConfigDefaults")
         }
     return _remoteConfig!

@@ -293,7 +293,7 @@ Mouse: 0.01</string>
                         <action selector="enableDebug:" destination="BYZ-38-t0r" id="0fj-gU-iFU"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer enabled="NO" numberOfTapsRequired="2" id="NcT-xJ-rkQ" userLabel="SuperDebugTap">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="NcT-xJ-rkQ" userLabel="SuperDebugTap">
                     <connections>
                         <action selector="enableSuperDebug:" destination="BYZ-38-t0r" id="UfX-5L-FNS"/>
                     </connections>
