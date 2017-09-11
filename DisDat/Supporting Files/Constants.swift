@@ -14,4 +14,8 @@ struct Constants {
         static let logout = NSLocalizedString("An error occurred during logout", comment:"")
         static let tryAgain = NSLocalizedString("Oops, let me try again!", comment:"")
     }
+    
+    struct config {
+        static let image_resize_width = "image_resize_width"
+    }
 }

@@ -27,9 +27,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     var englishLabelDict: [String:Int] = [:]
     
-    var rootLanguageLabels: [String] = []
-    var learningLanguageLabels: [String] = []
-    
     let speechSynthesizer = AVSpeechSynthesizer()
     
     var camera: AVCaptureDevice?
@@ -98,20 +95,17 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         self.recognitionThreshold = slider.value
         updateThresholdLabel()
     }
+    
     @IBAction func zoomButtonPressed(_ sender: UIButton) {
         pinch(scale: 0, state: .ended)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         rootLanguage = Authentication.getInstance().currentRootLanguage!
         learningLanguage = Authentication.getInstance().currentLearningLanguage!
         
         englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
-        
-        rootLanguageLabels = DiscoveredWordCollection.getInstance()!.rootLanguageWords
-        learningLanguageLabels = DiscoveredWordCollection.getInstance()!.learningLanguageWords
         
         loadCameraAndRequests()
         
@@ -120,7 +114,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        FirebaseConnection.fetchConfig()
+
         resultView.text=nil
         translatedResultView.text=nil
         
@@ -145,6 +140,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("width: \(FirebaseConnection.getIntParam(Constants.config.image_resize_width))")
         self.progressCircle = MainPVCContainer.instance?.discoverButton
         DispatchQueue.global(qos: .userInitiated).async {
             if !self.session.isRunning{
@@ -319,7 +315,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         else {
             UIView.performWithoutAnimation {
-                zoomButton.setTitle(String(format: " %.1fx ", newScaleFactor), for: .normal)
+                zoomButton.setAttributedTitle(NSAttributedString(string: String(format: " %.1fx ", newScaleFactor)), for: .normal)
                 zoomButton.isHidden = false
                 zoomCirleView.isHidden = false
                 zoomButton.layoutIfNeeded()
@@ -401,6 +397,14 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
+                
+        guard !classificationsList.isEmpty, let index = englishLabelDict[classificationsList[0]] else {
+            DispatchQueue.main.async {
+                self.resultView.text = ""
+                self.translatedResultView.text = ""
+            }
+            return
+        }
         
         DispatchQueue.main.async {
             let lastClassificationTime = Date().timeIntervalSince(self.lastClassificationPerformed)*1000
@@ -422,7 +426,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                     self.lastSuspicionTime = Date()
                     self.lastSuspicion = suspicion
                     self.speechBubble?.removeFromSuperview()
-                    let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: self.learningLanguageLabels[self.englishLabelDict[suspicion]!])
+                    
+                    let learningLanguageWord = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: false)
+                    let category = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: learningLanguageWord)
                     
                     let bubbleText = String(format: NSLocalizedString("I think I see something in the category %@. Try a different angle.", comment: ""), category)
                     
@@ -457,35 +463,29 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             self.lastClassificationPerformed = Date()
         }
         
-        let rootLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?rootLanguageLabels[englishLabelDict[$0]!]:$0}).joined(separator:"\n")
-        let learnedLanguageClassifications = classificationsList.map( {englishLabelDict[$0] != nil ?learningLanguageLabels[englishLabelDict[$0]!]:""}).joined(separator:"\n")
-        
         if classificationsList.isEmpty {
-            DispatchQueue.main.async {
-                self.resultView.text = ""
-                self.translatedResultView.text = ""
-            }
             return
         }
         
+        let foundEnglishWord = classificationsList[0]
+
+        let rootLanguageClassification = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: true)
+        let learnedLanguageClassification = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: true)
+
         DispatchQueue.main.async {
-            self.resultView.text = rootLanguageClassifications
-            self.translatedResultView.text = learnedLanguageClassifications
+            self.resultView.text = rootLanguageClassification
+            self.translatedResultView.text = learnedLanguageClassification
         }
         
-        if !DiscoveredWordCollection.getInstance()!.isDiscovered(englishWord: classificationsList[0]){
+        if !DiscoveredWordCollection.getInstance()!.isDiscovered(englishWord: foundEnglishWord){
             session.stopRunning()
-            
-            let foundTranslatedWord = String(learnedLanguageClassifications.split(separator: "\n")[0])
-            let foundOriginalWord = String(rootLanguageClassifications.split(separator: "\n")[0])
-            let foundEnglishWord = classificationsList[0]
             
             if let currentBuffer = self.currentPixelBuffer{
                 let ciImage = CIImage(cvPixelBuffer: currentBuffer)
                 self.currentPixelBuffer = nil
                 let image = self.convert(cmage: ciImage, crop: true)
                 
-                displayFoundWordPopup(learnedLanguageClassifications, foundTranslatedWord, foundOriginalWord, foundEnglishWord, image, fullClassificationList)
+                displayFoundWordPopup(index, image, fullClassificationList)
             }
             return
         }
@@ -494,14 +494,21 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
     }
     
-    fileprivate func displayFoundWordPopup(_ learnedLanguageClassifications: String, _ foundTranslatedWord: String, _ foundOriginalWord: String, _ foundEnglishWord: String,  _ image: UIImage, _ fullPredictions: [String]) {
+    fileprivate func displayFoundWordPopup(_ index: Int,  _ image: UIImage, _ fullPredictions: [String]) {
         
-        let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: foundOriginalWord)
-        let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: foundTranslatedWord)
+        let foundEnglishWord = DiscoveredWordCollection.getInstance()!.getEnglishWord(at: index)
+        let rootLanguageWord = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: false)
+        let learningLanguageWord = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: false)
+
+        let rootLanguageWordWithArticle = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: true)
+        let learningLanguageWordWithArticle = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: true)
+
+        let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: rootLanguageWord)
+        let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: learningLanguageWord)
         
         let attributedTitle = getAttributedTitle(rootCategory: rootCategory, translatedCategory: translatedCategory)
         
-        let attributedMessage = getAttributedMessage(foundTranslatedWord: foundTranslatedWord, foundOriginalWord: foundOriginalWord)
+        let attributedMessage = getAttributedMessage(foundTranslatedWord: learningLanguageWordWithArticle, foundOriginalWord: rootLanguageWordWithArticle)
         
         let alert = PopupDialog(title:nil, message: nil, attributedTitle:attributedTitle, attributedMessage:attributedMessage, textMargin: 10, image: image, gestureDismissal: false)
         
@@ -531,8 +538,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
                 try AVAudioSession.sharedInstance().setActive(true)
                 
-                let pronounceString = "\(learnedLanguageClassifications.split(separator: "\n")[0])"
-                let speechUtterance = AVSpeechUtterance(string: pronounceString)
+                let speechUtterance = AVSpeechUtterance(string: learningLanguageWordWithArticle)
                 speechUtterance.voice  = AVSpeechSynthesisVoice(language: DiscoveredWordCollection.getInstance()!.learningLanguage)
                 self.speechSynthesizer.speak(speechUtterance)
             }

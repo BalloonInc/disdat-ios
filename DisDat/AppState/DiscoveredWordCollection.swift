@@ -24,10 +24,12 @@ class DiscoveredWordCollection {
     let englishWordsToExclude = ["ruler"]
     
     var rootLanguageJson: [[String:Any]]
+    var rootLanguageArticles: [String]
     var rootLanguageWords: [String]
     var rootLanguageCategories: [String]
     
     var learningLanguageJson: [[String:Any]]
+    var learningLanguageArticles: [String]
     var learningLanguageWords: [String]
     var learningLanguageCategories: [String]
     
@@ -48,10 +50,12 @@ class DiscoveredWordCollection {
         
         rootLanguageJson = Helpers.readJson(fileName: "labels_\(rootLanguage)") as! [[String:Any]]
         rootLanguageCategories = rootLanguageJson.map({$0["category"] as! String})
+        rootLanguageArticles = rootLanguageJson.map({Array($0["articles"]! as! [String])}).flatMap({$0})
         rootLanguageWords = rootLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
         
         learningLanguageJson = Helpers.readJson(fileName: "labels_\(learningLanguage)") as! [[String:Any]]
         learningLanguageCategories = learningLanguageJson.map({$0["category"] as! String})
+        learningLanguageArticles = learningLanguageJson.map({Array($0["articles"]! as! [String])}).flatMap({$0})
         learningLanguageWords = learningLanguageJson.map({Array($0["words"]! as! [String])}).flatMap({$0})
         
         totalWordCount = rootLanguageWords.count
@@ -73,9 +77,7 @@ class DiscoveredWordCollection {
             discoveredWords["\(rootLanguage)-\(learningLanguage)"]!.remove(at: index)
             save()
         }
-        
     }
-
     
     func discovered(englishWord: String){
         if !isDiscovered(englishWord: englishWord){
@@ -102,6 +104,30 @@ class DiscoveredWordCollection {
     
     func getLearningCategory(index: Int) -> String{
         return learningLanguageJson[index]["category"] as! String
+    }
+    
+    func getEnglishWord(at index: Int) -> String {
+        return englishLanguageWords[index]
+    }
+    
+    func getRootWord(at index: Int, withArticle: Bool) -> String {
+        let word = rootLanguageWords[index]
+
+        if withArticle {
+            let article = rootLanguageArticles[index]
+            return (article.count > 0 ? article + " ":"") + word
+        }
+        return word
+    }
+    
+    func getLearningWord(at index: Int, withArticle: Bool) -> String {
+        let word = learningLanguageWords[index]
+        
+        if withArticle {
+            let article = learningLanguageArticles[index]
+            return (article.count > 0 ? article + " ":"") + word
+        }
+        return word
     }
     
     func getCurrentDiscoveredCount() -> Int{
@@ -140,7 +166,7 @@ class DiscoveredWordCollection {
                 localInstance.discoveredWords = savedDiscoveries
             }
         }
-
+        
         instance = localInstance
     }
 }

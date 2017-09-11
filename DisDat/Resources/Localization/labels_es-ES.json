@@ -1,230 +1,392 @@
  [
   {
-  "category": "Office",
+  "category": "Oficina",
+  "articles": [
+               "el",
+               "la",
+               "el",
+               "el"
+               ],
   "words": [
-            "keyboard",
-            "pen",
+            "teclado",
+            "pluma",
             "monitor",
-            "computer mouse"
+            "ratón del ordenador"
             ]
   },
   {
-  "category": "Kitchen",
+  "category": "Cocina",
+  "articles": [
+               "el",
+               "la",
+               "la",
+               "el"
+               ],
   "words": [
-            "knife",
-            "spoon",
-            "pan",
-            "bowl"
+            "cuchillo",
+            "cuchara",
+            "sartén",
+            "cuenco"
             ]
   },
   {
-  "category": "Fruits",
+  "category": "Frutas",
+  "articles": [
+               "la",
+               "la",
+               "el",
+               "la",
+               "el"
+               ],
   "words": [
-            "apple",
-            "pear",
-            "banana",
-            "strawberry",
-            "pineapple"
+            "manzana",
+            "pera",
+            "plátano",
+            "fresa",
+            "anana"
             ]
   },
   {
-  "category": "Vegetables",
+  "category": "Verduras",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "el",
+               "la",
+               "la",
+               "la"
+               ],
   "words": [
-            "carrot",
-            "potato",
-            "lettuce",
-            "mushroom",
-            "onion",
-            "cauliflower",
-            "pumpkin"
+            "zanahoria",
+            "patata",
+            "lechuga",
+            "hongo",
+            "cebolla",
+            "coliflor",
+            "calabaza"
             ]
   },
   {
-  "category": "Animals",
+  "category": "Animales",
+  "articles": [
+               "el",
+               "el",
+               "el",
+               "la",
+               "el",
+               "el"
+               ],
   "words": [
-            "dog",
-            "cat",
-            "bird",
-            "giraffe",
+            "perro",
+            "gato",
+            "pájaro",
+            "jirafa",
             "mosquito",
-            "fish"
+            "pescado"
             ]
   },
   {
-  "category": "Street",
+  "category": "Calle",
+  "articles": [
+               "el",
+               "la",
+               "el",
+               "la",
+               "el"
+               ],
   "words": [
-            "car",
-            "bicycle",
-            "bus",
-            "skateboard",
-            "tank"
+            "coche",
+            "bicicleta",
+            "autobús",
+            "patineta",
+            "tanque"
             ]
   },
   {
-  "category": "Bathroom",
+  "category": "Baño",
+  "articles": [
+               "la",
+               "el",
+               "la",
+               "el",
+               "el",
+               "el"
+               ],
   "words": [
-            "shower",
-            "bath",
-            "towel",
-            "soap",
-            "hairbrush",
-            "toothbrush"
+            "ducha",
+            "baño",
+            "toalla",
+            "jabón",
+            "cepillo para el pelo",
+            "cepillo de dientes"
             ]
   },
   {
-  "category": "Clothes",
+  "category": "Ropa",
+  "articles": [
+               "el",
+               "los",
+               "el",
+               "el",
+               "el",
+               "el"
+               ],
   "words": [
-            "dress",
-            "trousers",
-            "hat",
-            "sock",
-            "shoe",
-            "spacesuit"
+            "vestido",
+            "pantalones",
+            "sombrero",
+            "calcetín",
+            "zapato",
+            "traje espacial"
             ]
   },
   {
-  "category": "Tools",
+  "category": "Herramientas",
+  "articles": [
+               "el",
+               "el",
+               "la",
+               "el"
+               ],
   "words": [
-            "hammer",
-            "drill",
-            "box",
-            "screwdriver"
+            "martillo",
+            "taladro",
+            "caja",
+            "destornillador"
             ]
   },
   {
-  "category": "Nature",
+  "category": "Naturaleza",
+  "articles": [
+               "el",
+               "la",
+               "la",
+               "la",
+               "la",
+               "la"
+               ],
   "words": [
-            "tree",
-            "flower",
-            "grass",
-            "cloud",
-            "beach",
-            "plant"
+            "árbol",
+            "flor",
+            "hierba",
+            "nube",
+            "playa",
+            "planta"
             ]
   },
   {
-  "category": "Body",
+  "category": "Cuerpo",
+  "articles": [
+               "el",
+               "la",
+               "el",
+               "el"
+               ],
   "words": [
-            "lip",
-            "face",
-            "hair",
-            "heart"
+            "labio",
+            "cara",
+            "pelo",
+            "corazón"
             ]
   },
   {
-  "category": "Home",
+  "category": "Inicio",
+  "articles": [
+               "la",
+               "la",
+               "el",
+               "el",
+               "la",
+               "la"
+               ],
   "words": [
-            "house",
-            "key",
-            "sofa",
-            "radiator",
-            "curtain",
-            "chair"
+            "casa",
+            "llave",
+            "sofá",
+            "radiador",
+            "cortina",
+            "silla"
             ]
   },
   {
-  "category": "Music",
+  "category": "Música",
+  "articles": [
+               "la",
+               "el",
+               "los",
+               "el",
+               "la"
+               ],
   "words": [
-            "guitar",
+            "guitarra",
             "piano",
-            "drums",
-            "microphone",
+            "tambores",
+            "micrófono",
             "radio"
             ]
   },
   {
-  "category": "Sleep",
+  "category": "Dormir",
+  "articles": [
+               "la",
+               "la",
+               "el",
+               "el",
+               "la"
+               ],
   "words": [
-            "bed",
-            "pillow",
-            "clock",
-            "closet",
-            "star"
+            "cama",
+            "almohada",
+            "reloj",
+            "armario",
+            "estrella"
             ]
   },
   {
-  "category": "Entertainment",
+  "category": "Entretenimiento",
+  "articles": [
+               "la",
+               "el",
+               "la",
+               "el",
+               "el"
+               ],
   "words": [
-            "television",
-            "book",
-            "ball",
-            "puzzle",
-            "cell phone"
+            "televisión",
+            "libro",
+            "pelota",
+            "rompecabezas",
+            "celular"
             ]
   },
   {
-  "category": "Classroom",
+  "category": "Aula",
+  "articles": [
+               "el",
+               "la",
+               "la",
+               "la"
+               ],
   "words": [
-            "pencil",
-            "calculator",
-            "adhesive tape",
-            "blackboard"
+            "lápiz",
+            "calculadora",
+            "cinta adhesiva",
+            "pizarra"
             ]
   },
   {
-  "category": "Accessories",
+  "category": "Accesorios",
+  "articles": [
+               "las",
+               "el",
+               "el",
+               "el",
+               "la",
+               "la"
+               ],
   "words": [
-            "glasses",
-            "ring",
-            "necklace",
-            "handbag",
-            "hairpin",
-            "backpack"
+            "gafas",
+            "anillo",
+            "collar",
+            "bolso",
+            "horquilla",
+            "mochila"
             ]
   },
   {
-  "category": "Meals",
+  "category": "Comida",
+  "articles": [
+               "la",
+               "el",
+               "los",
+               "la",
+               "el",
+               "el"
+               ],
   "words": [
             "pizza",
-            "bread",
-            "spaghetti",
-            "hamburger",
-            "ice cream",
-            "egg"
+            "pan",
+            "espaguetis",
+            "hamburguesa",
+            "helado",
+            "huevo"
             ]
   },
   {
-  "category": "Museum",
+  "category": "Museo",
+  "articles": [
+               "las",
+               "el",
+               "la",
+               "la",
+               "el"
+               ],
   "words": [
-            "juwels",
-            "vase",
-            "coin",
-            "sculpture",
-            "dinosaur"
+            "joyas",
+            "jarrón",
+            "moneda",
+            "escultura",
+            "dinosaurio"
             ]
   },
   {
-  "category": "Sport",
+  "category": "Deporte",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "soccer",
-            "tennis",
-            "bowling",
-            "basketball",
-            "skiing"
+            "fútbol",
+            "tenis",
+            "boliche",
+            "baloncesto",
+            "esquí"
             ]
   },
   {
-  "category": "Drinks",
-  "words":[
-           "soda can",
-           "water bottle",
-           "wine bottle",
-           "wine glass",
-           "champagne glass",
-           "beer glass",
-           "water glass",
-           "orange juice",
-           "coffee cup ",
-           ]
+  "category": "Bono",
+  "articles": [
+               "el",
+               "el",
+               "la",
+               "la",
+               "el"
+               ],
+  "words": [
+            "globo",
+            "paraguas",
+            "iglesia",
+            "cámara",
+            "puente"
+            ]
   },
   {
-  "category": "Bonus",
+  "category": "Bebidas",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "la",
+               "la",
+               "el",
+               "el",
+               "el",
+               "la"
+               ],
   "words": [
-            "balloon",
-            "umbrella",
-            "church",
-            "camera",
-            "bridge"
+            "lata de refresco",
+            "botella de agua",
+            "botella de vino",
+            "copa de vino",
+            "copa de champaña",
+            "vaso de cerveza",
+            "vaso de agua",
+            "jugo de naranja",
+            "taza de café"
             ]
   }
-  ]
+]

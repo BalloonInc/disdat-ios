@@ -12,6 +12,7 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
     
     var categoryIndex: Int?
     var orderedViewControllers: [UIViewController] = []
+    var pageControl: UIPageControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
             if DiscoveredWordCollection.getInstance()!.isDiscovered(englishWord: englishWord){
                 let achievementCardVC = newVC("AchievementCard") as! AchievementCardVC
                 achievementCardVC.englishWord = englishWord
+                achievementCardVC.parentPVC = self
                 orderedViewControllers.append(achievementCardVC)
             }
             else {
@@ -40,13 +42,7 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
         
         setViewControllers([orderedViewControllers[0]], direction: .forward, animated: true, completion: nil)
 
-        let pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [AchievementCardPVC.self])
-        pageControl.pageIndicatorTintColor = .lightGray
-        pageControl.currentPageIndicatorTintColor = .black
-    }
-    
-    private func newVC(_ viewcontrollerID: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewcontrollerID)
+        setPageControl()
     }
     
     public func pageViewController(_ pageViewController: UIPageViewController,
@@ -94,5 +90,15 @@ class AchievementCardPVC: UIPageViewController, UIPageViewControllerDataSource, 
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
+    }
+    
+    private func newVC(_ viewcontrollerID: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewcontrollerID)
+    }
+    
+    func setPageControl() {
+        pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [AchievementCardPVC.self])
+        pageControl!.pageIndicatorTintColor = .lightGray
+        pageControl!.currentPageIndicatorTintColor = .black
     }
 }

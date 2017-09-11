@@ -10,6 +10,32 @@ import UIKit
 import Firebase
 
 class FirebaseConnection {
+    static var _remoteConfig: RemoteConfig?
+    
+    static func getIntParam(_ param: String) -> Int{
+        return remoteConfig[param].numberValue!.intValue
+    }
+    
+    static func fetchConfig(){
+        remoteConfig.fetch(withExpirationDuration: 3600, completionHandler: { (status, error) in
+            if status == .success {
+                remoteConfig.activateFetched()
+            }
+            else {
+                print("An error occured fetching the config")
+            }
+        })
+    }
+    
+    private static var remoteConfig: RemoteConfig{
+        if _remoteConfig == nil {
+            _remoteConfig = RemoteConfig.remoteConfig()
+            _remoteConfig!.configSettings = RemoteConfigSettings(developerModeEnabled: true)!
+            _remoteConfig!.setDefaults(fromPlist: "RemoteConfigDefaults")
+        }
+    return _remoteConfig!
+    }
+
     static func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {
         let auth = Authentication.getInstance()
         let userFolder = auth.isAnonymous ? auth.userId! : auth.email!.sha256()
@@ -28,8 +54,8 @@ class FirebaseConnection {
         
         let imageRef = rootFolder.child(fileName + ".jpg")
         let txtRef = rootFolder.child(fileName + ".json")
-        
-        let data = UIImageJPEGRepresentation(image.resize(toWidth: 600)!, 0.8)!
+        let toWidth = getIntParam(Constants.config.image_resize_width)
+        let data = UIImageJPEGRepresentation(image.resize(toWidth: CGFloat(toWidth))!, 0.8)!
         
         let metaData: [String:Any] = ["Predictions":Array(fullPredictions[0...10]),
                                       "Device":UIDevice.current.modelName,

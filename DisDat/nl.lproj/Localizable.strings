@@ -14,6 +14,9 @@
 "Are you sure you want to logout?" = "Ben je zeker dat je wilt uitloggen?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to remove the current word and it's linked image?" = "Are you sure you want to remove the current word and it's linked image?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to reset all progress for the current language?" = "Ben je zeker dat je alle voortgang van de huidige talen wilt resetten?";
 
 /* No comment provided by engineer. */
@@ -24,9 +27,6 @@
 
 /* No comment provided by engineer. */
 "Change languages" = "Verander talen";
-
-/* No comment provided by engineer. */
-"Coming soon..." = "Coming soon...";
 
 /* No comment provided by engineer. */
 "Do you want to report this to my creators? This means a human might look at your image and investigate." = "Wil je dit rapporteren aan mijn ontwerpers? Dit betekent dat een niet-robot-persoon de foto kan bekijken en onderzoeken .";
@@ -65,6 +65,12 @@
 "Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Gelieve naar de iOS instellingen voor deze app te gaan en camera toegang aan te zetten.";
 
 /* No comment provided by engineer. */
+"Remove account" = "Remove account";
+
+/* No comment provided by engineer. */
+"Remove discovery" = "Remove discovery";
+
+/* No comment provided by engineer. */
 "Reset progress" = "Reset voortgang";
 
 /* No comment provided by engineer. */
@@ -74,13 +80,13 @@
 "Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience." = "Er is iets fout. Probeer opnieuw of stuur ons een bericht op disdat@ballooninc.be, zodat we je kunnen helpen.";
 
 /* No comment provided by engineer. */
-"Soon you will be able to remove your account here. Swipe down to dismiss." = "Binnenkort kan je hier je account verwijderen. Swipe naar beneden om terug te keren.";
-
-/* No comment provided by engineer. */
 "Still %d undiscovered words in this category. Go out and scan some!" = "Nog %d woorden te vinden in deze categorie. Ga op stap en zoek!";
 
 /* Wrong detection */
 "This is wrong." = "Dit is fout";
+
+/* No comment provided by engineer. */
+"We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer." = "We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer.";
 
 /* No comment provided by engineer. */
 "Yes" = "Ja";

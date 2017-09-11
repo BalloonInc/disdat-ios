@@ -16,12 +16,17 @@ class AchievementCardVC: UIViewController {
     var englishWord: String?
     var rootLanguageWord: String?
     var learningLanguageWord: String?
+    var parentPVC: AchievementCardPVC?
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cardImageView: UIImageView!
     
     @IBOutlet weak var translatedLabel: UILabel!
     @IBOutlet weak var rootLabel: UILabel!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var speakerButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var placeholder1: UIView!
     @IBOutlet weak var placeholder2: UIView!
@@ -63,9 +68,10 @@ class AchievementCardVC: UIViewController {
         alert.addButton(DestructiveButton(title: NSLocalizedString("Yes", comment:"")){
             DiscoveredWordCollection.getInstance()!.undiscover(englishWord: self.englishWord!)
             FirebaseConnection.removeImageFromFirebase(englishWord: self.englishWord!, correct: true)
+            self.removeCurrentCard()
         })
-        alert.addButton(CancelButton(title: NSLocalizedString("No", comment:"")){
-        })
+        alert.addButton(CancelButton(title: NSLocalizedString("No", comment: "")){})
+
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -78,10 +84,14 @@ class AchievementCardVC: UIViewController {
         cardView.layer.shadowRadius = 3.0;
         cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         
+        deleteButton.isHidden = true
+        speakerButton.isHidden = true
+        shareButton.isHidden = true
+        
         let index = DiscoveredWordCollection.getInstance()!.englishLabelDict[englishWord!]!
-        rootLanguageWord = DiscoveredWordCollection.getInstance()!.rootLanguageWords[index]
-        learningLanguageWord = DiscoveredWordCollection.getInstance()!.learningLanguageWords[index]
-
+        rootLanguageWord = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: true)
+        learningLanguageWord = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: true)
+        
         let attributedRootWord = NSMutableAttributedString.init(string: rootLanguageWord!)
         let attributedTranslatedWord = NSMutableAttributedString.init(string: learningLanguageWord!)
         
@@ -116,15 +126,33 @@ class AchievementCardVC: UIViewController {
                         self.placeholder4.isHidden = true
                         self.placeholder5.isHidden = true
 
+                        self.deleteButton.isHidden = false
+                        self.speakerButton.isHidden = false
+                        self.shareButton.isHidden = false
+
                         self.translatedLabel.attributedText = attributedTranslatedWord
                         self.rootLabel.attributedText = attributedRootWord
-
                     })
                 }
             }
         })
     }
     
-    
+    func removeCurrentCard(){
+        var newIndex: Int
+        var direction: UIPageViewControllerNavigationDirection
+        let currentIndex = parentPVC!.orderedViewControllers.index(of: self)!
+        if currentIndex==0{
+            newIndex = 0
+            direction = .forward
+        }
+        else {
+            newIndex = currentIndex-1
+            direction = .reverse
+        }
+        parentPVC!.orderedViewControllers.remove(at: currentIndex)
+        parentPVC!.setViewControllers([parentPVC!.orderedViewControllers[newIndex]], direction: direction, animated: true, completion: nil)
+
+    }
 
 }

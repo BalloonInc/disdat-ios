@@ -1,230 +1,392 @@
  [
   {
-  "category": "Office",
+  "category": "Офис",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "keyboard",
-            "pen",
-            "monitor",
-            "computer mouse"
+            "Клавиатура",
+            "ручка",
+            "монитор",
+            "компьютерная мышь"
             ]
   },
   {
-  "category": "Kitchen",
+  "category": "Кухня",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "knife",
-            "spoon",
-            "pan",
-            "bowl"
+            "нож",
+            "ложка",
+            "сковорода",
+            "миска"
             ]
   },
   {
-  "category": "Fruits",
+  "category": "Фрукты",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "apple",
-            "pear",
-            "banana",
-            "strawberry",
-            "pineapple"
+            "яблоко",
+            "груша",
+            "банан",
+            "клубника",
+            "ананас"
             ]
   },
   {
-  "category": "Vegetables",
+  "category": "Овощи",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "carrot",
-            "potato",
-            "lettuce",
-            "mushroom",
-            "onion",
-            "cauliflower",
-            "pumpkin"
+            "морковь",
+            "картофель",
+            "салат",
+            "гриб",
+            "лук",
+            "цветная капуста",
+            "тыква"
             ]
   },
   {
-  "category": "Animals",
+  "category": "Животные",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "dog",
-            "cat",
-            "bird",
-            "giraffe",
-            "mosquito",
-            "fish"
+            "собака",
+            "кошка",
+            "птица",
+            "жираф",
+            "комар",
+            "рыба"
             ]
   },
   {
-  "category": "Street",
+  "category": "Улица",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "car",
-            "bicycle",
-            "bus",
-            "skateboard",
-            "tank"
+            "машина",
+            "велосипед",
+            "автобус",
+            "скейтборд",
+            "танк"
             ]
   },
   {
-  "category": "Bathroom",
+  "category": "Ванная комната",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "shower",
-            "bath",
-            "towel",
-            "soap",
-            "hairbrush",
-            "toothbrush"
+            "душ",
+            "ванна",
+            "полотенце",
+            "мыло",
+            "расческа для волос",
+            "зубная щетка"
             ]
   },
   {
-  "category": "Clothes",
+  "category": "Одежда",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "dress",
-            "trousers",
-            "hat",
-            "sock",
-            "shoe",
-            "spacesuit"
+            "платье",
+            "брюки",
+            "шляпа",
+            "носок",
+            "ботинок",
+            "скафандр"
             ]
   },
   {
-  "category": "Tools",
+  "category": "Инструменты",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "hammer",
-            "drill",
-            "box",
-            "screwdriver"
+            "молоток",
+            "дрель",
+            "коробка",
+            "отвертка"
             ]
   },
   {
-  "category": "Nature",
+  "category": "Природа",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "tree",
-            "flower",
-            "grass",
-            "cloud",
-            "beach",
-            "plant"
+            "дерево",
+            "цветок",
+            "трава",
+            "облако",
+            "пляж",
+            "растение"
             ]
   },
   {
-  "category": "Body",
+  "category": "Тело",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "lip",
-            "face",
-            "hair",
-            "heart"
+            "губа",
+            "лицо",
+            "волосы",
+            "сердце"
             ]
   },
   {
-  "category": "Home",
+  "category": "Дом",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "house",
-            "key",
-            "sofa",
-            "radiator",
-            "curtain",
-            "chair"
+            "дом",
+            "ключ",
+            "диван",
+            "батарея",
+            "занавеска",
+            "стул"
             ]
   },
   {
-  "category": "Music",
+  "category": "музыка",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "guitar",
-            "piano",
-            "drums",
-            "microphone",
-            "radio"
+            "гитара",
+            "пианино",
+            "барабан",
+            "микрофон",
+            "радио"
             ]
   },
   {
-  "category": "Sleep",
+  "category": "Сон",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "bed",
-            "pillow",
-            "clock",
-            "closet",
-            "star"
+            "кровать",
+            "подушка",
+            "часы",
+            "тумбочка",
+            "звезда"
             ]
   },
   {
-  "category": "Entertainment",
+  "category": "развлечение",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "television",
-            "book",
-            "ball",
-            "puzzle",
-            "cell phone"
+            "телевизор",
+            "книга",
+            "мяч",
+            "пазл",
+            "мобильный телефон"
             ]
   },
   {
-  "category": "Classroom",
+  "category": "классная комната",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "pencil",
-            "calculator",
-            "adhesive tape",
-            "blackboard"
+            "карандаш",
+            "калькулятор",
+            "скотч",
+            "доска"
             ]
   },
   {
-  "category": "Accessories",
+  "category": "Аксессуары",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "glasses",
-            "ring",
-            "necklace",
-            "handbag",
-            "hairpin",
-            "backpack"
+            "очки",
+            "кольцо",
+            "ожерелье",
+            "сумка",
+            "заколка",
+            "рюкзак"
             ]
   },
   {
-  "category": "Meals",
+  "category": "Еда",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "pizza",
-            "bread",
-            "spaghetti",
-            "hamburger",
-            "ice cream",
-            "egg"
+            "пицца",
+            "хлеб",
+            "спагетти",
+            "гамбургер",
+            "мороженое",
+            "яйцо"
             ]
   },
   {
-  "category": "Museum",
+  "category": "музей",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "juwels",
-            "vase",
-            "coin",
-            "sculpture",
-            "dinosaur"
+            "драгоценности",
+            "ваза",
+            "монета",
+            "скульптура",
+            "динозавр"
             ]
   },
   {
-  "category": "Sport",
+  "category": "спорт",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "soccer",
-            "tennis",
-            "bowling",
-            "basketball",
-            "skiing"
+            "футбол",
+            "теннис",
+            "боулинг",
+            "баскетбол",
+            "катание на лыжах"
             ]
   },
   {
-  "category": "Drinks",
-  "words":[
-           "soda can",
-           "water bottle",
-           "wine bottle",
-           "wine glass",
-           "champagne glass",
-           "beer glass",
-           "water glass",
-           "orange juice",
-           "coffee cup ",
-           ]
+  "category": "Бонус",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
+  "words": [
+            "шар",
+            "зонт",
+            "церковь",
+            "камера",
+            "мост"
+            ]
   },
   {
-  "category": "Bonus",
+  "category": "напитки",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "balloon",
-            "umbrella",
-            "church",
-            "camera",
-            "bridge"
+            "банка",
+            "бутылка воды",
+            "бутылка вина",
+            "бокал вина",
+            "бокал шампанского",
+            "кружка пива",
+            "стакан воды",
+            "апельсиновый сок",
+            "чашка кофе"
             ]
   }
-  ]
+]

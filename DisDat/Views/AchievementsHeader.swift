@@ -13,6 +13,12 @@ class AchievementsHeader: UICollectionReusableView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        headerLabel.text = String(format: NSLocalizedString("🤖 You found %d/%d words.", comment: ""), DiscoveredWordCollection.getInstance()!.getCurrentDiscoveredCount(),DiscoveredWordCollection.getInstance()!.totalWordCount)
+        self.reloadUI()
+    }
+    
+    func reloadUI(){
+        let currentDiscoveredCount = DiscoveredWordCollection.getInstance()!.getCurrentDiscoveredCount()
+        let totalWordCount = DiscoveredWordCollection.getInstance()!.totalWordCount
+        headerLabel.text = String(format: NSLocalizedString("🤖 You found %d/%d words.", comment: ""), currentDiscoveredCount, totalWordCount)
     }
 }

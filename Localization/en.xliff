@@ -187,14 +187,6 @@
         <source>Login method</source>
         <note>Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn";</note>
       </trans-unit>
-      <trans-unit id="2oQ-WP-E5O.normalTitle">
-        <source>Dutch</source>
-        <note>Class = "UIButton"; normalTitle = "Dutch"; ObjectID = "2oQ-WP-E5O";</note>
-      </trans-unit>
-      <trans-unit id="6Nz-h5-SXe.normalTitle">
-        <source>English</source>
-        <note>Class = "UIButton"; normalTitle = "English"; ObjectID = "6Nz-h5-SXe";</note>
-      </trans-unit>
       <trans-unit id="6On-gE-IGF.text">
         <source>Coming soon</source>
         <note>Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF";</note>
@@ -215,10 +207,6 @@
         <source>Discover</source>
         <note>Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r";</note>
       </trans-unit>
-      <trans-unit id="D9j-Ae-Kay.normalTitle">
-        <source>Dutch</source>
-        <note>Class = "UIButton"; normalTitle = "Dutch"; ObjectID = "D9j-Ae-Kay";</note>
-      </trans-unit>
       <trans-unit id="JGB-lz-1nz.normalTitle">
         <source>Reset progress</source>
         <note>Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz";</note>
@@ -230,10 +218,6 @@
       <trans-unit id="JWa-3k-AqM.normalTitle">
         <source>Skip</source>
         <note>Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM";</note>
-      </trans-unit>
-      <trans-unit id="JeS-w0-Oge.normalTitle">
-        <source>English</source>
-        <note>Class = "UIButton"; normalTitle = "English"; ObjectID = "JeS-w0-Oge";</note>
       </trans-unit>
       <trans-unit id="KEM-9P-bS9.text">
         <source>I need your permission to use the camera. Without it I am of no use.
@@ -283,14 +267,6 @@ Press the button below to agree.</source>
       <trans-unit id="Zto-b0-CwL.text">
         <source>From:</source>
         <note>Class = "UILabel"; text = "From:"; ObjectID = "Zto-b0-CwL";</note>
-      </trans-unit>
-      <trans-unit id="aL6-Ra-Y8U.normalTitle">
-        <source>French</source>
-        <note>Class = "UIButton"; normalTitle = "French"; ObjectID = "aL6-Ra-Y8U";</note>
-      </trans-unit>
-      <trans-unit id="bFy-0H-qPr.normalTitle">
-        <source>French</source>
-        <note>Class = "UIButton"; normalTitle = "French"; ObjectID = "bFy-0H-qPr";</note>
       </trans-unit>
       <trans-unit id="bGs-XI-PrK.normalTitle">
         <source>Change languages</source>

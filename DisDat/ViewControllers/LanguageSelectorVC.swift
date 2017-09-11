@@ -13,8 +13,8 @@ import PopupDialog
 import OneSignal
 
 class LanguageSelectorVC: UIViewController {
-    static let supportedFromLanguageKeys = ["nl-BE","en-US","fr-FR", "ru-RU", "es-ES"]
-    static let supportedToLanguageKeys = ["nl-BE","en-US","fr-FR", "es-ES"]
+    static let supportedFromLanguageKeys = ["nl-BE","en-US","fr-FR", "ru-RU", "es-ES", "it-IT"]
+    static let supportedToLanguageKeys = ["nl-BE","en-US","fr-FR", "es-ES", "it-IT"]
 
     var changeLanguageOnly = false
     var circleViews: [UIView] = []

@@ -4,29 +4,14 @@
 /* Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn"; */
 "1H3-fh-sFn.text" = "Méthode de connexion";
 
-/* Class = "UILabel"; text = "-"; ObjectID = "6Be-lG-2ty"; */
-"6Be-lG-2ty.text" = "-";
-
-/* Class = "UILabel"; text = "→"; ObjectID = "6H1-cw-E2z"; */
-"6H1-cw-E2z.text" = "→";
-
 /* Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF"; */
 "6On-gE-IGF.text" = "Arrive bientôt";
-
-/* Class = "UILabel"; text = "0%"; ObjectID = "8PQ-xc-O3w"; */
-"8PQ-xc-O3w.text" = "0%";
 
 /* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB"; */
 "8gv-Jd-WtB.normalTitle" = "Supprimer le compte";
 
 /* Class = "UILabel"; text = "If you want, I can send you push notifications with tips and more."; ObjectID = "42j-vD-LQG"; */
 "42j-vD-LQG.text" = "Si vous le souhaitez, je peux vous envoyer des notifications push avec des conseils et plus encore.";
-
-/* Class = "UILabel"; text = "-"; ObjectID = "72d-ZN-xKP"; */
-"72d-ZN-xKP.text" = "-";
-
-/* Class = "UIButton"; normalTitle = "Crash"; ObjectID = "Aeb-ys-vxY"; */
-"Aeb-ys-vxY.normalTitle" = "Crash";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "B1K-Da-31u"; */
 "B1K-Da-31u.text" = "Email";
@@ -37,8 +22,14 @@
 /* Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz"; */
 "JGB-lz-1nz.normalTitle" = "Rétablir les progrès";
 
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "JRJ-Nj-GAH"; */
+"JRJ-Nj-GAH.normalTitle" = "Accepter";
+
 /* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM"; */
 "JWa-3k-AqM.normalTitle" = "Sauter";
+
+/* Class = "UILabel"; text = "My name is \"The Machine\"!"; ObjectID = "Kag-O5-Tpp"; */
+"Kag-O5-Tpp.text" = "Mon nom est \"La Machine\"!";
 
 /* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy"; */
 "Lxw-ml-afy.text" = "Faites glisser vers le bas pour revenir en arrière";
@@ -73,14 +64,8 @@
 /* Class = "UIButton"; normalTitle = "Change languages"; ObjectID = "bGs-XI-PrK"; */
 "bGs-XI-PrK.normalTitle" = "Changer les langues";
 
-/* Class = "UILabel"; text = "-"; ObjectID = "bse-4x-ZcM"; */
-"bse-4x-ZcM.text" = "-";
-
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa"; */
 "eg6-Qw-BVa.normalTitle" = "D'accord";
-
-/* Class = "UILabel"; text = "Your native language"; ObjectID = "gJC-yk-AUL"; */
-"gJC-yk-AUL.text" = "Votre langue maternelle";
 
 /* Class = "UICollectionViewController"; title = "Achievements"; ObjectID = "gam-gY-CEf"; */
 "gam-gY-CEf.title" = "Réalisations";
@@ -88,11 +73,11 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "hL1-lx-q0H"; */
 "hL1-lx-q0H.text" = "Nom";
 
+/* Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk"; */
+"iHF-FS-mdk.text" = "Je connais beaucoup de langues, mais je connais seulement environ 120 mots. Montrez-moi quelque chose, et si je sais ce que c'est, je le traduirai pour vous. Simple, non?";
+
 /* Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG"; */
 "lg1-ow-UGG.title" = "Réalisations";
-
-/* Class = "UILabel"; text = "The language you are learning"; ObjectID = "oYy-Ht-Ea8"; */
-"oYy-Ht-Ea8.text" = "La langue que vous apprenez";
 
 /* Class = "UILabel"; text = "Progress"; ObjectID = "xkM-az-YTj"; */
 "xkM-az-YTj.text" = "Le progrès";

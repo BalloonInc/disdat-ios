@@ -74,16 +74,15 @@ class AchievementsCVC: UICollectionViewController {
         
         cell.setContent(englishCategoryText: englishCategoryText, categoryText:categoryText, categoryImage: categoryImage, progressString:progressString )
         
-    
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
-            
         case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewHeader", for: indexPath as IndexPath)
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewHeader", for: indexPath as IndexPath) as! AchievementsHeader
+            headerView.reloadUI()
             return headerView
             
         case UICollectionElementKindSectionFooter:
@@ -91,7 +90,7 @@ class AchievementsCVC: UICollectionViewController {
             return footerView
             
         default:
-            assert(false, "Unexpected element kind")
+            fatalError("Unexpected element kind in collectionView")
         }
     }
 }

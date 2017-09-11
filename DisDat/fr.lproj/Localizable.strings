@@ -14,6 +14,9 @@
 "Are you sure you want to logout?" = "Êtes-vous sûr de vouloir vous déconnecter?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to remove the current word and it's linked image?" = "Êtes-vous sûr de vouloir supprimer le mot actuel et l'image liée?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to reset all progress for the current language?" = "Êtes-vous sûr de vouloir réinitialiser toute la progression pour la langue actuelle?";
 
 /* No comment provided by engineer. */
@@ -24,9 +27,6 @@
 
 /* No comment provided by engineer. */
 "Change languages" = "Changez les langues";
-
-/* No comment provided by engineer. */
-"Coming soon..." = "Arrive bientôt";
 
 /* No comment provided by engineer. */
 "Do you want to report this to my creators? This means a human might look at your image and investigate." = "Voulez-vous signaler cela à mes créateurs? Cela signifie qu'un humain pourrait regarder votre image et enquêter.";
@@ -65,6 +65,12 @@
 "Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Accédez aux préférences iOS pour cette application et permettez l'accès à la caméra afin d'être en mesure d'utiliser l'application.";
 
 /* No comment provided by engineer. */
+"Remove account" = "Supprimer le compte";
+
+/* No comment provided by engineer. */
+"Remove discovery" = "Supprimer la découverte";
+
+/* No comment provided by engineer. */
 "Reset progress" = "Rétablir les progrès";
 
 /* No comment provided by engineer. */
@@ -74,10 +80,13 @@
 "Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience." = "Quelque chose ne va pas. Réessayez plus tard ou envoyez un courriel à disdat@ballooninc.be indiquant ce que vous ressentez.";
 
 /* No comment provided by engineer. */
-"Soon you will be able to remove your account here. Swipe down to dismiss." = "Bientôt, vous pourrez supprimer votre compte ici. Glisser vers le bas pour rejeter.";
+"Still %d undiscovered words in this category. Go out and scan some!" = "Encore %d mots non découverts dans cette catégorie. Bougez-vous et scannez en encore!";
 
 /* Wrong detection */
 "This is wrong." = "C'est faux.";
+
+/* No comment provided by engineer. */
+"We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer." = "Nous pouvons supprimer votre compte et toutes les données et images qui y sont liées. Êtes-vous sûr de vouloir cela? Cela vous amènera au compositeur d'email.";
 
 /* No comment provided by engineer. */
 "Yes" = "Oui";

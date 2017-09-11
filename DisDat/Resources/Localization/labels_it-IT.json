@@ -1,0 +1,385 @@
+ [
+  {
+  "category": "ufficio",
+  "articles": [
+               "la",
+               "la",
+               "lo",
+               "il"
+               ],
+  "words": [
+            "tastiera",
+            "penna",
+            "schermo",
+            "mouse"
+            ]
+  },
+  {
+  "category": "cucina",
+  "articles": [
+               "il",
+               "il ",
+               "la",
+               "la"
+               ],
+  "words": [
+            "coltello",
+            "cucchiaio",
+            "pentola",
+            "scodella/ciotola"
+            ]
+  },
+  {
+  "category": "frutta",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "la",
+               "l'"
+               ],
+  "words": [
+            "mela",
+            "pera",
+            "banana",
+            "fragola",
+            "ananas"
+            ]
+  },
+  {
+  "category": "verdura",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "il",
+               "la",
+               "il",
+               "la"
+               ],
+  "words": [
+            "carota",
+            "patata",
+            "lattuga",
+            "fungo",
+            "cipolla",
+            "cavolfiore",
+            "zucca"
+            ]
+  },
+  {
+  "category": "Animali",
+  "articles": [
+               "il",
+               "il",
+               "l'",
+               "la",
+               "la",
+               "il"
+               ],
+  "words": [
+            "cane",
+            "gatto",
+            "uccello",
+            "giraffa",
+            "zanzara",
+            "pesce"
+            ]
+  },
+  {
+  "category": "Strada",
+  "articles": [
+               "la",
+               "la",
+               "l'",
+               "lo",
+               "il"
+               ],
+  "words": [
+            "macchina",
+            "bicicletta",
+            "autobus",
+            "skate-board",
+            "carro armato"
+            ]
+  },
+  {
+  "category": "Bagno",
+  "articles": [
+               "la ",
+               "il",
+               "l'",
+               "il",
+               "la ",
+               "lo"
+               ],
+  "words": [
+            "doccia",
+            "bagno",
+            "asciugamano",
+            "sapone",
+            "spazzola per capelli",
+            "spazzolino da denti"
+            ]
+  },
+  {
+  "category": "Abbigliamento",
+  "articles": [
+               "l'",
+               "i",
+               "il",
+               "il",
+               "la",
+               "la",
+               "il",
+               "il",
+               "la",
+               "il"
+               ],
+  "words": [
+            "abito",
+            "pantaloni",
+            "cappello",
+            "calzino",
+            "scarpa",
+            "tuta spaziale",
+            "martello",
+            "trapano",
+            "scatola",
+            "cacciavite"
+            ]
+  },
+  {
+  "category": "Natura",
+  "articles": [
+               "l'",
+               "il",
+               "l'",
+               "la",
+               "la",
+               "la"
+               ],
+  "words": [
+            "albero",
+            "fiore",
+            "erba",
+            "nuvola",
+            "spiaggia",
+            "pianta"
+            ]
+  },
+  {
+  "category": "Corpo",
+  "articles": [
+               "il",
+               "la",
+               "i",
+               "il"
+               ],
+  "words": [
+            "labbro",
+            "faccia",
+            "capelli",
+            "cuore"
+            ]
+  },
+  {
+  "category": "Casa",
+  "articles": [
+               "la",
+               "la",
+               "il",
+               "il",
+               "la",
+               "la"
+               ],
+  "words": [
+            "casa",
+            "chiave",
+            "divano",
+            "radiatore",
+            "tenda",
+            "sedia"
+            ]
+  },
+  {
+  "category": "Musica",
+  "articles": [
+               "la",
+               "il",
+               "la",
+               "il",
+               "la"
+               ],
+  "words": [
+            "chitarra",
+            "pianoforte",
+            "batteria",
+            "microfono",
+            "radio"
+            ]
+  },
+  {
+  "category": "Dormire",
+  "articles": [
+               "il",
+               "il",
+               "l'",
+               "l'",
+               "la"
+               ],
+  "words": [
+            "letto",
+            "cuscino",
+            "orologio",
+            "armadio",
+            "stella"
+            ]
+  },
+  {
+  "category": "Divertimento",
+  "articles": [
+               "il",
+               "il",
+               "la",
+               "il",
+               "il"
+               ],
+  "words": [
+            "televisore",
+            "libro",
+            "palla",
+            "puzzle",
+            "cellulare"
+            ]
+  },
+  {
+  "category": "In classe",
+  "articles": [
+               "la",
+               "la",
+               "il",
+               "la"
+               ],
+  "words": [
+            "matita",
+            "calcolatrice",
+            "nastro adesivo",
+            "lavagna"
+            ]
+  },
+  {
+  "category": "Accessori",
+  "articles": [
+               "gli",
+               "l'",
+               "la",
+               "la",
+               "la",
+               "lo"
+               ],
+  "words": [
+            "occhiali",
+            "anello",
+            "collana",
+            "borsetta",
+            "forcina",
+            "zaino"
+            ]
+  },
+  {
+  "category": "Alimenti",
+  "articles": [
+               "la",
+               "il",
+               "gli",
+               "l'",
+               "il",
+               "l'"
+               ],
+  "words": [
+            "pizza",
+            "pane",
+            "spaghetti",
+            "hamburger",
+            "gelato",
+            "uovo"
+            ]
+  },
+  {
+  "category": "Museo",
+  "articles": [
+               "i",
+               "il",
+               "la",
+               "la",
+               "il"
+               ],
+  "words": [
+            "gioielli",
+            "vaso",
+            "moneta",
+            "statua",
+            "dinosauro"
+            ]
+  },
+  {
+  "category": "Sport",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
+  "words": [
+            "calcio",
+            "tennis",
+            "bowling",
+            "pallacanestro",
+            "sci"
+            ]
+  },
+  {
+  "category": "Bonus",
+  "articles": [
+               "il",
+               "l'",
+               "la",
+               "la",
+               "il"
+               ],
+  "words": [
+            "palloncino",
+            "ombrello",
+            "chiesa",
+            "macchina fotografica",
+            "ponte"
+            ]
+  },
+  {
+  "category": "Bibite",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "il",
+               "il",
+               "il",
+               "il",
+               "il",
+               "la "
+               ],
+  "words": [
+            "lattina",
+            "bottiglia d’acqua",
+            "bottiglia di vino",
+            "bicchiere da vino",
+            "flûte da champagne",
+            "bicchiere da birra",
+            "bicchiere d’acqua",
+            "succo di frutta",
+            "tazzina da caffè"
+            ]
+  }
+]

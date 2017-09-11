@@ -1,6 +1,12 @@
  [
   {
   "category": "Kantoor",
+  "articles": [
+               "het",
+               "de",
+               "het",
+               "de"
+               ],
   "words": [
             "toetsenbord",
             "pen",
@@ -10,6 +16,12 @@
   },
   {
   "category": "Keuken",
+  "articles": [
+               "het",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "mes",
             "lepel",
@@ -19,6 +31,13 @@
   },
   {
   "category": "Fruit",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "appel",
             "peer",
@@ -29,6 +48,15 @@
   },
   {
   "category": "Groenten",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "wortel",
             "aardappel",
@@ -41,6 +69,14 @@
   },
   {
   "category": "Dieren",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "hond",
             "kat",
@@ -52,6 +88,13 @@
   },
   {
   "category": "Straat",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "het",
+               "de"
+               ],
   "words": [
             "auto",
             "fiets",
@@ -62,6 +105,14 @@
   },
   {
   "category": "Badkamer",
+  "articles": [
+               "de",
+               "het",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "douche",
             "bad",
@@ -73,6 +124,14 @@
   },
   {
   "category": "Kledij",
+  "articles": [
+               "het",
+               "de",
+               "de",
+               "de",
+               "de",
+               "het"
+               ],
   "words": [
             "kleedje",
             "broek",
@@ -84,6 +143,12 @@
   },
   {
   "category": "Gereedschap",
+  "articles": [
+               "de",
+               "het",
+               "de",
+               "de"
+               ],
   "words": [
             "hamer",
             "boormachine",
@@ -93,6 +158,14 @@
   },
   {
   "category": "Natuur",
+  "articles": [
+               "de",
+               "de",
+               "het",
+               "de",
+               "het",
+               "de"
+               ],
   "words": [
             "boom",
             "bloem",
@@ -104,15 +177,29 @@
   },
   {
   "category": "Lichaam",
+  "articles": [
+               "de",
+               "het",
+               "het",
+               "het"
+               ],
   "words": [
             "lip",
-            "face",
+            "gezicht",
             "haar",
             "hart"
             ]
   },
   {
   "category": "Thuis",
+  "articles": [
+               "het",
+               "de",
+               "de",
+               "de",
+               "het",
+               "de"
+               ],
   "words": [
             "huis",
             "sleutel",
@@ -124,6 +211,13 @@
   },
   {
   "category": "Muziek",
+  "articles": [
+               "de",
+               "de",
+               "het",
+               "de",
+               "de"
+               ],
   "words": [
             "gitaar",
             "piano",
@@ -134,6 +228,13 @@
   },
   {
   "category": "Slaap",
+  "articles": [
+               "het",
+               "het",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "bed",
             "hoofdkussen",
@@ -144,6 +245,13 @@
   },
   {
   "category": "Entertainment",
+  "articles": [
+               "de",
+               "het",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "televisie",
             "boek",
@@ -154,6 +262,12 @@
   },
   {
   "category": "In de klas",
+  "articles": [
+               "het",
+               "het",
+               "de",
+               "het"
+               ],
   "words": [
             "potlood",
             "rekentoestel",
@@ -163,6 +277,14 @@
   },
   {
   "category": "Accessories",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "bril",
             "ring",
@@ -173,7 +295,15 @@
             ]
   },
   {
-  "category": "Maaltijden",
+  "category": "Voedsel",
+  "articles": [
+               "de",
+               "het",
+               "de",
+               "de",
+               "het",
+               "het"
+               ],
   "words": [
             "pizza",
             "brood",
@@ -185,6 +315,13 @@
   },
   {
   "category": "Museum",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "het",
+               "de"
+               ],
   "words": [
             "juwelen",
             "vaas",
@@ -195,6 +332,13 @@
   },
   {
   "category": "Sport",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "voetbal",
             "tennis",
@@ -204,21 +348,14 @@
             ]
   },
   {
-  "category":"Drank",
-  "words":[
-           "blikje",
-           "fles water",
-           "fles wijn",
-           "wijnglas",
-           "champagneglas",
-           "bierglas",
-           "glas water",
-           "fruitsap",
-           "koffiekop"
-           ]
-  },
-  {
   "category": "Bonus",
+  "articles": [
+               "de",
+               "de",
+               "de",
+               "de",
+               "de"
+               ],
   "words": [
             "ballon",
             "paraplu",
@@ -226,5 +363,30 @@
             "camera",
             "brug"
             ]
+  },
+  {
+  "category": "Drank",
+  "articles": [
+               "het",
+               "de",
+               "de",
+               "het",
+               "het",
+               "het",
+               "het",
+               "het",
+               "de"
+               ],
+  "words": [
+            "blikje",
+            "fles water",
+            "fles wijn",
+            "wijnglas",
+            "champagneglas",
+            "bierglas",
+            "glas water",
+            "fruitsap",
+            "koffiekop"
+            ]
   }
-  ]
+]

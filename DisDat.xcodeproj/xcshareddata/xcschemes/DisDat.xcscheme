@@ -70,7 +70,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "\(nl\)"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "\(fr\)"

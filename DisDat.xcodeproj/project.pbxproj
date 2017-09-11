@@ -14,6 +14,7 @@
 		6C165C271F421C7400B54C7C /* DiscoveredWordCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */; };
 		6C165C291F421E9200B54C7C /* AchievementDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C165C281F421E9200B54C7C /* AchievementDetailContainer.swift */; };
 		6C1709661F2CE1F300A23068 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1709651F2CE1F300A23068 /* Helpers.swift */; };
+		6C1714571F665F8300B6C43A /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C0FE7E21F665AB800202DA8 /* RemoteConfigDefaults.plist */; };
 		6C1BC84B1F52018600D53BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */; };
 		6C1BC8501F533E6600D53BBB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1BC84F1F533D5300D53BBB /* FBSDKCoreKit.framework */; };
 		6C1BC8511F533E6900D53BBB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1BC84E1F533D5300D53BBB /* FBSDKLoginKit.framework */; };
@@ -44,6 +45,7 @@
 		6CB5E57B1F5EB04C00743B7F /* SpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5E57A1F5EB04C00743B7F /* SpeechBubble.swift */; };
 		6CDE447A1F5589DE00A40256 /* AchievementsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE44791F5589DE00A40256 /* AchievementsCVC.swift */; };
 		6CDE447C1F558C0D00A40256 /* AchievementCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */; };
+		6CE38D9C1F65B5950001C8C4 /* labels_it-IT.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CE38D9B1F65B5920001C8C4 /* labels_it-IT.json */; };
 		88C6A9C31EF863CC00CC4360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */; };
 		88C6A9C51EF863CC00CC4360 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6A9C41EF863CC00CC4360 /* DiscoverVC.swift */; };
 		88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C6A9C61EF863CC00CC4360 /* Main.storyboard */; };
@@ -81,6 +83,7 @@
 		5A0802281F4C6B6A0066D1D1 /* disdatkerasv8.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = disdatkerasv8.mlmodel; sourceTree = "<group>"; };
 		6C07E0B61F2CADAE007A646A /* LanguageSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectorVC.swift; sourceTree = "<group>"; };
 		6C07E0B81F2CB07D007A646A /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
+		6C0FE7E21F665AB800202DA8 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		6C165C261F421C7400B54C7C /* DiscoveredWordCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredWordCollection.swift; sourceTree = "<group>"; };
 		6C165C281F421E9200B54C7C /* AchievementDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDetailContainer.swift; sourceTree = "<group>"; };
 		6C1709651F2CE1F300A23068 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		6CB5E57A1F5EB04C00743B7F /* SpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubble.swift; sourceTree = "<group>"; };
 		6CDE44791F5589DE00A40256 /* AchievementsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCVC.swift; sourceTree = "<group>"; };
 		6CDE447B1F558C0D00A40256 /* AchievementCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCategoryCell.swift; sourceTree = "<group>"; };
+		6CE38D9B1F65B5920001C8C4 /* labels_it-IT.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "labels_it-IT.json"; sourceTree = "<group>"; };
 		6CF478ED1F5F1F640088BE31 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		88C6A9BF1EF863CC00CC4360 /* DisDat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisDat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C6A9C21EF863CC00CC4360 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				6C4BC9151F64BBEF00579502 /* labels_es-ES.json */,
 				6C4BC9161F64BBEF00579502 /* labels_ru-RU.json */,
 				6C87A2FA1F55A52E0096FC30 /* labels_en-US.json */,
+				6CE38D9B1F65B5920001C8C4 /* labels_it-IT.json */,
 				6C943D261F5563D6001DADF7 /* labels_nl-BE.json */,
 			);
 			name = Localization;
@@ -296,6 +301,7 @@
 				6C2C0F311F58CE7D00C958DF /* DisDat.entitlements */,
 				88C6A9CE1EF863CC00CC4360 /* Info.plist */,
 				6CAB30C21F51CAC2007E8773 /* GoogleService-Info.plist */,
+				6C0FE7E21F665AB800202DA8 /* RemoteConfigDefaults.plist */,
 				6CAB30881F51AD89007E8773 /* AppState */,
 				6CAB308E1F51ADFF007E8773 /* Models */,
 				6CAB308D1F51ADE7007E8773 /* Views */,
@@ -430,12 +436,14 @@
 				6C4922B61F6093030094CD18 /* InfoPlist.strings in Resources */,
 				88C6A9CD1EF863CC00CC4360 /* LaunchScreen.storyboard in Resources */,
 				6C4BC9181F65437200579502 /* labels_ru-RU.json in Resources */,
+				6C1714571F665F8300B6C43A /* RemoteConfigDefaults.plist in Resources */,
 				6C87A2FB1F55A82E0096FC30 /* labels_en-US.json in Resources */,
 				6C4922C01F6093030094CD18 /* Localizable.strings in Resources */,
 				88C6A9CA1EF863CC00CC4360 /* Assets.xcassets in Resources */,
 				6C4BC9171F65436F00579502 /* labels_es-ES.json in Resources */,
 				6C943D2A1F5563E2001DADF7 /* labels_nl-BE.json in Resources */,
 				88C6A9C81EF863CC00CC4360 /* Main.storyboard in Resources */,
+				6CE38D9C1F65B5950001C8C4 /* labels_it-IT.json in Resources */,
 				6C1BC84B1F52018600D53BBB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +546,7 @@
 				"${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -549,6 +558,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDCircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

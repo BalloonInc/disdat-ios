@@ -1,6 +1,12 @@
  [
   {
   "category": "Bureau",
+  "articles": [
+               "le",
+               "le",
+               "le",
+               "la"
+               ],
   "words": [
             "clavier",
             "stylo",
@@ -10,6 +16,12 @@
   },
   {
   "category": "Cuisine",
+  "articles": [
+               "le",
+               "la",
+               "la",
+               "le"
+               ],
   "words": [
             "couteau",
             "cuillère",
@@ -19,6 +31,13 @@
   },
   {
   "category": "Fruit",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "la",
+               "l'"
+               ],
   "words": [
             "pomme",
             "poire",
@@ -29,6 +48,15 @@
   },
   {
   "category": "Légumes",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "le",
+               "l'",
+               "le",
+               "la"
+               ],
   "words": [
             "carotte",
             "pomme de terre",
@@ -41,6 +69,14 @@
   },
   {
   "category": "Animaux",
+  "articles": [
+               "le",
+               "le",
+               "l'",
+               "la",
+               "le",
+               "le"
+               ],
   "words": [
             "chien",
             "chat",
@@ -52,6 +88,13 @@
   },
   {
   "category": "Rue",
+  "articles": [
+               "la",
+               "le",
+               "le",
+               "le",
+               "le"
+               ],
   "words": [
             "voiture",
             "vélo",
@@ -62,6 +105,14 @@
   },
   {
   "category": "Salle de bains",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "le",
+               "la",
+               "la"
+               ],
   "words": [
             "douche",
             "baignoire",
@@ -73,6 +124,14 @@
   },
   {
   "category": "Habits",
+  "articles": [
+               "la",
+               "le",
+               "le",
+               "la",
+               "la",
+               "la"
+               ],
   "words": [
             "robe",
             "pantalon",
@@ -84,6 +143,12 @@
   },
   {
   "category": "Outil",
+  "articles": [
+               "le",
+               "la",
+               "la",
+               "le"
+               ],
   "words": [
             "marteau",
             "perceuse",
@@ -93,6 +158,14 @@
   },
   {
   "category": "Nature",
+  "articles": [
+               "l'",
+               "la",
+               "l'",
+               "le",
+               "la",
+               "la"
+               ],
   "words": [
             "arbre",
             "fleur",
@@ -104,6 +177,12 @@
   },
   {
   "category": "Corps",
+  "articles": [
+               "la",
+               "le",
+               "les",
+               "le"
+               ],
   "words": [
             "lèvre",
             "visage",
@@ -113,6 +192,14 @@
   },
   {
   "category": "Maison",
+  "articles": [
+               "la",
+               "la",
+               "le",
+               "le",
+               "le",
+               "la"
+               ],
   "words": [
             "maison",
             "clé",
@@ -124,6 +211,13 @@
   },
   {
   "category": "Musique",
+  "articles": [
+               "la",
+               "le",
+               "le",
+               "le",
+               "la"
+               ],
   "words": [
             "guitare",
             "piano",
@@ -134,26 +228,46 @@
   },
   {
   "category": "Sommeil",
+  "articles": [
+               "le",
+               "l'",
+               "l'",
+               "le",
+               "l'"
+               ],
   "words": [
             "lit",
             "oreiller",
-            "l'horloge",
+            "horloge",
             "placard",
             "étoile"
             ]
   },
   {
   "category": "Divertissement",
+  "articles": [
+               "la",
+               "le",
+               "la",
+               "le",
+               "le"
+               ],
   "words": [
             "télévision",
             "livre",
-            "ballon",
+            "balle",
             "puzzle",
             "téléphone portable"
             ]
   },
   {
   "category": "Salle de classe",
+  "articles": [
+               "le",
+               "la",
+               "le",
+               "le"
+               ],
   "words": [
             "crayon",
             "calculatrice",
@@ -163,6 +277,14 @@
   },
   {
   "category": "Accessoires",
+  "articles": [
+               "les",
+               "la",
+               "le",
+               "le",
+               "l'",
+               "le"
+               ],
   "words": [
             "lunettes",
             "bague",
@@ -174,6 +296,14 @@
   },
   {
   "category": "Repas",
+  "articles": [
+               "la",
+               "le",
+               "les",
+               "le",
+               "la",
+               "l'"
+               ],
   "words": [
             "pizza",
             "pain",
@@ -185,6 +315,13 @@
   },
   {
   "category": "Musée",
+  "articles": [
+               "les",
+               "le",
+               "la",
+               "la",
+               "le"
+               ],
   "words": [
             "bijoux",
             "vase",
@@ -195,6 +332,13 @@
   },
   {
   "category": "Sport",
+  "articles": [
+               "le",
+               "le",
+               "le",
+               "le",
+               "le"
+               ],
   "words": [
             "football",
             "tennis",
@@ -204,27 +348,45 @@
             ]
   },
   {
-  "category": "Boissons",
-  "words":[
-           "canette à soda",
-           "bouteille d'eau",
-           "bouteille de vin",
-           "verre à vin",
-           "verre de champagne",
-           "verre de bière",
-           "verre de l'eau",
-           "jus d'orange",
-           "tasse à café"
-           ]
-  },
-  {
   "category": "Prime",
+  "articles": [
+               "le",
+               "le",
+               "l'",
+               "la",
+               "le"
+               ],
   "words": [
             "ballon",
             "parapluie",
             "église",
             "caméra",
             "pont"
+            ]
+  },
+  {
+  "category": "Boissons",
+  "articles": [
+               "la",
+               "la",
+               "la",
+               "le",
+               "le",
+               "le",
+               "le",
+               "le",
+               "la"
+               ],
+  "words": [
+            "canette de soda",
+            "bouteille d'eau",
+            "bouteille de vin",
+            "verre à vin",
+            "verre de champagne",
+            "verre de bière",
+            "verre d'eau",
+            "jus d'orange",
+            "tasse à café"
             ]
   }
   ]

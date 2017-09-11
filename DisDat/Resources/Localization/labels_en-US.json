@@ -1,6 +1,12 @@
  [
   {
   "category": "Office",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "keyboard",
             "pen",
@@ -10,6 +16,12 @@
   },
   {
   "category": "Kitchen",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "knife",
             "spoon",
@@ -19,6 +31,13 @@
   },
   {
   "category": "Fruits",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "apple",
             "pear",
@@ -29,6 +48,15 @@
   },
   {
   "category": "Vegetables",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "carrot",
             "potato",
@@ -41,6 +69,14 @@
   },
   {
   "category": "Animals",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "dog",
             "cat",
@@ -52,6 +88,13 @@
   },
   {
   "category": "Street",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "car",
             "bicycle",
@@ -62,6 +105,14 @@
   },
   {
   "category": "Bathroom",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "shower",
             "bath",
@@ -73,6 +124,14 @@
   },
   {
   "category": "Clothes",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "dress",
             "trousers",
@@ -84,6 +143,12 @@
   },
   {
   "category": "Tools",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "hammer",
             "drill",
@@ -93,6 +158,14 @@
   },
   {
   "category": "Nature",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "tree",
             "flower",
@@ -104,6 +177,12 @@
   },
   {
   "category": "Body",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "lip",
             "face",
@@ -113,6 +192,14 @@
   },
   {
   "category": "Home",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "house",
             "key",
@@ -124,6 +211,13 @@
   },
   {
   "category": "Music",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "guitar",
             "piano",
@@ -134,6 +228,13 @@
   },
   {
   "category": "Sleep",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "bed",
             "pillow",
@@ -144,6 +245,13 @@
   },
   {
   "category": "Entertainment",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "television",
             "book",
@@ -154,6 +262,12 @@
   },
   {
   "category": "Classroom",
+  "articles": [
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "pencil",
             "calculator",
@@ -163,6 +277,14 @@
   },
   {
   "category": "Accessories",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "glasses",
             "ring",
@@ -173,7 +295,15 @@
             ]
   },
   {
-  "category": "Meals",
+  "category": "Food",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "pizza",
             "bread",
@@ -185,8 +315,15 @@
   },
   {
   "category": "Museum",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
-            "juwels",
+            "jewels",
             "vase",
             "coin",
             "sculpture",
@@ -195,6 +332,13 @@
   },
   {
   "category": "Sport",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "soccer",
             "tennis",
@@ -204,21 +348,14 @@
             ]
   },
   {
-  "category": "Drinks",
-  "words":[
-           "soda can",
-           "water bottle",
-           "wine bottle",
-           "wine glass",
-           "champagne glass",
-           "beer glass",
-           "water glass",
-           "orange juice",
-           "coffee cup ",
-           ]
-  },
-  {
   "category": "Bonus",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
   "words": [
             "balloon",
             "umbrella",
@@ -226,5 +363,30 @@
             "camera",
             "bridge"
             ]
+  },
+  {
+  "category": "Drinks",
+  "articles": [
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               "",
+               ""
+               ],
+  "words": [
+            "soda can",
+            "water bottle",
+            "wine bottle",
+            "wine glass",
+            "champagne glass",
+            "beer glass",
+            "glass of water",
+            "orange juice",
+            "coffee cup "
+            ]
   }
-  ]
+]
