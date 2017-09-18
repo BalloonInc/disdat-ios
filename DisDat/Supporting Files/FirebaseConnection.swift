@@ -38,6 +38,14 @@ class FirebaseConnection {
         }
     return _remoteConfig!
     }
+    
+    static func logEvent(title: String, content: String){
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: content as NSObject
+            ])
+    }
 
     static func saveImageToFirebase(englishWord: String, fullPredictions: [String], image: UIImage, correct: Bool) {
         let auth = Authentication.getInstance()

@@ -37,6 +37,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     var visionRequests = [VNRequest]()
     var modelName = "DisDat-v8"
     var paused = false
+    var introShowing = false
     
     var lastSuspicion: String = ""
     var lastSuspicionTime = Date()
@@ -138,6 +139,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 loadCameraAndRequests()
                 noCameraPermissions = false
             }
+            if true || !UserDefaults.standard.bool(forKey:"didShowIntro") {
+                showIntroBubble()
+            }
             }
         }
         DispatchQueue.global(qos: .userInitiated).async {
@@ -147,7 +151,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("width: \(FirebaseConnection.getIntParam(Constants.config.image_resize_width))")
         self.progressCircle = MainPVCContainer.instance?.discoverButton
         DispatchQueue.global(qos: .userInitiated).async {
             if !self.session.isRunning{
@@ -343,6 +346,39 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         self.thresholdLabel.text = "Threshold: " + String(format: "%.2f", recognitionThreshold)
     }
     
+    func showIntroBubble(){
+        introShowing = true
+
+        let bubbleText = NSLocalizedString("This circle indicates my confidence. When it is full, I am can tell you what you are pointing at.", comment: "")
+        
+        let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        
+        attributedBubbleText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: bubbleText.count))
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.speechBubble?.removeFromSuperview()
+            self.speechBubble = SpeechBubble(baseView: self.speechBubbleShelf, containingView: self.speechBubbleContainer, attributedText: attributedBubbleText)
+            self.speechBubbleContainer.addSubview(self.speechBubble!)
+            
+            self.progressCircle?.animate(toAngle: 320, duration: 2.0, completion: { _ in
+                self.progressCircle?.animate(toAngle: 0, duration: 2.0, completion: nil)
+            })
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+                self.speechBubble?.removeFromSuperview()
+                self.introShowing = false
+                UserDefaults.standard.set(true, forKey: "didShowIntro")
+            }
+        }
+    }
+    
+    func removeBubble(){
+        
+    }
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -394,6 +430,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             print("No results")
             return
         }
+        if introShowing { return }
         
         observations = observations.filter({ !isExcluded($0 as! VNClassificationObservation)})
         
@@ -405,7 +442,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
                 
-        guard !classificationsList.isEmpty, let index = englishLabelDict[classificationsList[0]] else {
+        guard let index = englishLabelDict[(observations[0] as! VNClassificationObservation).identifier] else {
             DispatchQueue.main.async {
                 self.resultView.text = ""
                 self.translatedResultView.text = ""
@@ -471,6 +508,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         
         if classificationsList.isEmpty {
+            DispatchQueue.main.async {
+                self.resultView.text = ""
+                self.translatedResultView.text = ""
+            }
             return
         }
         
@@ -497,6 +538,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         else {
+            FirebaseConnection.logEvent(title: "recog_again", content: foundEnglishWord)
             self.currentPixelBuffer = nil
         }
     }
@@ -522,11 +564,14 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
             DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEnglishWord)
             FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
+            FirebaseConnection.logEvent(title: "recog_correct", content: foundEnglishWord)
             self.session.startRunning()
         })
         
         alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
             if Auth.auth().currentUser != nil {
+                FirebaseConnection.logEvent(title: "recog_wrong", content: foundEnglishWord)
+
                 let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
                     

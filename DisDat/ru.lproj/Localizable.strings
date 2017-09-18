@@ -1,0 +1,102 @@
+/* No comment provided by engineer. */
+"All set on camera permissions!" = "Разрешение к доступу к камере в порядке!";
+
+/* No comment provided by engineer. */
+"An error occurred during login" = "Возникла ошибка при входе";
+
+/* No comment provided by engineer. */
+"An error occurred during logout" = "Возникла ошибка при выходе";
+
+/* No comment provided by engineer. */
+"Are you sure you want to change the current languages? Your progress for your current languages will be saved." = "Вы уверены, что хотели бы изменить текущий язык? Ваш результат для текущего языка будет сохранен.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to logout?" = "Вы уверены, что хотите выйти?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to remove the current word and it's linked image?" = "Вы уверены, что хотите удалить данное слово и прилагающее к нему изображение?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to reset all progress for the current language?" = "Вы уверены, что хотели бы сбросить все результаты для текущего языка?";
+
+/* No comment provided by engineer. */
+"Camera permissions" = "Разрешение доступа к камере";
+
+/* No comment provided by engineer. */
+"Cancel" = "Отмена";
+
+/* No comment provided by engineer. */
+"Change languages" = "Изменить языки";
+
+/* No comment provided by engineer. */
+"Do you want to report this to my creators? This means a human might look at your image and investigate." = "Вы хотели бы эскалировать это разработчикам? Это значит, что человек сможет увидеть вашу фотографию и, возможно, изучить ее.";
+
+/* No comment provided by engineer. */
+"Go to settings" = "Перейдите в настройки";
+
+/* No comment provided by engineer. */
+"Great!" = "Отлично!";
+
+/* No comment provided by engineer. */
+"I really need permissions to use the camera. Please go to the settings to give them and return here afterwards." = "Мне необходимо разрешение для доступа к камере. Пожалуйста, зайдите в настройки и разрешите доступ, и после попробуйте снова.";
+
+/* No comment provided by engineer. */
+"I think I see something in the category %@. Try a different angle." = "Я думаю что я вижу что-то из категории %@. Попробуйте другой угол.";
+
+/* No comment provided by engineer. */
+"I was wrong... 🤓" = "Я ошибся... 🤓";
+
+/* No comment provided by engineer. */
+"Logout" = "Выход";
+
+/* No comment provided by engineer. */
+"No" = "Нет";
+
+/* No comment provided by engineer. */
+"No push notifications - no problem! If you change your mind, you can enable this in the iOS preferences for this app." = "Нет push-уведомлений - нет проблем! Если вы передумаете, вы можете активировать их в настройках iOS для данного приложения";
+
+/* No comment provided by engineer. */
+"Ok then..." = "Тогда хорошо...";
+
+/* No comment provided by engineer. */
+"Oops, let me try again!" = "Ой, позвольте мне попробовать снова!";
+
+/* No comment provided by engineer. */
+"Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Пожалуйста, зайдите в параметры iOS для данного приложения и разрешите доступ к камере для пользования приложением.";
+
+/* No comment provided by engineer. */
+"Remove account" = "Удалить аккаунт";
+
+/* No comment provided by engineer. */
+"Remove discovery" = "Удалить карточку";
+
+/* No comment provided by engineer. */
+"Reset progress" = "Перезагрузка в процессе";
+
+/* No comment provided by engineer. */
+"Since you are not logged in via Facebook or Google, this means you will lose all progress." = "Так как вы не авторизованы с Facebook или Google, ваши результаты будут утеряны.";
+
+/* No comment provided by engineer. */
+"Something is wrong. Please try again later or send an email to disdat@ballooninc.be indicating what you experience." = "Что-то пошло не так. Пожалуйста, попробуйте позднее или напишите нам на disdat@ballooninc.be, описав вашу попытку.";
+
+/* No comment provided by engineer. */
+"Still %d undiscovered words in this category. Go out and scan some!" = "До сих пор необнаруженных слов в этой категории: %d. Попробуйте найти еще!";
+
+/* Wrong detection */
+"This is wrong." = "Это неправильно.";
+
+/* No comment provided by engineer. */
+"We can delete your account and all data and images linked to it. Are you sure you want this? This will bring you to the e-mail composer." = "Мы можем удалить ваш аккаунт и все привязанные к нему данные. Вы уверены, что хотите этого? Пожалуйста, отправьте нам тогда e-mail.";
+
+/* No comment provided by engineer. */
+"Yes" = "Да";
+
+/* No comment provided by engineer. */
+"Yes, I am done here." = "Все, я закончил здесь.";
+
+/* No comment provided by engineer. */
+"Yes, let me change languages" = "Да, сменить языки";
+
+/* No comment provided by engineer. */
+"Yes, let me start over" = "Да, начать с начала";
+

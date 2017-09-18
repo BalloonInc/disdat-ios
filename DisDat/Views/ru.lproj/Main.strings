@@ -1,0 +1,87 @@
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "0fM-pe-nxc"; */
+"0fM-pe-nxc.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn"; */
+"1H3-fh-sFn.text" = "Метод входа";
+
+/* Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF"; */
+"6On-gE-IGF.text" = "На подходе";
+
+/* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB"; */
+"8gv-Jd-WtB.normalTitle" = "Удалить аккаунт";
+
+/* Class = "UILabel"; text = "If you want, I can send you push notifications with tips and more."; ObjectID = "42j-vD-LQG"; */
+"42j-vD-LQG.text" = "Если вы хотите, я могу отправлять вам push-уведомление с подсказками и т.п.";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "B1K-Da-31u"; */
+"B1K-Da-31u.text" = "Почтовый ящик";
+
+/* Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Обнаруживать";
+
+/* Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz"; */
+"JGB-lz-1nz.normalTitle" = "Сбросить результаты";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "JRJ-Nj-GAH"; */
+"JRJ-Nj-GAH.normalTitle" = "Согласен";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "JWa-3k-AqM"; */
+"JWa-3k-AqM.normalTitle" = "Пропустить";
+
+/* Class = "UILabel"; text = "My name is \"The Machine\"!"; ObjectID = "Kag-O5-Tpp"; */
+"Kag-O5-Tpp.text" = "Меня зовут \"Машина\"!";
+
+/* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy"; */
+"Lxw-ml-afy.text" = "Пролистайте вправо чтобы вернуться";
+
+/* Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj"; */
+"MIR-nr-5Tj.normalTitle" = "Я готов к обучению!";
+
+/* Class = "UITableViewSection"; headerTitle = "Languages"; ObjectID = "QrO-wX-w1N"; */
+"QrO-wX-w1N.headerTitle" = "Языки";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "R3k-Uh-QSY"; */
+"R3k-Uh-QSY.normalTitle" = "Войти через Google";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "Sqd-em-gKp"; */
+"Sqd-em-gKp.text" = "Изучаю:";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "T25-Fl-ea1"; */
+"T25-Fl-ea1.normalTitle" = "Выйти";
+
+/* Class = "UILabel"; text = "Quiz"; ObjectID = "Wzu-Qt-4jI"; */
+"Wzu-Qt-4jI.text" = "Тест";
+
+/* Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "Y7Y-ds-efY"; */
+"Y7Y-ds-efY.headerTitle" = "Аккаунт";
+
+/* Class = "UIButton"; normalTitle = "Prefer not"; ObjectID = "ZrB-4x-rzB"; */
+"ZrB-4x-rzB.normalTitle" = "Нет";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "Zto-b0-CwL"; */
+"Zto-b0-CwL.text" = "Знаю:";
+
+/* Class = "UIButton"; normalTitle = "Change languages"; ObjectID = "bGs-XI-PrK"; */
+"bGs-XI-PrK.normalTitle" = "Сменить языки";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa"; */
+"eg6-Qw-BVa.normalTitle" = "Согласен";
+
+/* Class = "UICollectionViewController"; title = "Achievements"; ObjectID = "gam-gY-CEf"; */
+"gam-gY-CEf.title" = "Достижения";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "hL1-lx-q0H"; */
+"hL1-lx-q0H.text" = "Имя";
+
+/* Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk"; */
+"iHF-FS-mdk.text" = "Я знаю много языков, но только около 120 слов. Покажите мне что-нибудь, и, если я знаю что это, я переведу это для вас. Просто, да?";
+
+/* Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG"; */
+"lg1-ow-UGG.title" = "Достижения";
+
+/* Class = "UILabel"; text = "Progress"; ObjectID = "xkM-az-YTj"; */
+"xkM-az-YTj.text" = "Результат";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "z58-og-9dR"; */
+"z58-og-9dR.normalTitle" = "Авторизация через Facebook";
+

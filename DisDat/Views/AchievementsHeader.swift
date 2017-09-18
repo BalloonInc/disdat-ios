@@ -19,6 +19,6 @@ class AchievementsHeader: UICollectionReusableView {
     func reloadUI(){
         let currentDiscoveredCount = DiscoveredWordCollection.getInstance()!.getCurrentDiscoveredCount()
         let totalWordCount = DiscoveredWordCollection.getInstance()!.totalWordCount
-        headerLabel.text = String(format: NSLocalizedString("🤖 You found %d/%d words.", comment: ""), currentDiscoveredCount, totalWordCount)
+        headerLabel.text = String(format: NSLocalizedString("You found %d/%d words.", comment: ""), currentDiscoveredCount, totalWordCount)
     }
 }
