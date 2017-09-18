@@ -93,7 +93,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         if !FirebaseConnection.getBoolParam(Constants.config.super_debug_enabled){
             return
         }
-
+        
         superDebug = !superDebug
         thresholdLabel.isHidden = !superDebug
         thresholdSlider.isHidden = !superDebug
@@ -123,7 +123,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         FirebaseConnection.fetchConfig()
-
+        
         resultView.text=nil
         translatedResultView.text=nil
         
@@ -139,7 +139,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 loadCameraAndRequests()
                 noCameraPermissions = false
             }
-            if true || !UserDefaults.standard.bool(forKey:"didShowIntro") {
+            if !UserDefaults.standard.bool(forKey:"didShowIntro") {
                 showIntroBubble()
             }
             }
@@ -172,7 +172,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             self.datLabel.alpha = 0
             self.optionsButton.alpha = 0
         }
-
+        
         self.progressCircle?.animate(toAngle: 0, duration: 0.3, completion: { success in
             self.progressCircle = nil})
         self.viewDidClear = true
@@ -198,7 +198,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             previewLayer?.frame = self.previewView.bounds;
             gradientLayer?.frame = self.previewView.bounds;
         }
-
+        
         if let connection =  self.previewLayer?.connection  {
             let orientation: UIDeviceOrientation = UIDevice.current.orientation
             
@@ -217,7 +217,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             }
         }
     }
-
+    
     func configureZoomButton()
     {
         zoomCirleView.layer.cornerRadius = 0.5 * zoomCirleView.bounds.size.width
@@ -348,7 +348,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     func showIntroBubble(){
         introShowing = true
-
+        
         let bubbleText = NSLocalizedString("This circle indicates my confidence. When it is full, I am can tell you what you are pointing at.", comment: "")
         
         let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
@@ -366,7 +366,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             self.progressCircle?.animate(toAngle: 320, duration: 2.0, completion: { _ in
                 self.progressCircle?.animate(toAngle: 0, duration: 2.0, completion: nil)
             })
-
+            
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                 self.speechBubble?.removeFromSuperview()
                 self.introShowing = false
@@ -441,7 +441,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         let fullClassificationList = observations.flatMap({ $0 as? VNClassificationObservation }).map({"\($0.identifier) \(String(format: "%.2f %", $0.confidence*100))"})
         print("foreground: \(fullClassificationList[0...5])")
-                
+        
         guard let index = englishLabelDict[(observations[0] as! VNClassificationObservation).identifier] else {
             DispatchQueue.main.async {
                 self.resultView.text = ""
@@ -516,10 +516,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         }
         
         let foundEnglishWord = classificationsList[0]
-
+        
         let rootLanguageClassification = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: true)
         let learnedLanguageClassification = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: true)
-
+        
         DispatchQueue.main.async {
             self.resultView.text = rootLanguageClassification
             self.translatedResultView.text = learnedLanguageClassification
@@ -548,10 +548,10 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let foundEnglishWord = DiscoveredWordCollection.getInstance()!.getEnglishWord(at: index)
         let rootLanguageWord = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: false)
         let learningLanguageWord = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: false)
-
+        
         let rootLanguageWordWithArticle = DiscoveredWordCollection.getInstance()!.getRootWord(at: index, withArticle: true)
         let learningLanguageWordWithArticle = DiscoveredWordCollection.getInstance()!.getLearningWord(at: index, withArticle: true)
-
+        
         let rootCategory = DiscoveredWordCollection.getInstance()!.getRootCategory(word: rootLanguageWord)
         let translatedCategory = DiscoveredWordCollection.getInstance()!.getLearningCategory(word: learningLanguageWord)
         
@@ -571,11 +571,11 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
             if Auth.auth().currentUser != nil {
                 FirebaseConnection.logEvent(title: "recog_wrong", content: foundEnglishWord)
-
+                
                 let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){
                     
-                FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: false)
+                    FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: false)
                     self.session.startRunning()
                 })
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("No", comment:"")){
@@ -617,7 +617,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         attributedTitle.replaceCharacters(in: (title as NSString).range(of: "{2}"), with: originalAttString)
         attributedTitle.replaceCharacters(in: (title as NSString).range(of: "{1}"), with: translatedAttString)
-
+        
         return attributedTitle
     }
     
@@ -628,13 +628,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         let translatedWordRange = (foundTranslatedWord as NSString).range(of: foundTranslatedWord)
         let originalWordRange = (foundOriginalWord as NSString).range(of: foundOriginalWord)
-
+        
         translatedAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1) , range: translatedWordRange)
         translatedAttString.addAttribute(.font, value: UIFont.systemFont(ofSize: 38, weight: .regular),range: translatedWordRange)
-
+        
         originalAttString.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) , range: originalWordRange)
         originalAttString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .regular), range: originalWordRange)
-
+        
         return translatedAttString + NSAttributedString(string:"\n") + originalAttString
     }
     
