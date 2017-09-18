@@ -50,6 +50,9 @@
 "Logout" = "Afmelden";
 
 /* No comment provided by engineer. */
+"Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai! #disdat" = "Ik heb zonet '%@' ontdekt, in het %@. Zelf proberen? Check disdat.ai! #disdat";
+
+/* No comment provided by engineer. */
 "No" = "Nee";
 
 /* No comment provided by engineer. */
@@ -99,4 +102,10 @@
 
 /* No comment provided by engineer. */
 "Yes, let me start over" = "Ja, laat me opnieuw beginnen";
+
+/* No comment provided by engineer. */
+"You found %d/%d words." = "%d/%d woorden gevonden.";
+
+/* No comment provided by engineer. */
+"You found a new word in the category %@ - %@:" = "Je vond een nieuw woord in de categorie %@ - %@";
 

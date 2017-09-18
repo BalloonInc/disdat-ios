@@ -67,6 +67,9 @@
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "eg6-Qw-BVa"; */
 "eg6-Qw-BVa.normalTitle" = "D'accord";
 
+/* Class = "UILabel"; text = "Which language do you speak?"; ObjectID = "gJC-yk-AUL"; */
+"gJC-yk-AUL.text" = "Votre langue maternelle";
+
 /* Class = "UICollectionViewController"; title = "Achievements"; ObjectID = "gam-gY-CEf"; */
 "gam-gY-CEf.title" = "Réalisations";
 
@@ -78,6 +81,9 @@
 
 /* Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG"; */
 "lg1-ow-UGG.title" = "Réalisations";
+
+/* Class = "UILabel"; text = "Which language do you want me to teach you?"; ObjectID = "oYy-Ht-Ea8"; */
+"oYy-Ht-Ea8.text" = "La langue que vous apprenez";
 
 /* Class = "UILabel"; text = "Progress"; ObjectID = "xkM-az-YTj"; */
 "xkM-az-YTj.text" = "Le progrès";

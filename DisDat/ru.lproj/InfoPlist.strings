@@ -1,1 +1,6 @@
-/* No Localized Strings */
+/* (No Comment) */
+"CFBundleName" = "DisDat";
+
+/* (No Comment) */
+"NSCameraUsageDescription" = "Нам необходим доступ к камере, чтобы иметь возможность определять объекты вокруг тебя.";
+

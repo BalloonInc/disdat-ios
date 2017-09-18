@@ -50,6 +50,9 @@
 "Logout" = "Выход";
 
 /* No comment provided by engineer. */
+"Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai! #disdat" = "Кажется, я только что обнаружил '%@', пока изучал %@. Попробуй сам? Проверь disdat.ai! #disdat";
+
+/* No comment provided by engineer. */
 "No" = "Нет";
 
 /* No comment provided by engineer. */
@@ -62,7 +65,7 @@
 "Oops, let me try again!" = "Ой, позвольте мне попробовать снова!";
 
 /* No comment provided by engineer. */
-"Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Пожалуйста, зайдите в параметры iOS для данного приложения и разрешите доступ к камере для пользования приложением.";
+"Please go to the iOS preferences for this app and allow camera access in order to be able to use the app." = "Пожалуйста, зайдите в параметры iOS для данного приложения и разрешите доступ к камере для пользования приложением.\\n";
 
 /* No comment provided by engineer. */
 "Remove account" = "Удалить аккаунт";
@@ -99,4 +102,10 @@
 
 /* No comment provided by engineer. */
 "Yes, let me start over" = "Да, начать с начала";
+
+/* No comment provided by engineer. */
+"You found %d/%d words." = "Вы нашли %d/%d слова";
+
+/* No comment provided by engineer. */
+"You found a new word in the category %@ - %@:" = "Вы нашли новое слово в категории %@ - %@:";
 

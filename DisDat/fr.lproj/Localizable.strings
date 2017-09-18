@@ -50,6 +50,9 @@
 "Logout" = "Logout";
 
 /* No comment provided by engineer. */
+"Looks like I just discovered '%@' in %@. Try it yourself? Check disdat.ai! #disdat" = "On dirait que je viens de découvrir '%@' en %@. Essayez vous-même? Vérifiez disdat.ai! #disdat";
+
+/* No comment provided by engineer. */
 "No" = "Non";
 
 /* No comment provided by engineer. */
@@ -99,4 +102,10 @@
 
 /* No comment provided by engineer. */
 "Yes, let me start over" = "Oui, laissez-moi recommencer";
+
+/* No comment provided by engineer. */
+"You found %d/%d words." = "Vous avez trouvé %d/%d mots.";
+
+/* No comment provided by engineer. */
+"You found a new word in the category %@ - %@:" = "Vous avez trouvé un nouveau mot dans la catégorie% @ -% @:";
 
