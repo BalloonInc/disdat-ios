@@ -1,8 +1,7 @@
 //
-//  ViewController.swift
-//  VisionSample
+//  DiscoverVC
 //
-//  Created by chris on 19/06/2017.
+//  Created by wouter on 19/08/2017.
 //  Copyright © 2017 Balloon Inc. All rights reserved.
 //
 
@@ -16,9 +15,6 @@ import KDCircularProgress
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
     var screenHeight: CGFloat?
-    
-    var rootLanguage: String!
-    var learningLanguage: String!
     
     var viewDidClear = true
     
@@ -110,14 +106,14 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rootLanguage = Authentication.getInstance().currentRootLanguage!
-        learningLanguage = Authentication.getInstance().currentLearningLanguage!
         
         englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
         
         loadCameraAndRequests()
         
         screenHeight = self.view.frame.height
+        FirebaseConnection.logEvent(ofType: AnalyticsEventAppOpen, content: "")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -349,7 +345,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     func showIntroBubble(){
         introShowing = true
         
-        let bubbleText = NSLocalizedString("This circle indicates my confidence. When it is full, I am can tell you what you are pointing at.", comment: "")
+        let bubbleText = NSLocalizedString("This circle indicates my confidence. When it is full, I can tell you what you are pointing at.", comment: "")
         
         let attributedBubbleText = NSMutableAttributedString.init(string: bubbleText)
         
@@ -538,7 +534,7 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         else {
-            FirebaseConnection.logEvent(title: "recog_again", content: foundEnglishWord)
+            FirebaseConnection.logEvent(ofType: AnalyticsEventSelectContent, content: foundEnglishWord)
             self.currentPixelBuffer = nil
         }
     }
@@ -564,13 +560,13 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         alert.addButton(DefaultButton(title: NSLocalizedString("Great!",comment:"")){
             DiscoveredWordCollection.getInstance()!.discovered(englishWord: foundEnglishWord)
             FirebaseConnection.saveImageToFirebase(englishWord: foundEnglishWord, fullPredictions: fullPredictions, image: image, correct: true)
-            FirebaseConnection.logEvent(title: "recog_correct", content: foundEnglishWord)
+            FirebaseConnection.logEvent(ofType: AnalyticsEventLevelUp, content: foundEnglishWord)
             self.session.startRunning()
         })
         
         alert.addButton(DefaultButton(title: NSLocalizedString("This is wrong.", comment: "Wrong detection")){
             if Auth.auth().currentUser != nil {
-                FirebaseConnection.logEvent(title: "recog_wrong", content: foundEnglishWord)
+                FirebaseConnection.logEvent(ofType: "bad_detection", content: foundEnglishWord)
                 
                 let uploadAlert = PopupDialog(title:NSLocalizedString("I was wrong... 🤓",comment:""), message:NSLocalizedString("Do you want to report this to my creators? This means a human might look at your image and investigate.", comment:""), image: image, gestureDismissal: false)
                 uploadAlert.addButton(DefaultButton(title: NSLocalizedString("Yes", comment:"")){

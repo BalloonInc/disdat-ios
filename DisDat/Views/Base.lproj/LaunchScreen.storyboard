@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,33 +30,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMS-FY-Sh9" userLabel="RobotContainer">
                                 <rect key="frame" x="95" y="333" width="185" height="206"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99O-AA-I2h">
-                                        <rect key="frame" x="65" y="73.5" width="54" height="60"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="🤖">
-                                                <attributes>
-                                                    <font key="NSFont" size="50" name=".AppleColorEmojiUI"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=regular">
-                                            <attributedString key="attributedText">
-                                                <fragment content="🤖">
-                                                    <attributes>
-                                                        <font key="NSFont" size="80" name=".AppleColorEmojiUI"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </variation>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot" translatesAutoresizingMaskIntoConstraints="NO" id="Pgx-4m-yen">
+                                        <rect key="frame" x="62" y="73" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="ScO-gf-xRi"/>
+                                            <constraint firstAttribute="height" constant="60" id="oMx-8T-d6g"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="99O-AA-I2h" firstAttribute="centerX" secondItem="aMS-FY-Sh9" secondAttribute="centerX" id="GjU-qt-HKn"/>
-                                    <constraint firstItem="99O-AA-I2h" firstAttribute="centerY" secondItem="aMS-FY-Sh9" secondAttribute="centerY" id="VI5-Ip-agC"/>
+                                    <constraint firstItem="Pgx-4m-yen" firstAttribute="centerX" secondItem="aMS-FY-Sh9" secondAttribute="centerX" id="DGZ-WA-RZ7"/>
                                     <constraint firstAttribute="width" constant="185" id="erQ-z5-lOW"/>
+                                    <constraint firstItem="Pgx-4m-yen" firstAttribute="centerY" secondItem="aMS-FY-Sh9" secondAttribute="centerY" id="fiF-FQ-6kS"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehG-Lw-ubj" userLabel="DisDatContainer">
@@ -108,5 +93,6 @@
     </scenes>
     <resources>
         <image name="BalloonIncLogo" width="150" height="100"/>
+        <image name="robot" width="60" height="60"/>
     </resources>
 </document>

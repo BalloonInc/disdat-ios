@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "Still %d undiscovered words in this category. Go out and scan some!" = "До сих пор необнаруженных слов в этой категории: %d. Попробуйте найти еще!";
 
+/* No comment provided by engineer. */
+"This circle indicates my confidence. When it is full, I can tell you what you are pointing at." = "Этот круг отображает мою уверенность. Когда он замкнут, я могу сказать, на что вы указываете.";
+
 /* Wrong detection */
 "This is wrong." = "Это неправильно.";
 

@@ -189,6 +189,7 @@ class LanguageSelectorVC: UIViewController {
         if (segue.identifier == "languageSelectedSegue"){
             Authentication.getInstance().setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)
             DiscoveredWordCollection.setLanguages(rootLanguage: rootLanguagePicker.selectedLanguageCode, learningLanguage: newLanguagePicker.selectedLanguageCode)
+            FirebaseConnection.logEvent(ofType: "language_set", content: "")
         }
     }
     

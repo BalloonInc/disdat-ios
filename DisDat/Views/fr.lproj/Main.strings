@@ -32,7 +32,7 @@
 "Kag-O5-Tpp.text" = "Mon nom est \"La Machine\"!";
 
 /* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy"; */
-"Lxw-ml-afy.text" = "Faites glisser vers le bas pour revenir en arrière";
+"Lxw-ml-afy.text" = "Faites glisser vers la droite pour revenir en arrière";
 
 /* Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj"; */
 "MIR-nr-5Tj.normalTitle" = "Je suis prêt à apprendre!";

@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "Still %d undiscovered words in this category. Go out and scan some!" = "Encore %d mots non découverts dans cette catégorie. Bougez-vous et scannez en encore!";
 
+/* No comment provided by engineer. */
+"This circle indicates my confidence. When it is full, I can tell you what you are pointing at." = "Ce cercle indique mon niveau de confiance. Quand il est plein, je peux vous dire ce que vous visez.";
+
 /* Wrong detection */
 "This is wrong." = "C'est faux.";
 
@@ -107,5 +110,5 @@
 "You found %d/%d words." = "Vous avez trouvé %d/%d mots.";
 
 /* No comment provided by engineer. */
-"You found a new word in the category %@ - %@:" = "Vous avez trouvé un nouveau mot dans la catégorie% @ -% @:";
+"You found a new word in the category %@ - %@:" = "Vous avez trouvé un nouveau mot dans la catégorie % @ - % @:";
 

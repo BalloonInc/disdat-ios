@@ -65,7 +65,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-UH-w5q">
-                                <rect key="frame" x="100.99999999999999" y="52" width="99.666666666666643" height="58"/>
+                                <rect key="frame" x="100.66666666666669" y="52.000000000000007" width="99.333333333333314" height="57.666666666666679"/>
                                 <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="DAT">
@@ -93,7 +93,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvZ-O8-ufZ">
-                                <rect key="frame" x="16" y="52" width="84" height="58"/>
+                                <rect key="frame" x="16" y="52.000000000000007" width="83.666666666666671" height="57.666666666666679"/>
                                 <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="DIS">
@@ -181,7 +181,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8P-2p-WdH">
-                                <rect key="frame" x="17" y="107" width="274" height="128"/>
+                                <rect key="frame" x="17" y="106.66666666666666" width="274" height="127.99999999999997"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="KXk-Md-cQT"/>
                                 </constraints>
@@ -207,14 +207,14 @@ Mouse: 0.01</string>
                                 </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqZ-TK-jNi">
-                                <rect key="frame" x="169.66666666666666" y="104" width="35" height="35"/>
+                                <rect key="frame" x="169.66666666666666" y="103.66666666666666" width="35" height="34.999999999999972"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="4gQ-sI-Vzp"/>
                                     <constraint firstAttribute="width" constant="35" id="Pk5-2Q-Ydi"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LoZ-Oj-2nm">
-                                <rect key="frame" x="170" y="107" width="35" height="30"/>
+                                <rect key="frame" x="170" y="106.66666666666666" width="35" height="29.999999999999972"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content=" 1.2x ">
@@ -914,7 +914,7 @@ Mouse: 0.01</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-9e-F6o">
-                                <rect key="frame" x="102.66666666666666" y="71" width="83.999999999999972" height="57.666666666666657"/>
+                                <rect key="frame" x="102.99999999999999" y="71" width="83.666666666666643" height="57.666666666666657"/>
                                 <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="DIS">
@@ -946,11 +946,8 @@ Mouse: 0.01</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-MG-hwH">
-                                <rect key="frame" x="185.66666666666663" y="71" width="99.333333333333371" height="58"/>
+                                <rect key="frame" x="185.66666666666663" y="71" width="99.333333333333371" height="57.666666666666657"/>
                                 <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="co7-m7-U7B"/>
-                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="DAT">
                                         <attributes>
@@ -1014,7 +1011,7 @@ Mouse: 0.01</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ts8-16-bjX">
-                                        <rect key="frame" x="169.66666666666666" y="388" width="37" height="37"/>
+                                        <rect key="frame" x="169.66666666666666" y="387.66666666666669" width="37" height="37"/>
                                         <color key="color" red="0.11181893199682236" green="0.1118365004658699" blue="0.1118125319480896" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -1065,7 +1062,7 @@ Mouse: 0.01</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buB-xV-a5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3001.875" y="31.690140845070424"/>
+            <point key="canvasLocation" x="-3002.34375" y="31.640624999999996"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3S7-cC-BPt">
@@ -1175,11 +1172,8 @@ Mouse: 0.01</string>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATt-9p-yRl">
-                                        <rect key="frame" x="188" y="45.333333333333329" width="99.333333333333314" height="57.999999999999986"/>
+                                        <rect key="frame" x="188" y="45.333333333333343" width="99.333333333333314" height="57.666666666666657"/>
                                         <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="58" id="vVw-jU-7TL"/>
-                                        </constraints>
                                         <attributedString key="attributedText">
                                             <fragment content="DAT">
                                                 <attributes>
@@ -1833,7 +1827,7 @@ Press the button below to agree.</string>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6G-4J-zTt">
-                                        <rect key="frame" x="103" y="284" width="84" height="58"/>
+                                        <rect key="frame" x="103.33333333333331" y="284.33333333333326" width="83.666666666666686" height="57.666666666666686"/>
                                         <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
                                             <fragment content="DIS">
@@ -1858,7 +1852,7 @@ Press the button below to agree.</string>
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-0a-u2D">
-                                        <rect key="frame" x="188" y="284.66666666666674" width="99.666666666666686" height="57.333333333333314"/>
+                                        <rect key="frame" x="188" y="284.33333333333326" width="99.333333333333314" height="57.666666666666686"/>
                                         <color key="tintColor" red="1" green="0.99073392869999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
                                             <fragment content="DAT">
@@ -1969,7 +1963,7 @@ Press the button below to agree.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGL-6a-ugX">
-                                        <rect key="frame" x="16" y="201" width="70.333333333333343" height="14"/>
+                                        <rect key="frame" x="16" y="201" width="70.666666666666657" height="14"/>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="REZ-Wx-y96"/>

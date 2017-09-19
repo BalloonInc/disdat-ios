@@ -134,6 +134,10 @@
         <source>Still %d undiscovered words in this category. Go out and scan some!</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This circle indicates my confidence. When it is full, I can tell you what you are pointing at.">
+        <source>This circle indicates my confidence. When it is full, I can tell you what you are pointing at.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This is wrong.">
         <source>This is wrong.</source>
         <note>Wrong detection</note>

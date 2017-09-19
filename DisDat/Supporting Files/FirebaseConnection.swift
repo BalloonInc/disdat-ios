@@ -39,10 +39,11 @@ class FirebaseConnection {
     return _remoteConfig!
     }
     
-    static func logEvent(title: String, content: String){
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-\(title)" as NSObject,
-            AnalyticsParameterItemName: title as NSObject,
+    static func logEvent(ofType: String, content: String){
+        let language = "\(Authentication.getInstance().currentRootLanguage ?? "")-\(Authentication.getInstance().currentLearningLanguage ?? "")"
+
+        Analytics.logEvent(AnalyticsEventUnlockAchievement, parameters: [
+            "language": language,
             AnalyticsParameterContentType: content as NSObject
             ])
     }
