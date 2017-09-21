@@ -220,11 +220,9 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         let launches = UserDefaults.standard.integer(forKey: "appLaunches")
         UserDefaults.standard.set(launches + 1, forKey: "appLaunches")
         
-        if launches < 2 {
-            return
+        if (launches - 2) % 5 == 0 {
+            SKStoreReviewController.requestReview()
         }
-        
-        SKStoreReviewController.requestReview();
     }
     
     func configureZoomButton()
