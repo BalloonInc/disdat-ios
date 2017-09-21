@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
      var window: UIWindow?
      
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//          self.window?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
           FBSDKAppEvents.activateApp()
           configurePopup()

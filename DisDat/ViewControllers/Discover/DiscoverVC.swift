@@ -11,6 +11,7 @@ import Vision
 import PopupDialog
 import Firebase
 import KDCircularProgress
+import StoreKit
 
 class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var noCameraPermissions = false
@@ -106,6 +107,8 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showRatingRequestIfNeeded()
         
         englishLabelDict = DiscoveredWordCollection.getInstance()!.englishLabelDict
         
@@ -211,6 +214,17 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
                 }
             }
         }
+    }
+    
+    func showRatingRequestIfNeeded(){
+        let launches = UserDefaults.standard.integer(forKey: "appLaunches")
+        UserDefaults.standard.set(launches + 1, forKey: "appLaunches")
+        
+        if launches < 2 {
+            return
+        }
+        
+        SKStoreReviewController.requestReview();
     }
     
     func configureZoomButton()

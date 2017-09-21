@@ -98,6 +98,17 @@ class SettingsTVC: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func contactButtonpressed(_ sender: Any) {
+        let email = "disdat@ballooninc.be"
+        let subject = "About the app DisDat"
+        let body = "Hi DisDat team,\n\n ... \n\n Kind regards,\n\(Authentication.getInstance().fullname ?? "")"
+        let encodedParams = "subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if let url = URL(string: "mailto:\(email)?\(encodedParams!)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    
     @IBAction func changeLanguageButtonPressed(_ sender: UIButton) {
         let alert = PopupDialog(title:NSLocalizedString("Change languages", comment: ""), message:NSLocalizedString("Are you sure you want to change the current languages? Your progress for your current languages will be saved.", comment: ""))
         

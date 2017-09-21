@@ -18,7 +18,7 @@ class MainPVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewC
         self.dataSource = self
         
         self.delegate = self
-        self.orderedViewControllers = [newVC("QuizNavigationVC"), newVC("DiscoverVC"), newVC("AchievementsNavigationVC")]
+        self.orderedViewControllers = [newVC("QuizVC"), newVC("DiscoverVC"), newVC("AchievementsNavigationVC")]
         setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true, completion: nil)
     }
     

@@ -4,9 +4,6 @@
 /* Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn"; */
 "1H3-fh-sFn.text" = "Login via";
 
-/* Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF"; */
-"6On-gE-IGF.text" = "Coming soon";
-
 /* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB"; */
 "8gv-Jd-WtB.normalTitle" = "Verwijder account";
 
@@ -18,6 +15,36 @@
 
 /* Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r"; */
 "BYZ-38-t0r.title" = "Ontdek";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "BjE-NK-l2C"; */
+"BjE-NK-l2C.text" = "Email";
+
+/* Class = "UITableViewSection"; footerTitle = "We would really appreciate your feedback, review, comment or suggestions."; ObjectID = "C4g-9m-0n5"; */
+"C4g-9m-0n5.footerTitle" = "We appreciëren je feedback, review, commentaar of suggesties.";
+
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "C4g-9m-0n5"; */
+"C4g-9m-0n5.headerTitle" = "Feedback";
+
+/* Class = "UIButton"; normalTitle = "App store review"; ObjectID = "Fno-M3-s0V"; */
+"Fno-M3-s0V.normalTitle" = "App Store review";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "GhT-ul-pAu"; */
+"GhT-ul-pAu.normalTitle" = "Contacteer ons";
+
+/* Class = "UILabel"; text = "Quiz"; ObjectID = "HeK-zv-QQ3"; */
+"HeK-zv-QQ3.text" = "Quiz";
+
+/* Class = "UILabel"; text = "Start a new quiz"; ObjectID = "HhZ-xI-aUo"; */
+"HhZ-xI-aUo.text" = "Start a new quiz";
+
+/* Class = "UIBarButtonItem"; title = "Achievements"; ObjectID = "Iwr-IS-VK2"; */
+"Iwr-IS-VK2.title" = "Trofeeënkast";
+
+/* Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "Iwy-VH-OaR"; */
+"Iwy-VH-OaR.normalTitle" = "Verwijder account";
+
+/* Class = "UILabel"; text = "Let's test your new vocabulary! I will show you 5 words you need spot. Find them all to finish the quiz."; ObjectID = "JFT-Wb-Js7"; */
+"JFT-Wb-Js7.text" = "Let's test your new vocabulary! I will show you 5 words you need spot. Find them all to finish the quiz.";
 
 /* Class = "UIButton"; normalTitle = "Reset progress"; ObjectID = "JGB-lz-1nz"; */
 "JGB-lz-1nz.normalTitle" = "Reset voortgang";
@@ -31,11 +58,14 @@
 /* Class = "UILabel"; text = "My name is \"The Machine\"!"; ObjectID = "Kag-O5-Tpp"; */
 "Kag-O5-Tpp.text" = "Mijn naam is \"De Machine\"!";
 
-/* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy"; */
-"Lxw-ml-afy.text" = "Swipe rechts om terug te keren";
-
 /* Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj"; */
 "MIR-nr-5Tj.normalTitle" = "Klaar om te leren!";
+
+/* Class = "UINavigationController"; title = "Discover"; ObjectID = "Mml-F6-ZbN"; */
+"Mml-F6-ZbN.title" = "Ontdek";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "OCb-xK-qVn"; */
+"OCb-xK-qVn.text" = "Naam";
 
 /* Class = "UITableViewSection"; headerTitle = "Languages"; ObjectID = "QrO-wX-w1N"; */
 "QrO-wX-w1N.headerTitle" = "Talen";
@@ -49,11 +79,20 @@
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "T25-Fl-ea1"; */
 "T25-Fl-ea1.normalTitle" = "Logout";
 
-/* Class = "UILabel"; text = "Quiz"; ObjectID = "Wzu-Qt-4jI"; */
-"Wzu-Qt-4jI.text" = "Quiz";
+/* Class = "UIBarButtonItem"; title = "Quiz"; ObjectID = "VMI-wj-cXV"; */
+"VMI-wj-cXV.title" = "Quiz";
+
+/* Class = "UILabel"; text = "Show quiz 1"; ObjectID = "Y0E-CH-o9V"; */
+"Y0E-CH-o9V.text" = "Show quiz 1";
 
 /* Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "Y7Y-ds-efY"; */
 "Y7Y-ds-efY.headerTitle" = "Account";
+
+/* Class = "UILabel"; text = "Login method"; ObjectID = "Yl5-UX-P64"; */
+"Yl5-UX-P64.text" = "Login methode";
+
+/* Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "ZnD-Jp-jsr"; */
+"ZnD-Jp-jsr.headerTitle" = "Account";
 
 /* Class = "UIButton"; normalTitle = "Prefer not"; ObjectID = "ZrB-4x-rzB"; */
 "ZrB-4x-rzB.normalTitle" = "Liever niet";
@@ -79,8 +118,20 @@
 /* Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk"; */
 "iHF-FS-mdk.text" = "Ik ken veel talen, maar ik ken slechts 120 woorden in elke taal. Toon me iets, en als ik weet wat het is, vertaal ik het voor je. Eenvoudig, niet?";
 
+/* Class = "UINavigationItem"; title = "Quiz"; ObjectID = "jeS-YG-3Nz"; */
+"jeS-YG-3Nz.title" = "Quiz";
+
+/* Class = "UILabel"; text = "Coming soon"; ObjectID = "jpm-Gg-BIG"; */
+"jpm-Gg-BIG.text" = "Coming soon";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "kOS-uA-jKU"; */
+"kOS-uA-jKU.normalTitle" = "Log out";
+
 /* Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG"; */
 "lg1-ow-UGG.title" = "Trofeeënkast";
+
+/* Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "nz0-iC-x7J"; */
+"nz0-iC-x7J.text" = "Swipe rechts om terug te keren";
 
 /* Class = "UILabel"; text = "Which language do you want me to teach you?"; ObjectID = "oYy-Ht-Ea8"; */
 "oYy-Ht-Ea8.text" = "De taal die je wilt leren";

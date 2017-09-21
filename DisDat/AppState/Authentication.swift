@@ -77,7 +77,7 @@ class Authentication{
                 caller.present(alert, animated: true, completion: nil)
             }
             else if let fbloginresult = result {
-            if(fbloginresult.grantedPermissions.contains("email"))
+            if(fbloginresult.grantedPermissions != nil && fbloginresult.grantedPermissions.contains("email"))
                 {
                     self.getFBUserData(caller: caller, onFinished: onFinished)
                     return

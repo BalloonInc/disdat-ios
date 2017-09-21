@@ -191,10 +191,6 @@
         <source>Login method</source>
         <note>Class = "UILabel"; text = "Login method"; ObjectID = "1H3-fh-sFn";</note>
       </trans-unit>
-      <trans-unit id="6On-gE-IGF.text">
-        <source>Coming soon</source>
-        <note>Class = "UILabel"; text = "Coming soon"; ObjectID = "6On-gE-IGF";</note>
-      </trans-unit>
       <trans-unit id="8gv-Jd-WtB.normalTitle">
         <source>Remove account</source>
         <note>Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "8gv-Jd-WtB";</note>
@@ -210,6 +206,46 @@
       <trans-unit id="BYZ-38-t0r.title">
         <source>Discover</source>
         <note>Class = "UIViewController"; title = "Discover"; ObjectID = "BYZ-38-t0r";</note>
+      </trans-unit>
+      <trans-unit id="BjE-NK-l2C.text">
+        <source>Email</source>
+        <note>Class = "UILabel"; text = "Email"; ObjectID = "BjE-NK-l2C";</note>
+      </trans-unit>
+      <trans-unit id="C4g-9m-0n5.footerTitle">
+        <source>We would really appreciate your feedback, review, comment or suggestions.</source>
+        <note>Class = "UITableViewSection"; footerTitle = "We would really appreciate your feedback, review, comment or suggestions."; ObjectID = "C4g-9m-0n5";</note>
+      </trans-unit>
+      <trans-unit id="C4g-9m-0n5.headerTitle">
+        <source>Feedback</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "C4g-9m-0n5";</note>
+      </trans-unit>
+      <trans-unit id="Fno-M3-s0V.normalTitle">
+        <source>App store review</source>
+        <note>Class = "UIButton"; normalTitle = "App store review"; ObjectID = "Fno-M3-s0V";</note>
+      </trans-unit>
+      <trans-unit id="GhT-ul-pAu.normalTitle">
+        <source>Contact us</source>
+        <note>Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "GhT-ul-pAu";</note>
+      </trans-unit>
+      <trans-unit id="HeK-zv-QQ3.text">
+        <source>Quiz</source>
+        <note>Class = "UILabel"; text = "Quiz"; ObjectID = "HeK-zv-QQ3";</note>
+      </trans-unit>
+      <trans-unit id="HhZ-xI-aUo.text">
+        <source>Start a new quiz</source>
+        <note>Class = "UILabel"; text = "Start a new quiz"; ObjectID = "HhZ-xI-aUo";</note>
+      </trans-unit>
+      <trans-unit id="Iwr-IS-VK2.title">
+        <source>Achievements</source>
+        <note>Class = "UIBarButtonItem"; title = "Achievements"; ObjectID = "Iwr-IS-VK2";</note>
+      </trans-unit>
+      <trans-unit id="Iwy-VH-OaR.normalTitle">
+        <source>Remove account</source>
+        <note>Class = "UIButton"; normalTitle = "Remove account"; ObjectID = "Iwy-VH-OaR";</note>
+      </trans-unit>
+      <trans-unit id="JFT-Wb-Js7.text">
+        <source>Let's test your new vocabulary! I will show you 5 words you need spot. Find them all to finish the quiz.</source>
+        <note>Class = "UILabel"; text = "Let's test your new vocabulary! I will show you 5 words you need spot. Find them all to finish the quiz."; ObjectID = "JFT-Wb-Js7";</note>
       </trans-unit>
       <trans-unit id="JGB-lz-1nz.normalTitle">
         <source>Reset progress</source>
@@ -232,13 +268,17 @@ Press the button below to agree.</source>
         <source>My name is "The Machine"!</source>
         <note>Class = "UILabel"; text = "My name is \"The Machine\"!"; ObjectID = "Kag-O5-Tpp";</note>
       </trans-unit>
-      <trans-unit id="Lxw-ml-afy.text">
-        <source>Swipe right to go back</source>
-        <note>Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "Lxw-ml-afy";</note>
-      </trans-unit>
       <trans-unit id="MIR-nr-5Tj.normalTitle">
         <source>I am ready to learn!</source>
         <note>Class = "UIButton"; normalTitle = "I am ready to learn!"; ObjectID = "MIR-nr-5Tj";</note>
+      </trans-unit>
+      <trans-unit id="Mml-F6-ZbN.title">
+        <source>Discover</source>
+        <note>Class = "UINavigationController"; title = "Discover"; ObjectID = "Mml-F6-ZbN";</note>
+      </trans-unit>
+      <trans-unit id="OCb-xK-qVn.text">
+        <source>Name</source>
+        <note>Class = "UILabel"; text = "Name"; ObjectID = "OCb-xK-qVn";</note>
       </trans-unit>
       <trans-unit id="QrO-wX-w1N.headerTitle">
         <source>Languages</source>
@@ -256,13 +296,25 @@ Press the button below to agree.</source>
         <source>Logout</source>
         <note>Class = "UIButton"; normalTitle = "Logout"; ObjectID = "T25-Fl-ea1";</note>
       </trans-unit>
-      <trans-unit id="Wzu-Qt-4jI.text">
+      <trans-unit id="VMI-wj-cXV.title">
         <source>Quiz</source>
-        <note>Class = "UILabel"; text = "Quiz"; ObjectID = "Wzu-Qt-4jI";</note>
+        <note>Class = "UIBarButtonItem"; title = "Quiz"; ObjectID = "VMI-wj-cXV";</note>
+      </trans-unit>
+      <trans-unit id="Y0E-CH-o9V.text">
+        <source>Show quiz 1</source>
+        <note>Class = "UILabel"; text = "Show quiz 1"; ObjectID = "Y0E-CH-o9V";</note>
       </trans-unit>
       <trans-unit id="Y7Y-ds-efY.headerTitle">
         <source>Account</source>
         <note>Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "Y7Y-ds-efY";</note>
+      </trans-unit>
+      <trans-unit id="Yl5-UX-P64.text">
+        <source>Login method</source>
+        <note>Class = "UILabel"; text = "Login method"; ObjectID = "Yl5-UX-P64";</note>
+      </trans-unit>
+      <trans-unit id="ZnD-Jp-jsr.headerTitle">
+        <source>Account</source>
+        <note>Class = "UITableViewSection"; headerTitle = "Account"; ObjectID = "ZnD-Jp-jsr";</note>
       </trans-unit>
       <trans-unit id="ZrB-4x-rzB.normalTitle">
         <source>Prefer not</source>
@@ -296,9 +348,25 @@ Press the button below to agree.</source>
         <source>I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?</source>
         <note>Class = "UILabel"; text = "I know a lot of languages, but I only know around 120 words. Show me something, and if I know what it is, I will translate it for you. Simple, no?"; ObjectID = "iHF-FS-mdk";</note>
       </trans-unit>
+      <trans-unit id="jeS-YG-3Nz.title">
+        <source>Quiz</source>
+        <note>Class = "UINavigationItem"; title = "Quiz"; ObjectID = "jeS-YG-3Nz";</note>
+      </trans-unit>
+      <trans-unit id="jpm-Gg-BIG.text">
+        <source>Coming soon</source>
+        <note>Class = "UILabel"; text = "Coming soon"; ObjectID = "jpm-Gg-BIG";</note>
+      </trans-unit>
+      <trans-unit id="kOS-uA-jKU.normalTitle">
+        <source>Logout</source>
+        <note>Class = "UIButton"; normalTitle = "Logout"; ObjectID = "kOS-uA-jKU";</note>
+      </trans-unit>
       <trans-unit id="lg1-ow-UGG.title">
         <source>Achievements</source>
         <note>Class = "UINavigationItem"; title = "Achievements"; ObjectID = "lg1-ow-UGG";</note>
+      </trans-unit>
+      <trans-unit id="nz0-iC-x7J.text">
+        <source>Swipe right to go back</source>
+        <note>Class = "UILabel"; text = "Swipe right to go back"; ObjectID = "nz0-iC-x7J";</note>
       </trans-unit>
       <trans-unit id="oYy-Ht-Ea8.text">
         <source>Which language do you want me to teach you?</source>

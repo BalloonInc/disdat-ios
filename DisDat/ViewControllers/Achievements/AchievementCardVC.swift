@@ -56,8 +56,8 @@ class AchievementCardVC: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop ]
-        
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToTwitter ]
+        activityViewController.view.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         self.present(activityViewController, animated: true, completion: nil)
     }
     

@@ -26,7 +26,7 @@ class AchievementsCVC: UICollectionViewController {
             
         collectionViewLayout?.invalidateLayout()
         
-        self.navigationItem.largeTitleDisplayMode = .automatic
+//        self.navigationItem.largeTitleDisplayMode = .automatic
     }
 
     // MARK: - Navigation
