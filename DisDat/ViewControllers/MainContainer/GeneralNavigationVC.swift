@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievementNavigationVC: UINavigationController {
+class GeneralNavigationVC: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

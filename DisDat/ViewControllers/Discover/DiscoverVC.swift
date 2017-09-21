@@ -113,7 +113,6 @@ class DiscoverVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate
         
         screenHeight = self.view.frame.height
         FirebaseConnection.logEvent(ofType: AnalyticsEventAppOpen, content: "")
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -33,28 +33,25 @@ class SettingsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBar()
+        setNavigationBar()
         setContent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         toggleNavigationBar(hidden: false)
+        setNavigationBar()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        toggleNavigationBar(hidden: false)
-    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         toggleNavigationBar(hidden: true)
     }
-    
+
     fileprivate func toggleNavigationBar(hidden: Bool) {
         UIView.animate(withDuration: 0.15, delay: 0.05, options: [], animations: {
             self.navigationController?.isNavigationBarHidden = hidden
+            self.setNavigationBar()
         }, completion: nil)
     }
     
@@ -64,13 +61,12 @@ class SettingsTVC: UITableViewController {
             navigationItem.largeTitleDisplayMode = .automatic
             navigationBar.barStyle = .black
 
-            navigationBar.isOpaque = true
-            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
 
             navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
             navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-            navigationBar.isHidden = false
-            navigationBar.setNeedsDisplay()
+            navigationBar.isOpaque = true
+            navigationBar.barTintColor = #colorLiteral(red: 0.1732688546, green: 0.7682885528, blue: 0.6751055121, alpha: 1)
+
         }
     }
     
